@@ -1,0 +1,51 @@
+/* =========================================================================
+   MENU — dropdown menu + context menu
+   Dropdown:
+     <div class="menu">
+       <button class="btn btn--secondary menu__trigger">Options <i data-lucide="chevron-down" class="icon--sm"></i></button>
+       <div class="menu__list">
+         <button class="menu__item"><i data-lucide="eye" class="icon--sm"></i> View</button>
+         <div class="menu__sep"></div>
+         <button class="menu__item menu__item--danger"><i data-lucide="trash-2" class="icon--sm"></i> Delete</button>
+       </div>
+     </div>
+   Context menu: same .menu__list, positioned on right-click (see docs JS).
+   ========================================================================= */
+
+.menu { position: relative; display: inline-block; }
+.menu__list {
+  position: absolute; top: calc(100% + 6px); left: 0;
+  min-width: 200px;
+  background: var(--canvas);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-10);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-4);
+  z-index: 50;
+  display: none;
+}
+.menu.is-open > .menu__list,
+.menu__list[data-open] { display: block; }
+
+.menu__item {
+  display: flex; align-items: center; gap: var(--space-8);
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  border: 0; background: transparent;
+  border-radius: var(--radius-8);
+  font-family: var(--font-sans); font-size: var(--text-sm);
+  color: var(--text-primary); text-align: left; cursor: pointer;
+}
+.menu__item:hover { background: var(--grey-50); }
+.menu__item--danger { color: var(--color-error); }
+.menu__item .icon, .menu__item svg { color: var(--text-muted); }
+.menu__item--danger svg { color: var(--color-error); }
+.menu__sep { height: 1px; background: var(--border-subtle); margin: var(--space-4) 0; }
+.menu__label {
+  padding: var(--space-8) var(--space-12) var(--space-4);
+  font-family: var(--font-mono); font-size: var(--text-label);
+  letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted);
+}
+
+/* Context menu — fixed-position list shown on right-click */
+.context-menu { position: fixed; min-width: 200px; }

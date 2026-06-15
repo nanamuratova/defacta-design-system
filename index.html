@@ -6,104 +6,142 @@
   <title>Defacta — Design System</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* ── page-local presentation layout (not part of the system) ───────── */
-    html { scroll-behavior: smooth; }
-    .topnav {
-      position: sticky; top: 0; z-index: 50;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px; padding-inline: var(--container-pad);
-      background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border-subtle);
+    /* ── docs layout (page-local) ─────────────────────────────────────── */
+    .docs { display: grid; grid-template-columns: 264px 1fr; min-height: 100vh; }
+
+    .docs__sidebar {
+      position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto;
+      padding: var(--space-24);
+      border-right: 1px solid var(--border-subtle);
+      background: var(--canvas);
     }
-    .topnav nav { display: flex; gap: var(--space-24); }
-    .topnav nav a { font-size: var(--text-sm); color: var(--text-secondary); }
-    .topnav nav a:hover { color: var(--text-primary); }
-    @media (max-width: 760px) { .topnav nav { display: none; } }
+    .docs__sidebar .brand { margin: var(--space-4) var(--space-12) var(--space-24); }
+    .docs__nav { display: flex; flex-direction: column; gap: 1px; }
+    .docs__nav a {
+      display: block; padding: var(--space-8) var(--space-12);
+      border-radius: var(--radius-8);
+      font-size: var(--text-sm); color: var(--text-secondary); cursor: pointer;
+    }
+    .docs__nav a:hover { background: var(--grey-50); color: var(--text-primary); }
+    .docs__nav a.is-active { background: var(--grey-100); color: var(--text-primary); font-weight: var(--weight-medium); }
+    .docs__group {
+      margin: var(--space-16) 0 var(--space-4); padding: 0 var(--space-12);
+      font-family: var(--font-mono); font-size: var(--text-label);
+      letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted);
+    }
 
-    .hero { padding-block: var(--space-64); border-bottom: 1px solid var(--border-subtle); }
-    .sec { padding-block: var(--space-64); border-bottom: 1px solid var(--border-subtle); scroll-margin-top: 80px; }
-    .sec__head { margin-bottom: var(--space-32); }
-    .sec__head .label { display: block; margin-bottom: var(--space-12); }
-    .sub { margin: var(--space-32) 0 var(--space-16); }
+    .docs__content { padding: var(--space-48) var(--space-64); max-width: 1080px; }
+    .panel[hidden] { display: none; }
+    .panel__head { margin-bottom: var(--space-32); }
+    .panel__head .label { display: block; margin-bottom: var(--space-12); }
+    .panel__head h1 { margin-bottom: var(--space-12); }
+    .sub { margin: var(--space-32) 0 var(--space-12); }
 
-    /* color swatches */
-    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-16); }
+    /* demo surface */
+    .demo { display: flex; flex-wrap: wrap; gap: var(--space-12); align-items: center;
+            padding: var(--space-24); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-12); background: var(--surface-paper); }
+    .demo--block { display: block; }
+    .demo--stack { flex-direction: column; align-items: stretch; }
+
+    /* foundations helpers */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: var(--space-16); }
     .sw { border: 1px solid var(--border-subtle); border-radius: var(--radius-10); overflow: hidden; }
-    .sw__chip { height: 72px; }
-    .sw__meta { padding: var(--space-8) var(--space-12); }
+    .sw__chip { height: 64px; } .sw__meta { padding: var(--space-8) var(--space-12); }
     .sw__name { font-size: var(--text-sm); font-weight: var(--weight-medium); }
-    .sw__hex  { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .04em; color: var(--text-muted); }
-
-    /* type scale */
+    .sw__hex { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .04em; color: var(--text-muted); }
     .type-row { display: flex; align-items: baseline; gap: var(--space-24); padding: var(--space-12) 0; border-top: 1px solid var(--border-subtle); }
-    .type-row .meta { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted); width: 130px; flex-shrink: 0; }
-
-    /* spacing + radius */
+    .type-row .meta { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted); width: 120px; flex-shrink: 0; }
     .scale-row { display: flex; align-items: center; gap: var(--space-16); padding: var(--space-8) 0; }
-    .scale-row .meta { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-muted); width: 130px; }
+    .scale-row .meta { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-muted); width: 120px; }
     .scale-bar { height: 16px; background: var(--grey-950); border-radius: var(--radius-2); }
+    .shadow-box { width: 160px; height: 96px; border-radius: var(--radius-12); background: var(--canvas); display: flex; align-items: flex-end; padding: var(--space-12); }
+    .shadow-box span { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary); }
     .radii { display: flex; gap: var(--space-24); flex-wrap: wrap; }
-    .radii .r { width: 88px; height: 88px; background: var(--grey-100); border: 1px solid var(--border-default); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--space-8); }
+    .radii .r { width: 80px; height: 80px; background: var(--grey-100); border: 1px solid var(--border-default); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--space-8); }
     .radii .r span { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary); }
-
-    /* icon grid */
     .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px,1fr)); gap: var(--space-12); }
     .icons .i { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); padding: var(--space-16); border: 1px solid var(--border-subtle); border-radius: var(--radius-10); }
     .icons .i span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; color: var(--text-muted); }
 
-    /* demo blocks */
-    .demo { display: flex; flex-wrap: wrap; gap: var(--space-12); align-items: center; padding: var(--space-24); border: 1px solid var(--border-subtle); border-radius: var(--radius-12); background: var(--surface-paper); }
-
     /* screen gallery */
-    .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-24); }
-    @media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
+    .gallery { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-24); }
     .screen { border: 1px solid var(--border-default); border-radius: var(--radius-12); overflow: hidden; background: var(--canvas); display: flex; flex-direction: column; }
-    .screen__frame { position: relative; height: 280px; overflow: hidden; background: var(--surface-paper); border-bottom: 1px solid var(--border-subtle); }
-    .screen__frame iframe { width: 1400px; height: 875px; border: 0; transform: scale(0.34); transform-origin: top left; pointer-events: none; }
+    .screen__frame { position: relative; height: 240px; overflow: hidden; background: var(--surface-paper); border-bottom: 1px solid var(--border-subtle); }
+    .screen__frame iframe { width: 1400px; height: 875px; border: 0; transform: scale(0.32); transform-origin: top left; pointer-events: none; }
     .screen__meta { padding: var(--space-16) var(--space-24); display: flex; align-items: center; justify-content: space-between; gap: var(--space-16); }
     .screen__meta h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); }
     .screen__meta p { font-size: var(--text-sm); color: var(--text-secondary); margin-top: 2px; }
+
+    @media (max-width: 860px) {
+      .docs { grid-template-columns: 1fr; }
+      .docs__sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border-subtle); }
+      .docs__content { padding: var(--space-24); }
+      .gallery { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <!-- ── Top nav ──────────────────────────────────────────────────────── -->
-  <div class="topnav">
-    <a class="brand" href="#top">
-      <img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo">
-    </a>
-    <nav>
-      <a href="#foundations">Foundations</a>
-      <a href="#components">Components</a>
-      <a href="#screens">Screens</a>
-      <a href="#usage">Usage</a>
-    </nav>
-  </div>
+<div class="docs">
+  <!-- ── Sidebar catalogue ──────────────────────────────────────────── -->
+  <aside class="docs__sidebar">
+    <a class="brand" href="#home"><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+    <nav class="docs__nav">
+      <a data-tab="home">Home</a>
 
-  <main class="container" id="top">
-    <!-- ── Hero ──────────────────────────────────────────────────────── -->
-    <section class="hero content">
+      <p class="docs__group">Foundations</p>
+      <a data-tab="color">Color tokens</a>
+      <a data-tab="typography">Typography</a>
+      <a data-tab="space">Shadows, radius, spacing</a>
+      <a data-tab="icons">Icons</a>
+
+      <p class="docs__group">Components</p>
+      <a data-tab="buttons">Buttons</a>
+      <a data-tab="inputs">Inputs</a>
+      <a data-tab="textarea">Text area</a>
+      <a data-tab="checkbox">Checkbox &amp; groups</a>
+      <a data-tab="badges">Badges, tags, pills</a>
+      <a data-tab="breadcrumbs">Breadcrumbs</a>
+      <a data-tab="alerts">Alerts &amp; notifications</a>
+      <a data-tab="accordion">Accordion</a>
+      <a data-tab="dropdown">Dropdown</a>
+      <a data-tab="pagination">Pagination</a>
+      <a data-tab="table">Table</a>
+      <a data-tab="carousel">Carousel</a>
+      <a data-tab="switch">Switch &amp; toggle</a>
+      <a data-tab="tabs">Tabs</a>
+      <a data-tab="tooltips">Tooltips</a>
+      <a data-tab="upload">Upload</a>
+      <a data-tab="contextmenu">Context menu</a>
+
+      <p class="docs__group">&nbsp;</p>
+      <a data-tab="examples">Examples</a>
+    </nav>
+  </aside>
+
+  <!-- ── Content ────────────────────────────────────────────────────── -->
+  <main class="docs__content">
+
+    <!-- HOME -->
+    <section class="panel" data-panel="home">
       <span class="label">Design system · v1</span>
       <h1 class="display" style="margin: var(--space-12) 0">The Defacta<br>design system.</h1>
-      <p class="body-lg text-secondary" style="max-width: 640px">
-        One source of truth for building on-brand Defacta screens — tokens, components, and
-        real example screens. Editorial and restrained: researcher, not marketer.
-      </p>
+      <p class="body-lg text-secondary" style="max-width: 600px">One source of truth for building on-brand Defacta screens — tokens, components, and real example screens. Editorial and restrained: researcher, not marketer.</p>
       <div class="cluster" style="margin-top: var(--space-24)">
-        <a class="btn btn--primary" href="#screens">View screens <i data-lucide="arrow-right" class="icon--sm"></i></a>
-        <a class="btn btn--secondary" href="#foundations">Explore foundations</a>
+        <a class="btn btn--primary" data-tab="buttons" href="#buttons">Browse components <i data-lucide="arrow-right" class="icon--sm"></i></a>
+        <a class="btn btn--secondary" data-tab="examples" href="#examples">View screens</a>
+      </div>
+      <div class="grid grid--3" style="margin-top: var(--space-48)">
+        <div class="card"><div class="card__title">Tokens</div><p class="card__body">Colors, type, spacing, radius — change once, re-theme everywhere.</p></div>
+        <div class="card"><div class="card__title">Components</div><p class="card__body">23 building blocks, all styled from tokens. Reuse, never reinvent.</p></div>
+        <div class="card"><div class="card__title">Screens</div><p class="card__body">Real, on-brand screens composed entirely from the components.</p></div>
       </div>
     </section>
 
-    <!-- ══ FOUNDATIONS ═══════════════════════════════════════════════════ -->
-    <section class="sec content" id="foundations">
-      <div class="sec__head">
-        <span class="label">Foundations</span>
-        <h2 class="h1">Tokens</h2>
-        <p class="body-lg text-secondary">Every value below is a token in <code>tokens.css</code>. Change one, and every screen updates.</p>
-      </div>
-
-      <!-- Colors -->
-      <p class="sub label">Color · gray scale</p>
+    <!-- COLOR -->
+    <section class="panel" data-panel="color" hidden>
+      <div class="panel__head"><span class="label">Foundations</span><h1>Color tokens</h1><p class="body-lg text-secondary">Every color is a <code>var(--token)</code> in <code>tokens.css</code>.</p></div>
+      <p class="sub label">Gray scale</p>
       <div class="swatches">
         <div class="sw"><div class="sw__chip" style="background:var(--grey-950)"></div><div class="sw__meta"><div class="sw__name">Ink</div><div class="sw__hex">--grey-950 · #1A1A1A</div></div></div>
         <div class="sw"><div class="sw__chip" style="background:var(--grey-700)"></div><div class="sw__meta"><div class="sw__name">Grey 700</div><div class="sw__hex">--grey-700 · #525252</div></div></div>
@@ -113,53 +151,62 @@
         <div class="sw"><div class="sw__chip" style="background:var(--grey-100)"></div><div class="sw__meta"><div class="sw__name">Hairline</div><div class="sw__hex">--grey-100 · #EAEAEA</div></div></div>
         <div class="sw"><div class="sw__chip" style="background:var(--grey-50)"></div><div class="sw__meta"><div class="sw__name">Soft fill</div><div class="sw__hex">--grey-50 · #F5F5F5</div></div></div>
       </div>
-
-      <p class="sub label">Color · surfaces &amp; semantic</p>
+      <p class="sub label">Surfaces &amp; semantic</p>
       <div class="swatches">
-        <div class="sw"><div class="sw__chip" style="background:var(--canvas); box-shadow: inset 0 0 0 1px var(--border-default)"></div><div class="sw__meta"><div class="sw__name">Canvas</div><div class="sw__hex">--canvas · #FFFFFF</div></div></div>
-        <div class="sw"><div class="sw__chip" style="background:var(--paper); box-shadow: inset 0 0 0 1px var(--border-default)"></div><div class="sw__meta"><div class="sw__name">Paper</div><div class="sw__hex">--paper · #F7F8FA</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--canvas);box-shadow:inset 0 0 0 1px var(--border-default)"></div><div class="sw__meta"><div class="sw__name">Canvas</div><div class="sw__hex">--canvas · #FFFFFF</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--paper);box-shadow:inset 0 0 0 1px var(--border-default)"></div><div class="sw__meta"><div class="sw__name">Paper</div><div class="sw__hex">--paper · #F7F8FA</div></div></div>
         <div class="sw"><div class="sw__chip" style="background:var(--color-error)"></div><div class="sw__meta"><div class="sw__name">Error</div><div class="sw__hex">--color-error · #DC2626</div></div></div>
         <div class="sw"><div class="sw__chip" style="background:var(--color-warning)"></div><div class="sw__meta"><div class="sw__name">Warning</div><div class="sw__hex">--color-warning · #D97706</div></div></div>
         <div class="sw"><div class="sw__chip" style="background:var(--color-success)"></div><div class="sw__meta"><div class="sw__name">Success</div><div class="sw__hex">--color-success · #059669</div></div></div>
         <div class="sw"><div class="sw__chip" style="background:var(--color-accent-blue)"></div><div class="sw__meta"><div class="sw__name">Accent</div><div class="sw__hex">--color-accent-blue · #8199CC</div></div></div>
       </div>
+    </section>
 
-      <!-- Typography -->
-      <p class="sub label">Typography · Inter + IBM Plex Mono</p>
-      <div>
-        <div class="type-row"><span class="meta">Display</span><span class="display">Verify what holds up.</span></div>
-        <div class="type-row"><span class="meta">Heading 1</span><span class="h1">Verify what holds up.</span></div>
-        <div class="type-row"><span class="meta">Heading 2</span><span class="h2">Verify what holds up.</span></div>
-        <div class="type-row"><span class="meta">Body large</span><span class="body-lg">Defacta reads it and shows you what holds up — and what doesn't.</span></div>
-        <div class="type-row"><span class="meta">Body</span><span class="body">Defacta reads it and shows you what holds up — and what doesn't.</span></div>
-        <div class="type-row"><span class="meta">Mono label</span><span class="label">Verification workbench</span></div>
+    <!-- TYPOGRAPHY -->
+    <section class="panel" data-panel="typography" hidden>
+      <div class="panel__head"><span class="label">Foundations</span><h1>Typography</h1><p class="body-lg text-secondary">Inter for UI, IBM Plex Mono for labels &amp; data.</p></div>
+      <div class="type-row"><span class="meta">Display</span><span class="display">Verify what holds up.</span></div>
+      <div class="type-row"><span class="meta">Heading 1</span><span class="h1">Verify what holds up.</span></div>
+      <div class="type-row"><span class="meta">Heading 2</span><span class="h2">Verify what holds up.</span></div>
+      <div class="type-row"><span class="meta">Heading 3</span><span class="h3">Verify what holds up.</span></div>
+      <div class="type-row"><span class="meta">Body large</span><span class="body-lg">Defacta reads it and shows you what holds up — and what doesn't.</span></div>
+      <div class="type-row"><span class="meta">Body</span><span class="body">Defacta reads it and shows you what holds up — and what doesn't.</span></div>
+      <div class="type-row"><span class="meta">Small</span><span class="text-sm">Defacta reads it and shows you what holds up — and what doesn't.</span></div>
+      <div class="type-row"><span class="meta">Mono label</span><span class="label">Verification workbench</span></div>
+    </section>
+
+    <!-- SHADOWS / RADIUS / SPACING -->
+    <section class="panel" data-panel="space" hidden>
+      <div class="panel__head"><span class="label">Foundations</span><h1>Shadows, radius &amp; spacing</h1></div>
+      <p class="sub label">Elevation</p>
+      <div class="demo">
+        <div class="shadow-box" style="box-shadow:var(--shadow-sm)"><span>shadow-sm</span></div>
+        <div class="shadow-box" style="box-shadow:var(--shadow-md)"><span>shadow-md</span></div>
+        <div class="shadow-box" style="box-shadow:var(--shadow-lg)"><span>shadow-lg</span></div>
       </div>
-
-      <!-- Spacing + Radius -->
-      <div class="grid grid--2" style="margin-top: var(--space-32)">
-        <div>
-          <p class="sub label">Spacing · 4-based</p>
-          <div class="scale-row"><span class="meta">space-4</span><span class="scale-bar" style="width:4px"></span></div>
-          <div class="scale-row"><span class="meta">space-8</span><span class="scale-bar" style="width:8px"></span></div>
-          <div class="scale-row"><span class="meta">space-16</span><span class="scale-bar" style="width:16px"></span></div>
-          <div class="scale-row"><span class="meta">space-24</span><span class="scale-bar" style="width:24px"></span></div>
-          <div class="scale-row"><span class="meta">space-32</span><span class="scale-bar" style="width:32px"></span></div>
-          <div class="scale-row"><span class="meta">space-48</span><span class="scale-bar" style="width:48px"></span></div>
-          <div class="scale-row"><span class="meta">space-64</span><span class="scale-bar" style="width:64px"></span></div>
-        </div>
-        <div>
-          <p class="sub label">Radius · soft corners</p>
-          <div class="radii">
-            <div class="r" style="border-radius:var(--radius-4)"><span>r-4</span></div>
-            <div class="r" style="border-radius:var(--radius-8)"><span>r-8</span></div>
-            <div class="r" style="border-radius:var(--radius-12)"><span>r-12</span></div>
-            <div class="r" style="border-radius:var(--radius-16)"><span>r-16</span></div>
-          </div>
-        </div>
+      <p class="sub label">Radius</p>
+      <div class="radii">
+        <div class="r" style="border-radius:var(--radius-4)"><span>r-4</span></div>
+        <div class="r" style="border-radius:var(--radius-8)"><span>r-8</span></div>
+        <div class="r" style="border-radius:var(--radius-10)"><span>r-10</span></div>
+        <div class="r" style="border-radius:var(--radius-12)"><span>r-12</span></div>
+        <div class="r" style="border-radius:var(--radius-16)"><span>r-16</span></div>
       </div>
+      <p class="sub label">Spacing · 4-based</p>
+      <div class="demo--block">
+        <div class="scale-row"><span class="meta">space-4</span><span class="scale-bar" style="width:4px"></span></div>
+        <div class="scale-row"><span class="meta">space-8</span><span class="scale-bar" style="width:8px"></span></div>
+        <div class="scale-row"><span class="meta">space-16</span><span class="scale-bar" style="width:16px"></span></div>
+        <div class="scale-row"><span class="meta">space-24</span><span class="scale-bar" style="width:24px"></span></div>
+        <div class="scale-row"><span class="meta">space-32</span><span class="scale-bar" style="width:32px"></span></div>
+        <div class="scale-row"><span class="meta">space-48</span><span class="scale-bar" style="width:48px"></span></div>
+        <div class="scale-row"><span class="meta">space-64</span><span class="scale-bar" style="width:64px"></span></div>
+      </div>
+    </section>
 
-      <!-- Icons -->
-      <p class="sub label">Icons · Lucide (free &amp; open source)</p>
+    <!-- ICONS -->
+    <section class="panel" data-panel="icons" hidden>
+      <div class="panel__head"><span class="label">Foundations</span><h1>Icons</h1><p class="body-lg text-secondary">Lucide — free &amp; open source. Use <code>&lt;i data-lucide="name"&gt;&lt;/i&gt;</code>.</p></div>
       <div class="icons">
         <div class="i"><i data-lucide="shield-check"></i><span>shield-check</span></div>
         <div class="i"><i data-lucide="file-check"></i><span>file-check</span></div>
@@ -171,112 +218,378 @@
         <div class="i"><i data-lucide="settings"></i><span>settings</span></div>
         <div class="i"><i data-lucide="arrow-right"></i><span>arrow-right</span></div>
         <div class="i"><i data-lucide="eye"></i><span>eye</span></div>
+        <div class="i"><i data-lucide="download"></i><span>download</span></div>
+        <div class="i"><i data-lucide="refresh-cw"></i><span>refresh-cw</span></div>
       </div>
     </section>
 
-    <!-- ══ COMPONENTS ════════════════════════════════════════════════════ -->
-    <section class="sec content" id="components">
-      <div class="sec__head">
-        <span class="label">Building blocks</span>
-        <h2 class="h1">Components</h2>
-        <p class="body-lg text-secondary">Composed from tokens. The full interactive catalog lives in <a class="link" href="examples/components.html">examples/components.html</a>.</p>
-      </div>
-
-      <p class="sub label">Buttons</p>
+    <!-- BUTTONS -->
+    <section class="panel" data-panel="buttons" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Buttons</h1></div>
+      <p class="sub label">Variants</p>
       <div class="demo">
         <button class="btn btn--primary">Primary</button>
         <button class="btn btn--secondary">Secondary</button>
         <button class="btn btn--tertiary">Tertiary</button>
         <button class="btn btn--ghost">Ghost</button>
+        <button class="btn btn--link">Link</button>
+      </div>
+      <p class="sub label">Sizes</p>
+      <div class="demo">
+        <button class="btn btn--primary btn--sm">Small</button>
+        <button class="btn btn--primary">Medium</button>
+        <button class="btn btn--primary btn--lg">Large</button>
+      </div>
+      <p class="sub label">Tones &amp; states</p>
+      <div class="demo">
         <button class="btn btn--primary btn--error">Delete</button>
+        <button class="btn btn--secondary btn--error">Delete</button>
         <button class="btn btn--primary btn--success">Approve</button>
+        <button class="btn btn--primary" disabled>Disabled</button>
       </div>
-
-      <p class="sub label">Inputs &amp; choices</p>
-      <div class="demo" style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-16)">
-        <div class="field"><span class="label">Default input</span><input class="input" placeholder="https://example.com/article"></div>
-        <div class="field"><span class="label">Filter</span><div class="select"><select><option>All statuses</option></select></div></div>
-        <label class="option-card"><input type="radio" name="d" checked><span class="option-card__title">Check my text</span><span class="option-card__desc">Inline editing suggestions and sourcing fixes.</span></label>
-        <label class="checkbox" style="align-self:center"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span><span class="checkbox__desc">Verify the highest-impact factual claims.</span></span></label>
+      <p class="sub label">Icon buttons</p>
+      <div class="demo">
+        <button class="icon-btn icon-btn--sm" aria-label="add"><i data-lucide="plus"></i></button>
+        <button class="icon-btn" aria-label="settings"><i data-lucide="settings"></i></button>
+        <button class="icon-btn icon-btn--lg" aria-label="search"><i data-lucide="search"></i></button>
       </div>
+    </section>
 
-      <p class="sub label">Tags &amp; status</p>
+    <!-- INPUTS -->
+    <section class="panel" data-panel="inputs" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Inputs</h1></div>
+      <div class="demo demo--stack" style="max-width:420px">
+        <div class="field"><label class="label">Default</label><input class="input" placeholder="https://example.com/article"></div>
+        <div class="field"><label class="label">Disabled</label><input class="input" value="Disabled" disabled></div>
+        <div class="field"><label class="label">Search</label><div class="search"><i data-lucide="search" class="icon--sm"></i><input class="input" type="search" placeholder="Search reports…"></div></div>
+        <div class="field"><label class="label">Password</label><div class="input-affix"><input class="input" type="password" value="secret123"><button class="affix-btn"><i data-lucide="eye" class="icon--sm"></i></button></div></div>
+      </div>
+    </section>
+
+    <!-- TEXTAREA -->
+    <section class="panel" data-panel="textarea" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Text area</h1></div>
+      <div class="demo demo--block" style="max-width:560px">
+        <div class="field"><label class="label">Paste a link or text</label>
+          <textarea class="textarea" placeholder="Paste any text, AI output, or a URL (https://…) to verify."></textarea>
+        </div>
+        <div class="textarea-foot"><span>0 characters</span><span>Max. 50,000 characters</span></div>
+      </div>
+    </section>
+
+    <!-- CHECKBOX -->
+    <section class="panel" data-panel="checkbox" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Checkbox &amp; groups</h1></div>
+      <p class="sub label">Single</p>
+      <div class="demo"><label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span></span></label></div>
+      <p class="sub label">Group (with descriptions)</p>
+      <div class="demo demo--stack" style="gap:var(--space-16); align-items:flex-start">
+        <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span><span class="checkbox__desc">Verify the highest-impact factual claims.</span></span></label>
+        <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias &amp; framing analysis</span><span class="checkbox__desc">Surface loaded language and emphasis.</span></span></label>
+        <label class="checkbox"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Deception detection</span><span class="checkbox__desc">Flag evasion, hedging, or misdirection.</span></span></label>
+      </div>
+    </section>
+
+    <!-- BADGES -->
+    <section class="panel" data-panel="badges" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Badges, tags &amp; pills</h1></div>
+      <p class="sub label">Status badges — the standard pill</p>
+      <div class="demo">
+        <span class="status-badge status-badge--verified"><i></i>Verified</span>
+        <span class="status-badge status-badge--pending"><i></i>Pending review</span>
+        <span class="status-badge status-badge--partial"><i></i>Partial</span>
+        <span class="status-badge status-badge--flagged"><i></i>Flagged</span>
+        <span class="status-badge status-badge--dead"><i></i>404 Dead</span>
+        <span class="status-badge status-badge--unrelated"><i></i>Unrelated</span>
+        <span class="status-badge status-badge--info"><i></i>Info</span>
+      </div>
+      <p class="sub label">Tags — claim verdicts</p>
       <div class="demo">
         <span class="tag tag--supported">Supported</span>
         <span class="tag tag--contradicted">Contradicted</span>
         <span class="tag tag--unsupported">Unsupported</span>
+        <span class="tag tag--info">Info</span>
+        <span class="tag tag--neutral">Neutral</span>
+      </div>
+      <p class="sub label">Risk tags</p>
+      <div class="demo">
         <span class="tag tag--mono risk--high">High</span>
-        <span class="status-badge status-badge--verified"><i></i>Verified</span>
-        <span class="status-badge status-badge--flagged"><i></i>Flagged</span>
-      </div>
-
-      <p class="sub label">Cards</p>
-      <div class="grid grid--3">
-        <div class="card"><div class="card__title">Bordered</div><p class="card__body">The workhorse container.</p></div>
-        <div class="card card--elevated"><div class="card__title">Elevated</div><p class="card__body">Soft shadow, lifts off the page.</p></div>
-        <div class="card card--soft"><div class="card__title">Soft</div><p class="card__body">Quiet grouping inside a section.</p></div>
+        <span class="tag tag--mono risk--moderate">Moderate</span>
+        <span class="tag tag--mono risk--low">Low</span>
       </div>
     </section>
 
-    <!-- ══ SCREENS ═══════════════════════════════════════════════════════ -->
-    <section class="sec content" id="screens">
-      <div class="sec__head">
-        <span class="label">Put together</span>
-        <h2 class="h1">Screens</h2>
-        <p class="body-lg text-secondary">Real screens built entirely from the components above. Click any to open it full-size.</p>
+    <!-- BREADCRUMBS -->
+    <section class="panel" data-panel="breadcrumbs" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Breadcrumbs</h1></div>
+      <div class="demo">
+        <nav class="breadcrumbs">
+          <a href="#">Home</a>
+          <span class="breadcrumbs__sep"><i data-lucide="chevron-right"></i></span>
+          <a href="#">History</a>
+          <span class="breadcrumbs__sep"><i data-lucide="chevron-right"></i></span>
+          <span aria-current="page">WHO Vaccination Statement</span>
+        </nav>
       </div>
+    </section>
+
+    <!-- ALERTS -->
+    <section class="panel" data-panel="alerts" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Alerts &amp; notifications</h1></div>
+      <div class="demo demo--stack" style="gap:var(--space-12)">
+        <div class="alert alert--info"><i data-lucide="info" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Verification in progress</div><div class="alert__text">This usually takes under 30 seconds.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
+        <div class="alert alert--success"><i data-lucide="circle-check" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Report compiled</div><div class="alert__text">All 4 claims were evaluated.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
+        <div class="alert alert--warning"><i data-lucide="triangle-alert" class="alert__icon"></i><div class="alert__body"><div class="alert__title">2 claims need review</div><div class="alert__text">Human editorial review is recommended.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
+        <div class="alert alert--error"><i data-lucide="circle-alert" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Source unreachable</div><div class="alert__text">Reference [3] returned 404.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
+        <div class="alert toast"><i data-lucide="bell" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Notification (toast)</div><div class="alert__text">Elevated style for transient messages.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
+      </div>
+    </section>
+
+    <!-- ACCORDION -->
+    <section class="panel" data-panel="accordion" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Accordion</h1></div>
+      <div class="demo--block" style="max-width:640px">
+        <details class="accordion" open style="margin-bottom:var(--space-12)">
+          <summary class="accordion__trigger"><i data-lucide="settings" class="icon--sm icon--muted"></i><span class="accordion__title">Advanced settings</span><span class="accordion__meta">2 of 4 enabled</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
+          <div class="accordion__panel"><p class="text-secondary text-sm">Verification options, model selection, and source weighting live here.</p></div>
+        </details>
+        <details class="accordion">
+          <summary class="accordion__trigger"><i data-lucide="file-text" class="icon--sm icon--muted"></i><span class="accordion__title">Export options</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
+          <div class="accordion__panel"><p class="text-secondary text-sm">Export as PDF, share a link, or copy the report ID.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- DROPDOWN -->
+    <section class="panel" data-panel="dropdown" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Dropdown</h1><p class="body-lg text-secondary">A native <code>.select</code> for forms, and a <code>.menu</code> for actions.</p></div>
+      <p class="sub label">Select</p>
+      <div class="demo"><div class="select"><select><option>All statuses</option><option>Verified</option><option>Flagged</option></select></div></div>
+      <p class="sub label">Action menu</p>
+      <div class="demo" style="overflow:visible">
+        <div class="menu">
+          <button class="btn btn--secondary menu__trigger">Options <i data-lucide="chevron-down" class="icon--sm"></i></button>
+          <div class="menu__list">
+            <div class="menu__label">Report</div>
+            <button class="menu__item"><i data-lucide="eye" class="icon--sm"></i> View report</button>
+            <button class="menu__item"><i data-lucide="download" class="icon--sm"></i> Export PDF</button>
+            <button class="menu__item"><i data-lucide="refresh-cw" class="icon--sm"></i> Re-run</button>
+            <div class="menu__sep"></div>
+            <button class="menu__item menu__item--danger"><i data-lucide="trash-2" class="icon--sm"></i> Delete</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGINATION -->
+    <section class="panel" data-panel="pagination" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Pagination</h1></div>
+      <div class="demo">
+        <nav class="pagination">
+          <button class="pagination__item" aria-label="Previous"><i data-lucide="chevron-left" class="icon--sm"></i></button>
+          <button class="pagination__item is-active">1</button>
+          <button class="pagination__item">2</button>
+          <button class="pagination__item">3</button>
+          <span class="pagination__ellipsis">…</span>
+          <button class="pagination__item">12</button>
+          <button class="pagination__item" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+        </nav>
+      </div>
+    </section>
+
+    <!-- TABLE -->
+    <section class="panel" data-panel="table" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Table</h1></div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Report</th><th>Risk</th><th>Status</th><th>Date</th></tr></thead>
+          <tbody>
+            <tr><td><div class="cell-title">WHO vaccination statement</div><div class="cell-sub">VR-2026-06-03-247K</div></td><td><span class="tag tag--mono risk--high">High</span></td><td><span class="status-badge status-badge--flagged"><i></i>Flagged</span></td><td class="cell-date">Jun 03, 2026</td></tr>
+            <tr><td><div class="cell-title">Marketing copy — LLM draft v3</div><div class="cell-sub">VR-2026-06-01-189A</div></td><td><span class="tag tag--mono risk--low">Low</span></td><td><span class="status-badge status-badge--verified"><i></i>Verified</span></td><td class="cell-date">Jun 01, 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CAROUSEL -->
+    <section class="panel" data-panel="carousel" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Carousel</h1></div>
+      <div class="demo demo--block">
+        <div class="carousel" style="max-width:640px;margin-inline:auto">
+          <div class="carousel__viewport"><div class="carousel__track">
+            <div class="carousel__slide"><div class="card card--soft" style="height:200px;display:flex;align-items:center;justify-content:center"><h2 class="h1">01</h2></div></div>
+            <div class="carousel__slide"><div class="card card--soft" style="height:200px;display:flex;align-items:center;justify-content:center"><h2 class="h1">02</h2></div></div>
+            <div class="carousel__slide"><div class="card card--soft" style="height:200px;display:flex;align-items:center;justify-content:center"><h2 class="h1">03</h2></div></div>
+          </div></div>
+          <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left" class="icon--sm"></i></button>
+          <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+          <div class="carousel__dots"><button class="carousel__dot is-active"></button><button class="carousel__dot"></button><button class="carousel__dot"></button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SWITCH -->
+    <section class="panel" data-panel="switch" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Switch &amp; toggle</h1></div>
+      <p class="sub label">Switch</p>
+      <div class="demo">
+        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span></label>
+        <label class="switch"><input type="checkbox"><span class="switch__track"></span></label>
+        <label class="switch"><input type="checkbox" disabled><span class="switch__track"></span></label>
+      </div>
+      <p class="sub label">Segmented toggle</p>
+      <div class="demo">
+        <div class="toggle-group"><button class="is-active">Day</button><button>Week</button><button>Month</button></div>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <section class="panel" data-panel="tabs" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Tabs</h1></div>
+      <div class="demo demo--block">
+        <div class="tabs">
+          <button class="tabs__tab is-active" data-tabtarget="t1">Overview</button>
+          <button class="tabs__tab" data-tabtarget="t2">Claims</button>
+          <button class="tabs__tab" data-tabtarget="t3">Sources</button>
+        </div>
+        <div class="tabs__panel" data-tabpanel="t1"><p class="text-secondary">Summary of the verification result.</p></div>
+        <div class="tabs__panel" data-tabpanel="t2" hidden><p class="text-secondary">Per-claim verdicts and evidence.</p></div>
+        <div class="tabs__panel" data-tabpanel="t3" hidden><p class="text-secondary">Cited sources and their reliability.</p></div>
+      </div>
+    </section>
+
+    <!-- TOOLTIPS -->
+    <section class="panel" data-panel="tooltips" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Tooltips</h1><p class="body-lg text-secondary">Hover the elements below.</p></div>
+      <div class="demo" style="gap:var(--space-24)">
+        <span class="tooltip" data-tooltip="Confidence: 75%"><button class="btn btn--secondary">Hover me</button></span>
+        <span class="tooltip" data-tooltip="Re-run verification"><button class="icon-btn"><i data-lucide="refresh-cw"></i></button></span>
+        <span class="tooltip" data-tooltip="This claim is contradicted by 2 sources" style="border-bottom:1px dashed var(--border-strong);cursor:help">contradicted claim</span>
+      </div>
+    </section>
+
+    <!-- UPLOAD -->
+    <section class="panel" data-panel="upload" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Upload</h1></div>
+      <div class="demo demo--block" style="max-width:520px">
+        <label class="upload"><input type="file" hidden>
+          <i data-lucide="upload-cloud" class="upload__icon icon--lg"></i>
+          <span class="upload__title">Drag &amp; drop or browse</span>
+          <span class="upload__hint">PDF, DOCX, TXT · max 20MB</span>
+        </label>
+        <div class="file-row" style="margin-top:var(--space-16)">
+          <i data-lucide="file-text" class="file-row__icon icon--sm"></i>
+          <span class="file-row__name">earnings-draft-q2.pdf</span>
+          <span class="file-row__size">248 KB</span>
+          <button class="file-row__remove"><i data-lucide="x" class="icon--sm"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEXT MENU -->
+    <section class="panel" data-panel="contextmenu" hidden>
+      <div class="panel__head"><span class="label">Components</span><h1>Context menu</h1><p class="body-lg text-secondary">Right-click inside the area below.</p></div>
+      <div class="demo demo--block">
+        <div id="ctx-area" class="card card--soft" style="height:180px;display:flex;align-items:center;justify-content:center;color:var(--text-muted)">Right-click anywhere here</div>
+        <div id="ctx-menu" class="menu__list context-menu" style="display:none">
+          <button class="menu__item"><i data-lucide="eye" class="icon--sm"></i> View report</button>
+          <button class="menu__item"><i data-lucide="download" class="icon--sm"></i> Export PDF</button>
+          <div class="menu__sep"></div>
+          <button class="menu__item menu__item--danger"><i data-lucide="trash-2" class="icon--sm"></i> Delete</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAMPLES -->
+    <section class="panel" data-panel="examples" hidden>
+      <div class="panel__head"><span class="label">Put together</span><h1>Example screens</h1><p class="body-lg text-secondary">Real screens built entirely from the components. Click any to open full-size.</p></div>
       <div class="gallery">
-        <a class="screen" href="screens/report.html">
-          <div class="screen__frame"><iframe src="screens/report.html" loading="lazy" tabindex="-1" title="Verification report"></iframe></div>
-          <div class="screen__meta"><div><h3>Verification report</h3><p>Summary, annotated content, claims, sources, audit</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div>
-        </a>
-        <a class="screen" href="screens/workbench.html">
-          <div class="screen__frame"><iframe src="screens/workbench.html" loading="lazy" tabindex="-1" title="Workbench"></iframe></div>
-          <div class="screen__meta"><div><h3>Verification workbench</h3><p>Modes, advanced settings, char counter</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div>
-        </a>
-        <a class="screen" href="screens/history.html">
-          <div class="screen__frame"><iframe src="screens/history.html" loading="lazy" tabindex="-1" title="History"></iframe></div>
-          <div class="screen__meta"><div><h3>History</h3><p>Reports table with filters &amp; risk tags</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div>
-        </a>
-        <a class="screen" href="screens/auth.html">
-          <div class="screen__frame"><iframe src="screens/auth.html" loading="lazy" tabindex="-1" title="Auth"></iframe></div>
-          <div class="screen__meta"><div><h3>Sign in / Sign up</h3><p>Auth modal with Google + email</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div>
-        </a>
-        <a class="screen" href="screens/book-demo.html">
-          <div class="screen__frame"><iframe src="screens/book-demo.html" loading="lazy" tabindex="-1" title="Book a demo"></iframe></div>
-          <div class="screen__meta"><div><h3>Book a demo</h3><p>Scheduling modal, calendar + slots</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div>
-        </a>
-        <a class="screen" href="screens/confirmation.html">
-          <div class="screen__frame"><iframe src="screens/confirmation.html" loading="lazy" tabindex="-1" title="Confirmation"></iframe></div>
-          <div class="screen__meta"><div><h3>Confirmation</h3><p>Success modal</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div>
-        </a>
-        <a class="screen" href="examples/components.html">
-          <div class="screen__frame"><iframe src="examples/components.html" loading="lazy" tabindex="-1" title="Catalog"></iframe></div>
-          <div class="screen__meta"><div><h3>Component catalog</h3><p>Every building block, interactive</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div>
-        </a>
+        <a class="screen" href="screens/report.html"><div class="screen__frame"><iframe src="screens/report.html" loading="lazy" tabindex="-1" title="Report"></iframe></div><div class="screen__meta"><div><h3>Verification report</h3><p>Summary, annotated content, sources</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/workbench.html"><div class="screen__frame"><iframe src="screens/workbench.html" loading="lazy" tabindex="-1" title="Workbench"></iframe></div><div class="screen__meta"><div><h3>Workbench</h3><p>Modes, advanced settings</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/history.html"><div class="screen__frame"><iframe src="screens/history.html" loading="lazy" tabindex="-1" title="History"></iframe></div><div class="screen__meta"><div><h3>History</h3><p>Reports table</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/auth.html"><div class="screen__frame"><iframe src="screens/auth.html" loading="lazy" tabindex="-1" title="Auth"></iframe></div><div class="screen__meta"><div><h3>Sign in / Sign up</h3><p>Auth modal</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/book-demo.html"><div class="screen__frame"><iframe src="screens/book-demo.html" loading="lazy" tabindex="-1" title="Book a demo"></iframe></div><div class="screen__meta"><div><h3>Book a demo</h3><p>Scheduling modal</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/confirmation.html"><div class="screen__frame"><iframe src="screens/confirmation.html" loading="lazy" tabindex="-1" title="Confirmation"></iframe></div><div class="screen__meta"><div><h3>Confirmation</h3><p>Success modal</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
       </div>
     </section>
 
-    <!-- ══ USAGE ═════════════════════════════════════════════════════════ -->
-    <section class="sec content" id="usage">
-      <div class="sec__head">
-        <span class="label">For the team</span>
-        <h2 class="h1">How it's used</h2>
-      </div>
-      <div class="grid grid--3">
-        <div class="card"><div class="card__title">1 · Open in Claude Code</div><p class="card__body">Open this folder in Claude Code. It auto-loads <code>CLAUDE.md</code> — the rules that keep every screen on-brand.</p></div>
-        <div class="card"><div class="card__title">2 · Describe a screen</div><p class="card__body">“Build a settings page with a profile form.” Claude reuses these components and tokens automatically.</p></div>
-        <div class="card"><div class="card__title">3 · Re-theme anytime</div><p class="card__body">Change a value in <code>tokens.css</code> and every screen updates at once — colors, type, spacing.</p></div>
-      </div>
-    </section>
   </main>
+</div>
 
-  <footer class="site-footer">
-    <span>© Defacta — Design System</span>
-    <span>Built from tokens.css · Icons by Lucide</span>
-  </footer>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>lucide.createIcons();</script>
+  /* ---- Sidebar tab switching ---- */
+  const navLinks = [...document.querySelectorAll('.docs__nav a[data-tab]')];
+  const allTabTriggers = [...document.querySelectorAll('[data-tab]')];
+  const panels = [...document.querySelectorAll('.panel')];
+  function show(tab) {
+    if (!document.querySelector('[data-panel="'+tab+'"]')) tab = 'home';
+    panels.forEach(p => p.hidden = p.dataset.panel !== tab);
+    navLinks.forEach(a => a.classList.toggle('is-active', a.dataset.tab === tab));
+    if (location.hash.slice(1) !== tab) history.replaceState(null, '', '#' + tab);
+    window.scrollTo(0, 0);
+  }
+  allTabTriggers.forEach(a => a.addEventListener('click', e => { e.preventDefault(); show(a.dataset.tab); }));
+  show(location.hash.slice(1) || 'home');
+  window.addEventListener('hashchange', () => show(location.hash.slice(1) || 'home'));
+
+  /* ---- Tabs component ---- */
+  document.querySelectorAll('.tabs').forEach(bar => {
+    const tabs = [...bar.querySelectorAll('.tabs__tab')];
+    const wrap = bar.parentElement;
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      wrap.querySelectorAll('.tabs__panel').forEach(p => p.hidden = p.dataset.tabpanel !== tab.dataset.tabtarget);
+    }));
+  });
+
+  /* ---- Dropdown menus ---- */
+  document.querySelectorAll('.menu__trigger').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const m = btn.closest('.menu');
+    document.querySelectorAll('.menu.is-open').forEach(o => { if (o !== m) o.classList.remove('is-open'); });
+    m.classList.toggle('is-open');
+  }));
+  document.addEventListener('click', () => document.querySelectorAll('.menu.is-open').forEach(m => m.classList.remove('is-open')));
+
+  /* ---- Context menu ---- */
+  const ctxArea = document.getElementById('ctx-area');
+  const ctxMenu = document.getElementById('ctx-menu');
+  if (ctxArea) {
+    ctxArea.addEventListener('contextmenu', e => {
+      e.preventDefault();
+      ctxMenu.style.display = 'block';
+      ctxMenu.style.left = e.clientX + 'px';
+      ctxMenu.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('click', () => ctxMenu.style.display = 'none');
+    window.addEventListener('scroll', () => ctxMenu.style.display = 'none', true);
+  }
+
+  /* ---- Carousel ---- */
+  document.querySelectorAll('.carousel').forEach(c => {
+    const track = c.querySelector('.carousel__track');
+    const dots = [...c.querySelectorAll('.carousel__dot')];
+    const n = c.querySelectorAll('.carousel__slide').length;
+    let i = 0;
+    const go = k => { i = (k + n) % n; track.style.transform = 'translateX(-' + (i * 100) + '%)'; dots.forEach((d, j) => d.classList.toggle('is-active', j === i)); };
+    c.querySelector('.carousel__btn--prev').addEventListener('click', () => go(i - 1));
+    c.querySelector('.carousel__btn--next').addEventListener('click', () => go(i + 1));
+    dots.forEach((d, j) => d.addEventListener('click', () => go(j)));
+  });
+
+  /* ---- Alert dismiss ---- */
+  document.querySelectorAll('.alert__close').forEach(b => b.addEventListener('click', () => b.closest('.alert').remove()));
+  document.querySelectorAll('.file-row__remove').forEach(b => b.addEventListener('click', () => b.closest('.file-row').remove()));
+
+  /* ---- Char counter (textarea demo) ---- */
+  document.querySelectorAll('[data-panel="textarea"] .textarea').forEach(ta => {
+    const out = ta.closest('.demo').querySelector('.textarea-foot span');
+    ta.addEventListener('input', () => out.textContent = ta.value.length.toLocaleString() + ' characters');
+  });
+</script>
 </body>
 </html>

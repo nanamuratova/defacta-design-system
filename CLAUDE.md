@@ -86,6 +86,17 @@ matters more than cleverness. Follow these rules exactly.
 | Audit log | `.audit` > `.audit__row` (time / event / actor) |
 | On-this-page nav | `.toc` (sticky, scrollspy `.is-active`) |
 | Feedback bar | `.feedback` (inside `.card`) |
+| Switch | `<label class="switch"><input type="checkbox"><span class="switch__track"></span></label>` |
+| Segmented toggle | `.toggle-group` > `<button class="is-active">` |
+| Tabs | `.tabs` > `.tabs__tab[data-tabtarget]` + `.tabs__panel[data-tabpanel]` (JS-switched) |
+| Breadcrumbs | `.breadcrumbs` > `<a>` + `.breadcrumbs__sep` (chevron-right) + `[aria-current]` |
+| Alert / notification | `.alert alert--info/success/warning/error` (+ `.toast`) — icon + `__body` + `__close` |
+| Pagination | `.pagination` > `.pagination__item` (+ `.is-active`, `.pagination__ellipsis`) |
+| Dropdown menu | `.menu` > `.menu__trigger` + `.menu__list` > `.menu__item` (+ `--danger`, `.menu__sep`, `.menu__label`) |
+| Context menu | `.menu__list.context-menu` positioned on right-click (see docs JS) |
+| Tooltip | `<span class="tooltip" data-tooltip="…">` (CSS hover) |
+| Upload | `<label class="upload">` dropzone + `.file-row` for uploaded files |
+| Carousel | `.carousel` > `.carousel__viewport` > `.carousel__track` > `.carousel__slide` + `__btn`/`__dots` (JS) |
 
 ## Brand voice (visual)
 

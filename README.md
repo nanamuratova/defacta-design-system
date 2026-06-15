@@ -48,6 +48,13 @@ defacta-design-system/
 │   ├── table.css        ← .table data table (History)
 │   ├── modal.css        ← .modal dialogs (sm/md/lg) + status medallion
 │   ├── report.css       ← report: subheader, stat cards, annotated marks, claims, sources, audit, TOC
+│   ├── controls.css     ← switch & segmented toggle
+│   ├── tabs.css         ← tabs
+│   ├── navigation.css   ← breadcrumbs, pagination
+│   ├── feedback.css     ← alerts & notifications, tooltips
+│   ├── menu.css         ← dropdown menu + context menu
+│   ├── upload.css       ← file dropzone + file row
+│   ├── carousel.css     ← carousel
 │   └── layout.css       ← container, section, card, grid, header, accordion, workbench
 ├── examples/
 │   ├── components.html  ← live catalog of every component (open this first)
@@ -95,11 +102,12 @@ from a CDN and uses `<i data-lucide="search"></i>`. No install needed.
 
 ## Preview
 
-Open `examples/components.html` in a browser, or run a tiny server from this folder:
+Open **`index.html`** — the documentation site with a sidebar catalogue (Home, Foundations,
+Components, Examples). Or run a tiny server from this folder:
 
 ```bash
 python3 -m http.server 8000
-# then open http://localhost:8000/examples/components.html
+# then open http://localhost:8000/index.html
 ```
 
 ---

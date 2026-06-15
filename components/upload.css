@@ -1,0 +1,37 @@
+/* =========================================================================
+   UPLOAD — dropzone + uploaded file row
+   <label class="upload"><input type="file" hidden>
+     <i data-lucide="upload-cloud" class="upload__icon"></i>
+     <span class="upload__title">Drag & drop or browse</span>
+     <span class="upload__hint">PDF, DOCX, TXT · max 20MB</span>
+   </label>
+   ========================================================================= */
+
+.upload {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-8); text-align: center;
+  padding: var(--space-32);
+  border: 1.5px dashed var(--border-strong);
+  border-radius: var(--radius-12);
+  background: var(--surface-paper);
+  color: var(--text-secondary); cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.upload:hover, .upload.is-drag { border-color: var(--grey-950); background: var(--grey-50); }
+.upload__icon  { color: var(--text-muted); }
+.upload__title { font-weight: var(--weight-medium); color: var(--text-primary); font-size: var(--text-sm); }
+.upload__hint  { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.04em; color: var(--text-muted); }
+
+/* Uploaded file row */
+.file-row {
+  display: flex; align-items: center; gap: var(--space-12);
+  padding: var(--space-12);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-8);
+  background: var(--canvas);
+}
+.file-row__icon { color: var(--text-muted); flex-shrink: 0; }
+.file-row__name { flex: 1; font-size: var(--text-sm); color: var(--text-primary); }
+.file-row__size { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.04em; color: var(--text-muted); }
+.file-row__remove { border: 0; background: transparent; color: var(--text-muted); cursor: pointer; display: inline-flex; }
+.file-row__remove:hover { color: var(--color-error); }

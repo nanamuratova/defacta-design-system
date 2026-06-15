@@ -1,0 +1,33 @@
+/* =========================================================================
+   CAROUSEL
+   <div class="carousel">
+     <div class="carousel__viewport"><div class="carousel__track">
+       <div class="carousel__slide">…</div> …
+     </div></div>
+     <button class="carousel__btn carousel__btn--prev"><i data-lucide="chevron-left"></i></button>
+     <button class="carousel__btn carousel__btn--next"><i data-lucide="chevron-right"></i></button>
+     <div class="carousel__dots">…</div>
+   </div>
+   (Drive with the docs JS: translateX the track, toggle .is-active dots.)
+   ========================================================================= */
+
+.carousel { position: relative; }
+.carousel__viewport { overflow: hidden; border-radius: var(--radius-12); }
+.carousel__track { display: flex; transition: transform 0.3s ease; }
+.carousel__slide { flex: 0 0 100%; }
+
+.carousel__btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: var(--radius-full);
+  border: 1px solid var(--border-default); background: var(--canvas);
+  box-shadow: var(--shadow-sm);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--text-primary); cursor: pointer;
+}
+.carousel__btn:hover { background: var(--grey-50); }
+.carousel__btn--prev { left: var(--space-12); }
+.carousel__btn--next { right: var(--space-12); }
+
+.carousel__dots { display: flex; justify-content: center; gap: var(--space-8); margin-top: var(--space-16); }
+.carousel__dot { width: 8px; height: 8px; border-radius: var(--radius-full); border: 0; background: var(--grey-300); cursor: pointer; padding: 0; }
+.carousel__dot.is-active { background: var(--grey-950); }

@@ -1,0 +1,54 @@
+/* =========================================================================
+   FEEDBACK — alerts & notifications + tooltips
+   Alert: <div class="alert alert--info"><i data-lucide="info" class="alert__icon"></i>
+            <div class="alert__body"><div class="alert__title">…</div><div class="alert__text">…</div></div>
+            <button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
+   Tooltip: <span class="tooltip" data-tooltip="Confidence: 75%">hover</span>
+   ========================================================================= */
+
+/* ---- Alerts ---------------------------------------------------------- */
+.alert {
+  display: flex; gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-10);
+  background: var(--canvas);
+}
+.alert__icon { flex-shrink: 0; margin-top: 1px; color: var(--text-secondary); }
+.alert__body { flex: 1; font-size: var(--text-sm); }
+.alert__title { font-weight: var(--weight-medium); color: var(--text-primary); margin-bottom: 2px; }
+.alert__text  { color: var(--text-secondary); }
+.alert__close { border: 0; background: transparent; color: var(--text-muted); cursor: pointer; display: inline-flex; flex-shrink: 0; }
+.alert__close:hover { color: var(--text-primary); }
+
+.alert--info    { background: var(--color-info-soft);    border-color: var(--color-info-border); }
+.alert--info    .alert__icon { color: var(--color-info); }
+.alert--success { background: var(--color-success-soft); border-color: var(--color-success-border); }
+.alert--success .alert__icon { color: var(--color-success); }
+.alert--warning { background: var(--color-warning-soft); border-color: var(--color-warning-border); }
+.alert--warning .alert__icon { color: var(--color-warning); }
+.alert--error   { background: var(--color-error-soft);   border-color: var(--color-error-border); }
+.alert--error   .alert__icon { color: var(--color-error); }
+
+/* Toast / notification — elevated, for transient messages */
+.toast { background: var(--canvas); border-color: transparent; box-shadow: var(--shadow-lg); }
+
+/* ---- Tooltip (CSS hover) --------------------------------------------- */
+.tooltip { position: relative; }
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute; bottom: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--grey-950); color: var(--canvas);
+  font-family: var(--font-sans); font-size: var(--text-label); white-space: nowrap;
+  padding: var(--space-4) var(--space-10); border-radius: var(--radius-8);
+  opacity: 0; pointer-events: none; transition: opacity 0.15s ease, transform 0.15s ease; z-index: 60;
+}
+.tooltip::before {
+  content: ""; position: absolute; bottom: calc(100% + 3px); left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: var(--grey-950);
+  opacity: 0; transition: opacity 0.15s ease; z-index: 60;
+}
+.tooltip:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+.tooltip:hover::before { opacity: 1; }

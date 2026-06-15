@@ -61,6 +61,7 @@ defacta-design-system/
 │   ├── components.html  ← live catalog of every component (open this first)
 │   └── starter.html     ← blank screen template — copy it to start a new screen
 └── screens/             ← full real screens — copy the closest as a starting point
+    ├── landing.html     ← marketing landing page (hero, problem, workflow, audience, CTA)
     ├── report.html      ← verification report (summary, annotated content, claims, sources, audit)
     ├── workbench.html   ← verification console (modes, advanced settings, char counter)
     ├── history.html     ← reports table with filters, risk tags, status badges

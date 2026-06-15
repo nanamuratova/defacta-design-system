@@ -11,6 +11,14 @@
 
     .bg-blur { background: var(--paper) url("../assets/hero-bg.svg") center top / cover no-repeat; }
     .hero { position: relative; text-align: center; padding-block: var(--space-64) var(--space-48); }
+
+    /* transparent header — sits over the hero gradient */
+    .site-header { background: transparent; border-bottom: 0; }
+
+    /* footer matches the final dark CTA section */
+    .site-footer { background: var(--surface-ink); color: var(--grey-400); border-top: 0; }
+    .site-footer .link { color: var(--grey-300); }
+    .site-footer .link:hover { color: var(--canvas); }
     .hero .display { margin-bottom: var(--space-24); }
     .hero .lead { max-width: 720px; margin: 0 auto var(--space-24); }
 
@@ -57,7 +65,8 @@
   </style>
 </head>
 <body>
-  <!-- ── Header ─────────────────────────────────────────────────────── -->
+  <!-- ── Header + hero share the gradient background ────────────────── -->
+  <div class="bg-blur">
   <header class="site-header">
     <a class="brand" href="#"><img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
     <div class="cluster">
@@ -67,7 +76,7 @@
   </header>
 
   <!-- ── Hero ───────────────────────────────────────────────────────── -->
-  <section class="hero bg-blur">
+  <section class="hero">
     <div class="container content">
       <h1 class="display">A verification layer<br>for <em>high-risk</em> information.</h1>
       <p class="body-lg text-secondary lead">Defacta checks any text — article, AI-generated answer, report, press release, or document — for factual errors, unsupported claims, hallucination risks, bias, and manipulation signals before it is shared, published, or acted upon.</p>
@@ -80,6 +89,7 @@
       <div class="preview"><iframe src="report.html" loading="lazy" tabindex="-1" title="Verification report preview"></iframe></div>
     </div>
   </section>
+  </div>
 
   <!-- ── Problem ────────────────────────────────────────────────────── -->
   <section class="section section--paper" style="text-align:center">

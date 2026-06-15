@@ -52,3 +52,23 @@
 .status-badge--verified i { background: var(--color-success); }
 .status-badge--pending  i { background: var(--color-warning); }
 .status-badge--flagged  i { background: var(--color-error); }
+
+/* ---- Mono uppercase variants — used in the History table -------------
+   Compact, technical micro-labels. Risk = filled tag; status = dot + label.
+     <span class="tag tag--mono risk--high">High</span>
+     <span class="status-badge status-badge--mono status-badge--flagged"><i></i>Flagged</span>
+   --------------------------------------------------------------------- */
+.tag--mono,
+.status-badge--mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.status-badge--mono { height: 22px; border-color: transparent; background: transparent; padding-left: 0; }
+
+/* Risk tags */
+.risk--high     { background: var(--color-error-soft);   color: var(--color-error); }
+.risk--moderate { background: var(--color-warning-soft); color: var(--color-warning); }
+.risk--low      { background: var(--color-success-soft); color: var(--color-success); }

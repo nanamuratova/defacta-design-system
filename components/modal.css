@@ -1,0 +1,106 @@
+/* =========================================================================
+   MODAL / DIALOG
+   Overlay + centered dialog. Three sizes: --sm (confirmation), --md (auth),
+   --lg (book a demo). Structure: .modal > .modal__dialog > header/body/footer.
+
+   Usage:
+     <div class="modal" data-open>           <!-- remove data-open to hide -->
+       <div class="modal__dialog modal__dialog--md">
+         <div class="modal__header">
+           <h2 class="modal__title">Title</h2>
+           <button class="modal__close" aria-label="Close"><i data-lucide="x"></i></button>
+         </div>
+         <div class="modal__body"> … </div>
+         <div class="modal__footer"> … </div>
+       </div>
+     </div>
+   Toggle from JS: el.toggleAttribute('data-open') or set style.display.
+   ========================================================================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-24);
+  /* dimmed, slightly desaturated backdrop like the Figma screens */
+  background: rgba(26, 26, 26, 0.32);
+  backdrop-filter: blur(2px);
+}
+.modal[data-open] { display: flex; }
+
+.modal__dialog {
+  width: 100%;
+  background: var(--canvas);
+  border-radius: var(--radius-16);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: modal-in 0.18s ease;
+}
+.modal__dialog--sm { max-width: 380px; }
+.modal__dialog--md { max-width: 460px; }
+.modal__dialog--lg { max-width: 840px; }
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.99); }
+  to   { opacity: 1; transform: none; }
+}
+
+.modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-16);
+  padding: var(--space-32) var(--space-32) var(--space-16);
+}
+.modal__title { font-size: var(--text-h2); font-weight: var(--weight-semibold); letter-spacing: -0.025em; }
+
+.modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-8);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.modal__close:hover { background: var(--grey-50); color: var(--text-primary); }
+
+.modal__body {
+  padding: 0 var(--space-32) var(--space-24);
+  color: var(--text-secondary);
+}
+.modal__body .body-lg,
+.modal__body h3 { color: var(--text-primary); }
+
+.modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-12);
+  padding: var(--space-16) var(--space-32) var(--space-24);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Centered variant (confirmation modal): icon + text + full-width action */
+.modal__dialog--center .modal__body { text-align: center; padding-top: var(--space-8); }
+.modal__dialog--center .modal__footer { border-top: 0; padding-top: 0; }
+.modal__dialog--center .modal__footer .btn { width: 100%; }
+
+/* Success / status icon medallion */
+.status-medallion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-16);
+}
+.status-medallion--success { background: var(--color-success-soft); color: var(--color-success); }
+.status-medallion--error   { background: var(--color-error-soft);   color: var(--color-error); }
+.status-medallion--warning { background: var(--color-warning-soft); color: var(--color-warning); }

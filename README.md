@@ -40,14 +40,28 @@ defacta-design-system/
 ├── styles.css           ← the one stylesheet each screen links
 ├── components/
 │   ├── base.css         ← reset + typography (headings, .label, body text)
+│   ├── icons.css        ← Lucide icon sizing (free/open-source icon set)
 │   ├── buttons.css      ← .btn variants/sizes/tones, .icon-btn
-│   ├── forms.css        ← .input, .textarea, .field
-│   ├── badges.css       ← .tag, .status-badge
-│   └── layout.css       ← .container, .section, .card, .grid, header, footer
-└── examples/
-    ├── components.html  ← live catalog of every component (open this first)
-    └── starter.html     ← blank screen template — copy it to start a new screen
+│   ├── forms.css        ← input, textarea, option-card, checkbox, select, password, OR divider
+│   ├── badges.css       ← .tag, .status-badge, risk + mono variants
+│   ├── table.css        ← .table data table (History)
+│   ├── modal.css        ← .modal dialogs (sm/md/lg) + status medallion
+│   └── layout.css       ← container, section, card, grid, header, accordion, workbench
+├── examples/
+│   ├── components.html  ← live catalog of every component (open this first)
+│   └── starter.html     ← blank screen template — copy it to start a new screen
+└── screens/             ← full real screens — copy the closest as a starting point
+    ├── workbench.html   ← verification console (modes, advanced settings, char counter)
+    ├── history.html     ← reports table with filters, risk tags, status badges
+    ├── auth.html        ← sign in / create account modal
+    ├── book-demo.html   ← scheduling modal (calendar + time slots)
+    └── confirmation.html← success confirmation modal
 ```
+
+## Icons
+
+The system uses **[Lucide](https://lucide.dev)** (free, open-source). Each screen loads it
+from a CDN and uses `<i data-lucide="search"></i>`. No install needed.
 
 ## Start a screen by hand (optional)
 

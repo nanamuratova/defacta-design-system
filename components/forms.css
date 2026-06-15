@@ -67,3 +67,150 @@
 .input.is-error:focus { box-shadow: 0 0 0 3px var(--color-error-soft); }
 .field .field-hint  { font-size: var(--text-sm); color: var(--text-secondary); }
 .field .field-error { font-size: var(--text-sm); color: var(--color-error); }
+
+/* ---- Input with trailing affix (e.g. password eye toggle) ------------ */
+.input-affix { position: relative; }
+.input-affix .input { padding-right: 40px; }
+.input-affix .affix-btn {
+  position: absolute;
+  top: 50%; right: var(--space-8);
+  transform: translateY(-50%);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  border: 0; background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-4);
+  cursor: pointer;
+}
+.input-affix .affix-btn:hover { color: var(--text-primary); }
+
+/* ---- Option cards — selectable radio cards ("Check my text") ---------
+   Usage:
+     <label class="option-card">
+       <input type="radio" name="mode" checked>
+       <span class="option-card__title">Check my text</span>
+       <span class="option-card__desc">Your own writing — inline editing…</span>
+     </label>
+   --------------------------------------------------------------------- */
+.option-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-16) var(--space-24);
+  background: var(--canvas);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.option-card:hover { border-color: var(--border-strong); }
+.option-card input { position: absolute; opacity: 0; pointer-events: none; }
+.option-card__title { font-weight: var(--weight-medium); color: var(--text-primary); }
+.option-card__desc  { font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-snug); }
+/* selected state — dark editorial border, no flashy fill */
+.option-card:has(input:checked) {
+  border-color: var(--grey-950);
+  box-shadow: inset 0 0 0 1px var(--grey-950);
+}
+.option-card:has(input:focus-visible) { outline: 2px solid var(--color-accent-blue); outline-offset: 2px; }
+
+/* ---- Checkbox — custom dark check ------------------------------------
+   Usage:
+     <label class="checkbox">
+       <input type="checkbox" checked>
+       <span class="checkbox__box"></span>
+       <span class="checkbox__label">
+         <span class="checkbox__title">Key claim verification</span>
+         <span class="checkbox__desc">Identify and verify the highest-impact claims.</span>
+       </span>
+     </label>
+   --------------------------------------------------------------------- */
+.checkbox { display: flex; align-items: flex-start; gap: var(--space-12); cursor: pointer; }
+.checkbox input { position: absolute; opacity: 0; width: 0; height: 0; }
+.checkbox__box {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  margin-top: 1px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-4);
+  background: var(--canvas);
+  position: relative;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.checkbox input:checked + .checkbox__box {
+  background: var(--grey-950);
+  border-color: var(--grey-950);
+}
+.checkbox input:checked + .checkbox__box::after {
+  content: "";
+  position: absolute;
+  left: 5px; top: 1.5px;
+  width: 5px; height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.checkbox input:focus-visible + .checkbox__box { outline: 2px solid var(--color-accent-blue); outline-offset: 2px; }
+.checkbox__label { display: flex; flex-direction: column; gap: 2px; }
+.checkbox__title { font-weight: var(--weight-medium); color: var(--text-primary); font-size: var(--text-sm); }
+.checkbox__desc  { font-size: var(--text-sm); color: var(--text-secondary); }
+
+/* ---- Select / filter dropdown ---------------------------------------- */
+.select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.select select {
+  appearance: none;
+  height: 40px;
+  padding: 0 36px 0 var(--space-12);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  background: var(--canvas);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-8);
+  cursor: pointer;
+}
+.select select:hover { border-color: var(--border-strong); }
+.select select:focus { outline: none; border-color: var(--grey-950); box-shadow: 0 0 0 3px rgba(26,26,26,0.06); }
+.select::after {
+  content: "";
+  position: absolute; right: 14px; top: 50%;
+  width: 8px; height: 8px;
+  border-right: 1.5px solid var(--text-muted);
+  border-bottom: 1.5px solid var(--text-muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+/* ---- Search input (icon-leading) ------------------------------------- */
+.search { position: relative; }
+.search .icon { position: absolute; left: var(--space-12); top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+.search .input { padding-left: 38px; }
+
+/* ---- Divider with centered label ("OR") ------------------------------ */
+.divider-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+.divider-label::before,
+.divider-label::after { content: ""; flex: 1; height: 1px; background: var(--border-subtle); }
+
+/* ---- Provider (Google) button ---------------------------------------- */
+.btn--provider {
+  width: 100%;
+  background: var(--canvas);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  font-weight: var(--weight-medium);
+}
+.btn--provider:hover { background: var(--grey-50); border-color: var(--border-strong); }

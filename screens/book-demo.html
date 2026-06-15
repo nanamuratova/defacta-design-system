@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — Book a demo</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* page-local: the booking calendar + slots (composed from tokens) */
+    .cal { display:grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-32); }
+    .cal__head { display:flex; align-items:center; justify-content:space-between; margin-bottom: var(--space-16); }
+    .cal__grid { display:grid; grid-template-columns: repeat(7,1fr); gap: var(--space-4); text-align:center; }
+    .cal__dow { font-family:var(--font-mono); font-size:var(--text-label); letter-spacing:var(--tracking-label); text-transform:uppercase; color:var(--text-muted); padding-bottom: var(--space-8); }
+    .cal__day { aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:var(--radius-8); font-size:var(--text-sm); color:var(--text-primary); cursor:pointer; border:1px solid transparent; }
+    .cal__day:hover { background: var(--grey-50); }
+    .cal__day.is-muted { color: var(--text-muted); pointer-events:none; }
+    .cal__day.is-selected { background: var(--grey-950); color:#fff; }
+    .slots { display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-content:start; }
+    .slot { height:36px; border:1px solid var(--border-default); border-radius:var(--radius-8); background:var(--canvas); font-size:var(--text-sm); color:var(--text-primary); cursor:pointer; }
+    .slot:hover { border-color: var(--border-strong); }
+    .slot.is-selected { background: var(--grey-950); color:#fff; border-color:var(--grey-950); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">
+      <svg class="brand__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 1l11 11-11 11L1 12 12 1z"/><path d="M9 8l6 4-6 4V8z" fill="#fff"/></svg>
+      <span class="brand__word">defacta</span>
+    </a>
+    <div class="cluster">
+      <button class="btn btn--secondary btn--sm">Book a demo</button>
+      <button class="btn btn--primary btn--sm">Try free</button>
+    </div>
+  </header>
+
+  <!-- ── Book a demo modal (large) ──────────────────────────────────── -->
+  <div class="modal" data-open>
+    <div class="modal__dialog modal__dialog--lg">
+      <div class="modal__header">
+        <h2 class="modal__title">Book a demo</h2>
+        <button class="modal__close" aria-label="Close"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal__body">
+        <h3 class="h3" style="color:var(--text-primary); margin-bottom: var(--space-8)">See how Defacta can help your team verify high-risk information.</h3>
+        <p style="margin-bottom: var(--space-24)">Schedule a live walkthrough of Defacta and learn how verification workflows can support research, compliance, media, legal, and enterprise AI teams.</p>
+
+        <div class="field-head">
+          <span class="label">Calendly embed placeholder</span>
+          <span class="cluster" style="gap:var(--space-8); color:var(--text-secondary); font-size:var(--text-sm)"><i data-lucide="clock" class="icon--sm"></i> 30 min</span>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-12)">
+          <div class="cal">
+            <!-- Calendar -->
+            <div>
+              <div class="cal__head">
+                <span class="cluster" style="gap:var(--space-8)"><i data-lucide="calendar" class="icon--sm"></i> <strong>June 2026</strong></span>
+                <span class="cluster" style="gap:var(--space-4)">
+                  <button class="icon-btn icon-btn--sm" aria-label="Previous month"><i data-lucide="chevron-left" class="icon--sm"></i></button>
+                  <button class="icon-btn icon-btn--sm" aria-label="Next month"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+                </span>
+              </div>
+              <div class="cal__grid">
+                <span class="cal__dow">M</span><span class="cal__dow">T</span><span class="cal__dow">W</span><span class="cal__dow">T</span><span class="cal__dow">F</span><span class="cal__dow">S</span><span class="cal__dow">S</span>
+                <span class="cal__day is-muted">1</span><span class="cal__day is-muted">2</span><span class="cal__day">3</span><span class="cal__day">4</span><span class="cal__day is-selected">5</span><span class="cal__day is-muted">6</span><span class="cal__day is-muted">7</span>
+                <span class="cal__day">8</span><span class="cal__day">9</span><span class="cal__day">10</span><span class="cal__day">11</span><span class="cal__day">12</span><span class="cal__day is-muted">13</span><span class="cal__day is-muted">14</span>
+                <span class="cal__day">15</span><span class="cal__day">16</span><span class="cal__day">17</span><span class="cal__day">18</span><span class="cal__day">19</span><span class="cal__day is-muted">20</span><span class="cal__day is-muted">21</span>
+                <span class="cal__day">22</span><span class="cal__day">23</span><span class="cal__day">24</span><span class="cal__day">25</span><span class="cal__day">26</span><span class="cal__day is-muted">27</span><span class="cal__day is-muted">28</span>
+                <span class="cal__day">29</span><span class="cal__day">30</span>
+              </div>
+            </div>
+            <!-- Time slots -->
+            <div>
+              <span class="label" style="display:block; margin-bottom: var(--space-12)">Available · Jun 5</span>
+              <div class="slots">
+                <button class="slot">09:00</button><button class="slot">09:30</button>
+                <button class="slot">10:00</button><button class="slot is-selected">10:30</button>
+                <button class="slot">11:00</button><button class="slot">13:00</button>
+                <button class="slot">13:30</button><button class="slot">14:00</button>
+                <button class="slot">15:00</button><button class="slot">15:30</button>
+                <button class="slot">16:00</button><button class="slot">16:30</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--secondary">Cancel</button>
+        <button class="btn btn--primary">Schedule Meeting</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+    // simple slot + day selection
+    document.querySelectorAll('.slot').forEach(s => s.addEventListener('click', () => {
+      document.querySelectorAll('.slot').forEach(x => x.classList.remove('is-selected')); s.classList.add('is-selected');
+    }));
+    document.querySelectorAll('.cal__day:not(.is-muted)').forEach(d => d.addEventListener('click', () => {
+      document.querySelectorAll('.cal__day').forEach(x => x.classList.remove('is-selected')); d.classList.add('is-selected');
+    }));
+  </script>
+</body>
+</html>

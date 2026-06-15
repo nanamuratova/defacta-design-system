@@ -82,3 +82,76 @@
 @media (max-width: 600px) {
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
 }
+
+/* ---- Brand logo mark -------------------------------------------------- */
+.brand { display: inline-flex; align-items: center; gap: var(--space-8); }
+.brand__mark { width: 22px; height: 22px; color: var(--grey-950); flex-shrink: 0; }
+.brand__word { font-weight: var(--weight-semibold); font-size: var(--text-h3); letter-spacing: -0.01em; }
+
+/* ---- App header (logged-in chrome): nav links + actions -------------- */
+.site-header .header-actions { display: flex; align-items: center; gap: var(--space-16); }
+.site-header .header-link {
+  display: inline-flex; align-items: center; gap: var(--space-8);
+  font-size: var(--text-sm); color: var(--text-secondary);
+  transition: color 0.15s ease;
+}
+.site-header .header-link:hover { color: var(--text-primary); }
+.site-header .header-link--strong { color: var(--text-primary); font-weight: var(--weight-medium); }
+
+/* ---- Workbench shell — the verification console layout ---------------- */
+.workbench { padding-block: var(--space-48) var(--space-64); }
+.workbench__head { margin-bottom: var(--space-32); }
+.workbench__head .label { display: block; margin-bottom: var(--space-12); }
+.workbench__head h1 { margin-bottom: var(--space-12); }
+
+.field-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--space-12);
+}
+.field-head .label { margin: 0; }
+.link-action {
+  display: inline-flex; align-items: center; gap: var(--space-8);
+  font-size: var(--text-sm); color: var(--text-primary);
+  cursor: pointer;
+}
+.link-action:hover { color: var(--text-secondary); }
+
+.textarea-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+/* ---- Accordion / collapsible panel (Advanced settings) --------------- */
+.accordion {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-10);
+  background: var(--canvas);
+  overflow: hidden;
+}
+.accordion__trigger {
+  display: flex; align-items: center; gap: var(--space-12);
+  width: 100%;
+  padding: var(--space-16) var(--space-24);
+  background: var(--canvas);
+  border: 0;
+  cursor: pointer;
+  font-size: var(--text-body); color: var(--text-primary);
+  text-align: left;
+}
+.accordion__trigger .accordion__title { font-weight: var(--weight-medium); }
+.accordion__trigger .accordion__meta {
+  font-family: var(--font-mono); font-size: var(--text-label);
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--text-muted);
+}
+.accordion__trigger .accordion__chevron { margin-left: auto; color: var(--text-muted); transition: transform 0.2s ease; }
+.accordion[open] .accordion__chevron,
+.accordion.is-open .accordion__chevron { transform: rotate(180deg); }
+.accordion__panel { padding: 0 var(--space-24) var(--space-24); display: flex; flex-direction: column; gap: var(--space-16); }
+/* When using <details>, hide the default marker */
+details.accordion > summary { list-style: none; }
+details.accordion > summary::-webkit-details-marker { display: none; }

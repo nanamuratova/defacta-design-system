@@ -1,0 +1,37 @@
+/* =========================================================================
+   ICONS — Lucide  (https://lucide.dev · ISC license, free & open source)
+
+   Replaces Iconoir. Two ways to use:
+
+   1) CDN (simplest — used by the example screens). Add to the page:
+        <script src="https://unpkg.com/lucide@latest"></script>
+        ...then at the end of <body>:  <script>lucide.createIcons();</script>
+      And place icons inline:
+        <i data-lucide="search"></i>
+        <i data-lucide="shield-check"></i>
+
+   2) Paste raw SVG from lucide.dev and give it class="icon".
+
+   Common Defacta icons: shield-check, file-check, search, scan-eye, cpu,
+   circle-check, circle-alert, triangle-alert, eye, eye-off, arrow-right,
+   refresh-cw, plus, x, history, settings, bookmark, chevron-down, file-text.
+   ========================================================================= */
+
+/* Lucide renders <svg class="lucide …">. Size + thin editorial stroke. */
+.lucide,
+.icon,
+[data-lucide] {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.75px;     /* thinner than Lucide's default 2 — matches Defacta */
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Size modifiers */
+.icon--sm { width: 16px; height: 16px; }
+.icon--lg { width: 24px; height: 24px; }
+
+/* Inherit text color by default */
+.icon, .lucide, [data-lucide] { color: currentColor; }
+.icon--muted { color: var(--text-muted); }

@@ -1,0 +1,81 @@
+/* =========================================================================
+   DATA TABLE — the History / reports table
+   Wrap in .table-wrap for the card frame. Use mono uppercase column heads.
+
+   Usage:
+     <div class="table-wrap">
+       <table class="table">
+         <thead><tr><th>Report</th>…</tr></thead>
+         <tbody><tr><td>…</td></tr></tbody>
+       </table>
+     </div>
+   ========================================================================= */
+
+.table-wrap {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-12);
+  overflow: hidden;
+  background: var(--canvas);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.table thead th {
+  text-align: left;
+  padding: var(--space-12) var(--space-16);
+  background: var(--surface-paper);
+  border-bottom: 1px solid var(--border-default);
+  /* signature mono uppercase column labels */
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.table tbody td {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+  color: var(--text-primary);
+}
+.table tbody tr:last-child td { border-bottom: 0; }
+.table tbody tr { transition: background 0.12s ease; }
+.table tbody tr:hover { background: var(--grey-25); }
+
+/* Primary cell: title + mono sub-line (e.g. report id · flags) */
+.table .cell-title { font-weight: var(--weight-medium); color: var(--text-primary); }
+.table .cell-sub {
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.table .cell-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Row action arrow */
+.table .cell-action { width: 1%; text-align: right; }
+.table .row-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: var(--radius-8);
+  color: var(--text-muted);
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.table .row-arrow:hover { background: var(--grey-50); color: var(--text-primary); }

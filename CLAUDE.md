@@ -62,6 +62,7 @@ matters more than cleverness. Follow these rules exactly.
 | Verdict label | `.tag tag--supported/contradicted/unsupported/info/neutral` |
 | State pill | `.status-badge status-badge--verified/pending/flagged/neutral` |
 | Eyebrow / section label | `.label` (uppercase mono) |
+| Logo / brand | `<a class="brand"><img src="…/assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>` (stacked: `defacta-logo-stacked.svg`) |
 | Container | `.card` (+ `--elevated` / `--soft`) |
 | Modal / dialog | `.modal[data-open]` > `.modal__dialog--sm/md/lg` > `__header`/`__body`/`__footer` |
 | Selectable choice | `.option-card` (radio inside) |
@@ -104,6 +105,7 @@ Defacta is a verification tool for **high-stakes information**. The aesthetic is
 
 - Do not introduce Tailwind, Bootstrap, or any other CSS framework.
 - Do not use Iconoir or mixed icon sets — Lucide only.
+- Do not recreate, redraw, or restyle the logo — always use the SVG in `assets/`.
 - Do not add `var(--token, #fallback)` fallbacks — tokens always exist.
 - Do not hardcode colors, sizes, radii, or shadows.
 - Do not duplicate or restyle an existing component for a one-off.

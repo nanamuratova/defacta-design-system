@@ -83,8 +83,11 @@
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
 }
 
-/* ---- Brand logo mark -------------------------------------------------- */
+/* ---- Brand logo ------------------------------------------------------- */
 .brand { display: inline-flex; align-items: center; gap: var(--space-8); }
+.brand__logo { height: 26px; width: auto; display: block; }          /* full lockup — assets/defacta-logo.svg */
+.brand__logo--stacked { height: 44px; }                              /* assets/defacta-logo-stacked.svg */
+/* legacy placeholder parts (kept for reference; prefer .brand__logo) */
 .brand__mark { width: 22px; height: 22px; color: var(--grey-950); flex-shrink: 0; }
 .brand__word { font-weight: var(--weight-semibold); font-size: var(--text-h3); letter-spacing: -0.01em; }
 

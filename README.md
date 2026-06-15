@@ -38,6 +38,7 @@ defacta-design-system/
 ├── CLAUDE.md            ← the rules Claude follows (keeps screens on-brand)
 ├── tokens.css           ← single source of truth: colors, type, spacing, radius
 ├── styles.css           ← the one stylesheet each screen links
+├── assets/              ← brand logo (defacta-logo.svg + defacta-logo-stacked.svg)
 ├── components/
 │   ├── base.css         ← reset + typography (headings, .label, body text)
 │   ├── icons.css        ← Lucide icon sizing (free/open-source icon set)

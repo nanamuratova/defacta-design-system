@@ -97,6 +97,8 @@ matters more than cleverness. Follow these rules exactly.
 | Tooltip | `<span class="tooltip" data-tooltip="…">` (CSS hover) |
 | Upload | `<label class="upload">` dropzone + `.file-row` for uploaded files |
 | Carousel | `.carousel` > `.carousel__viewport` > `.carousel__track` > `.carousel__slide` + `__btn`/`__dots` (JS) |
+| Page header / footer | `.site-header` (marketing, or `.header-actions` for the signed-in app variant) · `.site-footer` |
+| Sidebar / app shell | `.sidebar` > `.sidebar__item` (+ `.is-active`, `.sidebar__group`, `.sidebar__spacer`); wrap with `.app-shell` + `.app-shell__main` |
 
 ## Brand voice (visual)
 

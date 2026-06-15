@@ -114,6 +114,11 @@
       <a data-tab="upload">Upload</a>
       <a data-tab="contextmenu">Context menu</a>
 
+      <p class="docs__group">Layout</p>
+      <a data-tab="headers">Headers, nav &amp; footers</a>
+      <a data-tab="cards">Cards</a>
+      <a data-tab="sidebar">Sidebar</a>
+
       <p class="docs__group">&nbsp;</p>
       <a data-tab="examples">Examples</a>
     </nav>
@@ -496,6 +501,82 @@
           <button class="menu__item"><i data-lucide="download" class="icon--sm"></i> Export PDF</button>
           <div class="menu__sep"></div>
           <button class="menu__item menu__item--danger"><i data-lucide="trash-2" class="icon--sm"></i> Delete</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEADERS / NAV / FOOTERS -->
+    <section class="panel" data-panel="headers" hidden>
+      <div class="panel__head"><span class="label">Layout</span><h1>Headers, nav &amp; footers</h1></div>
+      <p class="sub label">Marketing header</p>
+      <div class="demo demo--block" style="padding:0; overflow:hidden">
+        <header class="site-header">
+          <a class="brand"><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+          <div class="cluster"><button class="btn btn--secondary btn--sm">Book a demo</button><button class="btn btn--primary btn--sm">Try free</button></div>
+        </header>
+      </div>
+      <p class="sub label">App header (signed in)</p>
+      <div class="demo demo--block" style="padding:0; overflow:hidden">
+        <header class="site-header">
+          <a class="brand"><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+          <div class="header-actions">
+            <a class="header-link"><i data-lucide="history"></i> History</a>
+            <a class="header-link header-link--strong"><i data-lucide="plus"></i> New verification</a>
+            <button class="icon-btn icon-btn--sm" aria-label="Account"><i data-lucide="user"></i></button>
+            <button class="icon-btn icon-btn--sm" aria-label="Panel"><i data-lucide="panel-right"></i></button>
+          </div>
+        </header>
+      </div>
+      <p class="sub label">Footer</p>
+      <div class="demo demo--block" style="padding:0; overflow:hidden">
+        <footer class="site-footer"><span>© Defacta</span><span>Evidence, transparent by default.</span></footer>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="panel" data-panel="cards" hidden>
+      <div class="panel__head"><span class="label">Layout</span><h1>Cards</h1></div>
+      <p class="sub label">Variants</p>
+      <div class="grid grid--3">
+        <div class="card"><div class="card__title">Bordered</div><p class="card__body">Default surface with a hairline border. The workhorse container.</p></div>
+        <div class="card card--elevated"><div class="card__title">Elevated</div><p class="card__body">Soft shadow, no border — lifts off the page.</p></div>
+        <div class="card card--soft"><div class="card__title">Soft</div><p class="card__body">Paper fill, no border. Quiet grouping inside a section.</p></div>
+      </div>
+      <p class="sub label">Stat cards</p>
+      <div class="grid grid--3">
+        <div class="card stat-card"><span class="label">Align. assessment</span><div class="stat-card__value">62 <small>/100</small></div><div class="stat-card__sub">Confidence: 75%</div></div>
+        <div class="card stat-card"><span class="label">Overall risk</span><div><span class="tag tag--mono risk--high">High</span></div><div class="stat-card__sub" style="margin-top:var(--space-12)">Based on evidence weight.</div></div>
+        <div class="card stat-card"><span class="label">Status</span><div><span class="status-badge status-badge--flagged"><i></i>Flagged</span></div><div class="stat-card__sub" style="margin-top:var(--space-12)">3 of 4 claims flagged</div></div>
+      </div>
+      <p class="sub label">Card with action</p>
+      <div class="card" style="max-width:480px">
+        <div class="card__title">Export this report</div>
+        <p class="card__body" style="margin-bottom:var(--space-16)">Download a PDF or copy a shareable link.</p>
+        <div class="cluster"><button class="btn btn--primary btn--sm">Export PDF</button><button class="btn btn--secondary btn--sm">Copy link</button></div>
+      </div>
+    </section>
+
+    <!-- SIDEBAR -->
+    <section class="panel" data-panel="sidebar" hidden>
+      <div class="panel__head"><span class="label">Layout</span><h1>Sidebar</h1><p class="body-lg text-secondary">Vertical app navigation with grouped items and an active state. Pairs with a content region to form an app shell.</p></div>
+      <div class="demo demo--block" style="padding:0; overflow:hidden">
+        <div style="display:flex; height:440px">
+          <nav class="sidebar">
+            <a class="brand"><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+            <a class="sidebar__item is-active"><i data-lucide="scan-eye"></i> Workbench</a>
+            <a class="sidebar__item"><i data-lucide="history"></i> History</a>
+            <a class="sidebar__item"><i data-lucide="bookmark"></i> Saved</a>
+            <div class="sidebar__group">Account</div>
+            <a class="sidebar__item"><i data-lucide="user"></i> Profile</a>
+            <a class="sidebar__item"><i data-lucide="settings"></i> Settings</a>
+            <div class="sidebar__spacer"></div>
+            <a class="sidebar__item"><i data-lucide="log-out"></i> Sign out</a>
+          </nav>
+          <div style="flex:1; padding:var(--space-32); background:var(--surface-paper)">
+            <span class="label">Workbench</span>
+            <h2 class="h2" style="margin-top:var(--space-8)">Main content area</h2>
+            <p class="text-secondary" style="margin-top:var(--space-8)">The sidebar sticks while this region scrolls.</p>
+          </div>
         </div>
       </div>
     </section>

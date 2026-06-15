@@ -55,7 +55,8 @@ defacta-design-system/
 │   ├── menu.css         ← dropdown menu + context menu
 │   ├── upload.css       ← file dropzone + file row
 │   ├── carousel.css     ← carousel
-│   └── layout.css       ← container, section, card, grid, header, accordion, workbench
+│   ├── sidebar.css      ← app sidebar nav + app shell
+│   └── layout.css       ← container, section, card, grid, header, footer, accordion, workbench
 ├── examples/
 │   ├── components.html  ← live catalog of every component (open this first)
 │   └── starter.html     ← blank screen template — copy it to start a new screen

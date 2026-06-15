@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — Component Catalog</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* page-local layout only — not part of the system */
+    .catalog { padding-block: var(--space-48); }
+    .group { padding-block: var(--space-32); border-top: 1px solid var(--border-subtle); }
+    .group:first-of-type { border-top: 0; }
+    .group > .label { display: block; margin-bottom: var(--space-24); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <span class="brand">◆ Defacta</span>
+    <nav>
+      <a href="#">Components</a>
+      <a href="#">Tokens</a>
+      <a href="starter.html">Starter</a>
+    </nav>
+  </header>
+
+  <main class="container catalog">
+    <div class="content stack" style="gap: var(--space-8); margin-bottom: var(--space-32)">
+      <span class="label">Design system</span>
+      <h1 class="h1">Component catalog</h1>
+      <p class="body-lg text-secondary">Every building block, styled from <code>tokens.css</code>.</p>
+    </div>
+
+    <!-- BUTTONS -->
+    <section class="group">
+      <span class="label">Buttons — variants</span>
+      <div class="cluster">
+        <button class="btn btn--primary">Primary</button>
+        <button class="btn btn--secondary">Secondary</button>
+        <button class="btn btn--tertiary">Tertiary</button>
+        <button class="btn btn--ghost">Ghost</button>
+        <button class="btn btn--link">Link</button>
+      </div>
+      <span class="label" style="display:block;margin:var(--space-24) 0 var(--space-12)">Sizes</span>
+      <div class="cluster">
+        <button class="btn btn--primary btn--sm">Small</button>
+        <button class="btn btn--primary">Medium</button>
+        <button class="btn btn--primary btn--lg">Large</button>
+      </div>
+      <span class="label" style="display:block;margin:var(--space-24) 0 var(--space-12)">Tones</span>
+      <div class="cluster">
+        <button class="btn btn--primary btn--error">Delete</button>
+        <button class="btn btn--secondary btn--error">Delete</button>
+        <button class="btn btn--primary btn--warning">Caution</button>
+        <button class="btn btn--primary btn--success">Approve</button>
+        <button class="btn btn--primary" disabled>Disabled</button>
+      </div>
+      <span class="label" style="display:block;margin:var(--space-24) 0 var(--space-12)">Icon buttons</span>
+      <div class="cluster">
+        <button class="icon-btn icon-btn--sm" aria-label="add">+</button>
+        <button class="icon-btn" aria-label="add">+</button>
+        <button class="icon-btn icon-btn--lg" aria-label="add">+</button>
+      </div>
+    </section>
+
+    <!-- FORMS -->
+    <section class="group">
+      <span class="label">Inputs & textarea</span>
+      <div class="grid grid--2" style="max-width: 768px">
+        <div class="field">
+          <label class="label" for="url">Default input</label>
+          <input class="input" id="url" type="url" placeholder="https://example.com/article">
+        </div>
+        <div class="field">
+          <label class="label" for="dis">Disabled input</label>
+          <input class="input" id="dis" value="Disabled" disabled>
+        </div>
+        <div class="field" style="grid-column: 1 / -1">
+          <label class="label" for="ta">Textarea</label>
+          <textarea class="textarea" id="ta" placeholder="Paste content here…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- BADGES -->
+    <section class="group">
+      <span class="label">Tags — claim verdicts</span>
+      <div class="cluster">
+        <span class="tag tag--neutral">Neutral</span>
+        <span class="tag tag--info">Info</span>
+        <span class="tag tag--unsupported">Unsupported</span>
+        <span class="tag tag--contradicted">Contradicted</span>
+        <span class="tag tag--supported">Supported</span>
+      </div>
+      <span class="label" style="display:block;margin:var(--space-24) 0 var(--space-12)">Status badges</span>
+      <div class="cluster">
+        <span class="status-badge status-badge--neutral"><i></i>Neutral</span>
+        <span class="status-badge status-badge--verified"><i></i>Verified</span>
+        <span class="status-badge status-badge--pending"><i></i>Pending</span>
+        <span class="status-badge status-badge--flagged"><i></i>Flagged</span>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="group">
+      <span class="label">Cards</span>
+      <div class="grid grid--3">
+        <div class="card">
+          <div class="card__title">Bordered card</div>
+          <p class="card__body">Default surface with a hairline border. The workhorse container.</p>
+        </div>
+        <div class="card card--elevated">
+          <div class="card__title">Elevated card</div>
+          <p class="card__body">Soft shadow, no border. Use when a card should lift off the page.</p>
+        </div>
+        <div class="card card--soft">
+          <div class="card__title">Soft card</div>
+          <p class="card__body">Paper fill, no border. Quiet grouping inside a section.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLOR -->
+    <section class="group">
+      <span class="label">Color — grays + semantic</span>
+      <div class="cluster">
+        <span class="status-badge"><i style="background:var(--grey-950)"></i>grey-950</span>
+        <span class="status-badge"><i style="background:var(--grey-600)"></i>grey-600</span>
+        <span class="status-badge"><i style="background:var(--grey-200)"></i>grey-200</span>
+        <span class="status-badge"><i style="background:var(--color-error)"></i>error</span>
+        <span class="status-badge"><i style="background:var(--color-warning)"></i>warning</span>
+        <span class="status-badge"><i style="background:var(--color-success)"></i>success</span>
+        <span class="status-badge"><i style="background:var(--color-accent-blue)"></i>accent</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- A dark band, to show the editorial light/dark rhythm -->
+  <section class="section section--ink">
+    <div class="container content stack" style="gap: var(--space-12)">
+      <span class="label">Section — ink</span>
+      <h2 class="h1">Evidence, transparent by default.</h2>
+      <p class="body-lg text-secondary">Dark bands break up the page and carry the brand weight.</p>
+      <div class="cluster" style="margin-top: var(--space-8)">
+        <button class="btn btn--primary" style="background:var(--canvas);color:var(--grey-950);border-color:var(--canvas)">Start verifying</button>
+        <button class="btn btn--ghost" style="color:var(--canvas)">Learn more</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span>© Defacta</span>
+    <span>Built from tokens.css</span>
+  </footer>
+</body>
+</html>

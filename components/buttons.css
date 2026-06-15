@@ -1,0 +1,131 @@
+/* =========================================================================
+   BUTTONS
+   Variants : .btn--primary  .btn--secondary  .btn--tertiary  .btn--ghost  .btn--link
+   Sizes    : .btn--sm  (default = medium)  .btn--lg
+   Tones    : .btn--error  .btn--warning  .btn--success   (combine with a variant)
+   Icon     : .icon-btn  (square, icon-only) + size modifiers
+
+   Usage:  <button class="btn btn--primary">Verify</button>
+           <button class="btn btn--secondary btn--lg">Cancel</button>
+           <button class="btn btn--primary btn--error">Delete</button>
+   ========================================================================= */
+
+.btn {
+  /* base — medium size */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  height: 40px;
+  padding: 0 var(--space-16);
+  border: 1px solid transparent;
+  border-radius: var(--radius-8);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+  user-select: none;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 2px;
+}
+
+/* ---- Sizes ------------------------------------------------------------ */
+.btn--sm { height: 32px; padding: 0 var(--space-12); font-size: var(--text-label); }
+.btn--lg { height: 48px; padding: 0 var(--space-24); font-size: var(--text-body); }
+
+/* ---- Variants (default / neutral tone) ------------------------------- */
+.btn--primary {
+  background: var(--action-primary);
+  color: var(--action-primary-text);
+  border-color: var(--action-primary);
+}
+.btn--primary:hover { background: var(--action-primary-hover); border-color: var(--action-primary-hover); }
+
+.btn--secondary {
+  background: var(--canvas);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+.btn--secondary:hover { background: var(--grey-50); border-color: var(--border-strong); }
+
+.btn--tertiary {
+  background: var(--grey-50);
+  color: var(--text-primary);
+  border-color: var(--grey-50);
+}
+.btn--tertiary:hover { background: var(--grey-100); border-color: var(--grey-100); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: transparent;
+}
+.btn--ghost:hover { background: var(--grey-50); }
+
+.btn--link {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: transparent;
+  height: auto;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.btn--link:hover { color: var(--text-secondary); }
+
+/* ---- Tones — override color per intent. Combine with a variant. ------
+   Filled tone  = .btn--primary.btn--error   (solid red)
+   Outline tone = .btn--secondary.btn--error (red text + border)
+   Soft tone    = .btn--tertiary.btn--error  (soft red fill)
+   Text tone    = .btn--ghost.btn--error     (red text only)
+   --------------------------------------------------------------------- */
+.btn--error.btn--primary   { background: var(--color-error); border-color: var(--color-error); color: #fff; }
+.btn--error.btn--secondary { color: var(--color-error); border-color: var(--color-error); background: var(--canvas); }
+.btn--error.btn--tertiary  { color: var(--color-error); background: var(--color-error-soft); border-color: var(--color-error-soft); }
+.btn--error.btn--ghost     { color: var(--color-error); }
+
+.btn--warning.btn--primary   { background: var(--color-warning); border-color: var(--color-warning); color: #fff; }
+.btn--warning.btn--secondary { color: var(--color-warning); border-color: var(--color-warning); background: var(--canvas); }
+.btn--warning.btn--tertiary  { color: var(--color-warning); background: var(--color-warning-soft); border-color: var(--color-warning-soft); }
+.btn--warning.btn--ghost     { color: var(--color-warning); }
+
+.btn--success.btn--primary   { background: var(--color-success); border-color: var(--color-success); color: #fff; }
+.btn--success.btn--secondary { color: var(--color-success); border-color: var(--color-success); background: var(--canvas); }
+.btn--success.btn--tertiary  { color: var(--color-success); background: var(--color-success-soft); border-color: var(--color-success-soft); }
+.btn--success.btn--ghost     { color: var(--color-success); }
+
+/* ---- Disabled --------------------------------------------------------- */
+.btn:disabled, .btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---- Icon buttons — square, icon only -------------------------------- */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-8);
+  background: var(--canvas);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.icon-btn:hover { background: var(--grey-50); border-color: var(--border-strong); }
+.icon-btn--sm { width: 32px; height: 32px; }
+.icon-btn--lg { width: 48px; height: 48px; }
+
+/* Icon sizing inside buttons (works with inline SVG, e.g. Iconoir) */
+.btn svg, .icon-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.btn--lg svg { width: 20px; height: 20px; }
+.icon-btn--sm svg { width: 14px; height: 14px; }
+.icon-btn--lg svg { width: 20px; height: 20px; }

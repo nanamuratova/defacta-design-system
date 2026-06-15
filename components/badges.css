@@ -1,0 +1,54 @@
+/* =========================================================================
+   BADGES & TAGS
+   .tag         — small labels (claim verdicts: Supported / Contradicted / …)
+   .status-badge — dot + label for object state (Verified / Pending / Flagged)
+
+   Usage:
+     <span class="tag tag--supported">Supported</span>
+     <span class="status-badge status-badge--verified"><i></i>Verified</span>
+   ========================================================================= */
+
+/* ---- Tag -------------------------------------------------------------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 23px;
+  padding: 0 var(--space-8);
+  border-radius: var(--radius-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  background: var(--grey-100);
+  color: var(--text-secondary);
+}
+.tag--neutral     { background: var(--grey-100);          color: var(--text-secondary); }
+.tag--info        { background: var(--color-info-soft);   color: var(--color-info); }
+.tag--supported   { background: var(--color-success-soft);color: var(--color-success); }
+.tag--contradicted{ background: var(--color-error-soft);  color: var(--color-error); }
+.tag--unsupported { background: var(--color-warning-soft);color: var(--color-warning); }
+
+/* ---- Status badge (dot + label) -------------------------------------- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  height: 26px;
+  padding: 0 var(--space-10) 0 var(--space-8);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  background: var(--canvas);
+}
+.status-badge i {
+  width: 6px; height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--grey-400);
+  flex-shrink: 0;
+}
+.status-badge--neutral  i { background: var(--grey-400); }
+.status-badge--verified i { background: var(--color-success); }
+.status-badge--pending  i { background: var(--color-warning); }
+.status-badge--flagged  i { background: var(--color-error); }

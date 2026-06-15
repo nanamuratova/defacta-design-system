@@ -1,0 +1,75 @@
+/* =========================================================================
+   BASE — reset + document defaults + typography primitives
+   Depends on tokens.css. Always loaded first.
+   ========================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-regular);
+  color: var(--text-primary);
+  background: var(--surface-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Headings --------------------------------------------------------- */
+.display {
+  font-size: var(--text-display);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+}
+h1, .h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+}
+h2, .h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-snug);
+  font-weight: var(--weight-medium);
+  letter-spacing: -0.025em;
+}
+h3, .h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+  font-weight: var(--weight-medium);
+}
+
+/* ---- Body text -------------------------------------------------------- */
+.body-lg { font-size: var(--text-body-lg); line-height: var(--leading-relaxed); }
+.body    { font-size: var(--text-body);    line-height: var(--leading-normal); }
+.text-sm { font-size: var(--text-sm);      line-height: var(--leading-normal); }
+
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+
+/* ---- Mono label — the signature uppercase eyebrow ------------------- */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ---- Links ------------------------------------------------------------ */
+a { color: inherit; text-decoration: none; }
+a.link {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+a.link:hover { color: var(--text-secondary); }

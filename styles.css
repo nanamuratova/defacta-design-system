@@ -1,0 +1,17 @@
+/* =========================================================================
+   DEFACTA DESIGN SYSTEM — single entry point.
+   Link THIS one file in any screen:
+     <link rel="stylesheet" href="../styles.css">
+
+   It loads the tokens first, then every component, in the right order.
+   Fonts (Inter + IBM Plex Mono) are pulled from Google Fonts below.
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap");
+
+@import "tokens.css";
+@import "components/base.css";
+@import "components/buttons.css";
+@import "components/forms.css";
+@import "components/badges.css";
+@import "components/layout.css";

@@ -60,7 +60,7 @@ matters more than cleverness. Follow these rules exactly.
 | Text input | `.field` > `.label` + `.input` |
 | Long text | `.textarea` |
 | Verdict label | `.tag tag--supported/contradicted/unsupported/info/neutral` |
-| State pill | `.status-badge status-badge--verified/pending/flagged/neutral` |
+| Status badge (the standard) | `.status-badge status-badge--verified/pending/partial/flagged/dead/unrelated/neutral/info` — dot + uppercase mono pill with tinted bg + border. **Use this for ALL status/verdict indicators across every screen.** Always include the `<i></i>` dot. |
 | Eyebrow / section label | `.label` (uppercase mono) |
 | Logo / brand | `<a class="brand"><img src="…/assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>` (stacked: `defacta-logo-stacked.svg`) |
 | Container | `.card` (+ `--elevated` / `--soft`) |
@@ -82,7 +82,7 @@ matters more than cleverness. Follow these rules exactly.
 | Report section | `.report-section` (id'd, with `<h2>`) inside `.report` grid |
 | Annotated highlight | `<mark class="m-contradicted/unsupported/uncertain/supported">` + `.legend` |
 | Claim verdict item | `.claim claim--accurate/unsupported/contradicted/uncertain` |
-| Evidence source row | `.source-row` + `.status-badge--verified/partial/unrelated/dead` |
+| Evidence source row | `.source-row` (no dividers) + the standard `.status-badge` |
 | Audit log | `.audit` > `.audit__row` (time / event / actor) |
 | On-this-page nav | `.toc` (sticky, scrollspy `.is-active`) |
 | Feedback bar | `.feedback` (inside `.card`) |

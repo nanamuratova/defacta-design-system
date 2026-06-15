@@ -70,9 +70,8 @@
 .claim--contradicted { border-color: var(--color-error); }
 .claim--uncertain    { border-color: var(--grey-400); }
 
-/* ---- Evidence source rows -------------------------------------------- */
-.source-row { padding: var(--space-12) 0; border-bottom: 1px solid var(--border-subtle); }
-.source-row:last-child { border-bottom: 0; }
+/* ---- Evidence source rows (no dividers — matches Figma) -------------- */
+.source-row { padding: var(--space-12) 0; }
 .source-row__head { display: flex; align-items: center; gap: var(--space-12); flex-wrap: wrap; }
 .source-row__title { font-weight: var(--weight-medium); font-size: var(--text-sm); }
 .source-row__url {

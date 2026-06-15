@@ -28,49 +28,62 @@
 .tag--contradicted{ background: var(--color-error-soft);  color: var(--color-error); }
 .tag--unsupported { background: var(--color-warning-soft);color: var(--color-warning); }
 
-/* ---- Status badge (dot + label) -------------------------------------- */
+/* ---- Status badge — THE standard badge ------------------------------
+   Soft tinted pill: colored dot + uppercase mono colored label + matching
+   light border. Dot + text share the variant color (set via `color`).
+   Use this for every status/verdict indicator across the app.
+     <span class="status-badge status-badge--verified"><i></i>Verified</span>
+   Variants: verified/success · pending/partial/warning · flagged/dead/error ·
+             neutral/unrelated · info
+   --------------------------------------------------------------------- */
 .status-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-8);
-  height: 26px;
-  padding: 0 var(--space-10) 0 var(--space-8);
+  gap: 6px;
+  height: 24px;
+  padding: 0 var(--space-12);
   border-radius: var(--radius-full);
-  border: 1px solid var(--border-subtle);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  color: var(--text-secondary);
-  background: var(--canvas);
+  border: 1px solid var(--grey-200);
+  background: var(--grey-100);
+  color: var(--grey-500);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 .status-badge i {
   width: 6px; height: 6px;
   border-radius: var(--radius-full);
-  background: var(--grey-400);
+  background: currentColor;       /* dot follows the variant color */
   flex-shrink: 0;
 }
-.status-badge--neutral  i { background: var(--grey-400); }
-.status-badge--verified i { background: var(--color-success); }
-.status-badge--pending  i { background: var(--color-warning); }
-.status-badge--flagged  i { background: var(--color-error); }
-/* evidence-source verdicts */
-.status-badge--partial   i { background: var(--color-warning); }
-.status-badge--unrelated i { background: var(--grey-400); }
-.status-badge--dead      i { background: var(--color-error); }
 
-/* ---- Mono uppercase variants — used in the History table -------------
-   Compact, technical micro-labels. Risk = filled tag; status = dot + label.
-     <span class="tag tag--mono risk--high">High</span>
-     <span class="status-badge status-badge--mono status-badge--flagged"><i></i>Flagged</span>
-   --------------------------------------------------------------------- */
-.tag--mono,
-.status-badge--mono {
+.status-badge--neutral,
+.status-badge--unrelated { color: var(--grey-500);     background: var(--grey-100);          border-color: var(--grey-200); }
+.status-badge--verified,
+.status-badge--success   { color: var(--color-success); background: var(--color-success-soft); border-color: var(--color-success-border); }
+.status-badge--pending,
+.status-badge--partial,
+.status-badge--warning   { color: var(--color-warning); background: var(--color-warning-soft); border-color: var(--color-warning-border); }
+.status-badge--flagged,
+.status-badge--dead,
+.status-badge--error     { color: var(--color-error);   background: var(--color-error-soft);   border-color: var(--color-error-border); }
+.status-badge--info      { color: var(--color-info);    background: var(--color-info-soft);    border-color: var(--color-info-border); }
+
+/* `--mono` is now the default look; kept as a no-op alias for older markup. */
+.status-badge--mono { }
+
+/* ---- Tag mono modifier (risk pills stay dot-less) -------------------- */
+.tag--mono {
   font-family: var(--font-mono);
   font-size: var(--text-label);
   font-weight: var(--weight-regular);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.status-badge--mono { height: 22px; border-color: transparent; background: transparent; padding-left: 0; }
 
 /* Risk tags */
 .risk--high     { background: var(--color-error-soft);   color: var(--color-error); }

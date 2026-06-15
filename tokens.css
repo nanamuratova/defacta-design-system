@@ -42,6 +42,12 @@
   --color-success-soft: #ECFDF5;
   --color-info-soft:    #EFF6FF;
 
+  /* COLOR — Semantic borders (light tint — for badge outlines) */
+  --color-error-border:   #FECACA;
+  --color-warning-border:  #FDE68A;
+  --color-success-border: #A7F3D0;
+  --color-info-border:    #BFDBFE;
+
   /* -----------------------------------------------------------------------
      SEMANTIC ALIASES  ← prefer these in components; they map intent → value.
      Re-point one of these and every component using it follows.

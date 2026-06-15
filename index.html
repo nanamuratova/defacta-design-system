@@ -7,15 +7,27 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     /* ── docs layout (page-local) ─────────────────────────────────────── */
-    .docs { display: grid; grid-template-columns: 264px 1fr; min-height: 100vh; }
+    .docs { display: grid; grid-template-columns: 264px 1fr; grid-template-rows: auto 1fr; min-height: 100vh; }
+
+    /* top header — spans full width, holds the logo */
+    .docs__header {
+      grid-column: 1 / -1; position: sticky; top: 0; z-index: 60;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; padding-inline: var(--space-24);
+      background: var(--canvas); border-bottom: 1px solid var(--border-subtle);
+    }
+    .docs__version {
+      font-family: var(--font-mono); font-size: var(--text-label);
+      letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted);
+    }
 
     .docs__sidebar {
-      position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto;
+      grid-row: 2; position: sticky; top: 64px; align-self: start;
+      height: calc(100vh - 64px); overflow-y: auto;
       padding: var(--space-24);
       border-right: 1px solid var(--border-subtle);
       background: var(--canvas);
     }
-    .docs__sidebar .brand { margin: var(--space-4) var(--space-12) var(--space-24); }
     .docs__nav { display: flex; flex-direction: column; gap: 1px; }
     .docs__nav a {
       display: block; padding: var(--space-8) var(--space-12);
@@ -83,9 +95,14 @@
 </head>
 <body>
 <div class="docs">
+  <!-- ── Top header ─────────────────────────────────────────────────── -->
+  <header class="docs__header">
+    <a class="brand" href="#home"><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+    <span class="docs__version">Design system · v1</span>
+  </header>
+
   <!-- ── Sidebar catalogue ──────────────────────────────────────────── -->
   <aside class="docs__sidebar">
-    <a class="brand" href="#home"><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
     <nav class="docs__nav">
       <a data-tab="home">Home</a>
 

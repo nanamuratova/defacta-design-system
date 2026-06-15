@@ -46,11 +46,13 @@ defacta-design-system/
 │   ├── badges.css       ← .tag, .status-badge, risk + mono variants
 │   ├── table.css        ← .table data table (History)
 │   ├── modal.css        ← .modal dialogs (sm/md/lg) + status medallion
+│   ├── report.css       ← report: subheader, stat cards, annotated marks, claims, sources, audit, TOC
 │   └── layout.css       ← container, section, card, grid, header, accordion, workbench
 ├── examples/
 │   ├── components.html  ← live catalog of every component (open this first)
 │   └── starter.html     ← blank screen template — copy it to start a new screen
 └── screens/             ← full real screens — copy the closest as a starting point
+    ├── report.html      ← verification report (summary, annotated content, claims, sources, audit)
     ├── workbench.html   ← verification console (modes, advanced settings, char counter)
     ├── history.html     ← reports table with filters, risk tags, status badges
     ├── auth.html        ← sign in / create account modal

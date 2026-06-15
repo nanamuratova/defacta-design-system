@@ -52,6 +52,10 @@
 .status-badge--verified i { background: var(--color-success); }
 .status-badge--pending  i { background: var(--color-warning); }
 .status-badge--flagged  i { background: var(--color-error); }
+/* evidence-source verdicts */
+.status-badge--partial   i { background: var(--color-warning); }
+.status-badge--unrelated i { background: var(--grey-400); }
+.status-badge--dead      i { background: var(--color-error); }
 
 /* ---- Mono uppercase variants — used in the History table -------------
    Compact, technical micro-labels. Risk = filled tag; status = dot + label.

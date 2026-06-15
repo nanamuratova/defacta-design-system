@@ -76,6 +76,15 @@ matters more than cleverness. Follow these rules exactly.
 | App header (signed-in) | `.site-header` > `.brand` + `.header-actions` (`.header-link`, `.icon-btn`) |
 | Success/status icon | `.status-medallion status-medallion--success/error/warning` |
 | Provider sign-in | `.btn btn--provider` |
+| Report subheader | `.subheader` (title + `.subheader__meta` + actions) |
+| Summary stat card | `.card.stat-card` (`.label` + `.stat-card__value` + `__sub`) |
+| Report section | `.report-section` (id'd, with `<h2>`) inside `.report` grid |
+| Annotated highlight | `<mark class="m-contradicted/unsupported/uncertain/supported">` + `.legend` |
+| Claim verdict item | `.claim claim--accurate/unsupported/contradicted/uncertain` |
+| Evidence source row | `.source-row` + `.status-badge--verified/partial/unrelated/dead` |
+| Audit log | `.audit` > `.audit__row` (time / event / actor) |
+| On-this-page nav | `.toc` (sticky, scrollspy `.is-active`) |
+| Feedback bar | `.feedback` (inside `.card`) |
 
 ## Brand voice (visual)
 

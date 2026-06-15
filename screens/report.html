@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — Verification Report</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <!-- ── App header ─────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <a class="brand" href="#">
+      <svg class="brand__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 1l11 11-11 11L1 12 12 1z"/><path d="M9 8l6 4-6 4V8z" fill="#fff"/></svg>
+      <span class="brand__word">defacta</span>
+    </a>
+    <div class="header-actions">
+      <a class="header-link" href="history.html"><i data-lucide="history"></i> History</a>
+      <a class="header-link header-link--strong" href="workbench.html"><i data-lucide="plus"></i> New verification</a>
+      <button class="icon-btn icon-btn--sm" aria-label="Account"><i data-lucide="user"></i></button>
+      <button class="icon-btn icon-btn--sm" aria-label="Panel"><i data-lucide="panel-right"></i></button>
+    </div>
+  </header>
+
+  <!-- ── Subheader: record id + actions ─────────────────────────────── -->
+  <div class="subheader">
+    <div class="subheader__id">
+      <span class="subheader__title">WHO vaccination statement</span>
+      <span class="subheader__meta">VR-2026-06-03-247K · 2026-06-04 11:04:27 UTC · 3 flags</span>
+    </div>
+    <div class="cluster">
+      <button class="btn btn--secondary"><i data-lucide="refresh-cw" class="icon--sm"></i> Re-run verification</button>
+      <button class="btn btn--primary"><i data-lucide="download" class="icon--sm"></i> Export PDF</button>
+    </div>
+  </div>
+
+  <!-- ── Report body ────────────────────────────────────────────────── -->
+  <main class="container" style="padding-block: var(--space-48)">
+    <div class="report">
+      <div class="report__main">
+
+        <!-- Heading -->
+        <div style="margin-bottom: var(--space-24)">
+          <span class="label" style="display:block; margin-bottom: var(--space-8)">Verification report</span>
+          <h1 class="h1">WHO Vaccination Statement</h1>
+          <p class="body-lg text-secondary" style="margin-top: var(--space-12)">The submitted text contains four verifiable assertions. Two are contradicted by primary sources, one is unsupported, and one cannot be evaluated without attribution. Human editorial review is recommended before publication.</p>
+        </div>
+
+        <!-- Summary cards -->
+        <section class="report-section" id="summary" style="border-top:0; padding-top:0">
+          <div class="summary-grid">
+            <div class="card stat-card">
+              <span class="label">Align. assessment</span>
+              <div class="stat-card__value">62 <small>/100</small></div>
+              <div class="stat-card__sub">Confidence: 75%</div>
+            </div>
+            <div class="card stat-card">
+              <span class="label">Overall risk</span>
+              <div><span class="tag tag--mono risk--high">High</span></div>
+              <div class="stat-card__sub" style="margin-top: var(--space-12)">Based on evidence weight.</div>
+            </div>
+            <div class="card stat-card">
+              <span class="label">Verification status</span>
+              <div><span class="status-badge status-badge--flagged"><i></i>Flagged</span></div>
+              <div class="stat-card__sub" style="margin-top: var(--space-12)">3 of 4 claims flagged</div>
+            </div>
+            <div class="card stat-card">
+              <span class="label">Mode</span>
+              <div class="stat-card__value" style="font-size: var(--text-h3)">Comprehensive</div>
+              <div class="stat-card__sub">12 sources · 4 claims</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Key findings -->
+        <section class="report-section" id="key-findings">
+          <h2>Key findings</h2>
+          <p class="report-lead">This is a news article from The Guardian, a Tier 1 highly credible publication, reporting on international political developments in Iran. While the source is generally reliable, this specific report is rated as Credible rather than Highly Credible due to significant timeline discrepancies and a lack of diverse perspectives. Readers can generally trust the broad strokes of the reporting, but should be cautious regarding specific dates and the omission of non-governmental viewpoints.</p>
+        </section>
+
+        <!-- Annotated content -->
+        <section class="report-section" id="annotated">
+          <h2>Annotated content</h2>
+          <div class="card">
+            <p class="annotated">In the third quarter, the company continued its strong trajectory. <mark class="m-contradicted">Revenue grew 240% year over year<sup>1</sup></mark> driven by expansion into new segments. The business now <mark class="m-uncertain">operates in 14 markets<sup>2</sup></mark> across three continents. Management highlighted <mark class="m-unsupported">industry-leading customer retention<sup>3</sup></mark> as a core differentiator. According to an external market study, <mark class="m-unsupported">the addressable market exceeds $40 billion<sup>4</sup></mark>. The leadership team remains confident that <mark class="m-unsupported">these results position the company well ahead of competitors<sup>5</sup></mark> heading into the next fiscal year.</p>
+            <div class="legend">
+              <span><i class="l-contradicted"></i> Contradicted</span>
+              <span><i class="l-unsupported"></i> Unsupported</span>
+              <span><i class="l-uncertain"></i> Uncertain</span>
+              <span><i class="l-supported"></i> Supported</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bias & framing -->
+        <section class="report-section" id="bias">
+          <h2>Bias &amp; framing</h2>
+          <p class="report-lead">The article received a consensus bias score of 3.85/10, placing it in the neutral range. Both AI models noted that while the language is not inflammatory, the framing is influenced by emphasis. The report prioritizes U.S. and Iranian official state narratives while omitting Iranian military perspectives and independent expert analysis. Furthermore, it frames U.S. diplomatic urgency as a result of domestic electoral pressure and "voter anger," which provides a specific causal narrative rather than a purely objective account of the negotiations.</p>
+        </section>
+
+        <!-- Claim analysis -->
+        <section class="report-section" id="claims">
+          <h2>Claim analysis</h2>
+          <p class="report-lead" style="margin-bottom: var(--space-16)">Overall, the key-claims analysis rates this content as medium credibility. 2 of 5 claims are verified, 2 were partially verified, and 1 were unverified. The main unresolved claims are PC3, so the conclusion should be treated cautiously.</p>
+          <div class="claim claim--accurate"><div class="claim__title">Accurate · Global vaccination coverage</div><div class="claim__body">Verified against WHO/UNICEF joint estimates. The 92% figure aligns with published 2024 monitoring data.</div></div>
+          <div class="claim claim--unsupported"><div class="claim__title">Unsupported · 47% mortality decline</div><div class="claim__body">No primary source supports the specific magnitude. The cited internal data could not be located or attributed.</div></div>
+          <div class="claim claim--contradicted"><div class="claim__title">Contradicted · mRNA malaria vaccine</div><div class="claim__body">Primary sources describe the deployed vaccine as protein-based (R21/RTS,S), not mRNA. Directly contradicted.</div></div>
+          <div class="claim claim--uncertain"><div class="claim__title">Uncertain · "universally praised"</div><div class="claim__body">A universal-consensus claim that cannot be evaluated without attribution. Treat as opinion, not fact.</div></div>
+        </section>
+
+        <!-- Evidence & sources -->
+        <section class="report-section" id="evidence">
+          <h2>Evidence &amp; sources</h2>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">WHO/UNICEF Joint Estimates 2024</span><span class="status-badge status-badge--mono status-badge--verified"><i></i>Verified</span></div>
+            <div class="source-row__url">data.who.int/immunization/global-monitoring</div>
+          </div>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">UN IGME Child Mortality Report</span><span class="status-badge status-badge--mono status-badge--verified"><i></i>Verified</span></div>
+            <div class="source-row__url">childmortality.org/data/2024</div>
+          </div>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">Gavi — Malaria Vaccine Briefing</span><span class="status-badge status-badge--mono status-badge--verified"><i></i>Verified</span></div>
+            <div class="source-row__url">gavi.org/news/malaria-vaccine-2026</div>
+          </div>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">The Lancet — Malaria Vaccine Review</span><span class="status-badge status-badge--mono status-badge--partial"><i></i>Partial</span></div>
+            <div class="source-row__url">thelancet.com/journals/lancet/article/PIIS35</div>
+          </div>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">WHO Press Release Archive</span><span class="status-badge status-badge--mono status-badge--unrelated"><i></i>Unrelated</span></div>
+            <div class="source-row__url">who.int/news-room/releases/2024</div>
+          </div>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">Unpublished internal data — reference [1]</span><span class="status-badge status-badge--mono status-badge--dead"><i></i>404 Dead</span></div>
+            <div class="source-row__url">internal-source.example/redacted</div>
+          </div>
+        </section>
+
+        <!-- Audit trail -->
+        <section class="report-section" id="audit">
+          <h2>Audit trail</h2>
+          <div class="card audit">
+            <div class="audit__row"><span class="audit__time">14:32:08</span><span class="audit__event">Verification initiated</span><span class="audit__actor">user@-analyst</span></div>
+            <div class="audit__row"><span class="audit__time">14:32:09</span><span class="audit__event">Content parsed · 4 claims segmented</span><span class="audit__actor">system</span></div>
+            <div class="audit__row"><span class="audit__time">14:32:14</span><span class="audit__event">Source retrieval · 18 candidates evaluated</span><span class="audit__actor">system</span></div>
+            <div class="audit__row"><span class="audit__time">14:32:38</span><span class="audit__event">Cross-reference complete · 12 sources retained</span><span class="audit__actor">system</span></div>
+            <div class="audit__row"><span class="audit__time">14:32:51</span><span class="audit__event">Report compiled</span><span class="audit__actor">system</span></div>
+          </div>
+        </section>
+
+        <!-- Feedback -->
+        <section class="report-section" id="feedback">
+          <div class="card feedback">
+            <div class="feedback__text">
+              <h3>Was this report useful?</h3>
+              <p>Editor feedback trains the model and improves source weighting.</p>
+            </div>
+            <div class="cluster">
+              <button class="btn btn--secondary"><i data-lucide="thumbs-up" class="icon--sm"></i> Accurate</button>
+              <button class="btn btn--secondary"><i data-lucide="thumbs-down" class="icon--sm"></i> Not accurate</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Table of contents -->
+      <aside class="toc">
+        <span class="label toc__title">On this page</span>
+        <nav>
+          <a href="#summary" class="is-active">Summary</a>
+          <a href="#key-findings">Key findings</a>
+          <a href="#annotated">Annotated content</a>
+          <a href="#claims">Claim analysis</a>
+          <a href="#evidence">Evidence &amp; sources</a>
+          <a href="#bias">Bias &amp; framing</a>
+          <a href="#audit">Audit trail</a>
+          <a href="#feedback">Feedback</a>
+        </nav>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© Defacta</span>
+    <span>Evidence, transparent by default.</span>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+    // TOC scrollspy
+    const links = [...document.querySelectorAll('.toc a')];
+    const map = new Map(links.map(l => [l.getAttribute('href').slice(1), l]));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('is-active'));
+          map.get(e.target.id)?.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    document.querySelectorAll('.report-section').forEach(s => obs.observe(s));
+  </script>
+</body>
+</html>

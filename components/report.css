@@ -1,0 +1,112 @@
+/* =========================================================================
+   REPORT — components for the verification report ("Console Report")
+   Subheader · summary stat cards · sections · annotated content + legend ·
+   claim items · evidence source rows · audit log · table of contents · feedback.
+   ========================================================================= */
+
+/* ---- Subheader bar (record title + meta + actions) ------------------- */
+.subheader {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-16);
+  padding: var(--space-12) var(--container-pad);
+  background: var(--canvas);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.subheader__id { display: flex; align-items: baseline; gap: var(--space-12); min-width: 0; }
+.subheader__title { font-weight: var(--weight-medium); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.subheader__meta {
+  font-family: var(--font-mono); font-size: var(--text-label);
+  letter-spacing: 0.04em; color: var(--text-muted); white-space: nowrap;
+}
+
+/* ---- Report layout: main column + sticky table of contents ----------- */
+.report { display: grid; grid-template-columns: minmax(0,1fr) 220px; gap: var(--space-48); align-items: start; }
+.report__main { min-width: 0; }
+@media (max-width: 980px) { .report { grid-template-columns: 1fr; } .toc { display: none; } }
+
+/* Section rhythm + heading */
+.report-section { padding-block: var(--space-24); }
+.report-section > h2 { margin-bottom: var(--space-16); }
+.report-section > .report-lead { color: var(--text-secondary); }
+
+/* ---- Summary stat cards ---------------------------------------------- */
+.summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-12); }
+@media (max-width: 760px) { .summary-grid { grid-template-columns: repeat(2,1fr); } }
+.stat-card { padding: var(--space-16) var(--space-24); }
+.stat-card .label { display: block; margin-bottom: var(--space-16); }
+.stat-card__value { font-size: 2rem; font-weight: var(--weight-semibold); letter-spacing: -0.02em; line-height: 1; color: var(--text-primary); }
+.stat-card__value small { font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--text-muted); }
+.stat-card__sub { margin-top: var(--space-8); font-size: var(--text-sm); color: var(--text-secondary); }
+
+/* ---- Annotated content (color-coded inline highlights) --------------- */
+.annotated { line-height: var(--leading-relaxed); color: var(--text-primary); }
+.annotated mark { padding: 0 2px; border-radius: var(--radius-2); color: inherit; }
+.annotated mark.m-contradicted { background: var(--color-error-soft); }
+.annotated mark.m-unsupported  { background: var(--color-warning-soft); }
+.annotated mark.m-uncertain    { background: var(--grey-100); }
+.annotated mark.m-supported    { background: var(--color-success-soft); }
+.annotated sup { font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); margin-left: 1px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: var(--space-16); margin-top: var(--space-16); }
+.legend span { display: inline-flex; align-items: center; gap: var(--space-8); font-size: var(--text-sm); color: var(--text-secondary); }
+.legend i { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+.legend .l-contradicted { background: var(--color-error); }
+.legend .l-unsupported  { background: var(--color-warning); }
+.legend .l-uncertain    { background: var(--grey-400); }
+.legend .l-supported    { background: var(--color-success); }
+
+/* ---- Claim items (colored left border by verdict) -------------------- */
+.claim {
+  padding: var(--space-12) var(--space-16);
+  border-left: 3px solid var(--grey-300);
+  background: var(--surface-paper);
+  border-radius: 0 var(--radius-8) var(--radius-8) 0;
+}
+.claim + .claim { margin-top: var(--space-12); }
+.claim__title { font-weight: var(--weight-medium); font-size: var(--text-sm); margin-bottom: var(--space-4); }
+.claim__body  { font-size: var(--text-sm); color: var(--text-secondary); }
+.claim--accurate     { border-color: var(--color-success); }
+.claim--unsupported  { border-color: var(--color-warning); }
+.claim--contradicted { border-color: var(--color-error); }
+.claim--uncertain    { border-color: var(--grey-400); }
+
+/* ---- Evidence source rows -------------------------------------------- */
+.source-row { padding: var(--space-12) 0; border-bottom: 1px solid var(--border-subtle); }
+.source-row:last-child { border-bottom: 0; }
+.source-row__head { display: flex; align-items: center; gap: var(--space-12); flex-wrap: wrap; }
+.source-row__title { font-weight: var(--weight-medium); font-size: var(--text-sm); }
+.source-row__url {
+  margin-top: var(--space-4);
+  font-family: var(--font-mono); font-size: var(--text-label);
+  letter-spacing: 0.04em; color: var(--text-muted);
+}
+
+/* ---- Audit trail log ------------------------------------------------- */
+.audit__row {
+  display: grid; grid-template-columns: 92px 1fr auto; gap: var(--space-16);
+  align-items: center; padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.audit__row:last-child { border-bottom: 0; }
+.audit__time, .audit__actor {
+  font-family: var(--font-mono); font-size: var(--text-label);
+  letter-spacing: 0.04em; color: var(--text-muted); white-space: nowrap;
+}
+.audit__event { font-size: var(--text-sm); color: var(--text-primary); }
+
+/* ---- Table of contents ("On this page") ------------------------------ */
+.toc { position: sticky; top: 88px; }
+.toc__title { display: block; margin-bottom: var(--space-12); }
+.toc a {
+  display: block; padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-8);
+  font-size: var(--text-sm); color: var(--text-secondary);
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.toc a:hover { background: var(--grey-50); color: var(--text-primary); }
+.toc a.is-active { background: var(--grey-50); color: var(--text-primary); font-weight: var(--weight-medium); }
+
+/* ---- Feedback bar ---------------------------------------------------- */
+.feedback { display: flex; align-items: center; justify-content: space-between; gap: var(--space-24); flex-wrap: wrap; }
+.feedback__text h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); margin-bottom: var(--space-4); }
+.feedback__text p { font-size: var(--text-sm); color: var(--text-secondary); }

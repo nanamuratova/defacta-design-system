@@ -14,8 +14,12 @@
     .composer { border: 1px solid var(--border-default); border-radius: var(--radius-16); background: var(--canvas); padding: var(--space-200); transition: border-color .12s ease, box-shadow .12s ease; }
     .composer:focus-within { border-color: var(--border-strong); box-shadow: 0 0 0 3px rgba(26,26,26,0.05); }
     .composer__field { position: relative; }
-    .composer__input { width: 100%; border: 0; background: transparent; resize: vertical; min-height: 300px; padding: var(--space-100); font: inherit; color: var(--text-primary); outline: none; }
+    .composer__input { width: 100%; border: 0; background: transparent; resize: none; min-height: 300px; padding: var(--space-100); font: inherit; color: var(--text-primary); outline: none; scrollbar-width: thin; scrollbar-color: var(--grey-300) transparent; }
     .composer__input::placeholder { color: var(--text-muted); }
+    .composer__input::-webkit-scrollbar { width: 10px; }
+    .composer__input::-webkit-scrollbar-thumb { background: var(--grey-300); border-radius: var(--radius-full); border: 3px solid var(--canvas); background-clip: padding-box; }
+    .composer__input::-webkit-scrollbar-thumb:hover { background: var(--grey-400); background-clip: padding-box; }
+    .composer__input::-webkit-scrollbar-track { background: transparent; }
     .composer__clear { position: absolute; top: var(--space-100); right: var(--space-100); width: 28px; height: 28px; border: 0; border-radius: var(--radius-full); background: var(--grey-100); color: var(--text-secondary); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
     .composer__clear:hover { background: var(--grey-200); color: var(--text-primary); }
     .composer__clear[hidden] { display: none; }

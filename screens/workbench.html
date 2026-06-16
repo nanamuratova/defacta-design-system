@@ -160,9 +160,6 @@
           </div>
         </div>
       </div>
-      <div class="composer-foot">
-        <span class="wb-count" id="charcount">0 / 50,000</span>
-      </div>
     </div>
   </main>
 
@@ -184,12 +181,10 @@
     });
 
     const ta = document.getElementById('content');
-    const count = document.getElementById('charcount');
     const clearBtn = document.getElementById('clear');
     const sample = `In a recent statement, the World Health Organization announced that global vaccination coverage reached 92% in 2024, marking the highest figure on record. The report cites unpublished internal data showing that childhood mortality has dropped by 47% since 2019, a decline researchers attribute almost entirely to a new mRNA-based malaria vaccine deployed across Sub-Saharan Africa. Independent experts have universally praised the rollout, calling it "the most consequential public health intervention of the decade."`;
     const sync = () => {
-      count.textContent = ta.value.length.toLocaleString() + ' / 50,000';
-      clearBtn.hidden = ta.value.length === 0;
+            clearBtn.hidden = ta.value.length === 0;
     };
     ta.addEventListener('input', sync);
     document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; sync(); ta.focus(); });

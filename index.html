@@ -2215,6 +2215,15 @@
     document.getElementById('pw-demo-toggle').innerHTML = '<i data-lucide="' + (show ? 'eye-off' : 'eye') + '" class="icon--sm"></i>';
     lucide.createIcons();
   });
+
+  /* Gallery: click the phone-frame preview to open the mobile screen */
+  document.querySelectorAll('.gallery .device').forEach(d => {
+    const src = d.querySelector('iframe')?.getAttribute('src');
+    if (!src) return;
+    d.style.cursor = 'pointer';
+    d.title = 'Open mobile version';
+    d.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); window.location.href = src; });
+  });
 </script>
 </body>
 </html>

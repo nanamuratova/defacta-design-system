@@ -33,7 +33,6 @@
         <button class="modal__close" aria-label="Close"><i data-lucide="x"></i></button>
       </div>
       <div class="modal__body">
-        <span class="label" style="display:block; margin-bottom: var(--space-050)">Welcome</span>
         <h3 class="h4" id="auth-title" style="color:var(--text-primary)">Create new account</h3>
         <p id="auth-sub" style="margin: var(--space-050) 0 var(--space-300)">Set the record straight.</p>
 
@@ -50,7 +49,7 @@
             <input class="input" id="email" type="email" placeholder="you@company.com">
           </div>
           <div class="field">
-            <div class="field-head"><label class="label" for="pw">Password</label><a class="link-action" href="#" style="font-size:var(--text-sm)">Forgot password?</a></div>
+            <div class="field-head" style="justify-content:flex-start; gap:var(--space-200)"><label class="label" for="pw">Password</label><a class="link-action" href="#" style="font-size:var(--text-sm)">Forgot password?</a></div>
             <div class="input-affix">
               <input class="input" id="pw" type="password" placeholder="Enter password">
               <button class="affix-btn" id="pw-toggle" aria-label="Show password"><i data-lucide="eye" class="icon--sm"></i></button>
@@ -59,7 +58,7 @@
           <button class="btn btn--primary" id="auth-submit" style="width:100%">Create account</button>
           <p class="text-sm" style="text-align:center; color:var(--text-secondary)">
             <span id="auth-switch-text">Already have an account?</span>
-            <a href="#" id="auth-switch" style="color:var(--text-primary); font-weight:var(--weight-medium)">Sign in</a>
+            <a href="#" id="auth-switch" class="btn btn--link">Sign in</a>
           </p>
         </div>
       </div>

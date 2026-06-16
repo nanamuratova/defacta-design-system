@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Defacta — Design System</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
   <style>
     /* ── docs layout (page-local) ─────────────────────────────────────── */
     .docs { display: grid; grid-template-columns: 264px 1fr; grid-template-rows: auto 1fr; min-height: 100vh; }
@@ -72,7 +72,7 @@
     /* foundations helpers */
     .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: var(--space-16); }
     .sw { border: 1px solid var(--border-subtle); border-radius: var(--radius-10); overflow: hidden; }
-    .sw__chip { height: 64px; box-shadow: inset 0 0 0 1px rgba(26,26,26,0.06); } .sw__meta { padding: var(--space-8) var(--space-12); }
+    .sw__chip { height: 64px; } .sw__meta { padding: var(--space-8) var(--space-12); }
     .sw__name { font-size: var(--text-sm); font-weight: var(--weight-medium); }
     .sw__hex { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .04em; color: var(--text-muted); }
     .type-row { display: flex; align-items: baseline; gap: var(--space-24); padding: var(--space-12) 0; border-top: 1px solid var(--border-subtle); }
@@ -240,16 +240,26 @@
       </div>
 
       <!-- Usage rules -->
-      <p class="sub label">Usage rules</p>
-      <div class="rules">
-        <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Reference every color through a <code>var(--token)</code> from <code>tokens.css</code>.</span></div>
-        <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Carry structure with the neutral scale: text <code>--grey-950</code> / <code>--grey-600</code> / <code>--grey-400</code>, borders <code>--grey-200</code>, surfaces <code>--canvas</code> / <code>--paper</code>.</span></div>
-        <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Use semantic color only to signal state or verdict — pair the <b>base</b> (text / icon / dot) with its <b>soft</b> fill and <b>border</b>.</span></div>
-        <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Use the accent (<code>--color-accent-blue</code>) sparingly: focus rings, eyebrow labels, small highlights.</span></div>
-        <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Don't hardcode hex values or use <code>var(--token, #fallback)</code> fallbacks.</span></div>
-        <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Don't use semantic or accent color for decoration — color must mean something.</span></div>
-        <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Don't introduce new hues or a second accent.</span></div>
-        <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Don't put text on a saturated semantic fill — use the matching <code>*-soft</code> tint behind it.</span></div>
+      <h2 class="h2" style="margin: var(--space-48) 0 var(--space-16)">Usage rules</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Reference every color through a <code>var(--token)</code> from <code>tokens.css</code>.</span></div>
+            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Carry structure with the neutral scale: text <code>--grey-950</code> / <code>--grey-600</code> / <code>--grey-400</code>, borders <code>--grey-200</code>, surfaces <code>--canvas</code> / <code>--paper</code>.</span></div>
+            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Use semantic color only to signal state or verdict — pair the <b>base</b> (text / icon / dot) with its <b>soft</b> fill and <b>border</b>.</span></div>
+            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Use the accent (<code>--color-accent-blue</code>) sparingly: focus rings, eyebrow labels, small highlights.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Hardcode hex values or use <code>var(--token, #fallback)</code> fallbacks.</span></div>
+            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Use semantic or accent color for decoration — color must mean something.</span></div>
+            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Introduce new hues or a second accent.</span></div>
+            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Put text on a saturated semantic fill — use the matching <code>*-soft</code> tint behind it.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

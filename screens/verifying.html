@@ -12,18 +12,18 @@
     .verify__sub { color: var(--text-secondary); }
     .vsteps { display: flex; flex-direction: column; gap: var(--space-150); margin-top: var(--space-500); text-align: left; }
     .vstep { display: flex; align-items: center; gap: var(--space-200); padding: var(--space-200) var(--space-250); border: 1px solid var(--border-default); border-radius: var(--radius-12); background: var(--canvas); color: var(--text-primary); font-size: var(--text-body); transition: border-color .2s ease, box-shadow .2s ease, opacity .2s ease; }
-    .vstep__icon { width: 20px; height: 20px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted); }
-    .vstep__icon svg { width: 20px; height: 20px; }
-    .vstep.is-done .vstep__icon { color: var(--color-success); }
+    .vstep__emoji { font-size: 22px; line-height: 1; flex-shrink: 0; display: inline-block; }
+    .vstep__txt { flex: 1; }
+    .vstep__status { width: 20px; height: 20px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted); }
+    .vstep__status svg { width: 20px; height: 20px; }
+    .vstep.is-done .vstep__status { color: var(--color-success); }
     .vstep.is-active { border-color: var(--grey-950); box-shadow: var(--shadow-sm); }
-    .vstep.is-active .vstep__icon { color: var(--text-primary); }
+    .vstep.is-active .vstep__status { color: var(--text-primary); }
+    .vstep.is-active .vstep__emoji { animation: vbounce 1s ease-in-out infinite; }
     .vstep.is-pending { opacity: 0.5; }
-    .vstep.is-pending .vstep__icon { color: var(--grey-300); }
     .spin { animation: vspin 0.9s linear infinite; transform-origin: center; }
     @keyframes vspin { to { transform: rotate(360deg); } }
-    .verify__quip { margin-top: var(--space-250); display: inline-flex; align-items: center; gap: var(--space-150); font-size: var(--text-body); color: var(--text-secondary); min-height: 26px; transition: opacity .3s ease; }
-    .quip__emoji { font-size: 20px; line-height: 1; display: inline-block; animation: quip-bounce 1s ease-in-out infinite; }
-    @keyframes quip-bounce { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(-8deg); } }
+    @keyframes vbounce { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(-10deg); } }
   </style>
 </head>
 <body>
@@ -36,55 +36,32 @@
       <span class="label">Verifying</span>
       <h1 class="h2">Defacta is analyzing<br>your content</h1>
       <p class="body-lg verify__sub">Pulling sources, weighing evidence, and assembling a structured report.</p>
-      <p class="verify__quip" id="quip"><span class="quip__emoji">🔍</span> <span class="quip__text">Reading every word twice…</span></p>
 
       <div class="vsteps" id="vsteps">
-        <div class="vstep"><span class="vstep__icon"></span><span>Extracting claims</span></div>
-        <div class="vstep"><span class="vstep__icon"></span><span>Checking sources</span></div>
-        <div class="vstep"><span class="vstep__icon"></span><span>Identifying unsupported statements</span></div>
-        <div class="vstep"><span class="vstep__icon"></span><span>Detecting hallucination risks</span></div>
-        <div class="vstep"><span class="vstep__icon"></span><span>Building report</span></div>
+        <div class="vstep"><span class="vstep__emoji">🔍</span><span class="vstep__txt">Reading every word twice…</span><span class="vstep__status"></span></div>
+        <div class="vstep"><span class="vstep__emoji">📚</span><span class="vstep__txt">Asking the sources for receipts…</span><span class="vstep__status"></span></div>
+        <div class="vstep"><span class="vstep__emoji">🧐</span><span class="vstep__txt">Side-eyeing suspicious claims…</span><span class="vstep__status"></span></div>
+        <div class="vstep"><span class="vstep__emoji">🧹</span><span class="vstep__txt">Sweeping up hallucinations…</span><span class="vstep__status"></span></div>
+        <div class="vstep"><span class="vstep__emoji">📝</span><span class="vstep__txt">Assembling the verdict…</span><span class="vstep__status"></span></div>
       </div>
     </div>
   </main>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
-    // playful rotating status quips
-    const quips = [
-      ['🔍', 'Reading every word twice…'],
-      ['🧐', 'Side-eyeing suspicious claims…'],
-      ['📚', 'Asking the sources for receipts…'],
-      ['🕵️', 'Following the citation trail…'],
-      ['⚖️', 'Weighing the evidence…'],
-      ['🤔', 'Fact-checking the fact-checkers…'],
-      ['🧹', 'Sweeping up hallucinations…'],
-      ['🤖', 'Politely interrogating the AI…'],
-    ];
-    let qi = 0;
-    const quipEl = document.getElementById('quip');
-    setInterval(() => {
-      quipEl.style.opacity = '0';
-      setTimeout(() => {
-        qi = (qi + 1) % quips.length;
-        quipEl.querySelector('.quip__emoji').textContent = quips[qi][0];
-        quipEl.querySelector('.quip__text').textContent = quips[qi][1];
-        quipEl.style.opacity = '1';
-      }, 300);
-    }, 1900);
-
     const steps = [...document.querySelectorAll('.vstep')];
     let i = 0;
     function render() {
       steps.forEach((s, idx) => {
-        const icon = s.querySelector('.vstep__icon');
+        const status = s.querySelector('.vstep__status');
         s.classList.remove('is-done', 'is-active', 'is-pending');
-        if (idx < i)      { s.classList.add('is-done');    icon.innerHTML = '<i data-lucide="circle-check"></i>'; }
-        else if (idx === i){ s.classList.add('is-active');  icon.innerHTML = '<i data-lucide="loader-circle" class="spin"></i>'; }
-        else              { s.classList.add('is-pending'); icon.innerHTML = '<i data-lucide="circle"></i>'; }
+        if (idx < i)       { s.classList.add('is-done');    status.innerHTML = '<i data-lucide="circle-check"></i>'; }
+        else if (idx === i){ s.classList.add('is-active');  status.innerHTML = '<i data-lucide="loader-circle" class="spin"></i>'; }
+        else               { s.classList.add('is-pending'); status.innerHTML = ''; }
       });
       lucide.createIcons();
     }
+
     // Freeze (no auto-advance) when embedded in the docs gallery or with ?hold —
     // so previews show the verifying state instead of redirecting to the report.
     const frozen = (window.self !== window.top) || new URLSearchParams(location.search).has('hold');

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — Verifying…</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { background: var(--surface-paper); }
+    .verify { max-width: 560px; margin-inline: auto; text-align: center; padding-block: var(--space-1000); }
+    .verify h1 { margin: var(--space-150) 0 var(--space-150); }
+    .verify__sub { color: var(--text-secondary); }
+    .vsteps { display: flex; flex-direction: column; gap: var(--space-150); margin-top: var(--space-500); text-align: left; }
+    .vstep { display: flex; align-items: center; gap: var(--space-200); padding: var(--space-200) var(--space-250); border: 1px solid var(--border-default); border-radius: var(--radius-12); background: var(--canvas); color: var(--text-primary); font-size: var(--text-body); transition: border-color .2s ease, box-shadow .2s ease, opacity .2s ease; }
+    .vstep__icon { width: 20px; height: 20px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted); }
+    .vstep__icon svg { width: 20px; height: 20px; }
+    .vstep.is-done .vstep__icon { color: var(--color-success); }
+    .vstep.is-active { border-color: var(--grey-950); box-shadow: var(--shadow-sm); }
+    .vstep.is-active .vstep__icon { color: var(--text-primary); }
+    .vstep.is-pending { opacity: 0.5; }
+    .vstep.is-pending .vstep__icon { color: var(--grey-300); }
+    .spin { animation: vspin 0.9s linear infinite; transform-origin: center; }
+    @keyframes vspin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="landing.html"><img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+  </header>
+
+  <main class="container">
+    <div class="verify">
+      <span class="label">Verifying</span>
+      <h1 class="h2">Defacta is analyzing your content</h1>
+      <p class="body-lg verify__sub">Pulling sources, weighing evidence, and assembling a structured report.</p>
+
+      <div class="vsteps" id="vsteps">
+        <div class="vstep"><span class="vstep__icon"></span><span>Extracting claims</span></div>
+        <div class="vstep"><span class="vstep__icon"></span><span>Checking sources</span></div>
+        <div class="vstep"><span class="vstep__icon"></span><span>Identifying unsupported statements</span></div>
+        <div class="vstep"><span class="vstep__icon"></span><span>Detecting hallucination risks</span></div>
+        <div class="vstep"><span class="vstep__icon"></span><span>Building report</span></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    const steps = [...document.querySelectorAll('.vstep')];
+    let i = 0;
+    function render() {
+      steps.forEach((s, idx) => {
+        const icon = s.querySelector('.vstep__icon');
+        s.classList.remove('is-done', 'is-active', 'is-pending');
+        if (idx < i)      { s.classList.add('is-done');    icon.innerHTML = '<i data-lucide="circle-check"></i>'; }
+        else if (idx === i){ s.classList.add('is-active');  icon.innerHTML = '<i data-lucide="loader-circle" class="spin"></i>'; }
+        else              { s.classList.add('is-pending'); icon.innerHTML = '<i data-lucide="circle"></i>'; }
+      });
+      lucide.createIcons();
+    }
+    // Freeze (no auto-advance) when embedded in the docs gallery or with ?hold —
+    // so previews show the verifying state instead of redirecting to the report.
+    const frozen = (window.self !== window.top) || new URLSearchParams(location.search).has('hold');
+    if (frozen) {
+      i = 2; render();
+    } else {
+      render();
+      const timer = setInterval(() => {
+        i++;
+        render();
+        if (i >= steps.length) { clearInterval(timer); setTimeout(() => location.href = 'report.html', 750); }
+      }, 950);
+    }
+  </script>
+</body>
+</html>

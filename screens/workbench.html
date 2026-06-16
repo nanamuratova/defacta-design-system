@@ -13,11 +13,15 @@
     /* composer (Tools-style input) */
     .composer { border: 1px solid var(--border-default); border-radius: var(--radius-16); background: var(--canvas); padding: var(--space-200); transition: border-color .12s ease, box-shadow .12s ease; }
     .composer:focus-within { border-color: var(--border-strong); box-shadow: 0 0 0 3px rgba(26,26,26,0.05); }
+    .composer__field { position: relative; }
     .composer__input { width: 100%; border: 0; background: transparent; resize: vertical; min-height: 300px; padding: var(--space-100); font: inherit; color: var(--text-primary); outline: none; }
     .composer__input::placeholder { color: var(--text-muted); }
+    .composer__clear { position: absolute; top: var(--space-100); right: var(--space-100); width: 28px; height: 28px; border: 0; border-radius: var(--radius-full); background: var(--grey-100); color: var(--text-secondary); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+    .composer__clear:hover { background: var(--grey-200); color: var(--text-primary); }
+    .composer__clear[hidden] { display: none; }
     .composer__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-150); }
-    .composer__bar-left, .composer__bar-right { display: flex; align-items: center; gap: var(--space-150); }
-    .composer-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-150); }
+    .composer__bar-left, .composer__bar-right { display: flex; align-items: center; gap: var(--space-200); }
+    .composer-foot { display: flex; align-items: center; margin-top: var(--space-150); }
     .wb-count { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); color: var(--text-muted); }
 
     /* settings dropdown */
@@ -27,8 +31,8 @@
       background: var(--canvas); border: 1px solid var(--border-default); border-radius: var(--radius-12);
       box-shadow: var(--shadow-lg); padding: var(--space-300); z-index: 30; display: flex; flex-direction: column; }
     .wb-dd__pop[hidden] { display: none; }
+    .wb-dd__title { font-weight: var(--weight-medium); padding-bottom: var(--space-200); }
     .wb-sec { border-top: 1px solid var(--border-subtle); padding: var(--space-250) 0; }
-    .wb-sec:first-child { border-top: 0; padding-top: 0; }
     .wb-sec:last-child { padding-bottom: 0; }
     .wb-sec > .label { display: block; margin-bottom: var(--space-150); }
     .wb-checks { display: flex; flex-direction: column; gap: var(--space-150); margin-top: var(--space-150); }
@@ -39,6 +43,8 @@
     .wb-dd .toggle-group button { flex: 1; }
     .wb-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-200); }
     .wb-row .switch__label, .wb-row > span { font-size: var(--text-sm); color: var(--text-primary); }
+    .lang-dd .menu__list { left: auto; right: 0; top: auto; bottom: calc(100% + 6px); min-width: 160px; }
+    .lang-dd .menu__item.is-selected { font-weight: var(--weight-medium); }
 
     @media (max-width: 640px) { .composer__bar { flex-direction: column; align-items: stretch; } .composer__bar-right { justify-content: flex-end; } }
   </style>
@@ -77,90 +83,98 @@
       </div>
       <p class="wb-mode-desc" id="mode-desc">Your own writing — Defacta returns inline editing suggestions and sourcing fixes.</p>
 
-      <!-- Input -->
+      <!-- Input (composer) -->
       <span class="label" style="display:block; margin-bottom: var(--space-150)">Paste text or link</span>
       <div class="composer">
-        <textarea class="composer__input" id="content" placeholder="Paste text or a link (https://…) to verify."></textarea>
+        <div class="composer__field">
+          <textarea class="composer__input" id="content" placeholder="Paste text or a link (https://…) to verify."></textarea>
+          <button class="composer__clear" id="clear" aria-label="Clear" hidden><i data-lucide="x" class="icon--sm"></i></button>
+        </div>
         <div class="composer__bar">
           <div class="composer__bar-left">
             <!-- Settings (Tools-style) -->
             <div class="wb-dd" id="settings-dd">
-          <button class="btn btn--secondary wb-dd__btn" id="settings-btn" aria-expanded="false">
-            <i data-lucide="sliders-horizontal" class="icon--sm"></i> Settings <span class="wb-dd__sum" id="settings-sum">· Auto · Quick</span> <i data-lucide="chevron-down" class="icon--sm"></i>
-          </button>
-          <div class="wb-dd__pop" id="settings-pop" hidden>
-            <!-- Checks -->
-            <div class="wb-sec">
-              <span class="label">Checks</span>
-              <label class="switch switch--between">
-                <span class="switch__label">Auto<span class="switch__desc">Defacta picks the right checks</span></span>
-                <span style="display:inline-flex"><input type="checkbox" id="auto-checks" checked><span class="switch__track"></span></span>
-              </label>
-              <div class="wb-checks">
-                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Manipulation</span></span></label>
-                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias</span></span></label>
-                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Lie detection</span></span></label>
-                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claims / facts</span></span></label>
-                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">LLM output check</span></span><span class="tag tag--neutral">for AI answers</span></label>
+              <button class="btn btn--secondary wb-dd__btn" id="settings-btn" aria-expanded="false">
+                <i data-lucide="sliders-horizontal" class="icon--sm"></i> Settings <span class="wb-dd__sum" id="settings-sum">· Auto · Quick</span> <i data-lucide="chevron-down" class="icon--sm"></i>
+              </button>
+              <div class="wb-dd__pop" id="settings-pop" hidden>
+                <div class="wb-dd__title">Verification settings</div>
+                <!-- Checks -->
+                <div class="wb-sec">
+                  <span class="label">Checks</span>
+                  <label class="switch switch--between">
+                    <span class="switch__label">Auto<span class="switch__desc">Defacta picks the right checks</span></span>
+                    <span style="display:inline-flex"><input type="checkbox" id="auto-checks" checked><span class="switch__track"></span></span>
+                  </label>
+                  <div class="wb-checks">
+                    <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Manipulation</span></span></label>
+                    <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias</span></span></label>
+                    <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Lie detection</span></span></label>
+                    <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claims / facts</span></span></label>
+                    <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">LLM output check</span></span><span class="tag tag--neutral">for AI answers</span></label>
+                  </div>
+                </div>
+                <!-- Depth -->
+                <div class="wb-sec">
+                  <span class="label">Depth</span>
+                  <div class="toggle-group" id="depth-toggle">
+                    <button class="is-active">Quick check</button>
+                    <button>In-depth</button>
+                  </div>
+                </div>
+                <!-- Report -->
+                <div class="wb-sec">
+                  <span class="label">Report</span>
+                  <div class="toggle-group" id="report-toggle">
+                    <button>Short</button>
+                    <button class="is-active">Detailed</button>
+                  </div>
+                  <label class="switch switch--between wb-row">
+                    <span class="switch__label">Editable report</span>
+                    <span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span>
+                  </label>
+                </div>
+                <!-- Preferences -->
+                <div class="wb-sec">
+                  <span class="label">Preferences</span>
+                  <div class="wb-row">
+                    <span>Report language</span>
+                    <div class="menu lang-dd" id="lang-dd">
+                      <button class="btn btn--secondary btn--sm menu__trigger" id="lang-btn" type="button"><span id="lang-val">English</span> <i data-lucide="chevron-down" class="icon--sm"></i></button>
+                      <div class="menu__list">
+                        <button class="menu__item is-selected" data-lang="English">English</button>
+                        <button class="menu__item" data-lang="Spanish">Spanish</button>
+                        <button class="menu__item" data-lang="French">French</button>
+                        <button class="menu__item" data-lang="German">German</button>
+                        <button class="menu__item" data-lang="Ukrainian">Ukrainian</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <!-- Depth -->
-            <div class="wb-sec">
-              <span class="label">Depth</span>
-              <div class="toggle-group" id="depth-toggle">
-                <button class="is-active">Quick check</button>
-                <button>In-depth</button>
-              </div>
-            </div>
-
-            <!-- Report -->
-            <div class="wb-sec">
-              <span class="label">Report</span>
-              <div class="toggle-group" id="report-toggle">
-                <button>Short</button>
-                <button class="is-active">Detailed</button>
-              </div>
-              <label class="switch switch--between wb-row">
-                <span class="switch__label">Editable report</span>
-                <span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span>
-              </label>
-            </div>
-
-            <!-- Preferences -->
-            <div class="wb-sec">
-              <span class="label">Preferences</span>
-              <div class="wb-row">
-                <span>Report language</span>
-                <div class="select"><select><option>English</option><option>Spanish</option><option>French</option><option>German</option><option>Ukrainian</option></select></div>
-              </div>
-            </div>
-              </div>
-            </div>
+            <span class="link-action" id="use-sample"><i data-lucide="file-text" class="icon--sm"></i> Use sample</span>
           </div>
           <div class="composer__bar-right">
-            <button class="btn btn--secondary" id="clear">Clear</button>
             <button class="btn btn--primary" id="run">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
           </div>
         </div>
       </div>
       <div class="composer-foot">
         <span class="wb-count" id="charcount">0 / 50,000</span>
-        <span class="link-action" id="use-sample"><i data-lucide="file-text" class="icon--sm"></i> Use sample</span>
       </div>
     </div>
   </main>
 
   <footer class="site-footer">
-    <span>© Defacta</span>
-    <span>Evidence, transparent by default.</span>
+    <span>© 2026 Defacta Inc. · 1007 N Orange St., 4th Floor, Wilmington, DE 19801</span>
+    <span>Informational and consultative purposes only.</span>
   </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
 
-    // generic segmented toggles
     document.querySelectorAll('.toggle-group').forEach(g => {
       g.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
         g.querySelectorAll('button').forEach(x => x.classList.remove('is-active'));
@@ -171,13 +185,16 @@
 
     const ta = document.getElementById('content');
     const count = document.getElementById('charcount');
+    const clearBtn = document.getElementById('clear');
     const sample = `In a recent statement, the World Health Organization announced that global vaccination coverage reached 92% in 2024, marking the highest figure on record. The report cites unpublished internal data showing that childhood mortality has dropped by 47% since 2019, a decline researchers attribute almost entirely to a new mRNA-based malaria vaccine deployed across Sub-Saharan Africa. Independent experts have universally praised the rollout, calling it "the most consequential public health intervention of the decade."`;
-    const sync = () => { count.textContent = ta.value.length.toLocaleString() + ' / 50,000'; };
+    const sync = () => {
+      count.textContent = ta.value.length.toLocaleString() + ' / 50,000';
+      clearBtn.hidden = ta.value.length === 0;
+    };
     ta.addEventListener('input', sync);
-    document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; sync(); });
-    document.getElementById('clear').addEventListener('click', () => { ta.value = ''; sync(); });
+    document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; sync(); ta.focus(); });
+    clearBtn.addEventListener('click', () => { ta.value = ''; sync(); ta.focus(); });
 
-    // mode description
     const modeDesc = {
       mine: 'Your own writing — Defacta returns inline editing suggestions and sourcing fixes.',
       other: "Someone else's text — Defacta returns a trust check on claims, citations and risk signals."
@@ -185,7 +202,6 @@
     document.querySelectorAll('#mode-toggle button').forEach(b =>
       b.addEventListener('click', () => { document.getElementById('mode-desc').textContent = modeDesc[b.dataset.mode]; }));
 
-    // settings summary (Auto/Custom · depth)
     function syncSummary() {
       const auto = document.getElementById('auto-checks').checked ? 'Auto' : 'Custom';
       const depth = document.querySelector('#depth-toggle button.is-active').textContent.trim();
@@ -193,17 +209,26 @@
     }
     document.getElementById('auto-checks').addEventListener('change', syncSummary);
 
-    // settings dropdown open/close
     const dd = document.getElementById('settings-dd');
     const pop = document.getElementById('settings-pop');
-    const btn = document.getElementById('settings-btn');
-    const setOpen = (open) => { pop.hidden = !open; btn.setAttribute('aria-expanded', open); };
-    btn.addEventListener('click', (e) => { e.stopPropagation(); setOpen(pop.hidden); });
+    const sbtn = document.getElementById('settings-btn');
+    const setOpen = (open) => { pop.hidden = !open; sbtn.setAttribute('aria-expanded', open); };
+    sbtn.addEventListener('click', (e) => { e.stopPropagation(); setOpen(pop.hidden); });
     document.addEventListener('click', (e) => { if (!dd.contains(e.target)) setOpen(false); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
 
-    // run verification → report
-    document.getElementById('run').addEventListener('click', () => { location.href = 'report.html'; });
+    const langDd = document.getElementById('lang-dd');
+    document.getElementById('lang-btn').addEventListener('click', (e) => { e.stopPropagation(); langDd.classList.toggle('is-open'); });
+    langDd.querySelectorAll('.menu__item').forEach(item => item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDd.querySelectorAll('.menu__item').forEach(x => x.classList.remove('is-selected'));
+      item.classList.add('is-selected');
+      document.getElementById('lang-val').textContent = item.dataset.lang;
+      langDd.classList.remove('is-open');
+    }));
+    document.addEventListener('click', (e) => { if (!langDd.contains(e.target)) langDd.classList.remove('is-open'); });
+
+    document.getElementById('run').addEventListener('click', () => { location.href = 'verifying.html'; });
   </script>
 </body>
 </html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — Account</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .acct { max-width: 760px; }
+    .acct .tabs-v { grid-template-columns: 180px 1fr; gap: var(--space-500); }
+    .avatar { width: 56px; height: 56px; border-radius: var(--radius-full); background: var(--grey-950); color: var(--canvas);
+      display: inline-flex; align-items: center; justify-content: center; font-weight: var(--weight-medium); flex-shrink: 0; }
+    .acct__divider { border: 0; border-top: 1px solid var(--border-subtle); margin: var(--space-300) 0; }
+    .acct__sec-title { font-weight: var(--weight-medium); margin-bottom: var(--space-100); }
+    @media (max-width: 700px) { .acct .tabs-v { grid-template-columns: 1fr; gap: var(--space-300); } .acct .tabs--vertical { flex-direction: row; flex-wrap: wrap; border-left: 0; } }
+  </style>
+</head>
+<body>
+  <!-- ── App header (signed in) ─────────────────────────────────────── -->
+  <header class="site-header">
+    <a class="brand" href="landing.html">
+      <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo">
+    </a>
+    <div class="header-actions">
+      <a class="header-link" href="history.html"><i data-lucide="history"></i> History</a>
+      <a class="header-link" href="console.html"><i data-lucide="plus"></i> New verification</a>
+      <a class="icon-btn icon-btn--sm" href="account.html" aria-label="Account"><i data-lucide="user"></i></a>
+      <a class="icon-btn icon-btn--sm" href="landing.html" aria-label="Log out"><i data-lucide="log-out"></i></a>
+    </div>
+  </header>
+
+  <main class="container" style="padding-block: var(--space-600)">
+    <div class="content acct">
+      <div style="margin-bottom: var(--space-400)">
+        <span class="label">Account</span>
+        <h1 style="margin-top: var(--space-150)">Settings</h1>
+      </div>
+
+      <div class="tabs-v">
+        <!-- Section nav -->
+        <div class="tabs tabs--vertical" role="tablist">
+          <button class="tabs__tab is-active" data-tabtarget="profile">Profile</button>
+          <button class="tabs__tab" data-tabtarget="plan">Plan &amp; billing</button>
+          <button class="tabs__tab" data-tabtarget="security">Security</button>
+          <button class="tabs__tab" data-tabtarget="notifications">Notifications</button>
+        </div>
+
+        <!-- Panels -->
+        <div>
+          <!-- Profile -->
+          <section class="tabs__panel" data-tabpanel="profile">
+            <div class="stack" style="gap: var(--space-300); max-width: 460px">
+              <div class="cluster" style="gap: var(--space-200)">
+                <span class="avatar">NM</span>
+                <button class="btn btn--secondary btn--sm">Change photo</button>
+              </div>
+              <div class="field"><label class="label" for="name">Full name</label><input class="input" id="name" value="Nana Muratova"></div>
+              <div class="field"><label class="label" for="email">Email</label><input class="input" id="email" type="email" value="nana@defacta.pro"></div>
+              <div><button class="btn btn--primary">Save changes</button></div>
+            </div>
+          </section>
+
+          <!-- Plan & billing -->
+          <section class="tabs__panel" data-tabpanel="plan" hidden>
+            <div class="card" style="max-width: 460px">
+              <div class="cluster" style="justify-content: space-between; align-items: flex-start">
+                <div>
+                  <span class="label">Current plan</span>
+                  <div style="font-size: var(--text-h4); font-weight: var(--weight-medium); margin-top: var(--space-050)">Pro</div>
+                  <p class="text-sm text-secondary" style="margin-top: 2px">$19 / month · renews Jul 17, 2026</p>
+                </div>
+                <span class="status-badge status-badge--verified"><i></i>Active</span>
+              </div>
+              <hr class="acct__divider">
+              <p class="text-sm text-secondary">Unlimited verifications · all four layers · priority processing · audit trail export.</p>
+              <div class="cluster" style="margin-top: var(--space-300)">
+                <a class="btn btn--secondary" href="landing.html#pricing">Change plan</a>
+                <button class="btn btn--secondary">Manage billing</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Security -->
+          <section class="tabs__panel" data-tabpanel="security" hidden>
+            <div class="stack" style="gap: var(--space-300); max-width: 460px">
+              <div>
+                <div class="acct__sec-title">Change password</div>
+                <div class="stack" style="gap: var(--space-200); margin-top: var(--space-150)">
+                  <div class="field"><label class="label" for="cur">Current password</label><input class="input" id="cur" type="password" placeholder="••••••••"></div>
+                  <div class="field"><label class="label" for="new">New password</label><input class="input" id="new" type="password" placeholder="At least 8 characters"></div>
+                  <div><button class="btn btn--primary">Update password</button></div>
+                </div>
+              </div>
+              <hr class="acct__divider">
+              <label class="switch switch--between">
+                <span class="switch__label">Two-factor authentication<span class="switch__desc">Require a code at sign-in.</span></span>
+                <span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span>
+              </label>
+            </div>
+          </section>
+
+          <!-- Notifications -->
+          <section class="tabs__panel" data-tabpanel="notifications" hidden>
+            <div class="switch-group" style="max-width: 460px">
+              <label class="switch switch--between"><span class="switch__label">Email digests<span class="switch__desc">Weekly summary of your reports.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
+              <label class="switch switch--between"><span class="switch__label">Flag alerts<span class="switch__desc">Notify when a claim is flagged.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
+              <label class="switch switch--between"><span class="switch__label">Product updates<span class="switch__desc">Occasional news about Defacta.</span></span><span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span></label>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+    // vertical settings tabs
+    const tabs = [...document.querySelectorAll('.tabs--vertical .tabs__tab')];
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('is-active'));
+      t.classList.add('is-active');
+      const target = t.dataset.tabtarget;
+      document.querySelectorAll('.tabs__panel').forEach(p => { p.hidden = p.dataset.tabpanel !== target; });
+    }));
+  </script>
+</body>
+</html>

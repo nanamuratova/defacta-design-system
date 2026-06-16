@@ -37,7 +37,7 @@
 .textarea {
   min-height: 120px;
   padding: var(--space-16);
-  border-radius: var(--radius-10);
+  border-radius: var(--radius-12);
   line-height: var(--leading-relaxed);
   resize: vertical;
 }
@@ -100,7 +100,7 @@
   padding: var(--space-16) var(--space-24);
   background: var(--canvas);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-10);
+  border-radius: var(--radius-12);
   cursor: pointer;
   transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }

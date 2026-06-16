@@ -131,7 +131,7 @@
 /* ---- Accordion / collapsible panel (Advanced settings) --------------- */
 .accordion {
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-10);
+  border-radius: var(--radius-12);
   background: var(--canvas);
   overflow: hidden;
 }

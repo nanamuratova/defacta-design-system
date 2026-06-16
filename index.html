@@ -63,7 +63,7 @@
     .rule--do .icon { color: var(--color-success); }
     .rule--dont .icon { color: var(--color-error); }
     .rule code { font-family: var(--font-mono); font-size: 0.85em; background: var(--grey-100); padding: 1px 5px; border-radius: var(--radius-4); color: var(--text-primary); }
-    .callout { display: flex; gap: var(--space-12); padding: var(--space-16); border: 1px solid var(--color-info-border); background: var(--color-info-soft); border-radius: var(--radius-10); font-size: var(--text-sm); color: var(--text-secondary); }
+    .callout { display: flex; gap: var(--space-12); padding: var(--space-16); border: 1px solid var(--color-info-border); background: var(--color-info-soft); border-radius: var(--radius-12); font-size: var(--text-sm); color: var(--text-secondary); }
     .callout .icon { color: var(--color-info); flex-shrink: 0; margin-top: 1px; }
     .callout b { color: var(--text-primary); font-weight: var(--weight-medium); }
 
@@ -78,7 +78,7 @@
 
     /* foundations helpers */
     .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: var(--space-16); }
-    .sw { border: 1px solid var(--border-subtle); border-radius: var(--radius-10); overflow: hidden; }
+    .sw { border: 1px solid var(--border-subtle); border-radius: var(--radius-12); overflow: hidden; }
     .sw__chip { height: 64px; } .sw__meta { padding: var(--space-8) var(--space-12); }
     .sw__name { font-size: var(--text-sm); font-weight: var(--weight-medium); }
     .sw__hex { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .04em; color: var(--text-muted); }
@@ -93,7 +93,7 @@
     .radii .r { width: 80px; height: 80px; background: var(--grey-100); border: 1px solid var(--border-default); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--space-8); }
     .radii .r span { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary); }
     .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px,1fr)); gap: var(--space-12); }
-    .icons .i { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); padding: var(--space-16); border: 1px solid var(--border-subtle); border-radius: var(--radius-10); }
+    .icons .i { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); padding: var(--space-16); border: 1px solid var(--border-subtle); border-radius: var(--radius-12); }
     .icons .i span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; color: var(--text-muted); }
 
     /* screen gallery */
@@ -344,7 +344,7 @@
       <div class="panel__head">
         <span class="label">Foundations</span>
         <h1>Shadows, radius &amp; spacing</h1>
-        <p class="lead-desc">Three scales give the system its physical rhythm. Elevation is soft and low — five steps from a hairline lift to a floating overlay. Corners are editorial — a 2→64px radius scale, with 8–16px covering most UI. Spacing is a 4-based scale from 2 to 120px that drives every gap, padding, and margin, so layout always lands on a consistent grid.</p>
+        <p class="lead-desc">Three scales give the system its physical rhythm. Elevation is soft and low — five steps from a hairline lift to a floating overlay. Corners are editorial — a 2→24px radius scale (plus a full/circular option for user elements), with 8–16px covering most UI. Spacing is a 4-based scale from 2 to 120px that drives every gap, padding, and margin, so layout always lands on a consistent grid.</p>
       </div>
 
       <p class="sub label">Elevation · 5 steps</p>
@@ -356,23 +356,19 @@
         <div class="shadow-box" style="box-shadow:var(--shadow-xl)"><span>shadow-xl</span></div>
       </div>
 
-      <p class="sub label">Radius · 2 → 64</p>
+      <p class="sub label">Radius · 2 → 24 + full</p>
       <div class="radii">
         <div class="r" style="border-radius:var(--radius-2)"><span>r-2</span></div>
         <div class="r" style="border-radius:var(--radius-4)"><span>r-4</span></div>
         <div class="r" style="border-radius:var(--radius-6)"><span>r-6</span></div>
         <div class="r" style="border-radius:var(--radius-8)"><span>r-8</span></div>
-        <div class="r" style="border-radius:var(--radius-10)"><span>r-10</span></div>
         <div class="r" style="border-radius:var(--radius-12)"><span>r-12</span></div>
         <div class="r" style="border-radius:var(--radius-16)"><span>r-16</span></div>
         <div class="r" style="border-radius:var(--radius-20)"><span>r-20</span></div>
         <div class="r" style="border-radius:var(--radius-24)"><span>r-24</span></div>
-        <div class="r" style="border-radius:var(--radius-32)"><span>r-32</span></div>
-        <div class="r" style="border-radius:var(--radius-40)"><span>r-40</span></div>
-        <div class="r" style="border-radius:var(--radius-48)"><span>r-48</span></div>
-        <div class="r" style="border-radius:var(--radius-56)"><span>r-56</span></div>
-        <div class="r" style="border-radius:var(--radius-64)"><span>r-64</span></div>
+        <div class="r" style="border-radius:var(--radius-full)"><span>full</span></div>
       </div>
+      <p class="text-sm text-secondary" style="margin-top: var(--space-12); max-width: 760px"><code>--radius-full</code> (999px) is reserved for <b>circular, user-related elements</b> — avatars, name chips, user UI, and emoji reactions.</p>
 
       <p class="sub label">Spacing · 4-based, 2 → 120</p>
       <div class="demo--block">
@@ -416,20 +412,178 @@
 
     <!-- ICONS -->
     <section class="panel" data-panel="icons" hidden>
-      <div class="panel__head"><span class="label">Foundations</span><h1>Icons</h1><p class="body-lg text-secondary">Lucide — free &amp; open source. Use <code>&lt;i data-lucide="name"&gt;&lt;/i&gt;</code>.</p></div>
+      <div class="panel__head">
+        <span class="label">Foundations</span>
+        <h1>Icons</h1>
+        <p class="lead-desc">Icons come from <b>Lucide</b> — free, open-source, and visually consistent. The system renders them at a calm 20px with a thin 1.75 stroke, inheriting the current text color. Below is the working set grouped by purpose; for anything missing, pull the matching icon from <a class="link" href="https://lucide.dev" target="_blank" rel="noopener">lucide.dev</a> — the markup and sizing stay the same.</p>
+      </div>
+
+      <p class="sub label">Verification &amp; status</p>
       <div class="icons">
         <div class="i"><i data-lucide="shield-check"></i><span>shield-check</span></div>
-        <div class="i"><i data-lucide="file-check"></i><span>file-check</span></div>
-        <div class="i"><i data-lucide="search"></i><span>search</span></div>
+        <div class="i"><i data-lucide="shield-alert"></i><span>shield-alert</span></div>
         <div class="i"><i data-lucide="scan-eye"></i><span>scan-eye</span></div>
+        <div class="i"><i data-lucide="file-check"></i><span>file-check</span></div>
+        <div class="i"><i data-lucide="badge-check"></i><span>badge-check</span></div>
         <div class="i"><i data-lucide="circle-check"></i><span>circle-check</span></div>
+        <div class="i"><i data-lucide="circle-x"></i><span>circle-x</span></div>
+        <div class="i"><i data-lucide="circle-alert"></i><span>circle-alert</span></div>
         <div class="i"><i data-lucide="triangle-alert"></i><span>triangle-alert</span></div>
-        <div class="i"><i data-lucide="history"></i><span>history</span></div>
-        <div class="i"><i data-lucide="settings"></i><span>settings</span></div>
-        <div class="i"><i data-lucide="arrow-right"></i><span>arrow-right</span></div>
+        <div class="i"><i data-lucide="info"></i><span>info</span></div>
+        <div class="i"><i data-lucide="flag"></i><span>flag</span></div>
+        <div class="i"><i data-lucide="ban"></i><span>ban</span></div>
+        <div class="i"><i data-lucide="sparkles"></i><span>sparkles</span></div>
         <div class="i"><i data-lucide="eye"></i><span>eye</span></div>
-        <div class="i"><i data-lucide="download"></i><span>download</span></div>
+        <div class="i"><i data-lucide="eye-off"></i><span>eye-off</span></div>
+        <div class="i"><i data-lucide="fingerprint"></i><span>fingerprint</span></div>
+      </div>
+
+      <p class="sub label">Actions</p>
+      <div class="icons">
+        <div class="i"><i data-lucide="search"></i><span>search</span></div>
+        <div class="i"><i data-lucide="plus"></i><span>plus</span></div>
+        <div class="i"><i data-lucide="minus"></i><span>minus</span></div>
+        <div class="i"><i data-lucide="check"></i><span>check</span></div>
+        <div class="i"><i data-lucide="x"></i><span>x</span></div>
         <div class="i"><i data-lucide="refresh-cw"></i><span>refresh-cw</span></div>
+        <div class="i"><i data-lucide="download"></i><span>download</span></div>
+        <div class="i"><i data-lucide="upload"></i><span>upload</span></div>
+        <div class="i"><i data-lucide="trash-2"></i><span>trash-2</span></div>
+        <div class="i"><i data-lucide="copy"></i><span>copy</span></div>
+        <div class="i"><i data-lucide="share-2"></i><span>share-2</span></div>
+        <div class="i"><i data-lucide="filter"></i><span>filter</span></div>
+        <div class="i"><i data-lucide="settings"></i><span>settings</span></div>
+        <div class="i"><i data-lucide="sliders-horizontal"></i><span>sliders-horizontal</span></div>
+        <div class="i"><i data-lucide="more-horizontal"></i><span>more-horizontal</span></div>
+        <div class="i"><i data-lucide="save"></i><span>save</span></div>
+        <div class="i"><i data-lucide="bookmark"></i><span>bookmark</span></div>
+        <div class="i"><i data-lucide="printer"></i><span>printer</span></div>
+      </div>
+
+      <p class="sub label">Edit &amp; text</p>
+      <div class="icons">
+        <div class="i"><i data-lucide="square-pen"></i><span>square-pen</span></div>
+        <div class="i"><i data-lucide="pencil"></i><span>pencil</span></div>
+        <div class="i"><i data-lucide="type"></i><span>type</span></div>
+        <div class="i"><i data-lucide="bold"></i><span>bold</span></div>
+        <div class="i"><i data-lucide="italic"></i><span>italic</span></div>
+        <div class="i"><i data-lucide="underline"></i><span>underline</span></div>
+        <div class="i"><i data-lucide="list"></i><span>list</span></div>
+        <div class="i"><i data-lucide="list-ordered"></i><span>list-ordered</span></div>
+        <div class="i"><i data-lucide="quote"></i><span>quote</span></div>
+        <div class="i"><i data-lucide="link"></i><span>link</span></div>
+        <div class="i"><i data-lucide="code"></i><span>code</span></div>
+        <div class="i"><i data-lucide="highlighter"></i><span>highlighter</span></div>
+        <div class="i"><i data-lucide="scissors"></i><span>scissors</span></div>
+      </div>
+
+      <p class="sub label">Arrows &amp; chevrons</p>
+      <div class="icons">
+        <div class="i"><i data-lucide="arrow-right"></i><span>arrow-right</span></div>
+        <div class="i"><i data-lucide="arrow-left"></i><span>arrow-left</span></div>
+        <div class="i"><i data-lucide="arrow-up"></i><span>arrow-up</span></div>
+        <div class="i"><i data-lucide="arrow-down"></i><span>arrow-down</span></div>
+        <div class="i"><i data-lucide="arrow-up-right"></i><span>arrow-up-right</span></div>
+        <div class="i"><i data-lucide="chevron-right"></i><span>chevron-right</span></div>
+        <div class="i"><i data-lucide="chevron-left"></i><span>chevron-left</span></div>
+        <div class="i"><i data-lucide="chevron-up"></i><span>chevron-up</span></div>
+        <div class="i"><i data-lucide="chevron-down"></i><span>chevron-down</span></div>
+        <div class="i"><i data-lucide="chevrons-up-down"></i><span>chevrons-up-down</span></div>
+        <div class="i"><i data-lucide="external-link"></i><span>external-link</span></div>
+        <div class="i"><i data-lucide="undo"></i><span>undo</span></div>
+        <div class="i"><i data-lucide="redo"></i><span>redo</span></div>
+        <div class="i"><i data-lucide="move"></i><span>move</span></div>
+      </div>
+
+      <p class="sub label">Files &amp; data</p>
+      <div class="icons">
+        <div class="i"><i data-lucide="file"></i><span>file</span></div>
+        <div class="i"><i data-lucide="file-text"></i><span>file-text</span></div>
+        <div class="i"><i data-lucide="files"></i><span>files</span></div>
+        <div class="i"><i data-lucide="folder"></i><span>folder</span></div>
+        <div class="i"><i data-lucide="book-open"></i><span>book-open</span></div>
+        <div class="i"><i data-lucide="database"></i><span>database</span></div>
+        <div class="i"><i data-lucide="table"></i><span>table</span></div>
+        <div class="i"><i data-lucide="layers"></i><span>layers</span></div>
+        <div class="i"><i data-lucide="hash"></i><span>hash</span></div>
+        <div class="i"><i data-lucide="paperclip"></i><span>paperclip</span></div>
+        <div class="i"><i data-lucide="clipboard-check"></i><span>clipboard-check</span></div>
+      </div>
+
+      <p class="sub label">Communication</p>
+      <div class="icons">
+        <div class="i"><i data-lucide="mail"></i><span>mail</span></div>
+        <div class="i"><i data-lucide="message-square"></i><span>message-square</span></div>
+        <div class="i"><i data-lucide="message-circle"></i><span>message-circle</span></div>
+        <div class="i"><i data-lucide="bell"></i><span>bell</span></div>
+        <div class="i"><i data-lucide="send"></i><span>send</span></div>
+        <div class="i"><i data-lucide="at-sign"></i><span>at-sign</span></div>
+        <div class="i"><i data-lucide="phone"></i><span>phone</span></div>
+      </div>
+
+      <p class="sub label">Time &amp; charts</p>
+      <div class="icons">
+        <div class="i"><i data-lucide="clock"></i><span>clock</span></div>
+        <div class="i"><i data-lucide="calendar"></i><span>calendar</span></div>
+        <div class="i"><i data-lucide="calendar-check"></i><span>calendar-check</span></div>
+        <div class="i"><i data-lucide="history"></i><span>history</span></div>
+        <div class="i"><i data-lucide="timer"></i><span>timer</span></div>
+        <div class="i"><i data-lucide="trending-up"></i><span>trending-up</span></div>
+        <div class="i"><i data-lucide="bar-chart-3"></i><span>bar-chart-3</span></div>
+        <div class="i"><i data-lucide="line-chart"></i><span>line-chart</span></div>
+        <div class="i"><i data-lucide="activity"></i><span>activity</span></div>
+        <div class="i"><i data-lucide="gauge"></i><span>gauge</span></div>
+        <div class="i"><i data-lucide="target"></i><span>target</span></div>
+      </div>
+
+      <p class="sub label">Users &amp; access</p>
+      <div class="icons">
+        <div class="i"><i data-lucide="user"></i><span>user</span></div>
+        <div class="i"><i data-lucide="users"></i><span>users</span></div>
+        <div class="i"><i data-lucide="user-check"></i><span>user-check</span></div>
+        <div class="i"><i data-lucide="user-plus"></i><span>user-plus</span></div>
+        <div class="i"><i data-lucide="circle-user"></i><span>circle-user</span></div>
+        <div class="i"><i data-lucide="log-in"></i><span>log-in</span></div>
+        <div class="i"><i data-lucide="log-out"></i><span>log-out</span></div>
+        <div class="i"><i data-lucide="lock"></i><span>lock</span></div>
+        <div class="i"><i data-lucide="lock-open"></i><span>lock-open</span></div>
+        <div class="i"><i data-lucide="key"></i><span>key</span></div>
+      </div>
+
+      <p class="sub label">Layout &amp; navigation</p>
+      <div class="icons">
+        <div class="i"><i data-lucide="home"></i><span>home</span></div>
+        <div class="i"><i data-lucide="menu"></i><span>menu</span></div>
+        <div class="i"><i data-lucide="layout-dashboard"></i><span>layout-dashboard</span></div>
+        <div class="i"><i data-lucide="panel-right"></i><span>panel-right</span></div>
+        <div class="i"><i data-lucide="panel-left"></i><span>panel-left</span></div>
+        <div class="i"><i data-lucide="sidebar"></i><span>sidebar</span></div>
+        <div class="i"><i data-lucide="grid-3x3"></i><span>grid-3x3</span></div>
+        <div class="i"><i data-lucide="columns-3"></i><span>columns-3</span></div>
+        <div class="i"><i data-lucide="rows-3"></i><span>rows-3</span></div>
+        <div class="i"><i data-lucide="list"></i><span>list</span></div>
+        <div class="i"><i data-lucide="align-left"></i><span>align-left</span></div>
+        <div class="i"><i data-lucide="maximize-2"></i><span>maximize-2</span></div>
+      </div>
+
+      <h2 class="h2" style="margin: var(--space-48) 0 var(--space-16)">Usage rules</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Place icons inline with <code>&lt;i data-lucide="name"&gt;&lt;/i&gt;</code>, then call <code>lucide.createIcons()</code>.</span></div>
+            <div class="rule"><span>Size with <code>.icon--sm</code> (16) / default (20) / <code>.icon--lg</code> (24); color follows text — set it on the parent.</span></div>
+            <div class="rule"><span>Pick by meaning and reuse the same icon for the same action everywhere.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Mix icon sets — Lucide only (no emoji, no Iconoir, no Font Awesome).</span></div>
+            <div class="rule"><span>Use filled or duotone icons, or recolor them for decoration.</span></div>
+            <div class="rule"><span>Resize with manual width/height — use the size classes.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

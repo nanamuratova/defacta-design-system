@@ -137,17 +137,11 @@
   --radius-4:  4px;
   --radius-6:  6px;
   --radius-8:  8px;    /* inputs, buttons */
-  --radius-10: 10px;   /* textarea, small cards */
-  --radius-12: 12px;   /* cards */
+  --radius-12: 12px;   /* textarea, cards, menus */
   --radius-16: 16px;   /* large cards / panels */
   --radius-20: 20px;
   --radius-24: 24px;
-  --radius-32: 32px;
-  --radius-40: 40px;
-  --radius-48: 48px;
-  --radius-56: 56px;
-  --radius-64: 64px;
-  --radius-full: 999px;
+  --radius-full: 999px; /* circular only: avatars, name chips, user UI, reactions */
 
   /* -----------------------------------------------------------------------
      ELEVATION — soft, low-contrast shadows (editorial, not flashy)

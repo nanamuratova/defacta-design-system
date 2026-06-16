@@ -30,6 +30,6 @@
 
 /* ---- Vertical tabs --------------------------------------------------- */
 .tabs--vertical { flex-direction: column; border-bottom: 0; border-left: 1px solid var(--border-default); gap: 0; }
-.tabs--vertical .tabs__tab { padding: var(--space-150) var(--space-200); }
+.tabs--vertical .tabs__tab { padding: var(--space-150) var(--space-200); justify-content: flex-start; text-align: left; }
 .tabs--vertical .tabs__tab.is-active::after { left: -1px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
 .tabs-v { display: grid; grid-template-columns: 180px 1fr; gap: var(--space-300); align-items: start; }

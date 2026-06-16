@@ -94,7 +94,7 @@
     .type-row .meta { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted); width: 120px; flex-shrink: 0; }
     .scale-row { display: flex; align-items: center; gap: var(--space-200); padding: var(--space-100) 0; }
     .scale-row .meta { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-muted); width: 120px; }
-    .scale-bar { height: 16px; background: var(--grey-950); border-radius: var(--radius-2); }
+    .scale-bar { display: inline-block; vertical-align: middle; min-width: 1px; height: 16px; background: var(--grey-950); border-radius: var(--radius-2); }
     .elev-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-300); }
     .shadow-box { width: auto; height: 96px; border-radius: var(--radius-12); background: var(--canvas); display: flex; align-items: flex-end; padding: var(--space-150); }
     .shadow-box span { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary); }
@@ -810,7 +810,7 @@
       </div>
 
       <p class="sub label">States</p>
-      <div class="demo" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-200); max-width:680px">
+      <div class="demo" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-200); max-width:680px; align-items:start">
         <div class="field"><label class="label">Disabled</label><textarea class="textarea" disabled>Unavailable</textarea></div>
         <div class="field"><label class="label">Error</label><textarea class="textarea is-error">Too short to verify.</textarea><span class="field-error"><i data-lucide="circle-alert"></i> Add at least 50 characters.</span></div>
       </div>
@@ -1143,7 +1143,7 @@
       </div>
 
       <p class="sub label">In a card (example)</p>
-      <div class="demo demo--block">
+      <div class="demo demo--block" style="background:none; border:0; padding:0">
         <div class="card" style="max-width:560px; padding:0; overflow:hidden">
           <details class="accordion" open style="border:0; border-radius:0">
             <summary class="accordion__trigger"><span class="accordion__title">Methodology</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
@@ -1449,13 +1449,15 @@
       <p class="sub label">Card carousel</p>
       <div class="demo demo--block">
         <div class="carousel" style="max-width:680px;margin-inline:auto">
-          <div class="carousel__viewport"><div class="carousel__track">
-            <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="justify-content:space-between; margin-bottom:var(--space-150)"><span class="status-badge status-badge--flagged"><i></i>Flagged</span><span class="tag tag--mono risk--high">High</span></div><div class="card__title">WHO vaccination statement</div><p class="card__body">3 of 4 claims flagged · 12 sources · reviewed Jun 03, 2026.</p></div></div>
-            <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="justify-content:space-between; margin-bottom:var(--space-150)"><span class="status-badge status-badge--pending"><i></i>Pending</span><span class="tag tag--mono risk--moderate">Moderate</span></div><div class="card__title">Q2 earnings draft</div><p class="card__body">2 of 11 claims flagged · investor-relations memo.</p></div></div>
-            <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="justify-content:space-between; margin-bottom:var(--space-150)"><span class="status-badge status-badge--verified"><i></i>Verified</span><span class="tag tag--mono risk--low">Low</span></div><div class="card__title">Marketing copy — LLM draft v3</div><p class="card__body">0 of 7 claims flagged · AI output, clean.</p></div></div>
-          </div></div>
-          <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left" class="icon--sm"></i></button>
-          <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+          <div class="carousel__row">
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left" class="icon--sm"></i></button>
+            <div class="carousel__viewport"><div class="carousel__track">
+              <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="margin-bottom:var(--space-150)"><span class="status-badge status-badge--flagged"><i></i>Flagged</span></div><div class="card__title">WHO vaccination statement</div><p class="card__body">3 of 4 claims flagged · 12 sources · reviewed Jun 03, 2026.</p></div></div>
+              <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="margin-bottom:var(--space-150)"><span class="status-badge status-badge--pending"><i></i>Pending</span></div><div class="card__title">Q2 earnings draft</div><p class="card__body">2 of 11 claims flagged · investor-relations memo.</p></div></div>
+              <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="margin-bottom:var(--space-150)"><span class="status-badge status-badge--verified"><i></i>Verified</span></div><div class="card__title">Marketing copy — LLM draft v3</div><p class="card__body">0 of 7 claims flagged · AI output, clean.</p></div></div>
+            </div></div>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+          </div>
           <div class="carousel__dots"><button class="carousel__dot is-active"></button><button class="carousel__dot"></button><button class="carousel__dot"></button></div>
         </div>
       </div>
@@ -1860,17 +1862,18 @@
       <div class="demo" style="gap:var(--space-400); align-items:flex-start">
         <div style="width:320px; border:1px solid var(--border-default); border-radius:var(--radius-16); overflow:hidden">
           <header class="mobile-header">
-            <button class="icon-btn icon-btn--sm" aria-label="Menu"><i data-lucide="menu"></i></button>
             <img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo" style="height:22px">
-            <button class="icon-btn icon-btn--sm" aria-label="Account"><i data-lucide="user"></i></button>
+            <div class="cluster" style="gap:var(--space-100)">
+              <button class="icon-btn icon-btn--sm" aria-label="Account"><i data-lucide="user"></i></button>
+              <button class="icon-btn icon-btn--sm" aria-label="Menu"><i data-lucide="menu"></i></button>
+            </div>
           </header>
           <div style="height:120px; background:var(--surface-paper)"></div>
         </div>
         <div style="width:320px; border:1px solid var(--border-default); border-radius:var(--radius-16); overflow:hidden">
           <header class="mobile-header">
-            <button class="icon-btn icon-btn--sm" aria-label="Close"><i data-lucide="x"></i></button>
             <img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo" style="height:22px">
-            <span style="width:32px"></span>
+            <button class="icon-btn icon-btn--sm" aria-label="Close"><i data-lucide="x"></i></button>
           </header>
           <nav style="padding:var(--space-200)">
             <a class="sidebar__item is-active"><i data-lucide="scan-eye"></i> Workbench</a>

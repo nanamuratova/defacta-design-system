@@ -58,7 +58,7 @@
               <div class="stack" style="gap: var(--space-200)">
                 <div class="field"><label class="label" for="name">Full name</label><input class="input" id="name" value="Nana Muratova"></div>
                 <div class="field"><label class="label" for="email">Email</label><input class="input" id="email" type="email" value="nana@defacta.pro"></div>
-                <div><button class="btn btn--primary">Save changes</button></div>
+                <div style="display:flex; justify-content:flex-end"><button class="btn btn--primary">Save changes</button></div>
               </div>
             </div>
           </section>
@@ -76,7 +76,7 @@
               </div>
               <hr class="acct__divider">
               <p class="text-sm text-secondary">Unlimited verifications · all four layers · priority processing · audit trail export.</p>
-              <div class="cluster" style="margin-top: var(--space-300)">
+              <div class="cluster" style="margin-top: var(--space-300); justify-content: flex-end">
                 <a class="btn btn--secondary" href="landing.html#pricing">Change plan</a>
                 <button class="btn btn--secondary">Manage billing</button>
               </div>
@@ -92,7 +92,7 @@
                 <div class="stack" style="gap: var(--space-200)">
                   <div class="field"><label class="label" for="cur">Current password</label><input class="input" id="cur" type="password" placeholder="••••••••"></div>
                   <div class="field"><label class="label" for="new">New password</label><input class="input" id="new" type="password" placeholder="At least 8 characters"></div>
-                  <div style="display:flex; justify-content:flex-end"><button class="btn btn--primary">Update password</button></div>
+                  <div style="display:flex; justify-content:flex-end"><button class="btn btn--primary" id="pw-update">Update password</button></div>
                 </div>
               </div>
               <!-- Two-factor authentication card -->
@@ -127,6 +127,20 @@
     </div>
   </main>
 
+  <!-- ── Password-updated confirmation modal ────────────────────────── -->
+  <div class="modal" id="pw-modal">
+    <div class="modal__dialog modal__dialog--sm modal__dialog--center">
+      <div class="modal__body">
+        <span class="status-medallion status-medallion--success"><i data-lucide="check"></i></span>
+        <h3 class="h4" style="color:var(--text-primary)">Password updated</h3>
+        <p style="margin-top: var(--space-100)">Your password has been changed. Use it next time you sign in.</p>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--primary" id="pw-ok" style="width:100%">Got it</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ── Delete-account confirmation modal ──────────────────────────── -->
   <div class="modal" id="del-modal">
     <div class="modal__dialog modal__dialog--sm modal__dialog--center">
@@ -154,13 +168,20 @@
       document.querySelectorAll('.tabs__panel').forEach(p => { p.hidden = p.dataset.tabpanel !== target; });
     }));
 
+    // password-updated confirmation
+    const pwModal = document.getElementById('pw-modal');
+    const closePw = () => pwModal.removeAttribute('data-open');
+    document.getElementById('pw-update').addEventListener('click', () => pwModal.setAttribute('data-open', ''));
+    document.getElementById('pw-ok').addEventListener('click', closePw);
+    pwModal.addEventListener('click', (e) => { if (e.target === pwModal) closePw(); });
+
     // delete-account confirmation
     const delModal = document.getElementById('del-modal');
     const closeDel = () => delModal.removeAttribute('data-open');
     document.getElementById('del-trigger').addEventListener('click', () => delModal.setAttribute('data-open', ''));
     document.getElementById('del-cancel').addEventListener('click', closeDel);
     delModal.addEventListener('click', (e) => { if (e.target === delModal) closeDel(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDel(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeDel(); closePw(); } });
     // confirm → signed out (back to landing)
     document.getElementById('del-confirm').addEventListener('click', () => { location.href = 'landing.html'; });
   </script>

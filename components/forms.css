@@ -294,7 +294,7 @@
 .checkbox--area.checkbox--filled,
 .checkbox--area-hover.checkbox--filled:hover  { background: var(--grey-50); }
 .checkbox--area.checkbox--outline,
-.checkbox--area-hover.checkbox--outline:hover { border-color: var(--border-default); }
+.checkbox--area-hover.checkbox--outline:hover { border-color: var(--border-default); background: var(--canvas); }
 
 /* ---- Checkbox / radio group ----------------------------------------- */
 .checkbox-group { display: flex; flex-direction: column; gap: var(--space-100); }

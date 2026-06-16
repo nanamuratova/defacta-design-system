@@ -64,20 +64,20 @@ matters more than cleverness. Follow these rules exactly.
 | Input status | `.input.is-error`/`.is-warning`/`.is-success` + `.field-error`/`-warning`/`-success`/`-hint` message |
 | Read-only / disabled | `readonly` attr (muted) · `disabled` attr (unavailable) |
 | Input prefix/suffix/compound | `.input-group` > `.input-group__addon` + `.input` (+ `.btn`/`select`) |
-| Long text | `.textarea` |
-| Verdict label | `.tag tag--supported/contradicted/unsupported/info/neutral` |
+| Long text | `.textarea` · rich text `.editor` (toolbar + `[contenteditable].editor__body`) |
+| Tag / verdict (IBM Mono) | `.tag tag--success/warning/error/info/neutral/disabled` (aliases supported/contradicted/unsupported) · uppercase `tag--mono` for `risk--high/moderate/low` |
 | Status badge (the standard) | `.status-badge status-badge--verified/pending/partial/flagged/dead/unrelated/neutral/info` — dot + uppercase mono pill with tinted bg + border. **Use this for ALL status/verdict indicators across every screen.** Always include the `<i></i>` dot. |
 | Eyebrow / section label | `.label` (uppercase mono) |
 | Logo / brand | `<a class="brand"><img src="…/assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>` (stacked: `defacta-logo-stacked.svg`) |
-| Container | `.card` (+ `--elevated` / `--soft`) |
+| Container | `.card` (+ `--elevated` / `--soft`; clickable `.card--interactive`; `.is-disabled`) |
 | Modal / dialog | `.modal[data-open]` > `.modal__dialog--sm/md/lg` > `__header`/`__body`/`__footer` |
 | Selectable choice | `.option-card` (radio inside) |
-| Checkbox + description | `.checkbox` (box + label) |
+| Checkbox + description | `.checkbox` (box + label); sizes `checkbox--sm/lg`; group `.checkbox-group`. Selection area: `checkbox--area`/`--area-hover` + `--filled`/`--outline` + `style="--sel-pad:12px"` |
 | Dropdown / filter | `.select` > `<select>` |
 | Search field | `.search` (icon + `.input`), or `.input-affix` > `.affix--prefix` + `.input.has-prefix` |
 | Clear / password field | `.input-affix` > `.input` + trailing `.affix-btn` (X to clear, eye to toggle) |
 | Collapsible panel | `<details class="accordion">` > `summary.accordion__trigger` + `.accordion__panel` |
-| Data table | `.table-wrap` > `.table` (mono `<th>`, `.cell-title`/`.cell-sub`/`.cell-date`, `.row-arrow`) |
+| Data table | `.table-wrap` > `.table` (mono `<th>`, `.cell-title`/`.cell-sub`/`.cell-date`, `.row-arrow`). Full: `.table-frame` > `.table-toolbar` + `.table-subtoolbar` + table + `.table-footer` (pagination) or `.table-infinite`; sortable `.table__sort.is-active` |
 | Risk tag (table) | `.tag tag--mono risk--high/moderate/low` |
 | Status (table) | `.status-badge status-badge--mono status-badge--flagged/pending/verified` |
 | App header (signed-in) | `.site-header` > `.brand` + `.header-actions` (`.header-link`, `.icon-btn`) |
@@ -92,9 +92,9 @@ matters more than cleverness. Follow these rules exactly.
 | Audit log | `.audit` > `.audit__row` (time / event / actor) |
 | On-this-page nav | `.toc` (sticky, scrollspy `.is-active`) |
 | Feedback bar | `.feedback` (inside `.card`) |
-| Switch | `<label class="switch"><input type="checkbox"><span class="switch__track"></span></label>` |
+| Switch | `<label class="switch"><input type="checkbox"><span class="switch__track"></span><span class="switch__label">…</span></label>`; sizes `switch--sm/lg`; group `.switch-group` (rows `switch--between`) |
 | Segmented toggle | `.toggle-group` > `<button class="is-active">` |
-| Tabs | `.tabs` > `.tabs__tab[data-tabtarget]` + `.tabs__panel[data-tabpanel]` (JS-switched) |
+| Tabs | `.tabs` > `.tabs__tab[data-tabtarget]` + `.tabs__panel[data-tabpanel]` (JS-switched); vertical `.tabs--vertical` inside `.tabs-v`; disable with `disabled` |
 | Breadcrumbs | `.breadcrumbs` > `<a>` + `.breadcrumbs__sep` (chevron-right) + `[aria-current]` |
 | Alert / notification | `.alert alert--info/success/warning/error` (+ `.toast`) — icon + `__body` + `__close` |
 | Pagination | `.pagination` > `.pagination__item` (+ `.is-active`, `.pagination__ellipsis`) |

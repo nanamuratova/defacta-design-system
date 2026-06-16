@@ -60,7 +60,10 @@ matters more than cleverness. Follow these rules exactly.
 | Button states | `:hover`/`:active`/`:focus-visible` automatic · `disabled` · `.is-loading` (spinner) |
 | Full-width / group | `btn--block` · `.btn-group` wrapping `.btn`s |
 | Icon-only button | `<button class="icon-btn" aria-label="…">` (+ `icon-btn--xs/sm/lg/xl`) |
-| Text input | `.field` > `.label` + `.input` |
+| Text input | `.field` > `.label` + `.input` (sizes `input--sm`/`input--lg`) |
+| Input status | `.input.is-error`/`.is-warning`/`.is-success` + `.field-error`/`-warning`/`-success`/`-hint` message |
+| Read-only / disabled | `readonly` attr (muted) · `disabled` attr (unavailable) |
+| Input prefix/suffix/compound | `.input-group` > `.input-group__addon` + `.input` (+ `.btn`/`select`) |
 | Long text | `.textarea` |
 | Verdict label | `.tag tag--supported/contradicted/unsupported/info/neutral` |
 | Status badge (the standard) | `.status-badge status-badge--verified/pending/partial/flagged/dead/unrelated/neutral/info` — dot + uppercase mono pill with tinted bg + border. **Use this for ALL status/verdict indicators across every screen.** Always include the `<i></i>` dot. |
@@ -71,8 +74,8 @@ matters more than cleverness. Follow these rules exactly.
 | Selectable choice | `.option-card` (radio inside) |
 | Checkbox + description | `.checkbox` (box + label) |
 | Dropdown / filter | `.select` > `<select>` |
-| Search field | `.search` (icon + `.input`) |
-| Password field | `.input-affix` (eye toggle) |
+| Search field | `.search` (icon + `.input`), or `.input-affix` > `.affix--prefix` + `.input.has-prefix` |
+| Clear / password field | `.input-affix` > `.input` + trailing `.affix-btn` (X to clear, eye to toggle) |
 | Collapsible panel | `<details class="accordion">` > `summary.accordion__trigger` + `.accordion__panel` |
 | Data table | `.table-wrap` > `.table` (mono `<th>`, `.cell-title`/`.cell-sub`/`.cell-date`, `.row-arrow`) |
 | Risk tag (table) | `.tag tag--mono risk--high/moderate/low` |

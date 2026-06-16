@@ -695,12 +695,80 @@
 
     <!-- INPUTS -->
     <section class="panel" data-panel="inputs" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Inputs</h1></div>
-      <div class="demo demo--stack" style="max-width:420px">
-        <div class="field"><label class="label">Default</label><input class="input" placeholder="https://example.com/article"></div>
-        <div class="field"><label class="label">Disabled</label><input class="input" value="Disabled" disabled></div>
-        <div class="field"><label class="label">Search</label><div class="search"><i data-lucide="search" class="icon--sm"></i><input class="input" type="search" placeholder="Search reports…"></div></div>
-        <div class="field"><label class="label">Password</label><div class="input-affix"><input class="input" type="password" value="secret123"><button class="affix-btn"><i data-lucide="eye" class="icon--sm"></i></button></div></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Inputs</h1>
+        <p class="lead-desc">Text inputs in three sizes with a full set of states and statuses, inline status messages, prefixes and suffixes (icons, addons, buttons), a clear button, and compound input groups — all built on one <code>.input</code> base and the form tokens.</p>
+      </div>
+
+      <p class="sub label">Sizes · sm / md / lg</p>
+      <div class="demo demo--stack" style="max-width:420px; gap:var(--space-200)">
+        <div class="field"><label class="label">Small</label><input class="input input--sm" placeholder="Small input"></div>
+        <div class="field"><label class="label">Medium (default)</label><input class="input" placeholder="Medium input"></div>
+        <div class="field"><label class="label">Large</label><input class="input input--lg" placeholder="Large input"></div>
+      </div>
+
+      <p class="sub label">States · default / focus / filled / disabled / read-only</p>
+      <div class="demo" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-200); max-width:640px">
+        <div class="field"><label class="label">Default</label><input class="input" placeholder="Paste a URL or text"></div>
+        <div class="field"><label class="label">Filled</label><input class="input" value="https://example.com/article"></div>
+        <div class="field"><label class="label">Disabled</label><input class="input" value="Unavailable" disabled></div>
+        <div class="field"><label class="label">Read-only</label><input class="input" value="VR-2026-06-03-247K" readonly></div>
+      </div>
+      <p class="text-sm text-secondary" style="margin-top:var(--space-100)">Focus is interactive — click a field to see the focus ring.</p>
+
+      <p class="sub label">Statuses &amp; messages</p>
+      <div class="demo" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-200); max-width:640px">
+        <div class="field"><label class="label">Error</label><input class="input is-error" value="not-a-url"><span class="field-error"><i data-lucide="circle-alert"></i> Enter a valid URL.</span></div>
+        <div class="field"><label class="label">Warning</label><input class="input is-warning" value="http://insecure.example"><span class="field-warning"><i data-lucide="triangle-alert"></i> This source is unverified.</span></div>
+        <div class="field"><label class="label">Success</label><input class="input is-success" value="https://who.int"><span class="field-success"><i data-lucide="circle-check"></i> Source verified.</span></div>
+        <div class="field"><label class="label">With hint</label><input class="input" placeholder="https://…"><span class="field-hint"><i data-lucide="info"></i> Paste a public article URL.</span></div>
+      </div>
+
+      <p class="sub label">Prefix &amp; suffix</p>
+      <div class="demo demo--stack" style="max-width:480px; gap:var(--space-200)">
+        <div class="field"><label class="label">Icon prefix</label><div class="input-affix"><i data-lucide="search" class="affix affix--prefix"></i><input class="input has-prefix" type="search" placeholder="Search reports…"></div></div>
+        <div class="field"><label class="label">Prefix addon</label><div class="input-group"><span class="input-group__addon">https://</span><input class="input" placeholder="example.com/article"></div></div>
+        <div class="field"><label class="label">Suffix addon</label><div class="input-group"><input class="input" placeholder="0.00"><span class="input-group__addon">USD</span></div></div>
+        <div class="field"><label class="label">Icon suffix (button)</label><div class="input-affix"><input class="input" placeholder="Confidence"><button class="affix-btn" aria-label="Info"><i data-lucide="info" class="icon--sm"></i></button></div></div>
+      </div>
+
+      <p class="sub label">Clear button &amp; password toggle</p>
+      <div class="demo demo--stack" style="max-width:480px; gap:var(--space-200)">
+        <div class="field"><label class="label">Clearable</label><div class="input-affix"><input class="input" id="clearable" value="World Health Organization"><button class="affix-btn" id="clear-input" aria-label="Clear"><i data-lucide="x" class="icon--sm"></i></button></div></div>
+        <div class="field"><label class="label">Password</label><div class="input-affix"><input class="input" id="pw-demo" type="password" value="secret123"><button class="affix-btn" id="pw-demo-toggle" aria-label="Show password"><i data-lucide="eye" class="icon--sm"></i></button></div></div>
+      </div>
+
+      <p class="sub label">Compound input</p>
+      <div class="demo demo--stack" style="max-width:520px; gap:var(--space-200)">
+        <div class="field"><label class="label">Scope + query</label><div class="input-group"><select aria-label="Scope"><option>All</option><option>Title</option><option>Source</option></select><input class="input" placeholder="Search…"></div></div>
+        <div class="field"><label class="label">Share link</label><div class="input-group"><input class="input" value="https://defacta.io/r/247K" readonly><button class="btn btn--primary">Copy</button></div></div>
+      </div>
+
+      <p class="sub label">Text overflow</p>
+      <div class="field" style="max-width:360px"><label class="label">Long value</label><input class="input" readonly value="VR-2026-06-03-247K · data.who.int/immunization/global-monitoring/2024"></div>
+      <p class="field-hint" style="margin-top:var(--space-100)">Long values stay on one line and scroll within the field.</p>
+
+      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Always pair an input with a <code>.label</code>; add a <code>.field-hint</code> for guidance.</span></div>
+            <div class="rule"><span>Pair a status class (<code>is-error</code> / <code>is-warning</code> / <code>is-success</code>) with a matching message + icon.</span></div>
+            <div class="rule"><span>Use <code>readonly</code> for non-editable values; <code>disabled</code> only when the field is unavailable.</span></div>
+            <div class="rule"><span>Compose prefixes, suffixes, and buttons with <code>.input-group</code> for compound inputs.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use placeholder text as the label.</span></div>
+            <div class="rule"><span>Signal errors with color alone — always include a message.</span></div>
+            <div class="rule"><span>Disable a field without explaining why nearby.</span></div>
+            <div class="rule"><span>Build custom input chrome — extend <code>.input</code> / <code>.input-group</code>.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1104,6 +1172,18 @@
   document.querySelectorAll('[data-panel="textarea"] .textarea').forEach(ta => {
     const out = ta.closest('.demo').querySelector('.textarea-foot span');
     ta.addEventListener('input', () => out.textContent = ta.value.length.toLocaleString() + ' characters');
+  });
+
+  /* ---- Inputs demo: clear button + password toggle ---- */
+  document.getElementById('clear-input')?.addEventListener('click', () => {
+    const i = document.getElementById('clearable'); i.value = ''; i.focus();
+  });
+  document.getElementById('pw-demo-toggle')?.addEventListener('click', () => {
+    const pw = document.getElementById('pw-demo');
+    const show = pw.type === 'password';
+    pw.type = show ? 'text' : 'password';
+    document.getElementById('pw-demo-toggle').innerHTML = '<i data-lucide="' + (show ? 'eye-off' : 'eye') + '" class="icon--sm"></i>';
+    lucide.createIcons();
   });
 </script>
 </body>

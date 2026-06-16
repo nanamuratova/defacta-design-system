@@ -49,6 +49,15 @@ h3, .h3 {
 .body-lg { font-size: var(--text-body-lg); line-height: var(--leading-relaxed); }
 .body    { font-size: var(--text-body);    line-height: var(--leading-normal); }
 .text-sm { font-size: var(--text-sm);      line-height: var(--leading-normal); }
+.text-xs { font-size: var(--text-xs);      line-height: var(--leading-normal); }
+
+/* Mono data — IDs, timestamps, hex, counts (not for body copy) */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: var(--leading-normal);
+  letter-spacing: 0.02em;
+}
 
 .text-secondary { color: var(--text-secondary); }
 .text-muted     { color: var(--text-muted); }

@@ -118,6 +118,10 @@ Defacta is a verification tool for **high-stakes information**. The aesthetic is
 - **Soft, low shadows. Soft corners** (radius 8–16). No heavy drop shadows, no gradients
   except the one brand gradient, no bright fills.
 - **The mono uppercase `.label`** is the signature touch — use it for eyebrows and field labels.
+- **Type scale** (Inter unless noted; classes in `base.css`, never raw `font-size`): `.display` 56 ·
+  `h1` 40 · `h2` 24 · `h3` 20 · `.body-lg` 20 · `.body` 16 · `.text-sm` 14 · `.text-xs` 12 ·
+  `.label` 11 (IBM Plex Mono, uppercase) · `.mono` 13 (IBM Plex Mono — IDs, timestamps, hex).
+  Mono is for labels & data only, never body copy.
 
 ## Hard "do not" list
 

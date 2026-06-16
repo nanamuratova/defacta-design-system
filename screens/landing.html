@@ -70,8 +70,8 @@
   <header class="site-header">
     <a class="brand" href="#"><img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
     <div class="cluster">
-      <a class="btn btn--secondary btn--sm" href="book-demo.html">Book a demo</a>
-      <a class="btn btn--primary btn--sm" href="workbench.html">Try free</a>
+      <a class="btn btn--secondary btn--sm" href="auth.html?mode=signin">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="auth.html?mode=signup">Sign up</a>
     </div>
   </header>
 
@@ -147,7 +147,10 @@
     </div>
     <div class="container">
       <div class="preview"><iframe scrolling="no" src="report.html" loading="lazy" tabindex="-1" title="Verification report preview"></iframe></div>
-      <div style="text-align:center;margin-top:var(--space-300)"><a class="btn btn--secondary" href="report.html">View sample report <i data-lucide="arrow-right" class="icon--sm"></i></a></div>
+      <div class="cluster" style="justify-content:center; margin-top:var(--space-300)">
+        <a class="btn btn--primary" href="report.html">View sample report <i data-lucide="arrow-right" class="icon--sm"></i></a>
+        <a class="btn btn--secondary" href="workbench.html">Try demo</a>
+      </div>
     </div>
   </section>
 
@@ -184,7 +187,7 @@
   </section>
 
   <!-- ── CTA (dark) ─────────────────────────────────────────────────── -->
-  <section class="section section--ink" style="text-align:center">
+  <section class="section section--ink" style="text-align:center; padding-bottom: var(--space-300)">
     <div class="container content">
       <span class="label">Try Defacta</span>
       <h2 class="display" style="margin:var(--space-150) 0">Start <em>verifying</em> today</h2>
@@ -199,7 +202,7 @@
 
   <footer class="site-footer">
     <span>© 2026 Defacta — Evidence, transparent by default.</span>
-    <span class="cluster" style="gap:var(--space-300)"><a class="link" href="#">Privacy</a><a class="link" href="#">Terms</a><a class="link" href="#">Contact</a></span>
+    <span class="cluster" style="gap:var(--space-300)"><a class="link" href="#">Privacy</a><a class="link" href="#">Terms</a></span>
   </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>

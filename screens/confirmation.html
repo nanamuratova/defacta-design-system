@@ -8,12 +8,12 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#">
+    <a class="brand" href="landing.html">
       <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo">
     </a>
     <div class="cluster">
-      <button class="btn btn--secondary btn--sm">Book a demo</button>
-      <button class="btn btn--primary btn--sm">Try free</button>
+      <a class="btn btn--secondary btn--sm" href="auth.html?mode=signin">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="auth.html?mode=signup">Sign up</a>
     </div>
   </header>
   <main class="section" style="text-align:center">
@@ -40,6 +40,13 @@
   </div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script>lucide.createIcons();</script>
+  <script>
+    lucide.createIcons();
+    // close (X / Got it / backdrop) → back to the landing page
+    function closeModal() { location.href = 'landing.html'; }
+    document.querySelector('.modal__close').addEventListener('click', closeModal);
+    document.querySelector('.modal__footer .btn--primary').addEventListener('click', closeModal);
+    document.querySelector('.modal').addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeModal(); });
+  </script>
 </body>
 </html>

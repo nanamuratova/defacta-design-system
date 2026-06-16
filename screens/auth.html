@@ -9,12 +9,12 @@
 <body>
   <!-- Dimmed marketing backdrop -->
   <header class="site-header">
-    <a class="brand" href="#">
+    <a class="brand" href="landing.html">
       <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo">
     </a>
     <div class="cluster">
-      <button class="btn btn--secondary btn--sm">Book a demo</button>
-      <button class="btn btn--primary btn--sm">Try free</button>
+      <a class="btn btn--secondary btn--sm" href="auth.html?mode=signin">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="auth.html?mode=signup">Sign up</a>
     </div>
   </header>
   <main class="section" style="text-align:center">
@@ -80,17 +80,26 @@
       document.getElementById('pw-toggle').innerHTML = `<i data-lucide="${show ? 'eye-off' : 'eye'}" class="icon--sm"></i>`;
       lucide.createIcons();
     });
-    // toggle create-account / sign-in
-    let creating = true;
-    document.getElementById('auth-switch').addEventListener('click', (e) => {
-      e.preventDefault();
-      creating = !creating;
+    // create-account / sign-in mode — driven by ?mode=signin|signup
+    let creating = new URLSearchParams(location.search).get('mode') !== 'signin';
+    function applyMode() {
       document.getElementById('auth-title').textContent = creating ? 'Create new account' : 'Welcome back';
       document.getElementById('auth-sub').textContent   = creating ? 'Set the record straight.' : 'Sign in to continue verifying.';
       document.getElementById('auth-submit').textContent = creating ? 'Create account' : 'Sign in';
       document.getElementById('auth-switch-text').textContent = creating ? 'Already have an account?' : 'New to Defacta?';
       document.getElementById('auth-switch').textContent = creating ? 'Sign in' : 'Create account';
-    });
+    }
+    applyMode();
+    document.getElementById('auth-switch').addEventListener('click', (e) => { e.preventDefault(); creating = !creating; applyMode(); });
+
+    // submit lands the user in the demo console
+    document.getElementById('auth-submit').addEventListener('click', () => { location.href = 'workbench.html'; });
+    document.querySelector('.btn--provider').addEventListener('click', () => { location.href = 'workbench.html'; });
+
+    // close → back to the landing page
+    function closeModal() { if (history.length > 1) history.back(); else location.href = 'landing.html'; }
+    document.querySelector('.modal__close').addEventListener('click', closeModal);
+    document.querySelector('.modal').addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeModal(); });
   </script>
 </body>
 </html>

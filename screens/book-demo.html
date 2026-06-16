@@ -23,12 +23,12 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#">
+    <a class="brand" href="landing.html">
       <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo">
     </a>
     <div class="cluster">
-      <button class="btn btn--secondary btn--sm">Book a demo</button>
-      <button class="btn btn--primary btn--sm">Try free</button>
+      <a class="btn btn--secondary btn--sm" href="auth.html?mode=signin">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="auth.html?mode=signup">Sign up</a>
     </div>
   </header>
 
@@ -100,6 +100,13 @@
     document.querySelectorAll('.cal__day:not(.is-muted)').forEach(d => d.addEventListener('click', () => {
       document.querySelectorAll('.cal__day').forEach(x => x.classList.remove('is-selected')); d.classList.add('is-selected');
     }));
+
+    // close (X / Cancel / backdrop) → back to landing; Schedule → confirmation
+    function closeModal() { if (history.length > 1) history.back(); else location.href = 'landing.html'; }
+    document.querySelector('.modal__close').addEventListener('click', closeModal);
+    document.querySelector('.modal__footer .btn--secondary').addEventListener('click', closeModal);
+    document.querySelector('.modal').addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeModal(); });
+    document.querySelector('.modal__footer .btn--primary').addEventListener('click', () => { location.href = 'confirmation.html'; });
   </script>
 </body>
 </html>

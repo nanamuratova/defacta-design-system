@@ -5,7 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Defacta — Verification Workbench</title>
   <link rel="stylesheet" href="../styles.css">
-  <style> body { background: var(--surface-paper); } </style>
+  <style>
+    body { background: var(--surface-paper); }
+    /* console workflow layout */
+    .wb-mode { margin-bottom: var(--space-150); }
+    .wb-mode-desc { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-300); }
+
+    .wb-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: var(--space-300); align-items: start; transition: grid-template-columns 0.2s ease; }
+    .wb-grid.is-collapsed { grid-template-columns: minmax(0,1fr) 60px; }
+
+    /* content card */
+    .wb-content { padding: var(--space-300); }
+    .wb-content__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-bottom: var(--space-200); }
+    .wb-content .textarea { min-height: 380px; resize: vertical; }
+    .wb-content__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-200); }
+    .wb-hint { display: inline-flex; align-items: center; gap: var(--space-100); font-size: var(--text-sm); color: var(--text-muted); }
+    .wb-hint .wb-count { color: var(--text-muted); margin-left: var(--space-100); }
+    .toggle-group svg { width: 14px; height: 14px; }
+
+    /* settings panel */
+    .wb-settings { padding: 0; overflow: hidden; }
+    .wb-settings__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); width: 100%; padding: var(--space-300); background: var(--canvas); border: 0; cursor: pointer; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+    .wb-settings__title { display: block; font-weight: var(--weight-medium); }
+    .wb-settings__sub { display: block; font-size: var(--text-sm); color: var(--text-secondary); margin-top: 2px; }
+    .wb-settings__chevron { color: var(--text-muted); flex-shrink: 0; }
+    .wb-settings__body { padding: var(--space-300); display: flex; flex-direction: column; }
+
+    .wb-sec { border-top: 1px solid var(--border-subtle); padding: var(--space-300) 0; }
+    .wb-sec:first-child { border-top: 0; padding-top: 0; }
+    .wb-sec:last-child { padding-bottom: 0; }
+    .wb-sec > .label { display: block; margin-bottom: var(--space-200); }
+    .wb-checks { display: flex; flex-direction: column; gap: var(--space-200); margin-top: var(--space-200); }
+    .wb-checks .checkbox { width: 100%; align-items: center; }
+    .wb-checks .checkbox__title { font-weight: var(--weight-regular); }
+    .wb-checks .tag { margin-left: auto; }
+    .wb-settings .toggle-group { display: flex; width: 100%; margin-top: var(--space-150); }
+    .wb-settings .toggle-group button { flex: 1; }
+    .wb-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-200); }
+    .wb-row .switch__label { font-size: var(--text-sm); color: var(--text-primary); }
+
+    /* collapsed rail */
+    .wb-settings__rail { display: none; flex-direction: column; align-items: center; gap: var(--space-200); width: 100%; padding: var(--space-200) 0; background: var(--canvas); border: 0; cursor: pointer; color: var(--text-secondary); }
+    .wb-settings__rail .icon--gear { color: var(--color-accent-blue); }
+    .wb-settings__railtxt { writing-mode: vertical-rl; font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; }
+    .wb-settings__railsub { writing-mode: vertical-rl; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted); letter-spacing: 0.04em; }
+    .wb-grid.is-collapsed .wb-settings__head, .wb-grid.is-collapsed .wb-settings__body { display: none; }
+    .wb-grid.is-collapsed .wb-settings__rail { display: flex; }
+
+    .wb-actions { display: flex; justify-content: flex-end; gap: var(--space-150); margin-top: var(--space-300); }
+
+    @media (max-width: 860px) {
+      .wb-grid, .wb-grid.is-collapsed { grid-template-columns: 1fr; }
+      .wb-settings__railtxt, .wb-settings__railsub { writing-mode: horizontal-tb; }
+    }
+  </style>
 </head>
 <body>
   <!-- ── Header (demo · not signed in) ──────────────────────────────── -->
@@ -19,7 +72,7 @@
     </div>
   </header>
 
-  <!-- ── Workbench ──────────────────────────────────────────────────── -->
+  <!-- ── Workbench (demo) ───────────────────────────────────────────── -->
   <main class="container workbench">
     <div class="content">
       <nav class="breadcrumbs" style="margin-bottom: var(--space-300)">
@@ -27,60 +80,104 @@
         <span class="breadcrumbs__sep"><i data-lucide="chevron-right"></i></span>
         <span aria-current="page">Demo console</span>
       </nav>
+
       <div class="workbench__head">
         <span class="label">Verification workbench</span>
-        <h1>What do you want to verify?</h1>
+        <h1>What do you want to check?</h1>
         <p class="body-lg text-secondary">Paste an article, an AI answer, or your own draft. Defacta reads it and shows you what holds up — and what doesn't.</p>
       </div>
 
       <!-- Analysis mode -->
-      <p class="text-secondary" style="margin-bottom: var(--space-150)">Choose analysis mode</p>
-      <div class="grid grid--2" style="margin-bottom: var(--space-300)">
-        <label class="option-card">
-          <input type="radio" name="mode" checked>
-          <span class="option-card__title">Check my text</span>
-          <span class="option-card__desc">Your own writing — Defacta returns inline editing suggestions and sourcing fixes.</span>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="mode">
-          <span class="option-card__title">Check someone else's</span>
-          <span class="option-card__desc">Someone else's text — Defacta returns a trust check on claims, citations and risk signals.</span>
-        </label>
+      <div class="toggle-group wb-mode" id="mode-toggle">
+        <button class="is-active" data-mode="mine">Check my text</button>
+        <button data-mode="other">Check someone else's</button>
       </div>
+      <p class="wb-mode-desc" id="mode-desc">Your own writing — Defacta returns inline editing suggestions and sourcing fixes.</p>
 
-      <!-- Advanced settings (collapsible) -->
-      <details class="accordion" style="margin-bottom: var(--space-300)">
-        <summary class="accordion__trigger">
-          <i data-lucide="settings" class="icon--sm icon--muted"></i>
-          <span class="accordion__title">Advanced settings</span>
-          <span class="accordion__meta" id="adv-meta">2 of 4 enabled</span>
-          <i data-lucide="chevron-down" class="accordion__chevron"></i>
-        </summary>
-        <div class="accordion__panel">
-          <label class="checkbox"><input type="checkbox" class="adv" checked><span class="checkbox__box"></span>
-            <span class="checkbox__label"><span class="checkbox__title">Key claim verification</span><span class="checkbox__desc">Identify and verify the highest-impact factual claims.</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="adv" checked><span class="checkbox__box"></span>
-            <span class="checkbox__label"><span class="checkbox__title">Bias &amp; framing analysis</span><span class="checkbox__desc">Surface loaded language, framing choices, and emphasis patterns.</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="adv"><span class="checkbox__box"></span>
-            <span class="checkbox__label"><span class="checkbox__title">Deception detection</span><span class="checkbox__desc">Flag stylistic signals of evasion, hedging, or misdirection.</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="adv"><span class="checkbox__box"></span>
-            <span class="checkbox__label"><span class="checkbox__title">Manipulation check</span><span class="checkbox__desc">Detect persuasive techniques and emotionally coercive language.</span></span></label>
+      <!-- Two-column: content + settings -->
+      <div class="wb-grid" id="wb-grid">
+        <!-- Content -->
+        <div class="card wb-content">
+          <div class="wb-content__head">
+            <span class="label">Content to verify</span>
+            <div class="toggle-group" id="input-toggle">
+              <button class="is-active" data-input="text"><i data-lucide="type"></i> Text</button>
+              <button data-input="url"><i data-lucide="link-2"></i> URL</button>
+            </div>
+          </div>
+          <textarea class="textarea" id="content" placeholder="Paste the text you want checked — an article, an AI answer, or your own draft."></textarea>
+          <div class="wb-content__foot">
+            <span class="wb-hint"><i data-lucide="info" class="icon--sm"></i> <span id="hint">Paste content to begin</span> <span class="wb-count" id="charcount">0 / 50,000</span></span>
+            <span class="link-action" id="use-sample">Use sample</span>
+          </div>
         </div>
-      </details>
 
-      <!-- Input -->
-      <div class="field-head">
-        <span class="label">Paste a link or text</span>
-        <span class="link-action" id="use-sample"><i data-lucide="file-text" class="icon--sm"></i> Use sample</span>
-      </div>
-      <textarea class="textarea" id="content" style="min-height: 200px" placeholder="Paste any text, AI output, or a URL (https://…) to verify."></textarea>
-      <div class="textarea-foot">
-        <span id="charcount">0 characters</span>
-        <span>Max. 50,000 characters</span>
+        <!-- Settings -->
+        <aside class="card wb-settings">
+          <button class="wb-settings__rail" id="settings-expand" aria-label="Open settings">
+            <i data-lucide="settings" class="icon--gear"></i>
+            <span class="wb-settings__railtxt">Settings</span>
+            <span class="wb-settings__railsub">Auto · Quick</span>
+          </button>
+
+          <button class="wb-settings__head" id="settings-collapse">
+            <span><span class="wb-settings__title">Verification settings</span><span class="wb-settings__sub">Auto · Quick</span></span>
+            <i data-lucide="chevron-right" class="wb-settings__chevron"></i>
+          </button>
+
+          <div class="wb-settings__body">
+            <!-- Checks -->
+            <div class="wb-sec">
+              <span class="label">Checks</span>
+              <label class="switch switch--between">
+                <span class="switch__label">Auto<span class="switch__desc">Defacta picks the right checks</span></span>
+                <span style="display:inline-flex"><input type="checkbox" id="auto-checks" checked><span class="switch__track"></span></span>
+              </label>
+              <div class="wb-checks">
+                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Manipulation</span></span></label>
+                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias</span></span></label>
+                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Lie detection</span></span></label>
+                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claims / facts</span></span></label>
+                <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">LLM output check</span></span><span class="tag tag--neutral">for AI answers</span></label>
+              </div>
+            </div>
+
+            <!-- Depth -->
+            <div class="wb-sec">
+              <span class="label">Depth</span>
+              <div class="toggle-group" id="depth-toggle">
+                <button class="is-active">Quick check</button>
+                <button>In-depth</button>
+              </div>
+            </div>
+
+            <!-- Report -->
+            <div class="wb-sec">
+              <span class="label">Report</span>
+              <div class="toggle-group" id="report-toggle">
+                <button>Short</button>
+                <button class="is-active">Detailed</button>
+              </div>
+              <label class="switch switch--between wb-row">
+                <span class="switch__label">Editable report</span>
+                <span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span>
+              </label>
+            </div>
+
+            <!-- Preferences -->
+            <div class="wb-sec">
+              <span class="label">Preferences</span>
+              <div class="wb-row">
+                <span class="switch__label">Report language</span>
+                <div class="select"><select><option>English</option><option>Spanish</option><option>French</option><option>German</option><option>Ukrainian</option></select></div>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
 
       <!-- Actions -->
-      <div class="cluster" style="justify-content: flex-end; margin-top: var(--space-300)">
+      <div class="wb-actions">
         <button class="btn btn--secondary" id="clear">Clear</button>
         <button class="btn btn--primary" id="run">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
       </div>
@@ -95,20 +192,50 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
+
+    // generic segmented toggles
+    document.querySelectorAll('.toggle-group').forEach(g => {
+      g.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+        g.querySelectorAll('button').forEach(x => x.classList.remove('is-active'));
+        b.classList.add('is-active');
+      }));
+    });
+
     const ta = document.getElementById('content');
-    const cc = document.getElementById('charcount');
+    const hint = document.getElementById('hint');
+    const count = document.getElementById('charcount');
     const sample = `In a recent statement, the World Health Organization announced that global vaccination coverage reached 92% in 2024, marking the highest figure on record. The report cites unpublished internal data showing that childhood mortality has dropped by 47% since 2019, a decline researchers attribute almost entirely to a new mRNA-based malaria vaccine deployed across Sub-Saharan Africa. Independent experts have universally praised the rollout, calling it "the most consequential public health intervention of the decade."`;
-    const fmt = n => n.toLocaleString() + (n === 1 ? ' character' : ' characters');
-    const sync = () => cc.textContent = fmt(ta.value.length);
+    const sync = () => {
+      const n = ta.value.length;
+      count.textContent = n.toLocaleString() + ' / 50,000';
+      hint.textContent = n ? 'Ready to verify' : 'Paste content to begin';
+    };
     ta.addEventListener('input', sync);
     document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; sync(); });
     document.getElementById('clear').addEventListener('click', () => { ta.value = ''; sync(); });
-    // advanced-settings counter
-    const advs = [...document.querySelectorAll('.adv')];
-    const meta = document.getElementById('adv-meta');
-    const syncAdv = () => meta.textContent = advs.filter(a => a.checked).length + ' of ' + advs.length + ' enabled';
-    advs.forEach(a => a.addEventListener('change', syncAdv));
-    // run verification → the structured report
+
+    // mode description
+    const modeDesc = {
+      mine: 'Your own writing — Defacta returns inline editing suggestions and sourcing fixes.',
+      other: "Someone else's text — Defacta returns a trust check on claims, citations and risk signals."
+    };
+    document.querySelectorAll('#mode-toggle button').forEach(b =>
+      b.addEventListener('click', () => { document.getElementById('mode-desc').textContent = modeDesc[b.dataset.mode]; }));
+
+    // input type placeholder
+    const placeholders = {
+      text: 'Paste the text you want checked — an article, an AI answer, or your own draft.',
+      url: 'Paste a URL (https://…) to fetch and verify.'
+    };
+    document.querySelectorAll('#input-toggle button').forEach(b =>
+      b.addEventListener('click', () => { ta.placeholder = placeholders[b.dataset.input]; }));
+
+    // collapse / expand settings
+    const grid = document.getElementById('wb-grid');
+    document.getElementById('settings-collapse').addEventListener('click', () => grid.classList.add('is-collapsed'));
+    document.getElementById('settings-expand').addEventListener('click', () => grid.classList.remove('is-collapsed'));
+
+    // run verification → report
     document.getElementById('run').addEventListener('click', () => { location.href = 'report.html'; });
   </script>
 </body>

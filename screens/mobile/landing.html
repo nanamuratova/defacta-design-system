@@ -13,9 +13,9 @@
     .container { max-width: none; padding-inline: var(--space-200); }
 
     /* pricing carousel (swipeable) */
-    .price-carousel { display: flex; gap: var(--space-200); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(var(--space-200) * -1); padding: var(--space-050) var(--space-200) var(--space-200); }
+    .price-carousel { display: flex; gap: var(--space-200); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: var(--space-050) 0 var(--space-150); }
     .price-carousel::-webkit-scrollbar { display: none; }
-    .price-carousel .price { flex: 0 0 80%; scroll-snap-align: start; }
+    .price-carousel .price { flex: 0 0 85%; scroll-snap-align: start; }
 
     /* hero background gradient — matches desktop */
     .bg-blur { background: var(--paper) url("../../assets/hero-bg.svg") center top / cover no-repeat; }
@@ -186,11 +186,13 @@
           <span class="price__cta">Contact sales <i data-lucide="arrow-right" class="icon--sm"></i></span>
         </a>
       </div>
-    </section>
-
-    <!-- ── Final CTA ────────────────────────────────────────────────── -->
-    <section class="container" style="padding-block: var(--space-500) var(--space-300)">
-      <a class="btn btn--primary btn--lg" href="workbench.html" style="width:100%">Try Defacta free <i data-lucide="arrow-right" class="icon--sm"></i></a>
+      <div class="carousel__dots" id="price-dots">
+        <button class="carousel__dot is-active" aria-label="Free"></button>
+        <button class="carousel__dot" aria-label="Starter"></button>
+        <button class="carousel__dot" aria-label="Pro"></button>
+        <button class="carousel__dot" aria-label="Student"></button>
+        <button class="carousel__dot" aria-label="Enterprise"></button>
+      </div>
     </section>
 
     <!-- ── Compact footer ───────────────────────────────────────────── -->
@@ -208,9 +210,15 @@
         </div>
         <div>
           <span class="col-title">Legal</span>
-          <a href="#">Privacy policy</a>
-          <a href="#">Terms of service</a>
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Terms of service</a>
           <a href="#">Acceptable use</a>
+        </div>
+        <div>
+          <span class="col-title">Contact</span>
+          <a href="mailto:hello@defacta.pro">hello@defacta.pro</a>
+          <a href="mailto:support@defacta.pro">support@defacta.pro</a>
+          <a href="mailto:legal@defacta.pro">legal@defacta.pro</a>
         </div>
       </div>
       <div class="lp-footer__bar">© 2026 Defacta Inc. · Informational and consultative purposes only.</div>
@@ -218,6 +226,18 @@
   </div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script>lucide.createIcons();</script>
+  <script>
+    lucide.createIcons();
+    // pricing carousel pagination
+    const car = document.querySelector('.price-carousel');
+    const dots = [...document.querySelectorAll('#price-dots .carousel__dot')];
+    const cards = [...car.querySelectorAll('.price')];
+    const step = () => cards[0].offsetWidth + 16;
+    car.addEventListener('scroll', () => {
+      const i = Math.min(dots.length - 1, Math.round(car.scrollLeft / step()));
+      dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
+    });
+    dots.forEach((d, i) => d.addEventListener('click', () => car.scrollTo({ left: step() * i, behavior: 'smooth' })));
+  </script>
 </body>
 </html>

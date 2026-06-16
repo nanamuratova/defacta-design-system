@@ -96,13 +96,14 @@
                 <div class="stack" style="gap: var(--space-200)">
                   <div class="field"><label class="label" for="cur">Current password</label><input class="input" id="cur" type="password" placeholder="••••••••"></div>
                   <div class="field"><label class="label" for="new">New password</label><input class="input" id="new" type="password" placeholder="At least 8 characters"></div>
-                  <div><button class="btn btn--primary">Update password</button></div>
+                  <div style="display:flex; justify-content:flex-end"><button class="btn btn--primary">Update password</button></div>
                 </div>
               </div>
               <!-- Two-factor authentication card -->
               <div class="card acct-card">
+                <div class="card__title">Two-factor authentication</div>
                 <label class="switch switch--between">
-                  <span class="switch__label">Two-factor authentication<span class="switch__desc">Require a code at sign-in.</span></span>
+                  <span class="switch__label">Enable two-factor authentication<span class="switch__desc">Require a code at sign-in.</span></span>
                   <span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span>
                 </label>
               </div>

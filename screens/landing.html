@@ -49,7 +49,7 @@
 
     /* pricing */
     .pricing { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-200); margin-top: var(--space-500); align-items: stretch; text-align: left; }
-    .price { display: flex; flex-direction: column; gap: var(--space-200); }
+    .price { display: flex; flex-direction: column; gap: var(--space-200); text-decoration: none; color: inherit; }
     .price--featured { border-color: var(--color-accent-blue); box-shadow: var(--shadow-md); }
     .price__name { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-secondary); }
     .price__amt { font-size: var(--text-h3); font-weight: var(--weight-medium); line-height: 1.1; }
@@ -58,7 +58,10 @@
     .price__feats { display: flex; flex-direction: column; gap: var(--space-100); font-size: var(--text-sm); color: var(--text-secondary); }
     .price__feats > div { display: flex; gap: var(--space-100); align-items: flex-start; }
     .price__feats .icon { color: var(--color-accent-blue); margin-top: 2px; flex-shrink: 0; }
-    .price .btn { margin-top: auto; }
+    .price__cta { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-100); font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-primary); }
+    .price__cta svg { transition: transform 0.15s ease; }
+    .price.card--interactive:hover .price__cta svg { transform: translateX(3px); }
+    .price--featured .price__cta { color: var(--color-accent-blue); }
 
     /* multi-column footer */
     .lp-footer { background: var(--surface-ink); color: var(--grey-400); }
@@ -175,17 +178,17 @@
         <h2 class="h1" style="margin-top:var(--space-150)">Start free. <em>Scale when ready.</em></h2>
       </div>
       <div class="pricing">
-        <article class="card price">
+        <a class="card price card--interactive" href="workbench.html">
           <div><div class="price__name">Free</div><div class="price__amt">$0</div><div class="price__per">forever</div></div>
           <div class="price__feats">
             <div><i data-lucide="check" class="icon icon--sm"></i> 5 verifications per day</div>
             <div><i data-lucide="check" class="icon icon--sm"></i> All four layers</div>
             <div><i data-lucide="check" class="icon icon--sm"></i> Public verdict URL</div>
           </div>
-          <a class="btn btn--secondary" style="width:100%" href="workbench.html">Start free</a>
-        </article>
+          <span class="price__cta">Start free <i data-lucide="arrow-right" class="icon--sm"></i></span>
+        </a>
 
-        <article class="card price">
+        <a class="card price card--interactive" href="auth.html?mode=signup">
           <div><div class="price__name">Starter</div><div class="price__amt">$9 <span>/ mo</span></div><div class="price__per">or $72 / year</div></div>
           <div class="price__feats">
             <div><i data-lucide="check" class="icon icon--sm"></i> 50 verifications per day</div>
@@ -193,10 +196,10 @@
             <div><i data-lucide="check" class="icon icon--sm"></i> Verification history</div>
             <div><i data-lucide="check" class="icon icon--sm"></i> Export reports</div>
           </div>
-          <a class="btn btn--secondary" style="width:100%" href="auth.html?mode=signup">Choose Starter</a>
-        </article>
+          <span class="price__cta">Choose Starter <i data-lucide="arrow-right" class="icon--sm"></i></span>
+        </a>
 
-        <article class="card price price--featured">
+        <a class="card price card--interactive price--featured" href="auth.html?mode=signup">
           <div><div class="price__name">Pro</div><div class="price__amt">$19 <span>/ mo</span></div><div class="price__per">or $149 / year</div></div>
           <div class="price__feats">
             <div><i data-lucide="check" class="icon icon--sm"></i> Unlimited verifications</div>
@@ -206,10 +209,10 @@
             <div><i data-lucide="check" class="icon icon--sm"></i> Analytics</div>
             <div><i data-lucide="check" class="icon icon--sm"></i> MCP integration (coming soon)</div>
           </div>
-          <a class="btn btn--primary" style="width:100%" href="auth.html?mode=signup">Choose Pro</a>
-        </article>
+          <span class="price__cta">Choose Pro <i data-lucide="arrow-right" class="icon--sm"></i></span>
+        </a>
 
-        <article class="card price">
+        <a class="card price card--interactive" href="auth.html?mode=signup">
           <div><div class="price__name">Student</div><div class="price__amt">$6 <span>/ mo</span></div><div class="price__per">or $49 / year</div></div>
           <div class="price__feats">
             <div><i data-lucide="check" class="icon icon--sm"></i> Unlimited verifications</div>
@@ -217,10 +220,10 @@
             <div><i data-lucide="check" class="icon icon--sm"></i> Academic citation check</div>
             <div><i data-lucide="check" class="icon icon--sm"></i> .edu email required</div>
           </div>
-          <a class="btn btn--secondary" style="width:100%" href="auth.html?mode=signup">Choose Student</a>
-        </article>
+          <span class="price__cta">Choose Student <i data-lucide="arrow-right" class="icon--sm"></i></span>
+        </a>
 
-        <article class="card price">
+        <a class="card price card--interactive" href="book-demo.html">
           <div><div class="price__name">Enterprise</div><div class="price__amt">Custom</div><div class="price__per">&nbsp;</div></div>
           <div class="price__feats">
             <div><i data-lucide="check" class="icon icon--sm"></i> API access</div>
@@ -229,8 +232,8 @@
             <div><i data-lucide="check" class="icon icon--sm"></i> Dedicated audit trail</div>
             <div><i data-lucide="check" class="icon icon--sm"></i> SLA and support</div>
           </div>
-          <a class="btn btn--secondary" style="width:100%" href="book-demo.html">Contact sales</a>
-        </article>
+          <span class="price__cta">Contact sales <i data-lucide="arrow-right" class="icon--sm"></i></span>
+        </a>
       </div>
     </div>
   </section>

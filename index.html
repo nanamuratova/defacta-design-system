@@ -1396,48 +1396,168 @@
 
     <!-- CAROUSEL -->
     <section class="panel" data-panel="carousel" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Carousel</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Carousel</h1>
+        <p class="lead-desc">A horizontal slider for browsing a set of cards — recent reports, feature highlights, onboarding steps. Prev/next buttons and dots indicate position; one slide is shown at a time.</p>
+      </div>
+
+      <p class="sub label">Card carousel</p>
       <div class="demo demo--block">
-        <div class="carousel" style="max-width:640px;margin-inline:auto">
+        <div class="carousel" style="max-width:680px;margin-inline:auto">
           <div class="carousel__viewport"><div class="carousel__track">
-            <div class="carousel__slide"><div class="card card--soft" style="height:200px;display:flex;align-items:center;justify-content:center"><h2 class="h1">01</h2></div></div>
-            <div class="carousel__slide"><div class="card card--soft" style="height:200px;display:flex;align-items:center;justify-content:center"><h2 class="h1">02</h2></div></div>
-            <div class="carousel__slide"><div class="card card--soft" style="height:200px;display:flex;align-items:center;justify-content:center"><h2 class="h1">03</h2></div></div>
+            <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="justify-content:space-between; margin-bottom:var(--space-150)"><span class="status-badge status-badge--flagged"><i></i>Flagged</span><span class="tag tag--mono risk--high">High</span></div><div class="card__title">WHO vaccination statement</div><p class="card__body">3 of 4 claims flagged · 12 sources · reviewed Jun 03, 2026.</p></div></div>
+            <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="justify-content:space-between; margin-bottom:var(--space-150)"><span class="status-badge status-badge--pending"><i></i>Pending</span><span class="tag tag--mono risk--moderate">Moderate</span></div><div class="card__title">Q2 earnings draft</div><p class="card__body">2 of 11 claims flagged · investor-relations memo.</p></div></div>
+            <div class="carousel__slide"><div class="card" style="margin:var(--space-050)"><div class="cluster" style="justify-content:space-between; margin-bottom:var(--space-150)"><span class="status-badge status-badge--verified"><i></i>Verified</span><span class="tag tag--mono risk--low">Low</span></div><div class="card__title">Marketing copy — LLM draft v3</div><p class="card__body">0 of 7 claims flagged · AI output, clean.</p></div></div>
           </div></div>
           <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left" class="icon--sm"></i></button>
           <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
           <div class="carousel__dots"><button class="carousel__dot is-active"></button><button class="carousel__dot"></button><button class="carousel__dot"></button></div>
         </div>
       </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use for browsable, non-critical sets — recent reports, highlights, steps.</span></div>
+            <div class="rule"><span>Always show position (dots) and prev/next controls.</span></div>
+            <div class="rule"><span>Keep slides equal height so the frame doesn't jump.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Hide essential content inside a carousel — many users won't advance it.</span></div>
+            <div class="rule"><span>Auto-rotate without a pause control.</span></div>
+            <div class="rule"><span>Use a carousel where a simple grid or list would read better.</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- SWITCH -->
     <section class="panel" data-panel="switch" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Switch &amp; toggle</h1></div>
-      <p class="sub label">Switch</p>
-      <div class="demo">
-        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span></label>
-        <label class="switch"><input type="checkbox"><span class="switch__track"></span></label>
-        <label class="switch"><input type="checkbox" disabled><span class="switch__track"></span></label>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Switch &amp; toggle</h1>
+        <p class="lead-desc">A switch flips a single setting on or off instantly (no save needed). Three sizes, all states, optional labels, grouped lists, and a segmented toggle for choosing between a few options.</p>
       </div>
-      <p class="sub label">Segmented toggle</p>
+
+      <p class="sub label">States</p>
+      <div class="demo" style="gap:var(--space-400); align-items:center">
+        <label class="switch"><input type="checkbox"><span class="switch__track"></span><span class="switch__label">Default</span></label>
+        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__label">Checked</span></label>
+        <label class="switch" style="cursor:not-allowed"><input type="checkbox" checked disabled><span class="switch__track"></span><span class="switch__label" style="color:var(--text-muted)">Checked disabled</span></label>
+        <label class="switch" style="cursor:not-allowed"><input type="checkbox" disabled><span class="switch__track"></span><span class="switch__label" style="color:var(--text-muted)">Disabled</span></label>
+      </div>
+
+      <p class="sub label">Sizes</p>
+      <div class="demo" style="gap:var(--space-400); align-items:center">
+        <label class="switch switch--sm"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__label">Small</span></label>
+        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__label">Medium</span></label>
+        <label class="switch switch--lg"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__label">Large</span></label>
+      </div>
+
+      <p class="sub label">With &amp; without label</p>
+      <div class="demo" style="gap:var(--space-400); align-items:center">
+        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span></label>
+        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__label">Email notifications</span></label>
+      </div>
+
+      <p class="sub label">Switch group in a card (settings)</p>
+      <div class="demo demo--block">
+        <div class="card" style="max-width:480px">
+          <div class="card__title" style="margin-bottom:var(--space-100)">Notifications</div>
+          <div class="switch-group">
+            <label class="switch switch--between"><span class="switch__label">Email digests<span class="switch__desc">Weekly summary of your reports.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
+            <label class="switch switch--between"><span class="switch__label">Flag alerts<span class="switch__desc">Notify when a claim is flagged.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
+            <label class="switch switch--between"><span class="switch__label">Product updates<span class="switch__desc">Occasional news about Defacta.</span></span><span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span></label>
+          </div>
+        </div>
+      </div>
+
+      <p class="sub label">Segmented toggle (choose one)</p>
       <div class="demo">
         <div class="toggle-group"><button class="is-active">Day</button><button>Week</button><button>Month</button></div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use a switch for an instant on/off setting that applies immediately.</span></div>
+            <div class="rule"><span>Stack settings in a <code>.switch-group</code> with label + description per row.</span></div>
+            <div class="rule"><span>Use the segmented toggle to pick one of a small, fixed set of options.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use a switch for actions that need a Save button — use a checkbox.</span></div>
+            <div class="rule"><span>Use a switch for more than two states.</span></div>
+            <div class="rule"><span>Leave a switch unlabelled where its meaning isn't obvious.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- TABS -->
     <section class="panel" data-panel="tabs" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Tabs</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Tabs</h1>
+        <p class="lead-desc">Switch between peer views without leaving the page. Horizontal for top-level sections, vertical for settings-style navigation. The active tab is marked by a bar; tabs can be disabled.</p>
+      </div>
+
+      <p class="sub label">Horizontal · with states (active / default / disabled)</p>
       <div class="demo demo--block">
         <div class="tabs">
           <button class="tabs__tab is-active" data-tabtarget="t1">Overview</button>
           <button class="tabs__tab" data-tabtarget="t2">Claims</button>
           <button class="tabs__tab" data-tabtarget="t3">Sources</button>
+          <button class="tabs__tab" disabled>Audit (locked)</button>
         </div>
         <div class="tabs__panel" data-tabpanel="t1"><p class="text-secondary">Summary of the verification result.</p></div>
         <div class="tabs__panel" data-tabpanel="t2" hidden><p class="text-secondary">Per-claim verdicts and evidence.</p></div>
         <div class="tabs__panel" data-tabpanel="t3" hidden><p class="text-secondary">Cited sources and their reliability.</p></div>
+      </div>
+
+      <p class="sub label">Vertical</p>
+      <div class="demo demo--block">
+        <div class="tabs-v">
+          <div class="tabs tabs--vertical">
+            <button class="tabs__tab is-active" data-tabtarget="v1">Profile</button>
+            <button class="tabs__tab" data-tabtarget="v2">Notifications</button>
+            <button class="tabs__tab" data-tabtarget="v3">Security</button>
+            <button class="tabs__tab" disabled>Billing</button>
+          </div>
+          <div class="tabs__panel" data-tabpanel="v1"><p class="text-secondary">Name, email, and avatar.</p></div>
+          <div class="tabs__panel" data-tabpanel="v2" hidden><p class="text-secondary">Email digests and flag alerts.</p></div>
+          <div class="tabs__panel" data-tabpanel="v3" hidden><p class="text-secondary">Password, sessions, and 2FA.</p></div>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use tabs for peer views of the same object; keep labels to one or two words.</span></div>
+            <div class="rule"><span>Horizontal for content sections; vertical for settings / long lists.</span></div>
+            <div class="rule"><span>Always keep one tab active; disable (don't hide) tabs that are unavailable.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use tabs for a sequential flow — use steps instead.</span></div>
+            <div class="rule"><span>Overflow with too many tabs; consider a menu or vertical layout.</span></div>
+            <div class="rule"><span>Swap a tab's content for an unrelated view.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1513,24 +1633,59 @@
 
     <!-- CARDS -->
     <section class="panel" data-panel="cards" hidden>
-      <div class="panel__head"><span class="label">Layout</span><h1>Cards</h1></div>
+      <div class="panel__head">
+        <span class="label">Layout</span>
+        <h1>Cards</h1>
+        <p class="lead-desc">The workhorse container. Three surface variants, interactive states for clickable cards, stat cards, and an action card — all on the same <code>.card</code> base.</p>
+      </div>
+
       <p class="sub label">Variants</p>
       <div class="grid grid--3">
         <div class="card"><div class="card__title">Bordered</div><p class="card__body">Default surface with a hairline border. The workhorse container.</p></div>
         <div class="card card--elevated"><div class="card__title">Elevated</div><p class="card__body">Soft shadow, no border — lifts off the page.</p></div>
         <div class="card card--soft"><div class="card__title">Soft</div><p class="card__body">Paper fill, no border. Quiet grouping inside a section.</p></div>
       </div>
+
+      <p class="sub label">States — default / hover / active / disabled</p>
+      <div class="grid grid--4">
+        <div class="card"><div class="card__title">Default</div><p class="card__body">A static container.</p></div>
+        <div class="card card--interactive"><div class="card__title">Interactive</div><p class="card__body">Hover &amp; press me — for clickable cards.</p></div>
+        <div class="card card--interactive" style="border-color:var(--border-strong); box-shadow:var(--shadow-sm)"><div class="card__title">Hover (shown)</div><p class="card__body">The hover treatment, frozen for reference.</p></div>
+        <div class="card is-disabled"><div class="card__title">Disabled</div><p class="card__body">Dimmed and non-interactive.</p></div>
+      </div>
+
       <p class="sub label">Stat cards</p>
       <div class="grid grid--3">
         <div class="card stat-card"><span class="label">Align. assessment</span><div class="stat-card__value">62 <small>/100</small></div><div class="stat-card__sub">Confidence: 75%</div></div>
         <div class="card stat-card"><span class="label">Overall risk</span><div><span class="tag tag--mono risk--high">High</span></div><div class="stat-card__sub" style="margin-top:var(--space-150)">Based on evidence weight.</div></div>
         <div class="card stat-card"><span class="label">Status</span><div><span class="status-badge status-badge--flagged"><i></i>Flagged</span></div><div class="stat-card__sub" style="margin-top:var(--space-150)">3 of 4 claims flagged</div></div>
       </div>
+
       <p class="sub label">Card with action</p>
       <div class="card" style="max-width:480px">
         <div class="card__title">Export this report</div>
         <p class="card__body" style="margin-bottom:var(--space-200)">Download a PDF or copy a shareable link.</p>
         <div class="cluster"><button class="btn btn--primary btn--sm">Export PDF</button><button class="btn btn--secondary btn--sm">Copy link</button></div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use a bordered card by default; <code>--elevated</code> to lift, <code>--soft</code> to group quietly.</span></div>
+            <div class="rule"><span>Add <code>.card--interactive</code> only when the whole card is clickable.</span></div>
+            <div class="rule"><span>Keep padding and radius from tokens so cards stay consistent.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Nest cards inside cards — flatten the hierarchy instead.</span></div>
+            <div class="rule"><span>Add hover lift to a card that isn't clickable.</span></div>
+            <div class="rule"><span>Stack heavy shadows — one soft elevation is enough.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

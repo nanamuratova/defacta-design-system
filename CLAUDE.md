@@ -54,9 +54,12 @@ matters more than cleverness. Follow these rules exactly.
 | Need | Use |
 |---|---|
 | Action button | `<button class="btn btn--primary">` (also `--secondary` `--tertiary` `--ghost` `--link`) |
-| Smaller / larger button | add `btn--sm` or `btn--lg` |
-| Destructive / status button | add a tone: `btn--error` `btn--warning` `btn--success` |
-| Icon-only button | `<button class="icon-btn">` (+ `icon-btn--sm/lg`) |
+| Button sizes | `btn--xs` / `btn--sm` / (md default) / `btn--lg` / `btn--xl` |
+| Destructive / status button | add a tone: `btn--error` `btn--warning` `btn--success` (× any variant = filled/outline/soft/text) |
+| Button prefix/suffix | put `<i data-lucide>` before (prefix) or after (suffix) the label inside `.btn` |
+| Button states | `:hover`/`:active`/`:focus-visible` automatic · `disabled` · `.is-loading` (spinner) |
+| Full-width / group | `btn--block` · `.btn-group` wrapping `.btn`s |
+| Icon-only button | `<button class="icon-btn" aria-label="…">` (+ `icon-btn--xs/sm/lg/xl`) |
 | Text input | `.field` > `.label` + `.input` |
 | Long text | `.textarea` |
 | Verdict label | `.tag tag--supported/contradicted/unsupported/info/neutral` |

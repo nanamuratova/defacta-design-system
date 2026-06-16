@@ -593,7 +593,12 @@
 
     <!-- BUTTONS -->
     <section class="panel" data-panel="buttons" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Buttons</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Buttons</h1>
+        <p class="lead-desc">Buttons drive every action. One component covers five variants, five sizes, four semantic tones, and a full set of states — composed from tokens so any combination stays on-brand. Prefix/suffix icons, icon-only, loading, full-width, and grouped buttons are all supported.</p>
+      </div>
+
       <p class="sub label">Variants</p>
       <div class="demo">
         <button class="btn btn--primary">Primary</button>
@@ -602,24 +607,89 @@
         <button class="btn btn--ghost">Ghost</button>
         <button class="btn btn--link">Link</button>
       </div>
-      <p class="sub label">Sizes</p>
+
+      <p class="sub label">Sizes · xs / sm / md / lg / xl</p>
       <div class="demo">
+        <button class="btn btn--primary btn--xs">Extra small</button>
         <button class="btn btn--primary btn--sm">Small</button>
         <button class="btn btn--primary">Medium</button>
         <button class="btn btn--primary btn--lg">Large</button>
+        <button class="btn btn--primary btn--xl">Extra large</button>
       </div>
-      <p class="sub label">Tones &amp; states</p>
+
+      <p class="sub label">Prefix, suffix &amp; both</p>
       <div class="demo">
-        <button class="btn btn--primary btn--error">Delete</button>
-        <button class="btn btn--secondary btn--error">Delete</button>
-        <button class="btn btn--primary btn--success">Approve</button>
+        <button class="btn btn--primary"><i data-lucide="plus" class="icon--sm"></i> New verification</button>
+        <button class="btn btn--primary">Continue <i data-lucide="arrow-right" class="icon--sm"></i></button>
+        <button class="btn btn--secondary"><i data-lucide="filter" class="icon--sm"></i> Filters <i data-lucide="chevron-down" class="icon--sm"></i></button>
+        <button class="btn btn--secondary"><i data-lucide="download" class="icon--sm"></i> Export</button>
+      </div>
+
+      <p class="sub label">Tones — filled · outline · soft · text</p>
+      <div class="demo demo--stack" style="align-items:flex-start; gap:var(--space-150)">
+        <div class="cluster"><span class="tag tag--mono" style="background:transparent;color:var(--text-muted);width:70px">Error</span><button class="btn btn--primary btn--error">Delete</button><button class="btn btn--secondary btn--error">Delete</button><button class="btn btn--tertiary btn--error">Delete</button><button class="btn btn--ghost btn--error">Delete</button></div>
+        <div class="cluster"><span class="tag tag--mono" style="background:transparent;color:var(--text-muted);width:70px">Warning</span><button class="btn btn--primary btn--warning">Caution</button><button class="btn btn--secondary btn--warning">Caution</button><button class="btn btn--tertiary btn--warning">Caution</button><button class="btn btn--ghost btn--warning">Caution</button></div>
+        <div class="cluster"><span class="tag tag--mono" style="background:transparent;color:var(--text-muted);width:70px">Success</span><button class="btn btn--primary btn--success">Approve</button><button class="btn btn--secondary btn--success">Approve</button><button class="btn btn--tertiary btn--success">Approve</button><button class="btn btn--ghost btn--success">Approve</button></div>
+      </div>
+
+      <p class="sub label">States · default / hover / focus / disabled / loading</p>
+      <div class="demo">
+        <button class="btn btn--primary">Default</button>
+        <button class="btn btn--primary is-loading">Verifying</button>
         <button class="btn btn--primary" disabled>Disabled</button>
+        <button class="btn btn--secondary is-loading">Loading</button>
+        <button class="btn btn--secondary" disabled>Disabled</button>
       </div>
-      <p class="sub label">Icon buttons</p>
+      <p class="text-sm text-secondary" style="margin-top:var(--space-100)">Hover, active &amp; focus states are interactive — hover or tab to a button to see them.</p>
+
+      <p class="sub label">Icon-only · xs / sm / md / lg / xl</p>
       <div class="demo">
-        <button class="icon-btn icon-btn--sm" aria-label="add"><i data-lucide="plus"></i></button>
-        <button class="icon-btn" aria-label="settings"><i data-lucide="settings"></i></button>
-        <button class="icon-btn icon-btn--lg" aria-label="search"><i data-lucide="search"></i></button>
+        <button class="icon-btn icon-btn--xs" aria-label="Add"><i data-lucide="plus"></i></button>
+        <button class="icon-btn icon-btn--sm" aria-label="Add"><i data-lucide="plus"></i></button>
+        <button class="icon-btn" aria-label="Settings"><i data-lucide="settings"></i></button>
+        <button class="icon-btn icon-btn--lg" aria-label="Search"><i data-lucide="search"></i></button>
+        <button class="icon-btn icon-btn--xl" aria-label="Search"><i data-lucide="search"></i></button>
+      </div>
+
+      <p class="sub label">Full width</p>
+      <div class="demo demo--block" style="max-width:420px">
+        <button class="btn btn--primary btn--block">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
+      </div>
+
+      <p class="sub label">Button group</p>
+      <div class="demo">
+        <div class="btn-group">
+          <button class="btn btn--secondary"><i data-lucide="chevron-left" class="icon--sm"></i></button>
+          <button class="btn btn--secondary">Today</button>
+          <button class="btn btn--secondary"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn--secondary"><i data-lucide="bold" class="icon--sm"></i></button>
+          <button class="btn btn--secondary"><i data-lucide="italic" class="icon--sm"></i></button>
+          <button class="btn btn--secondary"><i data-lucide="underline" class="icon--sm"></i></button>
+        </div>
+      </div>
+
+      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>One <b>primary</b> action per view; secondary / tertiary / ghost for lower-priority actions.</span></div>
+            <div class="rule"><span>Add a <b>prefix</b> icon for clarity; a <b>suffix</b> icon for direction or disclosure (<code>chevron-down</code>).</span></div>
+            <div class="rule"><span>Use a tone (error / warning / success) only for destructive, cautionary, or confirming actions.</span></div>
+            <div class="rule"><span>Show <code>.is-loading</code> during async work; give every icon-only button an <code>aria-label</code>.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Place two primary buttons side by side competing for attention.</span></div>
+            <div class="rule"><span>Use a color tone for emphasis when the action isn't semantic.</span></div>
+            <div class="rule"><span>Resize buttons with custom CSS — use the size classes.</span></div>
+            <div class="rule"><span>Use the <code>link</code> variant for primary actions — it reads as a text link.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

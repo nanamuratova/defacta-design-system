@@ -9,15 +9,18 @@
     body { background: var(--surface-paper); }
     /* full-width mobile content with 16px side margins */
     .container { max-width: none; padding-inline: var(--space-200); }
-    .wb-mode-desc { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-300); }
+    .wb-mode-desc { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-200); }
+    .wb-head h1 { font-size: var(--text-body-xl); font-weight: var(--weight-medium); margin: var(--space-100) 0; }
+    .wb-head p { font-size: var(--text-sm); }
 
-    /* composer (Tools-style input) — full-width, stacked controls */
+    /* composer (Tools-style input) — controls on one line */
     .composer { border: 1px solid var(--border-default); border-radius: var(--radius-16); background: var(--canvas); padding: var(--space-200); transition: border-color .12s ease, box-shadow .12s ease; }
     .composer:focus-within { border-color: var(--border-strong); }
     .composer__field { position: relative; }
-    .composer__input { width: 100%; border: 0; background: transparent; resize: vertical; min-height: 220px; padding: var(--space-100); font: inherit; color: var(--text-primary); outline: none; }
+    .composer__input { width: 100%; border: 0; background: transparent; resize: vertical; min-height: 120px; padding: var(--space-100); font: inherit; font-size: var(--text-sm); color: var(--text-primary); outline: none; }
     .composer__input::placeholder { color: var(--text-muted); }
-    .composer__bar { display: flex; flex-direction: column; gap: var(--space-150); margin-top: var(--space-150); }
+    .composer__bar { display: flex; align-items: center; gap: var(--space-100); margin-top: var(--space-150); }
+    .composer__bar .btn { font-size: var(--text-sm); }
     .wb-dd__sum { color: var(--text-secondary); font-weight: var(--weight-regular); }
   </style>
 </head>
@@ -28,15 +31,15 @@
     <!-- App header -->
     <header class="mobile-header">
       <a class="brand" href="landing.html"><img src="../../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
-      <a class="icon-btn" href="account.html" aria-label="Account"><i data-lucide="user"></i></a>
+      <a class="icon-btn" href="landing.html" aria-label="Log out"><i data-lucide="log-out"></i></a>
     </header>
 
     <!-- ── Console ───────────────────────────────────────────────────── -->
     <main class="container" style="flex:1; padding-block: var(--space-300)">
-      <div style="margin-bottom: var(--space-300)">
+      <div class="wb-head" style="margin-bottom: var(--space-200)">
         <span class="label">Verification console</span>
-        <h1 class="h3" style="margin: var(--space-150) 0">What do you want to check?</h1>
-        <p class="body text-secondary">Paste text or a link — an article, an AI answer, or your own draft. Defacta reads it and shows you what holds up — and what doesn't.</p>
+        <h1>What do you want to check?</h1>
+        <p class="text-secondary">Paste text or a link — an article, an AI answer, or your own draft. Defacta shows you what holds up — and what doesn't.</p>
       </div>
 
       <!-- Analysis mode -->
@@ -53,10 +56,10 @@
           <textarea class="composer__input" id="content" placeholder="Paste text or a link (https://…) to verify."></textarea>
         </div>
         <div class="composer__bar">
-          <button class="btn btn--secondary" id="settings-btn" type="button" aria-expanded="false" style="width:100%; justify-content:center">
-            <i data-lucide="sliders-horizontal" class="icon--sm"></i> Settings <span class="wb-dd__sum" id="settings-sum">· Auto · Quick</span> <i data-lucide="chevron-down" class="icon--sm"></i>
+          <button class="btn btn--secondary btn--sm" id="settings-btn" type="button" aria-expanded="false" style="flex:1; justify-content:flex-start">
+            <i data-lucide="sliders-horizontal" class="icon--sm"></i> Settings <span class="wb-dd__sum" id="settings-sum">· Auto · Quick</span> <i data-lucide="chevron-down" class="icon--sm" style="margin-left:auto"></i>
           </button>
-          <button class="btn btn--secondary" id="use-sample" type="button" style="width:100%; justify-content:center"><i data-lucide="file-text" class="icon--sm"></i> Use sample</button>
+          <button class="icon-btn icon-btn--sm" id="use-sample" type="button" aria-label="Use sample" title="Use sample"><i data-lucide="file-text"></i></button>
         </div>
       </div>
 
@@ -83,12 +86,12 @@
       </div>
 
       <!-- Run -->
-      <button class="btn btn--primary" id="run" style="width:100%; margin-top: var(--space-300)">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
+      <button class="btn btn--primary" id="run" style="width:100%; margin-top: var(--space-200)">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
     </main>
 
     <!-- ── Bottom navigation ─────────────────────────────────────────── -->
     <nav class="bottom-nav" style="position:sticky; bottom:0">
-      <a class="bottom-nav__item is-active" href="workbench.html"><i data-lucide="scan-eye"></i>Verify</a>
+      <a class="bottom-nav__item is-active" href="workbench.html"><i data-lucide="plus"></i>Verify</a>
       <a class="bottom-nav__item" href="history.html"><i data-lucide="history"></i>History</a>
       <a class="bottom-nav__item" href="account.html"><i data-lucide="user"></i>Account</a>
     </nav>

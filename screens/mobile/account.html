@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — Account</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    body { background: var(--surface-paper); }
+    .container { max-width: none; padding-inline: var(--space-200); }
+    .acct-card { display: block; }
+    .acct-card .card__title { font-size: var(--text-body-lg); font-weight: var(--weight-medium); margin-bottom: var(--space-150); }
+    .avatar { width: 48px; height: 48px; border-radius: var(--radius-full); background: var(--grey-950); color: var(--canvas); display: inline-flex; align-items: center; justify-content: center; font-weight: var(--weight-medium); flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <!-- ── Centered phone-width column ─────────────────────────────────── -->
+  <div style="max-width:430px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
+
+    <!-- App header -->
+    <header class="mobile-header">
+      <a class="brand" href="landing.html"><img src="../../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+      <a class="icon-btn" href="landing.html" aria-label="Log out"><i data-lucide="log-out"></i></a>
+    </header>
+
+    <!-- ── Account ───────────────────────────────────────────────────── -->
+    <main class="container" style="flex:1; padding-block: var(--space-300)">
+      <div style="margin-bottom: var(--space-300)">
+        <span class="label">Account</span>
+        <h1 class="h3" style="margin-top: var(--space-100)">Settings</h1>
+      </div>
+
+      <div class="stack" style="gap: var(--space-200)">
+        <!-- Profile -->
+        <div class="card acct-card">
+          <div class="card__title">Profile</div>
+          <div class="stack" style="gap: var(--space-200)">
+            <div class="field"><label class="label" for="name">Full name</label><input class="input" id="name" value="Nana Muratova"></div>
+            <div class="field"><label class="label" for="email">Email</label><input class="input" id="email" type="email" value="nana@defacta.pro"></div>
+            <button class="btn btn--primary" style="width:100%">Save changes</button>
+          </div>
+        </div>
+
+        <!-- Plan & billing -->
+        <div class="card acct-card">
+          <div class="cluster" style="justify-content: space-between; align-items: flex-start">
+            <div>
+              <span class="label">Current plan</span>
+              <div style="font-size: var(--text-body-xl); font-weight: var(--weight-medium); margin-top: var(--space-050)">Pro</div>
+              <p class="text-sm text-secondary" style="margin-top: 2px">$19 / month · renews Jul 17, 2026</p>
+            </div>
+            <span class="status-badge status-badge--verified"><i></i>Active</span>
+          </div>
+          <div class="stack" style="gap: var(--space-150); margin-top: var(--space-300)">
+            <a class="btn btn--secondary" style="width:100%" href="landing.html#pricing">Change plan</a>
+            <button class="btn btn--secondary" style="width:100%">Manage billing</button>
+          </div>
+        </div>
+
+        <!-- Change password -->
+        <div class="card acct-card">
+          <div class="card__title">Change password</div>
+          <div class="stack" style="gap: var(--space-200)">
+            <div class="field"><label class="label" for="cur">Current password</label><input class="input" id="cur" type="password" placeholder="••••••••"></div>
+            <div class="field"><label class="label" for="new">New password</label><input class="input" id="new" type="password" placeholder="At least 8 characters"></div>
+            <button class="btn btn--primary" id="pw-update" style="width:100%">Update password</button>
+          </div>
+        </div>
+
+        <!-- Two-factor authentication -->
+        <div class="card acct-card">
+          <div class="card__title">Two-factor authentication</div>
+          <label class="switch switch--between">
+            <span class="switch__label">Enable two-factor authentication<span class="switch__desc">Require a code at sign-in.</span></span>
+            <span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span>
+          </label>
+        </div>
+
+        <!-- Notifications -->
+        <div class="card acct-card">
+          <div class="card__title">Notifications</div>
+          <div class="switch-group">
+            <label class="switch switch--between"><span class="switch__label">Email digests<span class="switch__desc">Weekly summary of your reports.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
+            <label class="switch switch--between"><span class="switch__label">Flag alerts<span class="switch__desc">Notify when a claim is flagged.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
+            <label class="switch switch--between"><span class="switch__label">Product updates<span class="switch__desc">Occasional news about Defacta.</span></span><span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span></label>
+          </div>
+        </div>
+
+        <!-- Delete account -->
+        <div class="card acct-card">
+          <div class="card__title">Delete account</div>
+          <p class="text-sm text-secondary" style="margin-bottom: var(--space-200)">Permanently delete your account, reports, and history. This action cannot be undone.</p>
+          <button class="btn btn--secondary btn--error" id="del-trigger" style="width:100%"><i data-lucide="trash-2" class="icon--sm"></i> Delete account</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- ── Bottom navigation ─────────────────────────────────────────── -->
+    <nav class="bottom-nav" style="position:sticky; bottom:0">
+      <a class="bottom-nav__item" href="workbench.html"><i data-lucide="plus"></i>Verify</a>
+      <a class="bottom-nav__item" href="history.html"><i data-lucide="history"></i>History</a>
+      <a class="bottom-nav__item is-active" href="account.html"><i data-lucide="user"></i>Account</a>
+    </nav>
+  </div>
+
+  <!-- ── Modals ─────────────────────────────────────────────────────── -->
+  <div class="modal" id="pw-modal">
+    <div class="modal__dialog modal__dialog--sm modal__dialog--center">
+      <div class="modal__body">
+        <span class="status-medallion status-medallion--success"><i data-lucide="check"></i></span>
+        <h3 class="h4" style="color:var(--text-primary)">Password updated</h3>
+        <p style="margin-top: var(--space-100)">Your password has been changed.</p>
+      </div>
+      <div class="modal__footer"><button class="btn btn--primary" id="pw-ok" style="width:100%">Got it</button></div>
+    </div>
+  </div>
+
+  <div class="modal" id="del-modal">
+    <div class="modal__dialog modal__dialog--sm modal__dialog--center">
+      <div class="modal__body">
+        <span class="status-medallion status-medallion--error"><i data-lucide="trash-2"></i></span>
+        <h3 class="h4" style="color:var(--text-primary)">Delete your account?</h3>
+        <p style="margin-top: var(--space-100)">This permanently deletes your account, reports, and verification history. This action cannot be undone.</p>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--secondary" id="del-cancel">Cancel</button>
+        <button class="btn btn--primary btn--error" id="del-confirm">Delete account</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+    const pwModal = document.getElementById('pw-modal');
+    const delModal = document.getElementById('del-modal');
+    document.getElementById('pw-update').addEventListener('click', () => pwModal.setAttribute('data-open', ''));
+    document.getElementById('pw-ok').addEventListener('click', () => pwModal.removeAttribute('data-open'));
+    document.getElementById('del-trigger').addEventListener('click', () => delModal.setAttribute('data-open', ''));
+    document.getElementById('del-cancel').addEventListener('click', () => delModal.removeAttribute('data-open'));
+    document.getElementById('del-confirm').addEventListener('click', () => { location.href = 'landing.html'; });
+    [pwModal, delModal].forEach(m => m.addEventListener('click', e => { if (e.target === m) m.removeAttribute('data-open'); }));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { pwModal.removeAttribute('data-open'); delModal.removeAttribute('data-open'); } });
+  </script>
+</body>
+</html>

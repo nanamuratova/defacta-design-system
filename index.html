@@ -252,19 +252,19 @@
         <div class="card">
           <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
           <div class="rules">
-            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Reference every color through a <code>var(--token)</code> from <code>tokens.css</code>.</span></div>
-            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Carry structure with the neutral scale: text <code>--grey-950</code> / <code>--grey-600</code> / <code>--grey-400</code>, borders <code>--grey-200</code>, surfaces <code>--canvas</code> / <code>--paper</code>.</span></div>
-            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Use semantic color only to signal state or verdict — pair the <b>base</b> (text / icon / dot) with its <b>soft</b> fill and <b>border</b>.</span></div>
-            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Use the accent (<code>--color-accent-blue</code>) sparingly: focus rings, eyebrow labels, small highlights.</span></div>
+            <div class="rule"><span>Reference every color through a <code>var(--token)</code> from <code>tokens.css</code>.</span></div>
+            <div class="rule"><span>Carry structure with the neutral scale: text <code>--grey-950</code> / <code>--grey-600</code> / <code>--grey-400</code>, borders <code>--grey-200</code>, surfaces <code>--canvas</code> / <code>--paper</code>.</span></div>
+            <div class="rule"><span>Use semantic color only to signal state or verdict — pair the <b>base</b> (text / icon / dot) with its <b>soft</b> fill and <b>border</b>.</span></div>
+            <div class="rule"><span>Use the accent (<code>--color-accent-blue</code>) sparingly: focus rings, eyebrow labels, small highlights.</span></div>
           </div>
         </div>
         <div class="card">
           <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
           <div class="rules">
-            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Hardcode hex values or use <code>var(--token, #fallback)</code> fallbacks.</span></div>
-            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Use semantic or accent color for decoration — color must mean something.</span></div>
-            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Introduce new hues or a second accent.</span></div>
-            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Put text on a saturated semantic fill — use the matching <code>*-soft</code> tint behind it.</span></div>
+            <div class="rule"><span>Hardcode hex values or use <code>var(--token, #fallback)</code> fallbacks.</span></div>
+            <div class="rule"><span>Use semantic or accent color for decoration — color must mean something.</span></div>
+            <div class="rule"><span>Introduce new hues or a second accent.</span></div>
+            <div class="rule"><span>Put text on a saturated semantic fill — use the matching <code>*-soft</code> tint behind it.</span></div>
           </div>
         </div>
       </div>
@@ -321,19 +321,19 @@
         <div class="card">
           <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
           <div class="rules">
-            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Build hierarchy with the type classes (<code>.display</code>, <code>h1</code>–<code>h3</code>, <code>.body</code>) — never a manual <code>font-size</code>.</span></div>
-            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Set running copy in <code>.body</code> / <code>.body-lg</code>; drop to <code>--text-secondary</code> for supporting text.</span></div>
-            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>Use <code>.label</code> for eyebrows &amp; field labels, and <code>.mono</code> for IDs, timestamps, and hex.</span></div>
-            <div class="rule rule--do"><i data-lucide="check" class="icon icon--sm"></i><span>One display per screen — let size and whitespace, not weight, carry emphasis.</span></div>
+            <div class="rule"><span>Build hierarchy with the type classes (<code>.display</code>, <code>h1</code>–<code>h3</code>, <code>.body</code>) — never a manual <code>font-size</code>.</span></div>
+            <div class="rule"><span>Set running copy in <code>.body</code> / <code>.body-lg</code>; drop to <code>--text-secondary</code> for supporting text.</span></div>
+            <div class="rule"><span>Use <code>.label</code> for eyebrows &amp; field labels, and <code>.mono</code> for IDs, timestamps, and hex.</span></div>
+            <div class="rule"><span>One display per screen — let size and whitespace, not weight, carry emphasis.</span></div>
           </div>
         </div>
         <div class="card">
           <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
           <div class="rules">
-            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Set raw <code>font-size</code> or <code>font-family</code> — use a type class or token.</span></div>
-            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Use IBM Plex Mono for body text or long copy — it's for labels &amp; data only.</span></div>
-            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Add weights beyond Regular / Medium / Semibold, or italics outside headings.</span></div>
-            <div class="rule rule--dont"><i data-lucide="x" class="icon icon--sm"></i><span>Use ALL CAPS anywhere except the mono <code>.label</code>.</span></div>
+            <div class="rule"><span>Set raw <code>font-size</code> or <code>font-family</code> — use a type class or token.</span></div>
+            <div class="rule"><span>Use IBM Plex Mono for body text or long copy — it's for labels &amp; data only.</span></div>
+            <div class="rule"><span>Add weights beyond Regular / Medium / Semibold, or italics outside headings.</span></div>
+            <div class="rule"><span>Use ALL CAPS anywhere except the mono <code>.label</code>.</span></div>
           </div>
         </div>
       </div>
@@ -341,30 +341,76 @@
 
     <!-- SHADOWS / RADIUS / SPACING -->
     <section class="panel" data-panel="space" hidden>
-      <div class="panel__head"><span class="label">Foundations</span><h1>Shadows, radius &amp; spacing</h1></div>
-      <p class="sub label">Elevation</p>
+      <div class="panel__head">
+        <span class="label">Foundations</span>
+        <h1>Shadows, radius &amp; spacing</h1>
+        <p class="lead-desc">Three scales give the system its physical rhythm. Elevation is soft and low — five steps from a hairline lift to a floating overlay. Corners are editorial — a 2→64px radius scale, with 8–16px covering most UI. Spacing is a 4-based scale from 2 to 120px that drives every gap, padding, and margin, so layout always lands on a consistent grid.</p>
+      </div>
+
+      <p class="sub label">Elevation · 5 steps</p>
       <div class="demo">
+        <div class="shadow-box" style="box-shadow:var(--shadow-xs)"><span>shadow-xs</span></div>
         <div class="shadow-box" style="box-shadow:var(--shadow-sm)"><span>shadow-sm</span></div>
         <div class="shadow-box" style="box-shadow:var(--shadow-md)"><span>shadow-md</span></div>
         <div class="shadow-box" style="box-shadow:var(--shadow-lg)"><span>shadow-lg</span></div>
+        <div class="shadow-box" style="box-shadow:var(--shadow-xl)"><span>shadow-xl</span></div>
       </div>
-      <p class="sub label">Radius</p>
+
+      <p class="sub label">Radius · 2 → 64</p>
       <div class="radii">
+        <div class="r" style="border-radius:var(--radius-2)"><span>r-2</span></div>
         <div class="r" style="border-radius:var(--radius-4)"><span>r-4</span></div>
+        <div class="r" style="border-radius:var(--radius-6)"><span>r-6</span></div>
         <div class="r" style="border-radius:var(--radius-8)"><span>r-8</span></div>
         <div class="r" style="border-radius:var(--radius-10)"><span>r-10</span></div>
         <div class="r" style="border-radius:var(--radius-12)"><span>r-12</span></div>
         <div class="r" style="border-radius:var(--radius-16)"><span>r-16</span></div>
+        <div class="r" style="border-radius:var(--radius-20)"><span>r-20</span></div>
+        <div class="r" style="border-radius:var(--radius-24)"><span>r-24</span></div>
+        <div class="r" style="border-radius:var(--radius-32)"><span>r-32</span></div>
+        <div class="r" style="border-radius:var(--radius-40)"><span>r-40</span></div>
+        <div class="r" style="border-radius:var(--radius-48)"><span>r-48</span></div>
+        <div class="r" style="border-radius:var(--radius-56)"><span>r-56</span></div>
+        <div class="r" style="border-radius:var(--radius-64)"><span>r-64</span></div>
       </div>
-      <p class="sub label">Spacing · 4-based</p>
+
+      <p class="sub label">Spacing · 4-based, 2 → 120</p>
       <div class="demo--block">
+        <div class="scale-row"><span class="meta">space-2</span><span class="scale-bar" style="width:2px"></span></div>
         <div class="scale-row"><span class="meta">space-4</span><span class="scale-bar" style="width:4px"></span></div>
         <div class="scale-row"><span class="meta">space-8</span><span class="scale-bar" style="width:8px"></span></div>
+        <div class="scale-row"><span class="meta">space-12</span><span class="scale-bar" style="width:12px"></span></div>
         <div class="scale-row"><span class="meta">space-16</span><span class="scale-bar" style="width:16px"></span></div>
+        <div class="scale-row"><span class="meta">space-20</span><span class="scale-bar" style="width:20px"></span></div>
         <div class="scale-row"><span class="meta">space-24</span><span class="scale-bar" style="width:24px"></span></div>
         <div class="scale-row"><span class="meta">space-32</span><span class="scale-bar" style="width:32px"></span></div>
+        <div class="scale-row"><span class="meta">space-40</span><span class="scale-bar" style="width:40px"></span></div>
         <div class="scale-row"><span class="meta">space-48</span><span class="scale-bar" style="width:48px"></span></div>
+        <div class="scale-row"><span class="meta">space-56</span><span class="scale-bar" style="width:56px"></span></div>
         <div class="scale-row"><span class="meta">space-64</span><span class="scale-bar" style="width:64px"></span></div>
+        <div class="scale-row"><span class="meta">space-80</span><span class="scale-bar" style="width:80px"></span></div>
+        <div class="scale-row"><span class="meta">space-96</span><span class="scale-bar" style="width:96px"></span></div>
+        <div class="scale-row"><span class="meta">space-120</span><span class="scale-bar" style="width:120px"></span></div>
+      </div>
+
+      <h2 class="h2" style="margin: var(--space-48) 0 var(--space-16)">Usage rules</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Set every gap, padding, and margin with <code>--space-*</code> tokens — stay on the 4-based grid.</span></div>
+            <div class="rule"><span>Use <code>--radius-8</code> for inputs &amp; buttons, <code>--radius-12</code>/<code>16</code> for cards, <code>--radius-full</code> for pills.</span></div>
+            <div class="rule"><span>Reach for the lowest elevation that reads: <code>--shadow-sm</code> cards, <code>--shadow-md</code> menus, <code>--shadow-lg</code>/<code>xl</code> overlays.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use arbitrary px values for spacing, radius, or shadows — always a token.</span></div>
+            <div class="rule"><span>Stack heavy shadows or use elevation as decoration.</span></div>
+            <div class="rule"><span>Mix different radii within a single component.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

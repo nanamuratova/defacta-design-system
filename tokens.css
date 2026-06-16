@@ -113,34 +113,50 @@
   /* -----------------------------------------------------------------------
      SPACING — 4-based scale
      ----------------------------------------------------------------------- */
-  --space-2:  2px;
-  --space-4:  4px;
-  --space-8:  8px;
-  --space-10: 10px;
-  --space-12: 12px;
-  --space-16: 16px;
-  --space-24: 24px;
-  --space-32: 32px;
-  --space-48: 48px;
-  --space-64: 64px;
+  --space-2:   2px;
+  --space-4:   4px;
+  --space-8:   8px;
+  --space-10:  10px;
+  --space-12:  12px;
+  --space-16:  16px;
+  --space-20:  20px;
+  --space-24:  24px;
+  --space-32:  32px;
+  --space-40:  40px;
+  --space-48:  48px;
+  --space-56:  56px;
+  --space-64:  64px;
+  --space-80:  80px;
+  --space-96:  96px;
+  --space-120: 120px;
 
   /* -----------------------------------------------------------------------
      RADIUS — soft, editorial corners
      ----------------------------------------------------------------------- */
   --radius-2:  2px;
   --radius-4:  4px;
+  --radius-6:  6px;
   --radius-8:  8px;    /* inputs, buttons */
   --radius-10: 10px;   /* textarea, small cards */
   --radius-12: 12px;   /* cards */
   --radius-16: 16px;   /* large cards / panels */
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-32: 32px;
+  --radius-40: 40px;
+  --radius-48: 48px;
+  --radius-56: 56px;
+  --radius-64: 64px;
   --radius-full: 999px;
 
   /* -----------------------------------------------------------------------
      ELEVATION — soft, low-contrast shadows (editorial, not flashy)
      ----------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(26, 26, 26, 0.05);
   --shadow-sm: 0 1px 2px rgba(26, 26, 26, 0.04), 0 1px 3px rgba(26, 26, 26, 0.06);
   --shadow-md: 0 4px 12px rgba(26, 26, 26, 0.06), 0 2px 4px rgba(26, 26, 26, 0.04);
   --shadow-lg: 0 12px 32px rgba(26, 26, 26, 0.08), 0 4px 8px rgba(26, 26, 26, 0.04);
+  --shadow-xl: 0 24px 56px rgba(26, 26, 26, 0.12), 0 8px 16px rgba(26, 26, 26, 0.05);
 
   /* -----------------------------------------------------------------------
      LAYOUT

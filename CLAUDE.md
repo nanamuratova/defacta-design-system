@@ -115,8 +115,10 @@ Defacta is a verification tool for **high-stakes information**. The aesthetic is
   state or verdict — never styling flourish. Each has three tones: base (text/icon/dot),
   `*-soft` (tinted fill), `*-border` — e.g. `--color-error` / `--color-error-soft` / `--color-error-border`.
   Put text on the `*-soft` tint, never on the saturated base.
-- **Soft, low shadows. Soft corners** (radius 8–16). No heavy drop shadows, no gradients
-  except the one brand gradient, no bright fills.
+- **Soft, low shadows. Soft corners.** Elevation `--shadow-xs/sm/md/lg/xl` — use the lowest that
+  reads. Radius scale `--radius-2 → --radius-64` (8–16 covers most UI; `--radius-full` for pills).
+  Spacing is the 4-based `--space-2 → --space-120` scale — always a token, never arbitrary px.
+  No heavy drop shadows, no gradients except the one brand gradient, no bright fills.
 - **The mono uppercase `.label`** is the signature touch — use it for eyebrows and field labels.
 - **Type scale** (Inter unless noted; classes in `base.css`, never raw `font-size`). Headings &
   body default to **Medium / Regular**; add `.strong` for **Semibold** emphasis.

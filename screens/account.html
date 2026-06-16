@@ -107,7 +107,7 @@
               <div class="card acct-card">
                 <div class="card__title">Delete account</div>
                 <p class="text-sm text-secondary" style="margin-bottom: var(--space-200)">Permanently delete your account, reports, and history. This action cannot be undone.</p>
-                <div style="display:flex; justify-content:flex-end"><button class="btn btn--secondary btn--error"><i data-lucide="trash-2" class="icon--sm"></i> Delete account</button></div>
+                <div style="display:flex; justify-content:flex-end"><button class="btn btn--secondary btn--error" id="del-trigger"><i data-lucide="trash-2" class="icon--sm"></i> Delete account</button></div>
               </div>
             </div>
           </section>
@@ -127,10 +127,25 @@
     </div>
   </main>
 
+  <!-- ── Delete-account confirmation modal ──────────────────────────── -->
+  <div class="modal" id="del-modal">
+    <div class="modal__dialog modal__dialog--sm modal__dialog--center">
+      <div class="modal__body">
+        <span class="status-medallion status-medallion--error"><i data-lucide="trash-2"></i></span>
+        <h3 class="h4" style="color:var(--text-primary)">Delete your account?</h3>
+        <p style="margin-top: var(--space-100)">This permanently deletes your account, reports, and verification history. This action cannot be undone.</p>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--secondary" id="del-cancel">Cancel</button>
+        <button class="btn btn--primary btn--error" id="del-confirm">Delete account</button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
-    // vertical settings tabs
+    // settings tabs
     const tabs = [...document.querySelectorAll('.tabs .tabs__tab')];
     tabs.forEach(t => t.addEventListener('click', () => {
       tabs.forEach(x => x.classList.remove('is-active'));
@@ -138,6 +153,16 @@
       const target = t.dataset.tabtarget;
       document.querySelectorAll('.tabs__panel').forEach(p => { p.hidden = p.dataset.tabpanel !== target; });
     }));
+
+    // delete-account confirmation
+    const delModal = document.getElementById('del-modal');
+    const closeDel = () => delModal.removeAttribute('data-open');
+    document.getElementById('del-trigger').addEventListener('click', () => delModal.setAttribute('data-open', ''));
+    document.getElementById('del-cancel').addEventListener('click', closeDel);
+    delModal.addEventListener('click', (e) => { if (e.target === delModal) closeDel(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDel(); });
+    // confirm → signed out (back to landing)
+    document.getElementById('del-confirm').addEventListener('click', () => { location.href = 'landing.html'; });
   </script>
 </body>
 </html>

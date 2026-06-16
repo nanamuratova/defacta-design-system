@@ -1043,13 +1043,41 @@
 
     <!-- ALERTS -->
     <section class="panel" data-panel="alerts" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Alerts &amp; notifications</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Alerts &amp; notifications</h1>
+        <p class="lead-desc">Inline alerts communicate the status of a region or action; the elevated <b>toast</b> variant is for transient, system-level messages. Four semantic tones, each with an icon, message, and optional dismiss.</p>
+      </div>
+      <p class="sub label">Inline alerts</p>
       <div class="demo demo--stack" style="gap:var(--space-150)">
         <div class="alert alert--info"><i data-lucide="info" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Verification in progress</div><div class="alert__text">This usually takes under 30 seconds.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
         <div class="alert alert--success"><i data-lucide="circle-check" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Report compiled</div><div class="alert__text">All 4 claims were evaluated.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
         <div class="alert alert--warning"><i data-lucide="triangle-alert" class="alert__icon"></i><div class="alert__body"><div class="alert__title">2 claims need review</div><div class="alert__text">Human editorial review is recommended.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
         <div class="alert alert--error"><i data-lucide="circle-alert" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Source unreachable</div><div class="alert__text">Reference [3] returned 404.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
-        <div class="alert toast"><i data-lucide="bell" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Notification (toast)</div><div class="alert__text">Elevated style for transient messages.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
+      </div>
+      <p class="sub label">Toast (transient)</p>
+      <div class="demo demo--stack" style="gap:var(--space-150)">
+        <div class="alert toast"><i data-lucide="bell" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Report exported</div><div class="alert__text">VR-2026-06-03-247K.pdf is ready.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Match the tone to severity (info / success / warning / error) with the matching icon.</span></div>
+            <div class="rule"><span>Use inline alerts in context; reserve the <code>toast</code> for transient confirmations.</span></div>
+            <div class="rule"><span>Write a clear title + a short, actionable message.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use error tone for non-errors, or stack many alerts at once.</span></div>
+            <div class="rule"><span>Auto-dismiss an error the user needs to act on.</span></div>
+            <div class="rule"><span>Put long paragraphs in an alert — link out instead.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1566,20 +1594,48 @@
 
     <!-- TOOLTIPS -->
     <section class="panel" data-panel="tooltips" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Tooltips</h1><p class="body-lg text-secondary">Hover the elements below.</p></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Tooltips</h1>
+        <p class="lead-desc">A small label that appears on hover or focus to explain an element — an icon button, a metric, or a flagged term. Pure CSS; keep the text short.</p>
+      </div>
+      <p class="sub label">Examples (hover)</p>
       <div class="demo" style="gap:var(--space-300)">
         <span class="tooltip" data-tooltip="Confidence: 75%"><button class="btn btn--secondary">Hover me</button></span>
         <span class="tooltip" data-tooltip="Re-run verification"><button class="icon-btn"><i data-lucide="refresh-cw"></i></button></span>
         <span class="tooltip" data-tooltip="This claim is contradicted by 2 sources" style="border-bottom:1px dashed var(--border-strong);cursor:help">contradicted claim</span>
       </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use for supplementary hints — icon-button labels, abbreviations, metric definitions.</span></div>
+            <div class="rule"><span>Keep to a short phrase; make the trigger keyboard-focusable.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Hide essential information or actions inside a tooltip.</span></div>
+            <div class="rule"><span>Put long text, links, or interactive controls in a tooltip — use a popover.</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- UPLOAD -->
     <section class="panel" data-panel="upload" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Upload</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Upload</h1>
+        <p class="lead-desc">A drag-and-drop dropzone for adding documents to verify, plus a file row showing accepted files. States: idle, hover/drag, and uploaded.</p>
+      </div>
+      <p class="sub label">Dropzone &amp; file row</p>
       <div class="demo demo--block" style="max-width:520px">
         <label class="upload"><input type="file" hidden>
-          <i data-lucide="upload-cloud" class="upload__icon icon--lg"></i>
+          <i data-lucide="upload" class="upload__icon icon--lg"></i>
           <span class="upload__title">Drag &amp; drop or browse</span>
           <span class="upload__hint">PDF, DOCX, TXT · max 20MB</span>
         </label>
@@ -1590,11 +1646,36 @@
           <button class="file-row__remove"><i data-lucide="x" class="icon--sm"></i></button>
         </div>
       </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>State accepted formats and the size limit in the hint.</span></div>
+            <div class="rule"><span>Show each uploaded file as a <code>.file-row</code> with a remove button.</span></div>
+            <div class="rule"><span>Keep the whole zone clickable as well as drop-droppable.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Accept files silently with no list or feedback.</span></div>
+            <div class="rule"><span>Hide format/size limits until after a failed upload.</span></div>
+            <div class="rule"><span>Block the browse fallback for drag-and-drop only.</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CONTEXT MENU -->
     <section class="panel" data-panel="contextmenu" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Context menu</h1><p class="body-lg text-secondary">Right-click inside the area below.</p></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Context menu</h1>
+        <p class="lead-desc">A right-click menu for contextual actions on an item or region. Reuses the <code>.menu__list</code> styling, positioned at the cursor.</p>
+      </div>
+      <p class="sub label">Right-click the area</p>
       <div class="demo demo--block">
         <div id="ctx-area" class="card card--soft" style="height:180px;display:flex;align-items:center;justify-content:center;color:var(--text-muted)">Right-click anywhere here</div>
         <div id="ctx-menu" class="menu__list context-menu" style="display:none">
@@ -1602,6 +1683,25 @@
           <button class="menu__item"><i data-lucide="download" class="icon--sm"></i> Export PDF</button>
           <div class="menu__sep"></div>
           <button class="menu__item menu__item--danger"><i data-lucide="trash-2" class="icon--sm"></i> Delete</button>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Offer contextual actions that also exist elsewhere (don't make right-click the only path).</span></div>
+            <div class="rule"><span>Reuse the <code>.menu</code> item styles; mark destructive items <code>--danger</code>.</span></div>
+            <div class="rule"><span>Dismiss on outside click, scroll, or Escape.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Hide critical actions behind right-click only — many users won't find them.</span></div>
+            <div class="rule"><span>Override the browser menu where users expect it (text fields, links).</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1880,7 +1980,12 @@
 
     <!-- SIDEBAR -->
     <section class="panel" data-panel="sidebar" hidden>
-      <div class="panel__head"><span class="label">Layout</span><h1>Sidebar</h1><p class="body-lg text-secondary">Vertical app navigation with grouped items and an active state. Pairs with a content region to form an app shell.</p></div>
+      <div class="panel__head">
+        <span class="label">Layout</span>
+        <h1>Sidebar</h1>
+        <p class="lead-desc">Vertical app navigation with grouped items and an active state. Pairs with a content region (<code>.app-shell</code>) to form the product shell; on mobile it collapses into a drawer or bottom nav.</p>
+      </div>
+      <p class="sub label">App shell example</p>
       <div class="demo demo--block" style="padding:0; overflow:hidden">
         <div style="display:flex; height:440px">
           <nav class="sidebar">
@@ -1898,6 +2003,26 @@
             <span class="label">Workbench</span>
             <h2 class="h2" style="margin-top:var(--space-100)">Main content area</h2>
             <p class="text-secondary" style="margin-top:var(--space-100)">The sidebar sticks while this region scrolls.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Mark the current section <code>.is-active</code>; group items with <code>.sidebar__group</code>.</span></div>
+            <div class="rule"><span>Pin secondary items (Sign out) to the bottom with <code>.sidebar__spacer</code>.</span></div>
+            <div class="rule"><span>Collapse to a drawer or <code>.bottom-nav</code> on mobile.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Overfill the sidebar — group or move rarely-used links elsewhere.</span></div>
+            <div class="rule"><span>Leave no active state, so users lose their place.</span></div>
+            <div class="rule"><span>Duplicate the top-nav and sidebar for the same links.</span></div>
           </div>
         </div>
       </div>

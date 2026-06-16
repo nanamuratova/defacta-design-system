@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="../styles.css">
   <style>
     /* page-local layout only — not part of the system */
-    .catalog { padding-block: var(--space-48); }
-    .group { padding-block: var(--space-32); border-top: 1px solid var(--border-subtle); }
+    .catalog { padding-block: var(--space-600); }
+    .group { padding-block: var(--space-400); border-top: 1px solid var(--border-subtle); }
     .group:first-of-type { border-top: 0; }
-    .group > .label { display: block; margin-bottom: var(--space-24); }
+    .group > .label { display: block; margin-bottom: var(--space-300); }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <span class="brand">◆ Defacta</span>
+    <a class="brand" href="#"><img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
     <nav>
       <a href="#">Components</a>
       <a href="#">Tokens</a>
@@ -24,7 +24,7 @@
   </header>
 
   <main class="container catalog">
-    <div class="content stack" style="gap: var(--space-8); margin-bottom: var(--space-32)">
+    <div class="content stack" style="gap: var(--space-100); margin-bottom: var(--space-400)">
       <span class="label">Design system</span>
       <h1 class="h1">Component catalog</h1>
       <p class="body-lg text-secondary">Every building block, styled from <code>tokens.css</code>.</p>
@@ -40,13 +40,13 @@
         <button class="btn btn--ghost">Ghost</button>
         <button class="btn btn--link">Link</button>
       </div>
-      <span class="label" style="display:block;margin:var(--space-24) 0 var(--space-12)">Sizes</span>
+      <span class="label" style="display:block;margin:var(--space-300) 0 var(--space-150)">Sizes</span>
       <div class="cluster">
         <button class="btn btn--primary btn--sm">Small</button>
         <button class="btn btn--primary">Medium</button>
         <button class="btn btn--primary btn--lg">Large</button>
       </div>
-      <span class="label" style="display:block;margin:var(--space-24) 0 var(--space-12)">Tones</span>
+      <span class="label" style="display:block;margin:var(--space-300) 0 var(--space-150)">Tones</span>
       <div class="cluster">
         <button class="btn btn--primary btn--error">Delete</button>
         <button class="btn btn--secondary btn--error">Delete</button>
@@ -54,7 +54,7 @@
         <button class="btn btn--primary btn--success">Approve</button>
         <button class="btn btn--primary" disabled>Disabled</button>
       </div>
-      <span class="label" style="display:block;margin:var(--space-24) 0 var(--space-12)">Icon buttons</span>
+      <span class="label" style="display:block;margin:var(--space-300) 0 var(--space-150)">Icon buttons</span>
       <div class="cluster">
         <button class="icon-btn icon-btn--sm" aria-label="add">+</button>
         <button class="icon-btn" aria-label="add">+</button>
@@ -91,7 +91,7 @@
         <span class="tag tag--contradicted">Contradicted</span>
         <span class="tag tag--supported">Supported</span>
       </div>
-      <span class="label" style="display:block;margin:var(--space-24) 0 var(--space-12)">Status badges — the standard pill (dot + uppercase mono + tinted border)</span>
+      <span class="label" style="display:block;margin:var(--space-300) 0 var(--space-150)">Status badges — the standard pill (dot + uppercase mono + tinted border)</span>
       <div class="cluster">
         <span class="status-badge status-badge--verified"><i></i>Verified</span>
         <span class="status-badge status-badge--pending"><i></i>Pending review</span>
@@ -140,11 +140,11 @@
 
   <!-- A dark band, to show the editorial light/dark rhythm -->
   <section class="section section--ink">
-    <div class="container content stack" style="gap: var(--space-12)">
+    <div class="container content stack" style="gap: var(--space-150)">
       <span class="label">Section — ink</span>
       <h2 class="h1">Evidence, transparent by default.</h2>
       <p class="body-lg text-secondary">Dark bands break up the page and carry the brand weight.</p>
-      <div class="cluster" style="margin-top: var(--space-8)">
+      <div class="cluster" style="margin-top: var(--space-100)">
         <button class="btn btn--primary" style="background:var(--canvas);color:var(--grey-950);border-color:var(--canvas)">Start verifying</button>
         <button class="btn btn--ghost" style="color:var(--canvas)">Learn more</button>
       </div>

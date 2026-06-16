@@ -118,10 +118,13 @@ Defacta is a verification tool for **high-stakes information**. The aesthetic is
 - **Soft, low shadows. Soft corners** (radius 8–16). No heavy drop shadows, no gradients
   except the one brand gradient, no bright fills.
 - **The mono uppercase `.label`** is the signature touch — use it for eyebrows and field labels.
-- **Type scale** (Inter unless noted; classes in `base.css`, never raw `font-size`): `.display` 56 ·
-  `h1` 40 · `h2` 24 · `h3` 20 · `.body-lg` 20 · `.body` 16 · `.text-sm` 14 · `.text-xs` 12 ·
-  `.label` 11 (IBM Plex Mono, uppercase) · `.mono` 13 (IBM Plex Mono — IDs, timestamps, hex).
-  Mono is for labels & data only, never body copy.
+- **Type scale** (Inter unless noted; classes in `base.css`, never raw `font-size`). Headings &
+  body default to **Medium / Regular**; add `.strong` for **Semibold** emphasis.
+  - Display `.display` 64 · Headings `h1` 48 · `h2` 40 · `h3` 32 · `h4` 24
+  - Body `.body-xl` 20 · `.body-lg` 18 · `.body` 16 · `.text-sm` 14 · `.text-xs` 12
+  - Label (IBM Plex Mono, uppercase) `.label` 12 · `.label.label-md` 14 · `.label.label-lg` 16
+  - Mono / data (IBM Plex Mono) `.mono` 14 · `.mono.mono-sm` 12 · `.mono.mono-lg` 16 — IDs, timestamps, hex; never body copy.
+  - Component titles: cards & modals use `h4` (24); report/page sections use `h3` (32).
 
 ## Hard "do not" list
 

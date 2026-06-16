@@ -275,7 +275,7 @@
       <div class="panel__head">
         <span class="label">Foundations</span>
         <h1>Typography</h1>
-        <p class="lead-desc">Defacta sets text in two typefaces: <b>Inter</b> for the interface and <b>IBM Plex Mono</b> for labels, data, and identifiers. The scale is deliberately restrained — one display size, three heading levels, four body sizes, and a mono label — sized for long-form review without visual noise. Headings tighten their tracking as they grow, body stays comfortable to read, and the uppercase mono label is the system's signature.</p>
+        <p class="lead-desc">Defacta sets text in two typefaces: <b>Inter</b> for the interface and <b>IBM Plex Mono</b> for labels, data, and identifiers. The full scale: one display size, four heading levels (H1–H4), five body sizes (XLarge → XSmall), and three sizes each of label and mono/data. Headings and body share two weights — <b>default Medium / Regular</b> and <b>strong Semibold</b> — tighten their tracking as they grow, and the uppercase mono label is the system's signature.</p>
       </div>
 
       <div class="callout" style="margin-bottom: var(--space-32)">
@@ -288,22 +288,30 @@
           <thead><tr><th>Style</th><th>Size</th><th>Weight</th><th>Line-height</th><th>Tracking</th><th>Preview</th></tr></thead>
           <tbody>
             <tr class="type-group"><td colspan="6">Display</td></tr>
-            <tr><td><div class="type-name">Display</div><div class="type-class">.display · Inter</div></td><td class="type-spec">56px</td><td class="type-spec">Semibold 600</td><td class="type-spec">67px · 1.2</td><td class="type-spec">-0.025em</td><td><span class="display type-preview">Defacta</span></td></tr>
+            <tr><td><div class="type-name">Display</div><div class="type-class">.display · Inter</div></td><td class="type-spec">64px</td><td class="type-spec">Medium · Semibold</td><td class="type-spec">77px · 1.2</td><td class="type-spec">-0.03em</td><td><span class="display type-preview">Defacta</span></td></tr>
 
-            <tr class="type-group"><td colspan="6">Heading</td></tr>
-            <tr><td><div class="type-name">Heading 1</div><div class="type-class">h1 / .h1 · Inter</div></td><td class="type-spec">40px</td><td class="type-spec">Semibold 600</td><td class="type-spec">48px · 1.2</td><td class="type-spec">-0.025em</td><td><span class="h1 type-preview">Defacta</span></td></tr>
-            <tr><td><div class="type-name">Heading 2</div><div class="type-class">h2 / .h2 · Inter</div></td><td class="type-spec">24px</td><td class="type-spec">Medium 500</td><td class="type-spec">34px · 1.4</td><td class="type-spec">-0.025em</td><td><span class="h2 type-preview">Defacta</span></td></tr>
-            <tr><td><div class="type-name">Heading 3</div><div class="type-class">h3 / .h3 · Inter</div></td><td class="type-spec">20px</td><td class="type-spec">Medium 500</td><td class="type-spec">28px · 1.4</td><td class="type-spec">0</td><td><span class="h3 type-preview">Defacta</span></td></tr>
+            <tr class="type-group"><td colspan="6">Heading · default Medium / strong Semibold</td></tr>
+            <tr><td><div class="type-name">Heading 1</div><div class="type-class">h1 / .h1 · Inter</div></td><td class="type-spec">48px</td><td class="type-spec">Medium · Semibold</td><td class="type-spec">58px · 1.2</td><td class="type-spec">-0.025em</td><td><span class="h1 type-preview">Defacta</span></td></tr>
+            <tr><td><div class="type-name">Heading 2</div><div class="type-class">h2 / .h2 · Inter</div></td><td class="type-spec">40px</td><td class="type-spec">Medium · Semibold</td><td class="type-spec">46px · 1.15</td><td class="type-spec">-0.025em</td><td><span class="h2 type-preview">Defacta</span></td></tr>
+            <tr><td><div class="type-name">Heading 3</div><div class="type-class">h3 / .h3 · Inter</div></td><td class="type-spec">32px</td><td class="type-spec">Medium · Semibold</td><td class="type-spec">38px · 1.2</td><td class="type-spec">-0.02em</td><td><span class="h3 type-preview">Defacta</span></td></tr>
+            <tr><td><div class="type-name">Heading 4</div><div class="type-class">h4 / .h4 · Inter</div></td><td class="type-spec">24px</td><td class="type-spec">Medium · Semibold</td><td class="type-spec">31px · 1.3</td><td class="type-spec">-0.015em</td><td><span class="h4 type-preview">Defacta</span></td></tr>
 
-            <tr class="type-group"><td colspan="6">Body</td></tr>
-            <tr><td><div class="type-name">Body Large</div><div class="type-class">.body-lg · Inter</div></td><td class="type-spec">20px</td><td class="type-spec">Regular 400</td><td class="type-spec">32px · 1.6</td><td class="type-spec">0</td><td><span class="body-lg type-preview">Defacta verifies what holds up.</span></td></tr>
-            <tr><td><div class="type-name">Body</div><div class="type-class">.body · Inter</div></td><td class="type-spec">16px</td><td class="type-spec">Regular 400</td><td class="type-spec">24px · 1.5</td><td class="type-spec">0</td><td><span class="body type-preview">Defacta verifies what holds up.</span></td></tr>
-            <tr><td><div class="type-name">Body Small</div><div class="type-class">.text-sm · Inter</div></td><td class="type-spec">14px</td><td class="type-spec">Regular 400</td><td class="type-spec">21px · 1.5</td><td class="type-spec">0</td><td><span class="text-sm type-preview">Defacta verifies what holds up.</span></td></tr>
-            <tr><td><div class="type-name">Body XSmall</div><div class="type-class">.text-xs · Inter</div></td><td class="type-spec">12px</td><td class="type-spec">Regular 400</td><td class="type-spec">18px · 1.5</td><td class="type-spec">0</td><td><span class="text-xs type-preview">Defacta verifies what holds up.</span></td></tr>
+            <tr class="type-group"><td colspan="6">Body · default Regular / strong Semibold</td></tr>
+            <tr><td><div class="type-name">Body XLarge</div><div class="type-class">.body-xl · Inter</div></td><td class="type-spec">20px</td><td class="type-spec">Regular · Semibold</td><td class="type-spec">32px · 1.6</td><td class="type-spec">0</td><td><span class="body-xl type-preview">Defacta verifies what holds up.</span></td></tr>
+            <tr><td><div class="type-name">Body Large</div><div class="type-class">.body-lg · Inter</div></td><td class="type-spec">18px</td><td class="type-spec">Regular · Semibold</td><td class="type-spec">29px · 1.6</td><td class="type-spec">0</td><td><span class="body-lg type-preview">Defacta verifies what holds up.</span></td></tr>
+            <tr><td><div class="type-name">Body Medium</div><div class="type-class">.body · Inter</div></td><td class="type-spec">16px</td><td class="type-spec">Regular · Semibold</td><td class="type-spec">24px · 1.5</td><td class="type-spec">0</td><td><span class="body type-preview">Defacta verifies what holds up.</span></td></tr>
+            <tr><td><div class="type-name">Body Small</div><div class="type-class">.text-sm · Inter</div></td><td class="type-spec">14px</td><td class="type-spec">Regular · Semibold</td><td class="type-spec">21px · 1.5</td><td class="type-spec">0</td><td><span class="text-sm type-preview">Defacta verifies what holds up.</span></td></tr>
+            <tr><td><div class="type-name">Body XSmall</div><div class="type-class">.text-xs · Inter</div></td><td class="type-spec">12px</td><td class="type-spec">Regular · Semibold</td><td class="type-spec">18px · 1.5</td><td class="type-spec">0</td><td><span class="text-xs type-preview">Defacta verifies what holds up.</span></td></tr>
 
-            <tr class="type-group"><td colspan="6">Label &amp; data</td></tr>
-            <tr><td><div class="type-name">Label</div><div class="type-class">.label · Plex Mono</div></td><td class="type-spec">11px</td><td class="type-spec">Regular 400</td><td class="type-spec">16px · 1.5</td><td class="type-spec">+0.12em · UPPER</td><td><span class="label type-preview">Verification workbench</span></td></tr>
-            <tr><td><div class="type-name">Mono / data</div><div class="type-class">.mono · Plex Mono</div></td><td class="type-spec">13px</td><td class="type-spec">Regular 400</td><td class="type-spec">20px · 1.5</td><td class="type-spec">+0.02em</td><td><span class="mono type-preview">VR-2026-06-03-247K</span></td></tr>
+            <tr class="type-group"><td colspan="6">Label · IBM Plex Mono, uppercase</td></tr>
+            <tr><td><div class="type-name">Label Large</div><div class="type-class">.label.label-lg</div></td><td class="type-spec">16px</td><td class="type-spec">Regular 400</td><td class="type-spec">24px · 1.5</td><td class="type-spec">+0.12em · UPPER</td><td><span class="label label-lg type-preview">Verification workbench</span></td></tr>
+            <tr><td><div class="type-name">Label Medium</div><div class="type-class">.label.label-md</div></td><td class="type-spec">14px</td><td class="type-spec">Regular 400</td><td class="type-spec">21px · 1.5</td><td class="type-spec">+0.12em · UPPER</td><td><span class="label label-md type-preview">Verification workbench</span></td></tr>
+            <tr><td><div class="type-name">Label Small</div><div class="type-class">.label</div></td><td class="type-spec">12px</td><td class="type-spec">Regular 400</td><td class="type-spec">18px · 1.5</td><td class="type-spec">+0.12em · UPPER</td><td><span class="label type-preview">Verification workbench</span></td></tr>
+
+            <tr class="type-group"><td colspan="6">Mono / data · IBM Plex Mono</td></tr>
+            <tr><td><div class="type-name">Mono Large</div><div class="type-class">.mono.mono-lg</div></td><td class="type-spec">16px</td><td class="type-spec">Regular 400</td><td class="type-spec">24px · 1.5</td><td class="type-spec">+0.02em</td><td><span class="mono mono-lg type-preview">VR-2026-06-03-247K</span></td></tr>
+            <tr><td><div class="type-name">Mono Medium</div><div class="type-class">.mono</div></td><td class="type-spec">14px</td><td class="type-spec">Regular 400</td><td class="type-spec">21px · 1.5</td><td class="type-spec">+0.02em</td><td><span class="mono type-preview">VR-2026-06-03-247K</span></td></tr>
+            <tr><td><div class="type-name">Mono Small</div><div class="type-class">.mono.mono-sm</div></td><td class="type-spec">12px</td><td class="type-spec">Regular 400</td><td class="type-spec">18px · 1.5</td><td class="type-spec">+0.02em</td><td><span class="mono mono-sm type-preview">VR-2026-06-03-247K</span></td></tr>
           </tbody>
         </table>
       </div>

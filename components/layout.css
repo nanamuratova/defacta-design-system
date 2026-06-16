@@ -33,7 +33,7 @@
   border-bottom: 1px solid var(--border-subtle);
   background: var(--canvas);
 }
-.site-header .brand { font-weight: var(--weight-semibold); font-size: var(--text-h3); }
+.site-header .brand { font-weight: var(--weight-semibold); font-size: var(--text-h4); }
 .site-header nav { display: flex; align-items: center; gap: var(--space-24); }
 .site-header nav a { font-size: var(--text-sm); color: var(--text-secondary); transition: color 0.15s ease; }
 .site-header nav a:hover { color: var(--text-primary); }
@@ -62,7 +62,7 @@
   box-shadow: var(--shadow-md);
 }
 .card--soft { background: var(--surface-paper); border-color: transparent; }
-.card__title { font-size: var(--text-h3); font-weight: var(--weight-medium); margin-bottom: var(--space-8); }
+.card__title { font-size: var(--text-h4); font-weight: var(--weight-medium); margin-bottom: var(--space-8); }
 .card__body  { color: var(--text-secondary); }
 
 /* ---- Grid helpers ----------------------------------------------------- */
@@ -89,7 +89,7 @@
 .brand__logo--stacked { height: 44px; }                              /* assets/defacta-logo-stacked.svg */
 /* legacy placeholder parts (kept for reference; prefer .brand__logo) */
 .brand__mark { width: 22px; height: 22px; color: var(--grey-950); flex-shrink: 0; }
-.brand__word { font-weight: var(--weight-semibold); font-size: var(--text-h3); letter-spacing: -0.01em; }
+.brand__word { font-weight: var(--weight-semibold); font-size: var(--text-h4); letter-spacing: -0.01em; }
 
 /* ---- App header (logged-in chrome): nav links + actions -------------- */
 .site-header .header-actions { display: flex; align-items: center; gap: var(--space-16); }

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — Verification Console</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style> body { background: var(--surface-paper); } </style>
+</head>
+<body>
+  <!-- ── App header (signed in) ─────────────────────────────────────── -->
+  <header class="site-header">
+    <a class="brand" href="console.html">
+      <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo">
+    </a>
+    <div class="header-actions">
+      <a class="header-link" href="history.html"><i data-lucide="history"></i> History</a>
+      <a class="header-link header-link--strong" href="console.html"><i data-lucide="plus"></i> New verification</a>
+      <button class="icon-btn icon-btn--sm" aria-label="Account"><i data-lucide="user"></i></button>
+      <button class="icon-btn icon-btn--sm" aria-label="Panel"><i data-lucide="panel-right"></i></button>
+    </div>
+  </header>
+
+  <!-- ── Console ────────────────────────────────────────────────────── -->
+  <main class="container workbench">
+    <div class="content">
+      <div class="workbench__head">
+        <span class="label">Verification console</span>
+        <h1>What do you want to verify?</h1>
+        <p class="body-lg text-secondary">Paste an article, an AI answer, or your own draft. Defacta reads it and shows you what holds up — and what doesn't.</p>
+      </div>
+
+      <!-- Analysis mode -->
+      <p class="text-secondary" style="margin-bottom: var(--space-150)">Choose analysis mode</p>
+      <div class="grid grid--2" style="margin-bottom: var(--space-300)">
+        <label class="option-card">
+          <input type="radio" name="mode" checked>
+          <span class="option-card__title">Check my text</span>
+          <span class="option-card__desc">Your own writing — Defacta returns inline editing suggestions and sourcing fixes.</span>
+        </label>
+        <label class="option-card">
+          <input type="radio" name="mode">
+          <span class="option-card__title">Check someone else's</span>
+          <span class="option-card__desc">Someone else's text — Defacta returns a trust check on claims, citations and risk signals.</span>
+        </label>
+      </div>
+
+      <!-- Advanced settings (collapsible) -->
+      <details class="accordion" style="margin-bottom: var(--space-300)">
+        <summary class="accordion__trigger">
+          <i data-lucide="settings" class="icon--sm icon--muted"></i>
+          <span class="accordion__title">Advanced settings</span>
+          <span class="accordion__meta" id="adv-meta">2 of 4 enabled</span>
+          <i data-lucide="chevron-down" class="accordion__chevron"></i>
+        </summary>
+        <div class="accordion__panel">
+          <label class="checkbox"><input type="checkbox" class="adv" checked><span class="checkbox__box"></span>
+            <span class="checkbox__label"><span class="checkbox__title">Key claim verification</span><span class="checkbox__desc">Identify and verify the highest-impact factual claims.</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="adv" checked><span class="checkbox__box"></span>
+            <span class="checkbox__label"><span class="checkbox__title">Bias &amp; framing analysis</span><span class="checkbox__desc">Surface loaded language, framing choices, and emphasis patterns.</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="adv"><span class="checkbox__box"></span>
+            <span class="checkbox__label"><span class="checkbox__title">Deception detection</span><span class="checkbox__desc">Flag stylistic signals of evasion, hedging, or misdirection.</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="adv"><span class="checkbox__box"></span>
+            <span class="checkbox__label"><span class="checkbox__title">Manipulation check</span><span class="checkbox__desc">Detect persuasive techniques and emotionally coercive language.</span></span></label>
+        </div>
+      </details>
+
+      <!-- Input -->
+      <div class="field-head">
+        <span class="label">Paste a link or text</span>
+        <span class="link-action" id="use-sample"><i data-lucide="file-text" class="icon--sm"></i> Use sample</span>
+      </div>
+      <textarea class="textarea" id="content" style="min-height: 200px" placeholder="Paste any text, AI output, or a URL (https://…) to verify."></textarea>
+      <div class="textarea-foot">
+        <span id="charcount">0 characters</span>
+        <span>Max. 50,000 characters</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="cluster" style="justify-content: flex-end; margin-top: var(--space-300)">
+        <button class="btn btn--secondary" id="clear">Clear</button>
+        <button class="btn btn--primary" id="run">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© Defacta</span>
+    <span>Evidence, transparent by default.</span>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+    const ta = document.getElementById('content');
+    const cc = document.getElementById('charcount');
+    const sample = `In a recent statement, the World Health Organization announced that global vaccination coverage reached 92% in 2024, marking the highest figure on record. The report cites unpublished internal data showing that childhood mortality has dropped by 47% since 2019, a decline researchers attribute almost entirely to a new mRNA-based malaria vaccine deployed across Sub-Saharan Africa. Independent experts have universally praised the rollout, calling it "the most consequential public health intervention of the decade."`;
+    const fmt = n => n.toLocaleString() + (n === 1 ? ' character' : ' characters');
+    const sync = () => cc.textContent = fmt(ta.value.length);
+    ta.addEventListener('input', sync);
+    document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; sync(); });
+    document.getElementById('clear').addEventListener('click', () => { ta.value = ''; sync(); });
+    // advanced-settings counter
+    const advs = [...document.querySelectorAll('.adv')];
+    const meta = document.getElementById('adv-meta');
+    const syncAdv = () => meta.textContent = advs.filter(a => a.checked).length + ' of ' + advs.length + ' enabled';
+    advs.forEach(a => a.addEventListener('change', syncAdv));
+    // run verification → the structured report
+    document.getElementById('run').addEventListener('click', () => { location.href = 'report.html'; });
+  </script>
+</body>
+</html>

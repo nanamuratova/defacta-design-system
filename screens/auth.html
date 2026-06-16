@@ -92,8 +92,8 @@
     document.getElementById('auth-switch').addEventListener('click', (e) => { e.preventDefault(); creating = !creating; applyMode(); });
 
     // submit lands the user in the demo console
-    document.getElementById('auth-submit').addEventListener('click', () => { location.href = 'workbench.html'; });
-    document.querySelector('.btn--provider').addEventListener('click', () => { location.href = 'workbench.html'; });
+    document.getElementById('auth-submit').addEventListener('click', () => { location.href = 'console.html'; });
+    document.querySelector('.btn--provider').addEventListener('click', () => { location.href = 'console.html'; });
 
     // close → back to the landing page
     function closeModal() { if (history.length > 1) history.back(); else location.href = 'landing.html'; }

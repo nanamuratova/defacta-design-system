@@ -10,13 +10,14 @@
     .wb-mode { margin-bottom: var(--space-150); }
     .wb-mode-desc { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-300); }
 
-    /* plain input area */
-    .wb-samplerow { display: flex; justify-content: flex-end; margin-bottom: var(--space-100); }
-    .console-input { width: 100%; min-height: 340px; resize: vertical; }
-
-    /* action bar under the textarea */
-    .wb-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-200); }
-    .wb-bar__actions { display: flex; align-items: center; gap: var(--space-150); }
+    /* composer (Tools-style input) */
+    .composer { border: 1px solid var(--border-default); border-radius: var(--radius-16); background: var(--canvas); padding: var(--space-200); transition: border-color .12s ease, box-shadow .12s ease; }
+    .composer:focus-within { border-color: var(--border-strong); box-shadow: 0 0 0 3px rgba(26,26,26,0.05); }
+    .composer__input { width: 100%; border: 0; background: transparent; resize: vertical; min-height: 300px; padding: var(--space-100); font: inherit; color: var(--text-primary); outline: none; }
+    .composer__input::placeholder { color: var(--text-muted); }
+    .composer__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-150); }
+    .composer__bar-left, .composer__bar-right { display: flex; align-items: center; gap: var(--space-150); }
+    .composer-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-150); }
     .wb-count { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); color: var(--text-muted); }
 
     /* settings dropdown */
@@ -39,7 +40,7 @@
     .wb-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); margin-top: var(--space-200); }
     .wb-row .switch__label, .wb-row > span { font-size: var(--text-sm); color: var(--text-primary); }
 
-    @media (max-width: 640px) { .wb-bar { flex-direction: column; align-items: stretch; } .wb-bar__actions { justify-content: flex-end; } }
+    @media (max-width: 640px) { .composer__bar { flex-direction: column; align-items: stretch; } .composer__bar-right { justify-content: flex-end; } }
   </style>
 </head>
 <body>
@@ -73,13 +74,13 @@
       <p class="wb-mode-desc" id="mode-desc">Your own writing — Defacta returns inline editing suggestions and sourcing fixes.</p>
 
       <!-- Input -->
-      <div class="wb-samplerow"><span class="link-action" id="use-sample"><i data-lucide="file-text" class="icon--sm"></i> Use sample</span></div>
-      <textarea class="textarea console-input" id="content" placeholder="Paste text or a link (https://…) to verify."></textarea>
-
-      <!-- Action bar -->
-      <div class="wb-bar">
-        <!-- Settings dropdown -->
-        <div class="wb-dd" id="settings-dd">
+      <span class="label" style="display:block; margin-bottom: var(--space-150)">Paste text or link</span>
+      <div class="composer">
+        <textarea class="composer__input" id="content" placeholder="Paste text or a link (https://…) to verify."></textarea>
+        <div class="composer__bar">
+          <div class="composer__bar-left">
+            <!-- Settings (Tools-style) -->
+            <div class="wb-dd" id="settings-dd">
           <button class="btn btn--secondary wb-dd__btn" id="settings-btn" aria-expanded="false">
             <i data-lucide="sliders-horizontal" class="icon--sm"></i> Settings <span class="wb-dd__sum" id="settings-sum">· Auto · Quick</span> <i data-lucide="chevron-down" class="icon--sm"></i>
           </button>
@@ -130,15 +131,18 @@
                 <div class="select"><select><option>English</option><option>Spanish</option><option>French</option><option>German</option><option>Ukrainian</option></select></div>
               </div>
             </div>
+              </div>
+            </div>
+          </div>
+          <div class="composer__bar-right">
+            <button class="btn btn--secondary" id="clear">Clear</button>
+            <button class="btn btn--primary" id="run">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
           </div>
         </div>
-
-        <!-- Clear / Run -->
-        <div class="wb-bar__actions">
-          <span class="wb-count" id="charcount">0 / 50,000</span>
-          <button class="btn btn--secondary" id="clear">Clear</button>
-          <button class="btn btn--primary" id="run">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
-        </div>
+      </div>
+      <div class="composer-foot">
+        <span class="wb-count" id="charcount">0 / 50,000</span>
+        <span class="link-action" id="use-sample"><i data-lucide="file-text" class="icon--sm"></i> Use sample</span>
       </div>
     </div>
   </main>

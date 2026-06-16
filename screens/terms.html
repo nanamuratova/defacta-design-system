@@ -11,7 +11,15 @@
     .legal h2 { font-size: var(--text-h3); font-weight: var(--weight-medium); margin: var(--space-500) 0 var(--space-200); }
     .legal p { color: var(--text-secondary); margin-bottom: var(--space-200); }
     .legal ul { color: var(--text-secondary); margin: 0 0 var(--space-200) var(--space-300); display: flex; flex-direction: column; gap: var(--space-100); }
-    .legal .site-footer { background: var(--surface-ink); color: var(--grey-400); border-top: 0; }
+    /* multi-column footer (matches landing) */
+    .lp-footer { background: var(--surface-ink); color: var(--grey-400); }
+    .lp-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: var(--space-400); padding-block: var(--space-600); }
+    .lp-footer .col-title { display: block; font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--grey-300); margin-bottom: var(--space-150); }
+    .lp-footer a, .lp-footer .ln { display: block; color: var(--grey-300); font-size: var(--text-sm); padding: var(--space-025) 0; }
+    .lp-footer a:hover { color: var(--canvas); }
+    .lp-footer__brand p { max-width: 30ch; font-size: var(--text-sm); margin-top: var(--space-150); }
+    .lp-footer__bar { border-top: 1px solid rgba(255,255,255,0.12); padding-block: var(--space-300); display: flex; justify-content: space-between; align-items: center; gap: var(--space-200); flex-wrap: wrap; font-size: var(--text-sm); color: var(--text-muted); }
+    @media (max-width: 860px) { .lp-footer__grid { grid-template-columns: 1fr; gap: var(--space-300); } }
   </style>
 </head>
 <body>
@@ -65,9 +73,39 @@
     </div>
   </main>
 
-  <footer class="site-footer legal" style="background: var(--surface-ink); color: var(--grey-400); border-top:0">
-    <span>© 2026 Defacta Inc.</span>
-    <span class="cluster" style="gap:var(--space-300)"><a class="link" href="privacy.html" style="color:var(--grey-300)">Privacy</a><a class="link" href="landing.html" style="color:var(--grey-300)">Home</a></span>
+  <footer class="lp-footer">
+    <div class="container">
+      <div class="lp-footer__grid">
+        <div class="lp-footer__brand">
+          <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo" style="height:24px; filter:invert(1) brightness(2)">
+          <p>Between the information<br>and the decision.</p>
+        </div>
+        <div>
+          <span class="col-title">Product</span>
+          <a href="landing.html#how-it-works">How it works</a>
+          <a href="landing.html#pricing">Pricing</a>
+          <a href="workbench.html">Console</a>
+          <span class="ln" style="color:var(--text-muted)">API (coming soon)</span>
+        </div>
+        <div>
+          <span class="col-title">Legal</span>
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Terms of service</a>
+          <a href="#">Acceptable use</a>
+          <a href="#">Transparency statement</a>
+        </div>
+        <div>
+          <span class="col-title">Contact</span>
+          <a href="mailto:hello@defacta.pro">hello@defacta.pro</a>
+          <a href="mailto:support@defacta.pro">support@defacta.pro</a>
+          <a href="mailto:legal@defacta.pro">legal@defacta.pro</a>
+        </div>
+      </div>
+      <div class="lp-footer__bar">
+        <span>© 2026 Defacta Inc. · 1007 N Orange St., 4th Floor, Wilmington, DE 19801</span>
+        <span>Informational and consultative purposes only.</span>
+      </div>
+    </div>
   </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>

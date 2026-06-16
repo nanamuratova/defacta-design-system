@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Defacta — A verification layer for high-risk information</title>
+  <title>Defacta — Between the information and the decision</title>
   <link rel="stylesheet" href="../styles.css">
   <style>
     /* page-local: landing-only treatments */
@@ -15,12 +15,10 @@
     /* transparent header — sits over the hero gradient */
     .site-header { background: transparent; border-bottom: 0; }
 
-    /* footer matches the final dark CTA section */
-    .site-footer { background: var(--surface-ink); color: var(--grey-400); border-top: 0; }
-    .site-footer .link { color: var(--grey-300); }
-    .site-footer .link:hover { color: var(--canvas); }
-    .hero .display { margin-bottom: var(--space-300); }
-    .hero .lead { max-width: 720px; margin: 0 auto var(--space-300); }
+    .hero .display { margin-bottom: var(--space-200); }
+    .hero__tagline { font-size: var(--text-h4); font-weight: var(--weight-medium); color: var(--text-secondary); max-width: 680px; margin: 0 auto var(--space-300); }
+    .hero .lead { max-width: 700px; margin: 0 auto var(--space-200); }
+    .hero__note { font-weight: var(--weight-semibold); color: var(--text-primary); margin-bottom: var(--space-300); }
 
     /* report preview surface (scaled live iframe of the real report) */
     .preview { max-width: 960px; margin-inline: auto; height: 520px; overflow: hidden;
@@ -28,39 +26,53 @@
       box-shadow: var(--shadow-lg); background: var(--canvas); }
     .preview iframe { width: 1400px; height: 1140px; border: 0; transform: scale(0.6857); transform-origin: top left; pointer-events: none; }
 
-    /* what-defacta-checks */
-    .checks { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-600); align-items: start; }
-    .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-600); }
-    .checklist .item { display: flex; gap: var(--space-150); padding: var(--space-200) 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); }
-    .checklist .item:nth-child(1), .checklist .item:nth-child(2) { border-top: 0; }
-    .checklist .item .icon { color: var(--color-accent-blue); margin-top: 1px; }
+    /* audience — three cards */
+    .audience { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-300); margin-top: var(--space-500); align-items: stretch; }
+    .aud-card { display: flex; flex-direction: column; gap: var(--space-150); }
+    .aud-card h3 { font-size: var(--text-h4); font-weight: var(--weight-medium); }
+    .aud-card p { font-size: var(--text-sm); color: var(--text-secondary); }
+    .aud-card .aud-note { margin-top: auto; padding-top: var(--space-200);
+      font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label);
+      text-transform: uppercase; color: var(--color-accent-blue); }
 
-    /* six steps */
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--space-400); }
-    .step { padding: var(--space-300); border-top: 1px solid rgba(255,255,255,0.12); border-left: 1px solid rgba(255,255,255,0.12); position: relative; }
-    .step:nth-child(3n+1) { border-left: 0; }
-    .step__spark { position: absolute; top: var(--space-300); right: var(--space-300); color: var(--color-accent-blue); }
-    .step .label { color: var(--color-accent-blue); display: block; margin-bottom: var(--space-150); }
-    .step h3 { font-size: var(--text-h4); margin-bottom: var(--space-100); }
-    .step p { font-size: var(--text-sm); color: var(--grey-400); max-width: 30ch; }
+    /* how it works — four layers (dark) */
+    .layers { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: var(--space-400); }
+    .layer { padding: var(--space-400); border-top: 1px solid rgba(255,255,255,0.12); border-left: 1px solid rgba(255,255,255,0.12); }
+    .layer:nth-child(odd) { border-left: 0; }
+    .layer .n { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .08em; color: var(--color-accent-blue); }
+    .layer h3 { font-size: var(--text-h4); font-weight: var(--weight-medium); margin: var(--space-100) 0; }
+    .layer p { font-size: var(--text-sm); color: var(--grey-400); max-width: 46ch; }
 
-    /* audience */
-    .use-cases { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-600) var(--space-800); margin-top: var(--space-600); }
-    .use-case { padding-left: var(--space-300); border-left: 1px solid var(--border-default); }
-    .use-case .n { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .08em; color: var(--color-accent-blue); }
-    .use-case h3 { font-size: var(--text-h4); margin: var(--space-100) 0; }
-    .use-case p { font-size: var(--text-sm); color: var(--text-secondary); }
+    /* mission */
+    .mission p { max-width: 680px; margin-inline: auto; }
+    .mission p + p { margin-top: var(--space-200); }
 
-    /* features */
-    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-600) var(--space-800); margin-top: var(--space-600); }
-    .feature__head { display: flex; align-items: center; gap: var(--space-100); margin-bottom: var(--space-100); }
-    .feature__head .icon { color: var(--color-accent-blue); }
-    .feature__head h3 { font-size: var(--text-h4); font-weight: var(--weight-medium); }
-    .feature p { font-size: var(--text-sm); color: var(--text-secondary); }
+    /* pricing */
+    .pricing { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-200); margin-top: var(--space-500); align-items: stretch; text-align: left; }
+    .price { display: flex; flex-direction: column; gap: var(--space-200); }
+    .price--featured { border-color: var(--color-accent-blue); box-shadow: var(--shadow-md); }
+    .price__name { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-secondary); }
+    .price__amt { font-size: var(--text-h3); font-weight: var(--weight-medium); line-height: 1.1; }
+    .price__amt span { font-size: var(--text-sm); color: var(--text-muted); font-weight: var(--weight-regular); }
+    .price__per { font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-050); min-height: 16px; }
+    .price__feats { display: flex; flex-direction: column; gap: var(--space-100); font-size: var(--text-sm); color: var(--text-secondary); }
+    .price__feats > div { display: flex; gap: var(--space-100); align-items: flex-start; }
+    .price__feats .icon { color: var(--color-accent-blue); margin-top: 2px; flex-shrink: 0; }
+    .price .btn { margin-top: auto; }
 
+    /* multi-column footer */
+    .lp-footer { background: var(--surface-ink); color: var(--grey-400); }
+    .lp-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: var(--space-400); padding-block: var(--space-600); }
+    .lp-footer .col-title { display: block; font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--grey-300); margin-bottom: var(--space-150); }
+    .lp-footer a, .lp-footer .ln { display: block; color: var(--grey-300); font-size: var(--text-sm); padding: var(--space-025) 0; }
+    .lp-footer a:hover { color: var(--canvas); }
+    .lp-footer__brand p { max-width: 30ch; font-size: var(--text-sm); margin-top: var(--space-150); }
+    .lp-footer__bar { border-top: 1px solid rgba(255,255,255,0.12); padding-block: var(--space-300); display: flex; justify-content: space-between; align-items: center; gap: var(--space-200); flex-wrap: wrap; font-size: var(--text-sm); color: var(--text-muted); }
+
+    @media (max-width: 1100px) { .pricing { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 860px) {
-      .checks, .checklist, .steps, .use-cases, .features { grid-template-columns: 1fr; gap: var(--space-300); }
-      .step { border-left: 0; }
+      .audience, .layers, .pricing, .lp-footer__grid { grid-template-columns: 1fr; gap: var(--space-300); }
+      .layer { border-left: 0; }
     }
   </style>
 </head>
@@ -68,21 +80,24 @@
   <!-- ── Header + hero share the gradient background ────────────────── -->
   <div class="bg-blur">
   <header class="site-header">
-    <a class="brand" href="#"><img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+    <a class="brand" href="landing.html"><img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
     <div class="cluster">
-      <a class="btn btn--secondary btn--sm" href="auth.html?mode=signin">Sign in</a>
-      <a class="btn btn--primary btn--sm" href="auth.html?mode=signup">Sign up</a>
+      <a class="btn btn--tertiary btn--sm" href="auth.html?mode=signin">Sign in</a>
+      <a class="btn btn--secondary btn--sm" href="auth.html?mode=signup">Sign up</a>
     </div>
   </header>
 
   <!-- ── Hero ───────────────────────────────────────────────────────── -->
   <section class="hero">
     <div class="container content">
-      <h1 class="display">A verification layer<br>for <em>high-risk</em> information.</h1>
-      <p class="body-lg text-secondary lead">Defacta checks any text — article, AI-generated answer, report, press release, or document — for factual errors, unsupported claims, hallucination risks, bias, and manipulation signals before it is shared, published, or acted upon.</p>
+      <h1 class="display">Set the record <em>straight.</em></h1>
+      <p class="hero__tagline">Between the information and the decision.</p>
+      <p class="body-lg text-secondary lead">You read an article. You get an answer from an AI. You are about to send something you wrote using that answer.</p>
+      <p class="body-lg text-secondary lead">Defacta is a verification layer that checks AI-generated answers and any text for factual accuracy, source credibility, bias, and manipulation before they reach your decision.</p>
+      <p class="body-lg hero__note">Not an AI fact-checker. A structured verification workflow.</p>
       <div class="cluster" style="justify-content:center; margin-bottom: var(--space-600)">
-        <a class="btn btn--primary btn--lg" href="workbench.html">Try free <i data-lucide="arrow-right" class="icon--sm"></i></a>
-        <a class="btn btn--secondary btn--lg" href="book-demo.html">Book a demo</a>
+        <a class="btn btn--primary btn--lg" href="workbench.html">Try Defacta free <i data-lucide="arrow-right" class="icon--sm"></i></a>
+        <a class="btn btn--secondary btn--lg" href="#how-it-works">See how it works</a>
       </div>
     </div>
     <div class="container">
@@ -91,50 +106,48 @@
   </section>
   </div>
 
-  <!-- ── Problem ────────────────────────────────────────────────────── -->
-  <section class="section section--paper" style="text-align:center">
-    <div class="container content">
-      <span class="label">The problem</span>
-      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-200)">Information risk is growing faster<br>than our ability to <em>verify it</em></h2>
-      <p class="body-lg text-secondary" style="max-width:720px;margin-inline:auto">AI systems now produce confident, fluent text at scale. Verification still happens by hand, one claim at a time. Defacta closes that gap — reading any document the way a careful reviewer would, only faster.</p>
-    </div>
-  </section>
-
-  <!-- ── What Defacta checks ────────────────────────────────────────── -->
+  <!-- ── Who it is for ──────────────────────────────────────────────── -->
   <section class="section">
     <div class="container">
-      <div class="checks">
-        <div>
-          <span class="label">What Defacta checks</span>
-          <h2 class="h1" style="margin-top:var(--space-150)">Every way <em>text<br>can mislead</em> you.</h2>
-        </div>
-        <div class="checklist">
-          <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Hallucinations and fabricated facts</div>
-          <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Unsupported or overstated claims</div>
-          <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Citation mismatches and fake references</div>
-          <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Quotes that were never said</div>
-          <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Outdated data presented as current</div>
-          <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Missing context and selective omission</div>
-          <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Political and ideological bias</div>
-          <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Deceptive framing and manipulation</div>
-        </div>
+      <div style="text-align:center; max-width:680px; margin-inline:auto">
+        <span class="label">Who it is for</span>
+        <h2 class="h1" style="margin-top:var(--space-150)">One verification layer,<br>for <em>everyone downstream.</em></h2>
+      </div>
+      <div class="audience">
+        <article class="card aud-card">
+          <h3>For individuals</h3>
+          <p>You ask an AI about your health, your finances, a decision that matters. You read an article and share it. You write something using an AI answer.</p>
+          <p>Defacta checks all three before they reach your decision. Facts, sources, bias, manipulation, and known misinformation, in one pass. No technical background required.</p>
+          <span class="aud-note">Try free · 5 checks per day</span>
+        </article>
+        <article class="card aud-card">
+          <h3>For professionals</h3>
+          <p>Analysts, journalists, editors, researchers, lawyers, and financial analysts spend too much time on the mechanical work: cross-referencing sources, verifying claims, checking whether a citation says what the author says it says.</p>
+          <p>Defacta handles that part. A structured credibility assessment in under 60 seconds, so your attention goes where it actually matters.</p>
+          <p>When an article or an AI-generated answer contains incorrect information about your company, your client, or your case, upload your own documents and run the verification against them. Defacta checks the text against your files and flags every discrepancy.</p>
+          <span class="aud-note">MCP agent integration coming soon</span>
+        </article>
+        <article class="card aud-card">
+          <h3>For organizations</h3>
+          <p>AI-generated content is entering your workflows. You may not always know when or where. When it is wrong, the liability is yours.</p>
+          <p>Defacta gives you a documented, timestamped verification layer on any content your organization produces or consumes. Compliance documentation mapped to EU AI Act Articles 9, 12, 13, 14, and 50.</p>
+          <span class="aud-note">API and MCP server coming soon · Contact us</span>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ── Six steps (dark) ───────────────────────────────────────────── -->
-  <section class="section section--ink">
+  <!-- ── How it works — four layers (dark) ──────────────────────────── -->
+  <section class="section section--ink" id="how-it-works">
     <div class="container">
       <span class="label">How it works</span>
-      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-150)">Six steps. <em>No magic</em></h2>
-      <p class="text-secondary" style="max-width:560px">Defacta does not simply say true or false. It breaks long-form material into a review structure that expert teams can use in real work.</p>
-      <div class="steps">
-        <div class="step"><i data-lucide="sparkles" class="step__spark icon--sm"></i><span class="label">Step 1</span><h3>Ingest</h3><p>Paste a URL, document, or raw model output.</p></div>
-        <div class="step"><i data-lucide="sparkles" class="step__spark icon--sm"></i><span class="label">Step 2</span><h3>Extract</h3><p>Defacta atomises the text into discrete claims.</p></div>
-        <div class="step"><i data-lucide="sparkles" class="step__spark icon--sm"></i><span class="label">Step 3</span><h3>Verify</h3><p>Each claim is checked against sources and evidence.</p></div>
-        <div class="step"><i data-lucide="sparkles" class="step__spark icon--sm"></i><span class="label">Step 4</span><h3>Flag</h3><p>Risks, hallucinations, and uncertainty are surfaced.</p></div>
-        <div class="step"><i data-lucide="sparkles" class="step__spark icon--sm"></i><span class="label">Step 5</span><h3>Report</h3><p>A structured, exportable report is generated.</p></div>
-        <div class="step"><i data-lucide="sparkles" class="step__spark icon--sm"></i><span class="label">Step 6</span><h3>Review</h3><p>A human reviewer signs off and locks the record.</p></div>
+      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-150)">Four layers. <em>One pass.</em></h2>
+      <p class="text-secondary" style="max-width:560px">Defacta does not simply say true or false. It runs every input through four layers of structured analysis and returns one traceable verdict.</p>
+      <div class="layers">
+        <div class="layer"><span class="n">Layer 01</span><h3>Factual verification</h3><p>Claims checked against credible sources and authoritative databases. Hallucinations and fabricated citations detected and flagged.</p></div>
+        <div class="layer"><span class="n">Layer 02</span><h3>Source credibility</h3><p>Every source evaluated for reliability, track record, and relevance. Anonymous or low-credibility sources identified.</p></div>
+        <div class="layer"><span class="n">Layer 03</span><h3>Bias and manipulation</h3><p>Manipulative framing, selective omission, and persuasion tactics detected. Bias assessed and scored across dimensions.</p></div>
+        <div class="layer"><span class="n">Layer 04</span><h3>Misinformation registry</h3><p>Cross-referenced against fact-checking registries and known misinformation databases. Every verdict timestamped and traceable.</p></div>
       </div>
     </div>
   </section>
@@ -143,7 +156,7 @@
   <section class="section section--paper" style="text-align:center">
     <div class="container content">
       <span class="label">The output</span>
-      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-400)">Structured result in <em>30 seconds</em></h2>
+      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-400)">Every verdict, <em>timestamped and traceable.</em></h2>
     </div>
     <div class="container">
       <div class="preview"><iframe scrolling="no" src="report.html" loading="lazy" tabindex="-1" title="Verification report preview"></iframe></div>
@@ -154,55 +167,119 @@
     </div>
   </section>
 
-  <!-- ── Audience ───────────────────────────────────────────────────── -->
-  <section class="section">
+  <!-- ── Mission ────────────────────────────────────────────────────── -->
+  <section class="section mission" style="text-align:center">
     <div class="container content">
-      <span class="label">Who it is for</span>
-      <h2 class="h1" style="margin-top:var(--space-150)">Where a single <em>wrong fact</em><br>has consequences.</h2>
-      <div class="use-cases">
-        <div class="use-case"><span class="n">01</span><h3>Financial services</h3><p>Investment research and due-diligence memos carry real liability. An analyst acting on a hallucinated figure has a problem. Defacta checks before it reaches a client.</p></div>
-        <div class="use-case"><span class="n">02</span><h3>Legal and compliance</h3><p>Studies found ~75% hallucination rates on legal questions. Any factual error in a memo or contract review is costly. Defacta is the verification layer before it becomes a liability.</p></div>
-        <div class="use-case"><span class="n">03</span><h3>Media and publishing</h3><p>Defacta sits between the AI draft and the published piece, flagging hallucinations, sourcing gaps, and framing bias.</p></div>
-        <div class="use-case"><span class="n">04</span><h3>Intelligence and risk</h3><p>Defacta scores reliability, flags manipulation, and surfaces what actually warrants attention in high-volume intelligence workflows.</p></div>
-        <div class="use-case"><span class="n">05</span><h3>Government and institutions</h3><p>Defacta verifies inputs as well as outputs. Accidental AI errors and deliberate manipulation in source material are both risks.</p></div>
-        <div class="use-case"><span class="n">06</span><h3>PR and communications</h3><p>Defacta checks every factual claim and flags framing that could mislead before a statement goes public.</p></div>
+      <span class="label">Mission</span>
+      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-300)">We do not replace human judgment.<br><em>We protect it.</em></h2>
+      <p class="body-lg text-secondary">Defacta is built on one premise: analysts, journalists, fact-checkers, and researchers are irreplaceable. We build tools that make their work faster, not tools that replace it.</p>
+      <p class="body-lg text-secondary">Defacta handles the mechanical parts so human attention goes where it matters. Because misinformation is not only a professional problem, a limited but sufficient version of Defacta is free for anyone who wants to know what they are reading.</p>
+      <p class="body-lg text-secondary">Defacta makes no claim to ultimate truth. It reduces the risk of being misled, manipulated, or gaslighted.</p>
+    </div>
+  </section>
+
+  <!-- ── Pricing ────────────────────────────────────────────────────── -->
+  <section class="section section--paper" id="pricing">
+    <div class="container">
+      <div style="text-align:center; max-width:680px; margin-inline:auto">
+        <span class="label">Pricing</span>
+        <h2 class="h1" style="margin-top:var(--space-150)">Start free. <em>Scale when ready.</em></h2>
+      </div>
+      <div class="pricing">
+        <article class="card price">
+          <div><div class="price__name">Free</div><div class="price__amt">$0</div><div class="price__per">forever</div></div>
+          <div class="price__feats">
+            <div><i data-lucide="check" class="icon icon--sm"></i> 5 verifications per day</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> All four layers</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> Public verdict URL</div>
+          </div>
+          <a class="btn btn--secondary" style="width:100%" href="workbench.html">Start free</a>
+        </article>
+
+        <article class="card price">
+          <div><div class="price__name">Starter</div><div class="price__amt">$9 <span>/ mo</span></div><div class="price__per">or $72 / year</div></div>
+          <div class="price__feats">
+            <div><i data-lucide="check" class="icon icon--sm"></i> 50 verifications per day</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> All four layers</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> Verification history</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> Export reports</div>
+          </div>
+          <a class="btn btn--secondary" style="width:100%" href="auth.html?mode=signup">Choose Starter</a>
+        </article>
+
+        <article class="card price price--featured">
+          <div><div class="price__name">Pro</div><div class="price__amt">$19 <span>/ mo</span></div><div class="price__per">or $149 / year</div></div>
+          <div class="price__feats">
+            <div><i data-lucide="check" class="icon icon--sm"></i> Unlimited verifications</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> All four layers</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> Priority processing</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> Audit trail export</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> Analytics</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> MCP integration (coming soon)</div>
+          </div>
+          <a class="btn btn--primary" style="width:100%" href="auth.html?mode=signup">Choose Pro</a>
+        </article>
+
+        <article class="card price">
+          <div><div class="price__name">Student</div><div class="price__amt">$6 <span>/ mo</span></div><div class="price__per">or $49 / year</div></div>
+          <div class="price__feats">
+            <div><i data-lucide="check" class="icon icon--sm"></i> Unlimited verifications</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> All four layers</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> Academic citation check</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> .edu email required</div>
+          </div>
+          <a class="btn btn--secondary" style="width:100%" href="auth.html?mode=signup">Choose Student</a>
+        </article>
+
+        <article class="card price">
+          <div><div class="price__name">Enterprise</div><div class="price__amt">Custom</div><div class="price__per">&nbsp;</div></div>
+          <div class="price__feats">
+            <div><i data-lucide="check" class="icon icon--sm"></i> API access</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> MCP server (coming soon)</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> EU AI Act compliance docs</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> Dedicated audit trail</div>
+            <div><i data-lucide="check" class="icon icon--sm"></i> SLA and support</div>
+          </div>
+          <a class="btn btn--secondary" style="width:100%" href="book-demo.html">Contact sales</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ── Why trust ──────────────────────────────────────────────────── -->
-  <section class="section bg-blur" style="text-align:center">
-    <div class="container content">
-      <span class="label">Why trust Defacta</span>
-      <h2 class="h1" style="margin:var(--space-150) 0">Evidence-based, transparent, and<br>built for <em>human judgment.</em></h2>
-      <div class="features" style="text-align:left">
-        <div class="feature"><div class="feature__head"><i data-lucide="sparkles" class="icon icon--sm"></i><h3>Evidence trail</h3></div><p>Every claim links to the source it was checked against.</p></div>
-        <div class="feature"><div class="feature__head"><i data-lucide="sparkles" class="icon icon--sm"></i><h3>Source transparency</h3></div><p>We show what we looked at, and what we couldn't find.</p></div>
-        <div class="feature"><div class="feature__head"><i data-lucide="sparkles" class="icon icon--sm"></i><h3>Confidence indicators</h3></div><p>Calibrated, never theatrical. Uncertainty is first-class.</p></div>
-        <div class="feature"><div class="feature__head"><i data-lucide="sparkles" class="icon icon--sm"></i><h3>Human-in-the-loop</h3></div><p>A reviewer signs off. The system supports judgment, not replaces it.</p></div>
-        <div class="feature"><div class="feature__head"><i data-lucide="sparkles" class="icon icon--sm"></i><h3>Audit trail</h3></div><p>Every report is versioned, attributable, and exportable.</p></div>
-        <div class="feature"><div class="feature__head"><i data-lucide="sparkles" class="icon icon--sm"></i><h3>Private by default</h3></div><p>Your documents are not used to train models.</p></div>
+  <!-- ── Footer (multi-column, dark) ────────────────────────────────── -->
+  <footer class="lp-footer">
+    <div class="container">
+      <div class="lp-footer__grid">
+        <div class="lp-footer__brand">
+          <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo" style="height:24px; filter:invert(1) brightness(2)">
+          <p>Between the information and the decision.</p>
+        </div>
+        <div>
+          <span class="col-title">Product</span>
+          <a href="#how-it-works">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="workbench.html">Console</a>
+          <span class="ln" style="color:var(--text-muted)">API (coming soon)</span>
+        </div>
+        <div>
+          <span class="col-title">Legal</span>
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms of service</a>
+          <a href="#">Acceptable use</a>
+          <a href="#">Transparency statement</a>
+        </div>
+        <div>
+          <span class="col-title">Contact</span>
+          <a href="mailto:hello@defacta.pro">hello@defacta.pro</a>
+          <a href="mailto:support@defacta.pro">support@defacta.pro</a>
+          <a href="mailto:legal@defacta.pro">legal@defacta.pro</a>
+        </div>
+      </div>
+      <div class="lp-footer__bar">
+        <span>© 2026 Defacta Inc. · 1007 N Orange St., 4th Floor, Wilmington, DE 19801</span>
+        <span>Informational and consultative purposes only.</span>
       </div>
     </div>
-  </section>
-
-  <!-- ── CTA (dark) ─────────────────────────────────────────────────── -->
-  <section class="section section--ink" style="text-align:center; padding-bottom: var(--space-300)">
-    <div class="container content">
-      <span class="label">Try Defacta</span>
-      <h2 class="display" style="margin:var(--space-150) 0">Start <em>verifying</em> today</h2>
-      <p class="body-lg text-secondary" style="margin-bottom:var(--space-300)">Start with a single document. See what Defacta finds.</p>
-      <div class="cluster" style="justify-content:center">
-        <a class="btn btn--primary" style="background:var(--canvas);color:var(--grey-950);border-color:var(--canvas)" href="workbench.html">Try free <i data-lucide="arrow-right" class="icon--sm"></i></a>
-        <a class="btn btn--ghost" style="color:var(--canvas);border-color:rgba(255,255,255,0.2)" href="book-demo.html">Book a demo</a>
-        <a class="btn btn--ghost" style="color:var(--canvas);border-color:rgba(255,255,255,0.2)" href="report.html">View sample report</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <span>© 2026 Defacta — Evidence, transparent by default.</span>
-    <span class="cluster" style="gap:var(--space-300)"><a class="link" href="#">Privacy</a><a class="link" href="#">Terms</a></span>
   </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>

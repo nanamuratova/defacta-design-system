@@ -34,9 +34,9 @@
   --color-warning:     #D97706;
   --color-success:     #059669;
   --color-info:        #1D4ED8;
-  --color-accent-blue:   #8199CC;  /* Brand accent — use sparingly */
-  --color-accent-soft:   #EEF1F9;  /* accent tint — subtle backgrounds */
-  --color-accent-border: #C9D4E6;  /* accent border */
+  --color-accent-blue:   #2F6BFF;  /* Brand accent — use sparingly */
+  --color-accent-soft:   #EAF1FF;  /* accent tint — subtle backgrounds */
+  --color-accent-border: #BCD0FF;  /* accent border */
 
   /* COLOR — Semantic soft fills (for tinted backgrounds, badges, soft buttons) */
   --color-error-soft:   #FEF2F2;

@@ -107,9 +107,14 @@ Defacta is a verification tool for **high-stakes information**. The aesthetic is
 
 - **Ink + paper.** Mostly `--grey-950` text on `--canvas`/`--paper`. Dark `.section--ink`
   bands for emphasis.
-- **One accent.** `--color-accent-blue` is used **sparingly**. Don't add new accent colors.
-- **Semantic color = meaning, not decoration.** Red/amber/green only signal
-  error/warning/success or claim verdicts — never as styling flourish.
+- **12-step gray scale** `--grey-950` (Ink) → `--grey-25`, derived from `#1A1A1A`. Text:
+  `--grey-950`/`--grey-600`/`--grey-400`; borders `--grey-200`; hairlines `--grey-100`.
+- **One accent.** `--color-accent-blue` (+ `--color-accent-soft` / `--color-accent-border`)
+  used **sparingly** — focus rings, eyebrow labels, small highlights. Don't add new accent colors.
+- **Semantic color = meaning, not decoration.** error/warning/success/info only signal
+  state or verdict — never styling flourish. Each has three tones: base (text/icon/dot),
+  `*-soft` (tinted fill), `*-border` — e.g. `--color-error` / `--color-error-soft` / `--color-error-border`.
+  Put text on the `*-soft` tint, never on the saturated base.
 - **Soft, low shadows. Soft corners** (radius 8–16). No heavy drop shadows, no gradients
   except the one brand gradient, no bright fills.
 - **The mono uppercase `.label`** is the signature touch — use it for eyebrows and field labels.

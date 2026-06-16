@@ -8,8 +8,8 @@
 
 /* ---- Alerts ---------------------------------------------------------- */
 .alert {
-  display: flex; gap: var(--space-12);
-  padding: var(--space-12) var(--space-16);
+  display: flex; gap: var(--space-150);
+  padding: var(--space-150) var(--space-200);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-12);
   background: var(--canvas);
@@ -41,7 +41,7 @@
   transform: translateX(-50%) translateY(4px);
   background: var(--grey-950); color: var(--canvas);
   font-family: var(--font-sans); font-size: var(--text-label); white-space: nowrap;
-  padding: var(--space-4) var(--space-10); border-radius: var(--radius-8);
+  padding: var(--space-050) var(--space-150); border-radius: var(--radius-8);
   opacity: 0; pointer-events: none; transition: opacity 0.15s ease, transform 0.15s ease; z-index: 60;
 }
 .tooltip::before {

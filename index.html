@@ -13,7 +13,7 @@
     .docs__header {
       grid-column: 1 / -1; position: sticky; top: 0; z-index: 60;
       display: flex; align-items: center; justify-content: space-between;
-      height: 64px; padding-inline: var(--space-24);
+      height: 64px; padding-inline: var(--space-300);
       background: var(--canvas); border-bottom: 1px solid var(--border-subtle);
     }
     .docs__version {
@@ -24,46 +24,46 @@
     .docs__sidebar {
       grid-row: 2; position: sticky; top: 64px; align-self: start;
       height: calc(100vh - 64px); overflow-y: auto;
-      padding: var(--space-24);
+      padding: var(--space-300);
       border-right: 1px solid var(--border-subtle);
       background: var(--canvas);
     }
     .docs__nav { display: flex; flex-direction: column; gap: 1px; }
     .docs__nav a {
-      display: block; padding: var(--space-8) var(--space-12);
+      display: block; padding: var(--space-100) var(--space-150);
       border-radius: var(--radius-8);
       font-size: var(--text-sm); color: var(--text-secondary); cursor: pointer;
     }
     .docs__nav a:hover { background: var(--grey-50); color: var(--text-primary); }
     .docs__nav a.is-active { background: var(--grey-100); color: var(--text-primary); font-weight: var(--weight-medium); }
     .docs__group {
-      margin: var(--space-16) 0 var(--space-4); padding: 0 var(--space-12);
+      margin: var(--space-200) 0 var(--space-050); padding: 0 var(--space-150);
       font-family: var(--font-mono); font-size: var(--text-label);
       letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted);
     }
 
-    .docs__content { padding: var(--space-48) var(--space-64); max-width: 1080px; }
+    .docs__content { padding: var(--space-600) var(--space-800); max-width: 1080px; }
     .panel[hidden] { display: none; }
-    .panel__head { margin-bottom: var(--space-32); }
-    .panel__head .label { display: block; margin-bottom: var(--space-12); }
-    .panel__head h1 { margin-bottom: var(--space-12); }
-    .sub { margin: var(--space-32) 0 var(--space-12); }
+    .panel__head { margin-bottom: var(--space-400); }
+    .panel__head .label { display: block; margin-bottom: var(--space-150); }
+    .panel__head h1 { margin-bottom: var(--space-150); }
+    .sub { margin: var(--space-400) 0 var(--space-150); }
 
     /* demo surface */
-    .demo { display: flex; flex-wrap: wrap; gap: var(--space-12); align-items: center;
-            padding: var(--space-24); border: 1px solid var(--border-subtle);
+    .demo { display: flex; flex-wrap: wrap; gap: var(--space-150); align-items: center;
+            padding: var(--space-300); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-12); background: var(--surface-paper); }
 
     /* doc patterns reused across every page: lead description + usage rules */
     .lead-desc { max-width: 760px; color: var(--text-secondary); font-size: var(--text-body-lg); line-height: var(--leading-relaxed); }
-    .rules { display: grid; gap: var(--space-12); max-width: 820px; }
-    .rule { display: flex; gap: var(--space-12); font-size: var(--text-sm); color: var(--text-secondary); }
+    .rules { display: grid; gap: var(--space-150); max-width: 820px; }
+    .rule { display: flex; gap: var(--space-150); font-size: var(--text-sm); color: var(--text-secondary); }
     .rule b { color: var(--text-primary); font-weight: var(--weight-medium); }
     .rule .icon { margin-top: 1px; flex-shrink: 0; }
     .rule--do .icon { color: var(--color-success); }
     .rule--dont .icon { color: var(--color-error); }
     .rule code { font-family: var(--font-mono); font-size: 0.85em; background: var(--grey-100); padding: 1px 5px; border-radius: var(--radius-4); color: var(--text-primary); }
-    .callout { display: flex; gap: var(--space-12); padding: var(--space-16); border: 1px solid var(--color-info-border); background: var(--color-info-soft); border-radius: var(--radius-12); font-size: var(--text-sm); color: var(--text-secondary); }
+    .callout { display: flex; gap: var(--space-150); padding: var(--space-200); border: 1px solid var(--color-info-border); background: var(--color-info-soft); border-radius: var(--radius-12); font-size: var(--text-sm); color: var(--text-secondary); }
     .callout .icon { color: var(--color-info); flex-shrink: 0; margin-top: 1px; }
     .callout b { color: var(--text-primary); font-weight: var(--weight-medium); }
 
@@ -77,38 +77,38 @@
     .demo--stack { flex-direction: column; align-items: stretch; }
 
     /* foundations helpers */
-    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: var(--space-16); }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: var(--space-200); }
     .sw { border: 1px solid var(--border-subtle); border-radius: var(--radius-12); overflow: hidden; }
-    .sw__chip { height: 64px; } .sw__meta { padding: var(--space-8) var(--space-12); }
+    .sw__chip { height: 64px; } .sw__meta { padding: var(--space-100) var(--space-150); }
     .sw__name { font-size: var(--text-sm); font-weight: var(--weight-medium); }
     .sw__hex { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .04em; color: var(--text-muted); }
-    .type-row { display: flex; align-items: baseline; gap: var(--space-24); padding: var(--space-12) 0; border-top: 1px solid var(--border-subtle); }
+    .type-row { display: flex; align-items: baseline; gap: var(--space-300); padding: var(--space-150) 0; border-top: 1px solid var(--border-subtle); }
     .type-row .meta { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted); width: 120px; flex-shrink: 0; }
-    .scale-row { display: flex; align-items: center; gap: var(--space-16); padding: var(--space-8) 0; }
+    .scale-row { display: flex; align-items: center; gap: var(--space-200); padding: var(--space-100) 0; }
     .scale-row .meta { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-muted); width: 120px; }
     .scale-bar { height: 16px; background: var(--grey-950); border-radius: var(--radius-2); }
-    .shadow-box { width: 160px; height: 96px; border-radius: var(--radius-12); background: var(--canvas); display: flex; align-items: flex-end; padding: var(--space-12); }
+    .shadow-box { width: 160px; height: 96px; border-radius: var(--radius-12); background: var(--canvas); display: flex; align-items: flex-end; padding: var(--space-150); }
     .shadow-box span { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary); }
-    .radii { display: flex; gap: var(--space-24); flex-wrap: wrap; }
-    .radii .r { width: 80px; height: 80px; background: var(--grey-100); border: 1px solid var(--border-default); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--space-8); }
+    .radii { display: flex; gap: var(--space-300); flex-wrap: wrap; }
+    .radii .r { width: 80px; height: 80px; background: var(--grey-100); border: 1px solid var(--border-default); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--space-100); }
     .radii .r span { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary); }
-    .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px,1fr)); gap: var(--space-12); }
-    .icons .i { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); padding: var(--space-16); border: 1px solid var(--border-subtle); border-radius: var(--radius-12); }
+    .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px,1fr)); gap: var(--space-150); }
+    .icons .i { display: flex; flex-direction: column; align-items: center; gap: var(--space-100); padding: var(--space-200); border: 1px solid var(--border-subtle); border-radius: var(--radius-12); }
     .icons .i span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; color: var(--text-muted); }
 
     /* screen gallery */
-    .gallery { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-24); }
+    .gallery { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-300); }
     .screen { border: 1px solid var(--border-default); border-radius: var(--radius-12); overflow: hidden; background: var(--canvas); display: flex; flex-direction: column; }
     .screen__frame { position: relative; height: 240px; overflow: hidden; background: var(--surface-paper); border-bottom: 1px solid var(--border-subtle); }
     .screen__frame iframe { width: 1400px; height: 875px; border: 0; transform: scale(0.32); transform-origin: top left; pointer-events: none; }
-    .screen__meta { padding: var(--space-16) var(--space-24); display: flex; align-items: center; justify-content: space-between; gap: var(--space-16); }
+    .screen__meta { padding: var(--space-200) var(--space-300); display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); }
     .screen__meta h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); }
     .screen__meta p { font-size: var(--text-sm); color: var(--text-secondary); margin-top: 2px; }
 
     @media (max-width: 860px) {
       .docs { grid-template-columns: 1fr; }
       .docs__sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border-subtle); }
-      .docs__content { padding: var(--space-24); }
+      .docs__content { padding: var(--space-300); }
       .gallery { grid-template-columns: 1fr; }
     }
   </style>
@@ -167,9 +167,9 @@
     <!-- HOME -->
     <section class="panel" data-panel="home">
       <span class="label">Design system · v1</span>
-      <h1 class="display" style="margin: var(--space-12) 0">The Defacta<br>design system</h1>
+      <h1 class="display" style="margin: var(--space-150) 0">The Defacta<br>design system</h1>
       <p class="body-lg text-secondary" style="max-width: 640px">The single source of truth behind Defacta — the verification layer that turns human- and AI-generated text into evidence-backed reports. Tokens, components, and real screens for building its landing page, product console, and report views, in one calm, precise, evidence-first visual language.</p>
-      <div class="cluster" style="margin-top: var(--space-24)">
+      <div class="cluster" style="margin-top: var(--space-300)">
         <a class="btn btn--primary btn--lg" href="screens/landing.html">Start the flow <i data-lucide="arrow-right" class="icon--sm"></i></a>
         <a class="btn btn--secondary btn--lg" href="https://github.com/nanamuratova/defacta-design-system" target="_blank" rel="noopener">View on GitHub <i data-lucide="arrow-up-right" class="icon--sm"></i></a>
       </div>
@@ -183,7 +183,7 @@
         <p class="lead-desc">Defacta's palette is built for trust, not decoration. A 12-step neutral scale derived from a single ink (<code>#1A1A1A</code>) carries almost the entire UI. Semantic colors appear only to signal meaning — error, warning, success, info — each as a base, a soft fill, and a border. One restrained blue accent is used sparingly. The result reads calm, precise, and evidence-first.</p>
       </div>
 
-      <div class="callout" style="margin-bottom: var(--space-32)">
+      <div class="callout" style="margin-bottom: var(--space-400)">
         <i data-lucide="info" class="icon icon--sm"></i>
         <div><b>Single source of truth.</b> Every color below is a <code>var(--token)</code> defined in <code>tokens.css</code>. Use the token, never the raw hex — change a value there once and it updates everywhere.</div>
       </div>
@@ -247,10 +247,10 @@
       </div>
 
       <!-- Usage rules -->
-      <h2 class="h2" style="margin: var(--space-48) 0 var(--space-16)">Usage rules</h2>
+      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
       <div class="grid grid--2">
         <div class="card">
-          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
           <div class="rules">
             <div class="rule"><span>Reference every color through a <code>var(--token)</code> from <code>tokens.css</code>.</span></div>
             <div class="rule"><span>Carry structure with the neutral scale: text <code>--grey-950</code> / <code>--grey-600</code> / <code>--grey-400</code>, borders <code>--grey-200</code>, surfaces <code>--canvas</code> / <code>--paper</code>.</span></div>
@@ -259,7 +259,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
           <div class="rules">
             <div class="rule"><span>Hardcode hex values or use <code>var(--token, #fallback)</code> fallbacks.</span></div>
             <div class="rule"><span>Use semantic or accent color for decoration — color must mean something.</span></div>
@@ -278,7 +278,7 @@
         <p class="lead-desc">Defacta sets text in two typefaces: <b>Inter</b> for the interface and <b>IBM Plex Mono</b> for labels, data, and identifiers. The full scale: one display size, four heading levels (H1–H4), five body sizes (XLarge → XSmall), and three sizes each of label and mono/data. Headings and body share two weights — <b>default Medium / Regular</b> and <b>strong Semibold</b> — tighten their tracking as they grow, and the uppercase mono label is the system's signature.</p>
       </div>
 
-      <div class="callout" style="margin-bottom: var(--space-32)">
+      <div class="callout" style="margin-bottom: var(--space-400)">
         <i data-lucide="info" class="icon icon--sm"></i>
         <div><b>Two typefaces, one rhythm.</b> Inter (400 / 500 / 600) carries all UI text. IBM Plex Mono is reserved for the uppercase <code>.label</code>, data, IDs, and timestamps — never for body copy. Every style is a class in <code>components/base.css</code> driven by tokens in <code>tokens.css</code>.</div>
       </div>
@@ -316,10 +316,10 @@
         </table>
       </div>
 
-      <h2 class="h2" style="margin: var(--space-48) 0 var(--space-16)">Usage rules</h2>
+      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
       <div class="grid grid--2">
         <div class="card">
-          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
           <div class="rules">
             <div class="rule"><span>Build hierarchy with the type classes (<code>.display</code>, <code>h1</code>–<code>h3</code>, <code>.body</code>) — never a manual <code>font-size</code>.</span></div>
             <div class="rule"><span>Set running copy in <code>.body</code> / <code>.body-lg</code>; drop to <code>--text-secondary</code> for supporting text.</span></div>
@@ -328,7 +328,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
           <div class="rules">
             <div class="rule"><span>Set raw <code>font-size</code> or <code>font-family</code> — use a type class or token.</span></div>
             <div class="rule"><span>Use IBM Plex Mono for body text or long copy — it's for labels &amp; data only.</span></div>
@@ -344,7 +344,7 @@
       <div class="panel__head">
         <span class="label">Foundations</span>
         <h1>Shadows, radius &amp; spacing</h1>
-        <p class="lead-desc">Three scales give the system its physical rhythm. Elevation is soft and low — five steps from a hairline lift to a floating overlay. Corners are editorial — a 2→24px radius scale (plus a full/circular option for user elements), with 8–16px covering most UI. Spacing is a 4-based scale from 2 to 120px that drives every gap, padding, and margin, so layout always lands on a consistent grid.</p>
+        <p class="lead-desc">Three scales give the system its physical rhythm. Elevation is soft and low — five steps from a hairline lift to a floating overlay. Corners are editorial — a 2→24px radius scale (plus a full/circular option for user elements), with 8–16px covering most UI. Spacing is an 8px-base scale from 0 to 80px (<code>--space-0</code> → <code>--space-1000</code>, named as the base-unit multiplier ×100) that drives every gap, padding, and margin, so layout always lands on a consistent grid.</p>
       </div>
 
       <p class="sub label">Elevation · 5 steps</p>
@@ -368,39 +368,43 @@
         <div class="r" style="border-radius:var(--radius-24)"><span>r-24</span></div>
         <div class="r" style="border-radius:var(--radius-full)"><span>full</span></div>
       </div>
-      <p class="text-sm text-secondary" style="margin-top: var(--space-12); max-width: 760px"><code>--radius-full</code> (999px) is reserved for <b>circular, user-related elements</b> — avatars, name chips, user UI, and emoji reactions.</p>
+      <p class="text-sm text-secondary" style="margin-top: var(--space-150); max-width: 760px"><code>--radius-full</code> (999px) is reserved for <b>circular, user-related elements</b> — avatars, name chips, user UI, and emoji reactions.</p>
 
-      <p class="sub label">Spacing · 4-based, 2 → 120</p>
-      <div class="demo--block">
-        <div class="scale-row"><span class="meta">space-2</span><span class="scale-bar" style="width:2px"></span></div>
-        <div class="scale-row"><span class="meta">space-4</span><span class="scale-bar" style="width:4px"></span></div>
-        <div class="scale-row"><span class="meta">space-8</span><span class="scale-bar" style="width:8px"></span></div>
-        <div class="scale-row"><span class="meta">space-12</span><span class="scale-bar" style="width:12px"></span></div>
-        <div class="scale-row"><span class="meta">space-16</span><span class="scale-bar" style="width:16px"></span></div>
-        <div class="scale-row"><span class="meta">space-20</span><span class="scale-bar" style="width:20px"></span></div>
-        <div class="scale-row"><span class="meta">space-24</span><span class="scale-bar" style="width:24px"></span></div>
-        <div class="scale-row"><span class="meta">space-32</span><span class="scale-bar" style="width:32px"></span></div>
-        <div class="scale-row"><span class="meta">space-40</span><span class="scale-bar" style="width:40px"></span></div>
-        <div class="scale-row"><span class="meta">space-48</span><span class="scale-bar" style="width:48px"></span></div>
-        <div class="scale-row"><span class="meta">space-56</span><span class="scale-bar" style="width:56px"></span></div>
-        <div class="scale-row"><span class="meta">space-64</span><span class="scale-bar" style="width:64px"></span></div>
-        <div class="scale-row"><span class="meta">space-80</span><span class="scale-bar" style="width:80px"></span></div>
-        <div class="scale-row"><span class="meta">space-96</span><span class="scale-bar" style="width:96px"></span></div>
-        <div class="scale-row"><span class="meta">space-120</span><span class="scale-bar" style="width:120px"></span></div>
+      <p class="sub label">Spacing · 8px base scale</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Token</th><th>Base unit ×</th><th>REM</th><th>Pixels</th><th>Visual</th></tr></thead>
+          <tbody>
+            <tr><td class="type-spec">--space-0</td><td class="type-spec">0×</td><td class="type-spec">0rem</td><td class="type-spec">0px</td><td><span class="scale-bar" style="width:6px;height:6px;border-radius:var(--radius-full)"></span></td></tr>
+            <tr><td class="type-spec">--space-025</td><td class="type-spec">0.25×</td><td class="type-spec">0.125rem</td><td class="type-spec">2px</td><td><span class="scale-bar" style="width:var(--space-025)"></span></td></tr>
+            <tr><td class="type-spec">--space-050</td><td class="type-spec">0.5×</td><td class="type-spec">0.25rem</td><td class="type-spec">4px</td><td><span class="scale-bar" style="width:var(--space-050)"></span></td></tr>
+            <tr><td class="type-spec">--space-075</td><td class="type-spec">0.75×</td><td class="type-spec">0.375rem</td><td class="type-spec">6px</td><td><span class="scale-bar" style="width:var(--space-075)"></span></td></tr>
+            <tr><td class="type-spec">--space-100</td><td class="type-spec">1× (base)</td><td class="type-spec">0.5rem</td><td class="type-spec">8px</td><td><span class="scale-bar" style="width:var(--space-100)"></span></td></tr>
+            <tr><td class="type-spec">--space-150</td><td class="type-spec">1.5×</td><td class="type-spec">0.75rem</td><td class="type-spec">12px</td><td><span class="scale-bar" style="width:var(--space-150)"></span></td></tr>
+            <tr><td class="type-spec">--space-200</td><td class="type-spec">2×</td><td class="type-spec">1rem</td><td class="type-spec">16px</td><td><span class="scale-bar" style="width:var(--space-200)"></span></td></tr>
+            <tr><td class="type-spec">--space-250</td><td class="type-spec">2.5×</td><td class="type-spec">1.25rem</td><td class="type-spec">20px</td><td><span class="scale-bar" style="width:var(--space-250)"></span></td></tr>
+            <tr><td class="type-spec">--space-300</td><td class="type-spec">3×</td><td class="type-spec">1.5rem</td><td class="type-spec">24px</td><td><span class="scale-bar" style="width:var(--space-300)"></span></td></tr>
+            <tr><td class="type-spec">--space-400</td><td class="type-spec">4×</td><td class="type-spec">2rem</td><td class="type-spec">32px</td><td><span class="scale-bar" style="width:var(--space-400)"></span></td></tr>
+            <tr><td class="type-spec">--space-500</td><td class="type-spec">5×</td><td class="type-spec">2.5rem</td><td class="type-spec">40px</td><td><span class="scale-bar" style="width:var(--space-500)"></span></td></tr>
+            <tr><td class="type-spec">--space-600</td><td class="type-spec">6×</td><td class="type-spec">3rem</td><td class="type-spec">48px</td><td><span class="scale-bar" style="width:var(--space-600)"></span></td></tr>
+            <tr><td class="type-spec">--space-800</td><td class="type-spec">8×</td><td class="type-spec">4rem</td><td class="type-spec">64px</td><td><span class="scale-bar" style="width:var(--space-800)"></span></td></tr>
+            <tr><td class="type-spec">--space-1000</td><td class="type-spec">10×</td><td class="type-spec">5rem</td><td class="type-spec">80px</td><td><span class="scale-bar" style="width:var(--space-1000)"></span></td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <h2 class="h2" style="margin: var(--space-48) 0 var(--space-16)">Usage rules</h2>
+      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
       <div class="grid grid--2">
         <div class="card">
-          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
           <div class="rules">
-            <div class="rule"><span>Set every gap, padding, and margin with <code>--space-*</code> tokens — stay on the 4-based grid.</span></div>
+            <div class="rule"><span>Set every gap, padding, and margin with <code>--space-*</code> tokens — stay on the 8px grid.</span></div>
             <div class="rule"><span>Use <code>--radius-8</code> for inputs &amp; buttons, <code>--radius-12</code>/<code>16</code> for cards, <code>--radius-full</code> for pills.</span></div>
             <div class="rule"><span>Reach for the lowest elevation that reads: <code>--shadow-sm</code> cards, <code>--shadow-md</code> menus, <code>--shadow-lg</code>/<code>xl</code> overlays.</span></div>
           </div>
         </div>
         <div class="card">
-          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
           <div class="rules">
             <div class="rule"><span>Use arbitrary px values for spacing, radius, or shadows — always a token.</span></div>
             <div class="rule"><span>Stack heavy shadows or use elevation as decoration.</span></div>
@@ -566,10 +570,10 @@
         <div class="i"><i data-lucide="maximize-2"></i><span>maximize-2</span></div>
       </div>
 
-      <h2 class="h2" style="margin: var(--space-48) 0 var(--space-16)">Usage rules</h2>
+      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
       <div class="grid grid--2">
         <div class="card">
-          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
           <div class="rules">
             <div class="rule"><span>Place icons inline with <code>&lt;i data-lucide="name"&gt;&lt;/i&gt;</code>, then call <code>lucide.createIcons()</code>.</span></div>
             <div class="rule"><span>Size with <code>.icon--sm</code> (16) / default (20) / <code>.icon--lg</code> (24); color follows text — set it on the parent.</span></div>
@@ -577,7 +581,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="cluster" style="gap: var(--space-8); margin-bottom: var(--space-16)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
           <div class="rules">
             <div class="rule"><span>Mix icon sets — Lucide only (no emoji, no Iconoir, no Font Awesome).</span></div>
             <div class="rule"><span>Use filled or duotone icons, or recolor them for decoration.</span></div>
@@ -647,7 +651,7 @@
       <p class="sub label">Single</p>
       <div class="demo"><label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span></span></label></div>
       <p class="sub label">Group (with descriptions)</p>
-      <div class="demo demo--stack" style="gap:var(--space-16); align-items:flex-start">
+      <div class="demo demo--stack" style="gap:var(--space-200); align-items:flex-start">
         <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span><span class="checkbox__desc">Verify the highest-impact factual claims.</span></span></label>
         <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias &amp; framing analysis</span><span class="checkbox__desc">Surface loaded language and emphasis.</span></span></label>
         <label class="checkbox"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Deception detection</span><span class="checkbox__desc">Flag evasion, hedging, or misdirection.</span></span></label>
@@ -700,7 +704,7 @@
     <!-- ALERTS -->
     <section class="panel" data-panel="alerts" hidden>
       <div class="panel__head"><span class="label">Components</span><h1>Alerts &amp; notifications</h1></div>
-      <div class="demo demo--stack" style="gap:var(--space-12)">
+      <div class="demo demo--stack" style="gap:var(--space-150)">
         <div class="alert alert--info"><i data-lucide="info" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Verification in progress</div><div class="alert__text">This usually takes under 30 seconds.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
         <div class="alert alert--success"><i data-lucide="circle-check" class="alert__icon"></i><div class="alert__body"><div class="alert__title">Report compiled</div><div class="alert__text">All 4 claims were evaluated.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
         <div class="alert alert--warning"><i data-lucide="triangle-alert" class="alert__icon"></i><div class="alert__body"><div class="alert__title">2 claims need review</div><div class="alert__text">Human editorial review is recommended.</div></div><button class="alert__close"><i data-lucide="x" class="icon--sm"></i></button></div>
@@ -713,7 +717,7 @@
     <section class="panel" data-panel="accordion" hidden>
       <div class="panel__head"><span class="label">Components</span><h1>Accordion</h1></div>
       <div class="demo--block" style="max-width:640px">
-        <details class="accordion" open style="margin-bottom:var(--space-12)">
+        <details class="accordion" open style="margin-bottom:var(--space-150)">
           <summary class="accordion__trigger"><i data-lucide="settings" class="icon--sm icon--muted"></i><span class="accordion__title">Advanced settings</span><span class="accordion__meta">2 of 4 enabled</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
           <div class="accordion__panel"><p class="text-secondary text-sm">Verification options, model selection, and source weighting live here.</p></div>
         </details>
@@ -825,7 +829,7 @@
     <!-- TOOLTIPS -->
     <section class="panel" data-panel="tooltips" hidden>
       <div class="panel__head"><span class="label">Components</span><h1>Tooltips</h1><p class="body-lg text-secondary">Hover the elements below.</p></div>
-      <div class="demo" style="gap:var(--space-24)">
+      <div class="demo" style="gap:var(--space-300)">
         <span class="tooltip" data-tooltip="Confidence: 75%"><button class="btn btn--secondary">Hover me</button></span>
         <span class="tooltip" data-tooltip="Re-run verification"><button class="icon-btn"><i data-lucide="refresh-cw"></i></button></span>
         <span class="tooltip" data-tooltip="This claim is contradicted by 2 sources" style="border-bottom:1px dashed var(--border-strong);cursor:help">contradicted claim</span>
@@ -841,7 +845,7 @@
           <span class="upload__title">Drag &amp; drop or browse</span>
           <span class="upload__hint">PDF, DOCX, TXT · max 20MB</span>
         </label>
-        <div class="file-row" style="margin-top:var(--space-16)">
+        <div class="file-row" style="margin-top:var(--space-200)">
           <i data-lucide="file-text" class="file-row__icon icon--sm"></i>
           <span class="file-row__name">earnings-draft-q2.pdf</span>
           <span class="file-row__size">248 KB</span>
@@ -904,13 +908,13 @@
       <p class="sub label">Stat cards</p>
       <div class="grid grid--3">
         <div class="card stat-card"><span class="label">Align. assessment</span><div class="stat-card__value">62 <small>/100</small></div><div class="stat-card__sub">Confidence: 75%</div></div>
-        <div class="card stat-card"><span class="label">Overall risk</span><div><span class="tag tag--mono risk--high">High</span></div><div class="stat-card__sub" style="margin-top:var(--space-12)">Based on evidence weight.</div></div>
-        <div class="card stat-card"><span class="label">Status</span><div><span class="status-badge status-badge--flagged"><i></i>Flagged</span></div><div class="stat-card__sub" style="margin-top:var(--space-12)">3 of 4 claims flagged</div></div>
+        <div class="card stat-card"><span class="label">Overall risk</span><div><span class="tag tag--mono risk--high">High</span></div><div class="stat-card__sub" style="margin-top:var(--space-150)">Based on evidence weight.</div></div>
+        <div class="card stat-card"><span class="label">Status</span><div><span class="status-badge status-badge--flagged"><i></i>Flagged</span></div><div class="stat-card__sub" style="margin-top:var(--space-150)">3 of 4 claims flagged</div></div>
       </div>
       <p class="sub label">Card with action</p>
       <div class="card" style="max-width:480px">
         <div class="card__title">Export this report</div>
-        <p class="card__body" style="margin-bottom:var(--space-16)">Download a PDF or copy a shareable link.</p>
+        <p class="card__body" style="margin-bottom:var(--space-200)">Download a PDF or copy a shareable link.</p>
         <div class="cluster"><button class="btn btn--primary btn--sm">Export PDF</button><button class="btn btn--secondary btn--sm">Copy link</button></div>
       </div>
     </section>
@@ -931,10 +935,10 @@
             <div class="sidebar__spacer"></div>
             <a class="sidebar__item"><i data-lucide="log-out"></i> Sign out</a>
           </nav>
-          <div style="flex:1; padding:var(--space-32); background:var(--surface-paper)">
+          <div style="flex:1; padding:var(--space-400); background:var(--surface-paper)">
             <span class="label">Workbench</span>
-            <h2 class="h2" style="margin-top:var(--space-8)">Main content area</h2>
-            <p class="text-secondary" style="margin-top:var(--space-8)">The sidebar sticks while this region scrolls.</p>
+            <h2 class="h2" style="margin-top:var(--space-100)">Main content area</h2>
+            <p class="text-secondary" style="margin-top:var(--space-100)">The sidebar sticks while this region scrolls.</p>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@
 
 .table thead th {
   text-align: left;
-  padding: var(--space-12) var(--space-16);
+  padding: var(--space-150) var(--space-200);
   background: var(--surface-paper);
   border-bottom: 1px solid var(--border-default);
   /* signature mono uppercase column labels */
@@ -40,7 +40,7 @@
 }
 
 .table tbody td {
-  padding: var(--space-16);
+  padding: var(--space-200);
   border-bottom: 1px solid var(--border-subtle);
   vertical-align: middle;
   color: var(--text-primary);

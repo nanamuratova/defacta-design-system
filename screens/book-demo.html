@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="../styles.css">
   <style>
     /* page-local: the booking calendar + slots (composed from tokens) */
-    .cal { display:grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-32); }
-    .cal__head { display:flex; align-items:center; justify-content:space-between; margin-bottom: var(--space-16); }
-    .cal__grid { display:grid; grid-template-columns: repeat(7,1fr); gap: var(--space-4); text-align:center; }
-    .cal__dow { font-family:var(--font-mono); font-size:var(--text-label); letter-spacing:var(--tracking-label); text-transform:uppercase; color:var(--text-muted); padding-bottom: var(--space-8); }
+    .cal { display:grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-400); }
+    .cal__head { display:flex; align-items:center; justify-content:space-between; margin-bottom: var(--space-200); }
+    .cal__grid { display:grid; grid-template-columns: repeat(7,1fr); gap: var(--space-050); text-align:center; }
+    .cal__dow { font-family:var(--font-mono); font-size:var(--text-label); letter-spacing:var(--tracking-label); text-transform:uppercase; color:var(--text-muted); padding-bottom: var(--space-100); }
     .cal__day { aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:var(--radius-8); font-size:var(--text-sm); color:var(--text-primary); cursor:pointer; border:1px solid transparent; }
     .cal__day:hover { background: var(--grey-50); }
     .cal__day.is-muted { color: var(--text-muted); pointer-events:none; }
     .cal__day.is-selected { background: var(--grey-950); color:#fff; }
-    .slots { display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-content:start; }
+    .slots { display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-100); align-content:start; }
     .slot { height:36px; border:1px solid var(--border-default); border-radius:var(--radius-8); background:var(--canvas); font-size:var(--text-sm); color:var(--text-primary); cursor:pointer; }
     .slot:hover { border-color: var(--border-strong); }
     .slot.is-selected { background: var(--grey-950); color:#fff; border-color:var(--grey-950); }
@@ -40,21 +40,21 @@
         <button class="modal__close" aria-label="Close"><i data-lucide="x"></i></button>
       </div>
       <div class="modal__body">
-        <h3 class="h4" style="color:var(--text-primary); margin-bottom: var(--space-8)">See how Defacta can help your team verify high-risk information.</h3>
-        <p style="margin-bottom: var(--space-24)">Schedule a live walkthrough of Defacta and learn how verification workflows can support research, compliance, media, legal, and enterprise AI teams.</p>
+        <h3 class="h4" style="color:var(--text-primary); margin-bottom: var(--space-100)">See how Defacta can help your team verify high-risk information.</h3>
+        <p style="margin-bottom: var(--space-300)">Schedule a live walkthrough of Defacta and learn how verification workflows can support research, compliance, media, legal, and enterprise AI teams.</p>
 
         <div class="field-head">
           <span class="label">Calendly embed placeholder</span>
-          <span class="cluster" style="gap:var(--space-8); color:var(--text-secondary); font-size:var(--text-sm)"><i data-lucide="clock" class="icon--sm"></i> 30 min</span>
+          <span class="cluster" style="gap:var(--space-100); color:var(--text-secondary); font-size:var(--text-sm)"><i data-lucide="clock" class="icon--sm"></i> 30 min</span>
         </div>
 
-        <div class="card" style="margin-top: var(--space-12)">
+        <div class="card" style="margin-top: var(--space-150)">
           <div class="cal">
             <!-- Calendar -->
             <div>
               <div class="cal__head">
-                <span class="cluster" style="gap:var(--space-8)"><i data-lucide="calendar" class="icon--sm"></i> <strong>June 2026</strong></span>
-                <span class="cluster" style="gap:var(--space-4)">
+                <span class="cluster" style="gap:var(--space-100)"><i data-lucide="calendar" class="icon--sm"></i> <strong>June 2026</strong></span>
+                <span class="cluster" style="gap:var(--space-050)">
                   <button class="icon-btn icon-btn--sm" aria-label="Previous month"><i data-lucide="chevron-left" class="icon--sm"></i></button>
                   <button class="icon-btn icon-btn--sm" aria-label="Next month"><i data-lucide="chevron-right" class="icon--sm"></i></button>
                 </span>
@@ -70,7 +70,7 @@
             </div>
             <!-- Time slots -->
             <div>
-              <span class="label" style="display:block; margin-bottom: var(--space-12)">Available · Jun 5</span>
+              <span class="label" style="display:block; margin-bottom: var(--space-150)">Available · Jun 5</span>
               <div class="slots">
                 <button class="slot">09:00</button><button class="slot">09:30</button>
                 <button class="slot">10:00</button><button class="slot is-selected">10:30</button>

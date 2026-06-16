@@ -25,9 +25,9 @@
   color: var(--text-primary); cursor: pointer;
 }
 .carousel__btn:hover { background: var(--grey-50); }
-.carousel__btn--prev { left: var(--space-12); }
-.carousel__btn--next { right: var(--space-12); }
+.carousel__btn--prev { left: var(--space-150); }
+.carousel__btn--next { right: var(--space-150); }
 
-.carousel__dots { display: flex; justify-content: center; gap: var(--space-8); margin-top: var(--space-16); }
+.carousel__dots { display: flex; justify-content: center; gap: var(--space-100); margin-top: var(--space-200); }
 .carousel__dot { width: 8px; height: 8px; border-radius: var(--radius-full); border: 0; background: var(--grey-300); cursor: pointer; padding: 0; }
 .carousel__dot.is-active { background: var(--grey-950); }

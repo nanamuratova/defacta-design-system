@@ -4,7 +4,7 @@
    Toggle:  <div class="toggle-group"><button class="is-active">Day</button><button>Week</button></div>
    ========================================================================= */
 
-.switch { display: inline-flex; align-items: center; gap: var(--space-12); cursor: pointer; }
+.switch { display: inline-flex; align-items: center; gap: var(--space-150); cursor: pointer; }
 .switch input { position: absolute; opacity: 0; width: 0; height: 0; }
 .switch__track {
   position: relative; flex-shrink: 0;
@@ -28,7 +28,7 @@
 .toggle-group { display: inline-flex; gap: 2px; padding: 3px; background: var(--grey-100); border-radius: var(--radius-8); }
 .toggle-group button {
   border: 0; background: transparent;
-  padding: var(--space-4) var(--space-12);
+  padding: var(--space-050) var(--space-150);
   border-radius: var(--radius-4);
   font-family: var(--font-sans); font-size: var(--text-sm);
   color: var(--text-secondary); cursor: pointer;

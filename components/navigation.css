@@ -3,7 +3,7 @@
    ========================================================================= */
 
 /* ---- Breadcrumbs ----------------------------------------------------- */
-.breadcrumbs { display: flex; align-items: center; gap: var(--space-8); font-size: var(--text-sm); }
+.breadcrumbs { display: flex; align-items: center; gap: var(--space-100); font-size: var(--text-sm); }
 .breadcrumbs a { color: var(--text-secondary); }
 .breadcrumbs a:hover { color: var(--text-primary); }
 .breadcrumbs__sep { display: inline-flex; color: var(--text-muted); }
@@ -11,9 +11,9 @@
 .breadcrumbs [aria-current] { color: var(--text-primary); font-weight: var(--weight-medium); }
 
 /* ---- Pagination ------------------------------------------------------ */
-.pagination { display: inline-flex; align-items: center; gap: var(--space-4); }
+.pagination { display: inline-flex; align-items: center; gap: var(--space-050); }
 .pagination__item {
-  min-width: 36px; height: 36px; padding: 0 var(--space-8);
+  min-width: 36px; height: 36px; padding: 0 var(--space-100);
   display: inline-flex; align-items: center; justify-content: center;
   border: 1px solid var(--border-default); background: var(--canvas);
   border-radius: var(--radius-8);
@@ -23,4 +23,4 @@
 .pagination__item:hover { background: var(--grey-50); border-color: var(--border-strong); }
 .pagination__item.is-active { background: var(--grey-950); color: var(--canvas); border-color: var(--grey-950); }
 .pagination__item:disabled { opacity: 0.4; cursor: not-allowed; }
-.pagination__ellipsis { padding: 0 var(--space-4); color: var(--text-muted); }
+.pagination__ellipsis { padding: 0 var(--space-050); color: var(--text-muted); }

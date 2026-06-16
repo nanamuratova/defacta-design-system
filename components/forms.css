@@ -13,9 +13,9 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--space-100);
 }
-.field .label { margin-bottom: var(--space-2); }
+.field .label { margin-bottom: var(--space-025); }
 
 .input,
 .textarea {
@@ -30,13 +30,13 @@
 
 .input {
   height: 40px;
-  padding: 0 var(--space-12);
+  padding: 0 var(--space-150);
   border-radius: var(--radius-8);
 }
 
 .textarea {
   min-height: 120px;
-  padding: var(--space-16);
+  padding: var(--space-200);
   border-radius: var(--radius-12);
   line-height: var(--leading-relaxed);
   resize: vertical;
@@ -73,7 +73,7 @@
 .input-affix .input { padding-right: 40px; }
 .input-affix .affix-btn {
   position: absolute;
-  top: 50%; right: var(--space-8);
+  top: 50%; right: var(--space-100);
   transform: translateY(-50%);
   display: inline-flex; align-items: center; justify-content: center;
   width: 28px; height: 28px;
@@ -96,8 +96,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  padding: var(--space-16) var(--space-24);
+  gap: var(--space-050);
+  padding: var(--space-200) var(--space-300);
   background: var(--canvas);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-12);
@@ -126,7 +126,7 @@
        </span>
      </label>
    --------------------------------------------------------------------- */
-.checkbox { display: flex; align-items: flex-start; gap: var(--space-12); cursor: pointer; }
+.checkbox { display: flex; align-items: flex-start; gap: var(--space-150); cursor: pointer; }
 .checkbox input { position: absolute; opacity: 0; width: 0; height: 0; }
 .checkbox__box {
   flex-shrink: 0;
@@ -165,7 +165,7 @@
 .select select {
   appearance: none;
   height: 40px;
-  padding: 0 36px 0 var(--space-12);
+  padding: 0 36px 0 var(--space-150);
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   color: var(--text-primary);
@@ -188,14 +188,14 @@
 
 /* ---- Search input (icon-leading) ------------------------------------- */
 .search { position: relative; }
-.search .icon { position: absolute; left: var(--space-12); top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+.search .icon { position: absolute; left: var(--space-150); top: 50%; transform: translateY(-50%); color: var(--text-muted); }
 .search .input { padding-left: 38px; }
 
 /* ---- Divider with centered label ("OR") ------------------------------ */
 .divider-label {
   display: flex;
   align-items: center;
-  gap: var(--space-16);
+  gap: var(--space-200);
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--text-label);

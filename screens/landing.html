@@ -10,7 +10,7 @@
     .display em, h1 em, h2 em { font-style: italic; color: var(--grey-400); font-weight: inherit; }
 
     .bg-blur { background: var(--paper) url("../assets/hero-bg.svg") center top / cover no-repeat; }
-    .hero { position: relative; text-align: center; padding-block: var(--space-64) var(--space-48); }
+    .hero { position: relative; text-align: center; padding-block: var(--space-800) var(--space-600); }
 
     /* transparent header — sits over the hero gradient */
     .site-header { background: transparent; border-bottom: 0; }
@@ -19,8 +19,8 @@
     .site-footer { background: var(--surface-ink); color: var(--grey-400); border-top: 0; }
     .site-footer .link { color: var(--grey-300); }
     .site-footer .link:hover { color: var(--canvas); }
-    .hero .display { margin-bottom: var(--space-24); }
-    .hero .lead { max-width: 720px; margin: 0 auto var(--space-24); }
+    .hero .display { margin-bottom: var(--space-300); }
+    .hero .lead { max-width: 720px; margin: 0 auto var(--space-300); }
 
     /* report preview surface (scaled live iframe of the real report) */
     .preview { max-width: 960px; margin-inline: auto; height: 520px; overflow: hidden;
@@ -29,37 +29,37 @@
     .preview iframe { width: 1400px; height: 1140px; border: 0; transform: scale(0.6857); transform-origin: top left; pointer-events: none; }
 
     /* what-defacta-checks */
-    .checks { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-48); align-items: start; }
-    .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-48); }
-    .checklist .item { display: flex; gap: var(--space-12); padding: var(--space-16) 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); }
+    .checks { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-600); align-items: start; }
+    .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-600); }
+    .checklist .item { display: flex; gap: var(--space-150); padding: var(--space-200) 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); }
     .checklist .item:nth-child(1), .checklist .item:nth-child(2) { border-top: 0; }
     .checklist .item .icon { color: var(--color-accent-blue); margin-top: 1px; }
 
     /* six steps */
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--space-32); }
-    .step { padding: var(--space-24); border-top: 1px solid rgba(255,255,255,0.12); border-left: 1px solid rgba(255,255,255,0.12); position: relative; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--space-400); }
+    .step { padding: var(--space-300); border-top: 1px solid rgba(255,255,255,0.12); border-left: 1px solid rgba(255,255,255,0.12); position: relative; }
     .step:nth-child(3n+1) { border-left: 0; }
-    .step__spark { position: absolute; top: var(--space-24); right: var(--space-24); color: var(--color-accent-blue); }
-    .step .label { color: var(--color-accent-blue); display: block; margin-bottom: var(--space-12); }
-    .step h3 { font-size: var(--text-h4); margin-bottom: var(--space-8); }
+    .step__spark { position: absolute; top: var(--space-300); right: var(--space-300); color: var(--color-accent-blue); }
+    .step .label { color: var(--color-accent-blue); display: block; margin-bottom: var(--space-150); }
+    .step h3 { font-size: var(--text-h4); margin-bottom: var(--space-100); }
     .step p { font-size: var(--text-sm); color: var(--grey-400); max-width: 30ch; }
 
     /* audience */
-    .use-cases { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-48) var(--space-64); margin-top: var(--space-48); }
-    .use-case { padding-left: var(--space-24); border-left: 1px solid var(--border-default); }
+    .use-cases { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-600) var(--space-800); margin-top: var(--space-600); }
+    .use-case { padding-left: var(--space-300); border-left: 1px solid var(--border-default); }
     .use-case .n { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .08em; color: var(--color-accent-blue); }
-    .use-case h3 { font-size: var(--text-h4); margin: var(--space-8) 0; }
+    .use-case h3 { font-size: var(--text-h4); margin: var(--space-100) 0; }
     .use-case p { font-size: var(--text-sm); color: var(--text-secondary); }
 
     /* features */
-    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-48) var(--space-64); margin-top: var(--space-48); }
-    .feature__head { display: flex; align-items: center; gap: var(--space-8); margin-bottom: var(--space-8); }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-600) var(--space-800); margin-top: var(--space-600); }
+    .feature__head { display: flex; align-items: center; gap: var(--space-100); margin-bottom: var(--space-100); }
     .feature__head .icon { color: var(--color-accent-blue); }
     .feature__head h3 { font-size: var(--text-h4); font-weight: var(--weight-medium); }
     .feature p { font-size: var(--text-sm); color: var(--text-secondary); }
 
     @media (max-width: 860px) {
-      .checks, .checklist, .steps, .use-cases, .features { grid-template-columns: 1fr; gap: var(--space-24); }
+      .checks, .checklist, .steps, .use-cases, .features { grid-template-columns: 1fr; gap: var(--space-300); }
       .step { border-left: 0; }
     }
   </style>
@@ -80,7 +80,7 @@
     <div class="container content">
       <h1 class="display">A verification layer<br>for <em>high-risk</em> information.</h1>
       <p class="body-lg text-secondary lead">Defacta checks any text — article, AI-generated answer, report, press release, or document — for factual errors, unsupported claims, hallucination risks, bias, and manipulation signals before it is shared, published, or acted upon.</p>
-      <div class="cluster" style="justify-content:center; margin-bottom: var(--space-48)">
+      <div class="cluster" style="justify-content:center; margin-bottom: var(--space-600)">
         <a class="btn btn--primary btn--lg" href="workbench.html">Try free <i data-lucide="arrow-right" class="icon--sm"></i></a>
         <a class="btn btn--secondary btn--lg" href="book-demo.html">Book a demo</a>
       </div>
@@ -95,7 +95,7 @@
   <section class="section section--paper" style="text-align:center">
     <div class="container content">
       <span class="label">The problem</span>
-      <h2 class="h1" style="margin:var(--space-12) 0 var(--space-16)">Information risk is growing faster<br>than our ability to <em>verify it</em></h2>
+      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-200)">Information risk is growing faster<br>than our ability to <em>verify it</em></h2>
       <p class="body-lg text-secondary" style="max-width:720px;margin-inline:auto">AI systems now produce confident, fluent text at scale. Verification still happens by hand, one claim at a time. Defacta closes that gap — reading any document the way a careful reviewer would, only faster.</p>
     </div>
   </section>
@@ -106,7 +106,7 @@
       <div class="checks">
         <div>
           <span class="label">What Defacta checks</span>
-          <h2 class="h1" style="margin-top:var(--space-12)">Every way <em>text<br>can mislead</em> you.</h2>
+          <h2 class="h1" style="margin-top:var(--space-150)">Every way <em>text<br>can mislead</em> you.</h2>
         </div>
         <div class="checklist">
           <div class="item"><i data-lucide="check" class="icon icon--sm"></i> Hallucinations and fabricated facts</div>
@@ -126,7 +126,7 @@
   <section class="section section--ink">
     <div class="container">
       <span class="label">How it works</span>
-      <h2 class="h1" style="margin:var(--space-12) 0 var(--space-12)">Six steps. <em>No magic</em></h2>
+      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-150)">Six steps. <em>No magic</em></h2>
       <p class="text-secondary" style="max-width:560px">Defacta does not simply say true or false. It breaks long-form material into a review structure that expert teams can use in real work.</p>
       <div class="steps">
         <div class="step"><i data-lucide="sparkles" class="step__spark icon--sm"></i><span class="label">Step 1</span><h3>Ingest</h3><p>Paste a URL, document, or raw model output.</p></div>
@@ -143,11 +143,11 @@
   <section class="section section--paper" style="text-align:center">
     <div class="container content">
       <span class="label">The output</span>
-      <h2 class="h1" style="margin:var(--space-12) 0 var(--space-32)">Structured result in <em>30 seconds</em></h2>
+      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-400)">Structured result in <em>30 seconds</em></h2>
     </div>
     <div class="container">
       <div class="preview"><iframe src="report.html" loading="lazy" tabindex="-1" title="Verification report preview"></iframe></div>
-      <div style="text-align:center;margin-top:var(--space-24)"><a class="btn btn--secondary" href="report.html">View sample report <i data-lucide="arrow-right" class="icon--sm"></i></a></div>
+      <div style="text-align:center;margin-top:var(--space-300)"><a class="btn btn--secondary" href="report.html">View sample report <i data-lucide="arrow-right" class="icon--sm"></i></a></div>
     </div>
   </section>
 
@@ -155,7 +155,7 @@
   <section class="section">
     <div class="container content">
       <span class="label">Who it is for</span>
-      <h2 class="h1" style="margin-top:var(--space-12)">Where a single <em>wrong fact</em><br>has consequences.</h2>
+      <h2 class="h1" style="margin-top:var(--space-150)">Where a single <em>wrong fact</em><br>has consequences.</h2>
       <div class="use-cases">
         <div class="use-case"><span class="n">01</span><h3>Financial services</h3><p>Investment research and due-diligence memos carry real liability. An analyst acting on a hallucinated figure has a problem. Defacta checks before it reaches a client.</p></div>
         <div class="use-case"><span class="n">02</span><h3>Legal and compliance</h3><p>Studies found ~75% hallucination rates on legal questions. Any factual error in a memo or contract review is costly. Defacta is the verification layer before it becomes a liability.</p></div>
@@ -171,7 +171,7 @@
   <section class="section bg-blur" style="text-align:center">
     <div class="container content">
       <span class="label">Why trust Defacta</span>
-      <h2 class="h1" style="margin:var(--space-12) 0">Evidence-based, transparent, and<br>built for <em>human judgment.</em></h2>
+      <h2 class="h1" style="margin:var(--space-150) 0">Evidence-based, transparent, and<br>built for <em>human judgment.</em></h2>
       <div class="features" style="text-align:left">
         <div class="feature"><div class="feature__head"><i data-lucide="sparkles" class="icon icon--sm"></i><h3>Evidence trail</h3></div><p>Every claim links to the source it was checked against.</p></div>
         <div class="feature"><div class="feature__head"><i data-lucide="sparkles" class="icon icon--sm"></i><h3>Source transparency</h3></div><p>We show what we looked at, and what we couldn't find.</p></div>
@@ -187,8 +187,8 @@
   <section class="section section--ink" style="text-align:center">
     <div class="container content">
       <span class="label">Try Defacta</span>
-      <h2 class="display" style="margin:var(--space-12) 0">Start <em>verifying</em> today</h2>
-      <p class="body-lg text-secondary" style="margin-bottom:var(--space-24)">Start with a single document. See what Defacta finds.</p>
+      <h2 class="display" style="margin:var(--space-150) 0">Start <em>verifying</em> today</h2>
+      <p class="body-lg text-secondary" style="margin-bottom:var(--space-300)">Start with a single document. See what Defacta finds.</p>
       <div class="cluster" style="justify-content:center">
         <a class="btn btn--primary" style="background:var(--canvas);color:var(--grey-950);border-color:var(--canvas)" href="workbench.html">Try free <i data-lucide="arrow-right" class="icon--sm"></i></a>
         <a class="btn btn--ghost" style="color:var(--canvas);border-color:rgba(255,255,255,0.2)" href="book-demo.html">Book a demo</a>
@@ -199,7 +199,7 @@
 
   <footer class="site-footer">
     <span>© 2026 Defacta — Evidence, transparent by default.</span>
-    <span class="cluster" style="gap:var(--space-24)"><a class="link" href="#">Privacy</a><a class="link" href="#">Terms</a><a class="link" href="#">Contact</a></span>
+    <span class="cluster" style="gap:var(--space-300)"><a class="link" href="#">Privacy</a><a class="link" href="#">Terms</a><a class="link" href="#">Contact</a></span>
   </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>

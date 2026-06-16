@@ -17,8 +17,11 @@
     .composer { border: 1px solid var(--border-default); border-radius: var(--radius-16); background: var(--canvas); padding: var(--space-200); transition: border-color .12s ease, box-shadow .12s ease; }
     .composer:focus-within { border-color: var(--border-strong); }
     .composer__field { position: relative; }
-    .composer__input { width: 100%; border: 0; background: transparent; resize: vertical; min-height: 120px; padding: var(--space-100); font: inherit; font-size: var(--text-sm); color: var(--text-primary); outline: none; }
+    .composer__input { width: 100%; border: 0; background: transparent; resize: none; min-height: 120px; padding: var(--space-100); font: inherit; font-size: var(--text-sm); color: var(--text-primary); outline: none; }
     .composer__input::placeholder { color: var(--text-muted); }
+    .composer__clear { position: absolute; top: var(--space-050); right: var(--space-050); width: 28px; height: 28px; border: 0; border-radius: var(--radius-full); background: var(--grey-100); color: var(--text-secondary); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+    .composer__clear:hover { background: var(--grey-200); color: var(--text-primary); }
+    .composer__clear[hidden] { display: none; }
     .composer__bar { display: flex; align-items: center; gap: var(--space-100); margin-top: var(--space-150); }
     .composer__bar .btn { font-size: var(--text-sm); }
     .wb-dd__sum { color: var(--text-secondary); font-weight: var(--weight-regular); }
@@ -54,34 +57,13 @@
       <div class="composer">
         <div class="composer__field">
           <textarea class="composer__input" id="content" placeholder="Paste text or a link (https://…) to verify."></textarea>
+          <button class="composer__clear" id="clear" aria-label="Clear" hidden><i data-lucide="x" class="icon--sm"></i></button>
         </div>
         <div class="composer__bar">
           <button class="btn btn--secondary btn--sm" id="settings-btn" type="button" aria-expanded="false" style="flex:1; justify-content:flex-start">
             <i data-lucide="sliders-horizontal" class="icon--sm"></i> Settings <span class="wb-dd__sum" id="settings-sum">· Auto · Quick</span> <i data-lucide="chevron-down" class="icon--sm" style="margin-left:auto"></i>
           </button>
           <button class="icon-btn icon-btn--sm" id="use-sample" type="button" aria-label="Use sample" title="Use sample"><i data-lucide="file-text"></i></button>
-        </div>
-      </div>
-
-      <!-- Settings (simple stacked list, collapsed by default) -->
-      <div class="card" id="settings-pop" hidden style="margin-top: var(--space-200)">
-        <span class="label" style="display:block; margin-bottom: var(--space-150)">Checks</span>
-        <div class="stack" style="gap: var(--space-150)">
-          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Manipulation</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Lie detection</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claims / facts</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">LLM output check</span></span></label>
-        </div>
-        <span class="label" style="display:block; margin: var(--space-250) 0 var(--space-150)">Depth</span>
-        <div class="toggle-group" id="depth-toggle" style="display:flex; width:100%">
-          <button class="is-active" style="flex:1">Quick check</button>
-          <button style="flex:1">In-depth</button>
-        </div>
-        <span class="label" style="display:block; margin: var(--space-250) 0 var(--space-150)">Report</span>
-        <div class="toggle-group" id="report-toggle" style="display:flex; width:100%">
-          <button style="flex:1">Short</button>
-          <button class="is-active" style="flex:1">Detailed</button>
         </div>
       </div>
 
@@ -95,6 +77,39 @@
       <a class="bottom-nav__item" href="history.html"><i data-lucide="history"></i>History</a>
       <a class="bottom-nav__item" href="account.html"><i data-lucide="user"></i>Account</a>
     </nav>
+  </div>
+
+  <!-- ── Verification settings modal ────────────────────────────────── -->
+  <div class="modal" id="settings-modal">
+    <div class="modal__dialog modal__dialog--sm">
+      <div class="modal__header">
+        <h2 class="modal__title">Verification settings</h2>
+        <button class="modal__close" id="settings-close" aria-label="Close"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal__body">
+        <span class="label" style="display:block; margin-bottom: var(--space-150)">Checks</span>
+        <div class="stack" style="gap: var(--space-150)">
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Manipulation</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Lie detection</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claims / facts</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">LLM output check</span></span></label>
+        </div>
+        <span class="label" style="display:block; margin: var(--space-300) 0 var(--space-150)">Depth</span>
+        <div class="toggle-group" id="depth-toggle" style="display:flex; width:100%">
+          <button class="is-active" style="flex:1">Quick check</button>
+          <button style="flex:1">In-depth</button>
+        </div>
+        <span class="label" style="display:block; margin: var(--space-300) 0 var(--space-150)">Report</span>
+        <div class="toggle-group" id="report-toggle" style="display:flex; width:100%">
+          <button style="flex:1">Short</button>
+          <button class="is-active" style="flex:1">Detailed</button>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--primary" id="settings-done" style="width:100%">Done</button>
+      </div>
+    </div>
   </div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -111,8 +126,12 @@
     });
 
     const ta = document.getElementById('content');
+    const clearBtn = document.getElementById('clear');
+    const syncClear = () => { clearBtn.hidden = ta.value.length === 0; };
+    ta.addEventListener('input', syncClear);
+    clearBtn.addEventListener('click', () => { ta.value = ''; syncClear(); ta.focus(); });
     const sample = `In a recent statement, the World Health Organization announced that global vaccination coverage reached 92% in 2024, marking the highest figure on record. The report cites unpublished internal data showing that childhood mortality has dropped by 47% since 2019, a decline researchers attribute almost entirely to a new mRNA-based malaria vaccine deployed across Sub-Saharan Africa. Independent experts have universally praised the rollout, calling it "the most consequential public health intervention of the decade."`;
-    document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; ta.focus(); });
+    document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; syncClear(); ta.focus(); });
 
     // mode description
     const modeDesc = {
@@ -129,13 +148,15 @@
       document.getElementById('settings-sum').textContent = '· Auto · ' + depth;
     }
 
-    // settings open/close
-    const pop = document.getElementById('settings-pop');
+    // settings modal open/close
+    const settingsModal = document.getElementById('settings-modal');
     const sbtn = document.getElementById('settings-btn');
-    sbtn.addEventListener('click', () => {
-      pop.hidden = !pop.hidden;
-      sbtn.setAttribute('aria-expanded', !pop.hidden);
-    });
+    const closeSettings = () => { settingsModal.removeAttribute('data-open'); sbtn.setAttribute('aria-expanded', 'false'); };
+    sbtn.addEventListener('click', () => { settingsModal.setAttribute('data-open', ''); sbtn.setAttribute('aria-expanded', 'true'); });
+    document.getElementById('settings-close').addEventListener('click', closeSettings);
+    document.getElementById('settings-done').addEventListener('click', closeSettings);
+    settingsModal.addEventListener('click', (e) => { if (e.target === settingsModal) closeSettings(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSettings(); });
 
     // run verification → animated verifying screen
     document.getElementById('run').addEventListener('click', () => { location.href = 'verifying.html'; });

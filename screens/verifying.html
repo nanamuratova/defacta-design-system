@@ -21,6 +21,9 @@
     .vstep.is-pending .vstep__icon { color: var(--grey-300); }
     .spin { animation: vspin 0.9s linear infinite; transform-origin: center; }
     @keyframes vspin { to { transform: rotate(360deg); } }
+    .verify__quip { margin-top: var(--space-250); display: inline-flex; align-items: center; gap: var(--space-150); font-size: var(--text-body); color: var(--text-secondary); min-height: 26px; transition: opacity .3s ease; }
+    .quip__emoji { font-size: 20px; line-height: 1; display: inline-block; animation: quip-bounce 1s ease-in-out infinite; }
+    @keyframes quip-bounce { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(-8deg); } }
   </style>
 </head>
 <body>
@@ -31,8 +34,9 @@
   <main class="container">
     <div class="verify">
       <span class="label">Verifying</span>
-      <h1 class="h2">Defacta is analyzing your content</h1>
+      <h1 class="h2">Defacta is analyzing<br>your content</h1>
       <p class="body-lg verify__sub">Pulling sources, weighing evidence, and assembling a structured report.</p>
+      <p class="verify__quip" id="quip"><span class="quip__emoji">🔍</span> <span class="quip__text">Reading every word twice…</span></p>
 
       <div class="vsteps" id="vsteps">
         <div class="vstep"><span class="vstep__icon"></span><span>Extracting claims</span></div>
@@ -46,6 +50,29 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
+    // playful rotating status quips
+    const quips = [
+      ['🔍', 'Reading every word twice…'],
+      ['🧐', 'Side-eyeing suspicious claims…'],
+      ['📚', 'Asking the sources for receipts…'],
+      ['🕵️', 'Following the citation trail…'],
+      ['⚖️', 'Weighing the evidence…'],
+      ['🤔', 'Fact-checking the fact-checkers…'],
+      ['🧹', 'Sweeping up hallucinations…'],
+      ['🤖', 'Politely interrogating the AI…'],
+    ];
+    let qi = 0;
+    const quipEl = document.getElementById('quip');
+    setInterval(() => {
+      quipEl.style.opacity = '0';
+      setTimeout(() => {
+        qi = (qi + 1) % quips.length;
+        quipEl.querySelector('.quip__emoji').textContent = quips[qi][0];
+        quipEl.querySelector('.quip__text').textContent = quips[qi][1];
+        quipEl.style.opacity = '1';
+      }, 300);
+    }, 1900);
+
     const steps = [...document.querySelectorAll('.vstep')];
     let i = 0;
     function render() {

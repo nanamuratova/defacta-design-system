@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — Verification Report</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+  <!-- ── Centered phone-width column ─────────────────────────────────── -->
+  <div style="max-width:420px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
+
+    <!-- ── Mobile header ────────────────────────────────────────────── -->
+    <header class="mobile-header">
+      <a class="brand" href="landing.html"><img src="../../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+      <button class="icon-btn" aria-label="Account"><i data-lucide="user"></i></button>
+    </header>
+
+    <!-- ── Report body ──────────────────────────────────────────────── -->
+    <main class="container" style="max-width:420px; padding-block: var(--space-300); flex:1">
+
+      <!-- Verdict summary header -->
+      <div style="margin-bottom: var(--space-300)">
+        <span class="label" style="display:block; margin-bottom: var(--space-100)">Verification report</span>
+        <h1 class="h3">WHO Vaccination Statement</h1>
+        <p class="subheader__meta" style="margin-top: var(--space-100); display:block">VR-2026-06-03-247K · 2026-06-04 · 3 flags</p>
+        <div style="margin-top: var(--space-150)"><span class="status-badge status-badge--flagged"><i></i>Flagged</span></div>
+        <p class="body text-secondary" style="margin-top: var(--space-150)">The submitted text contains four verifiable assertions. Two are contradicted by primary sources, one is unsupported, and one cannot be evaluated without attribution.</p>
+      </div>
+
+      <!-- Score / stats — stacked stat cards -->
+      <div class="stack" style="margin-bottom: var(--space-300)">
+        <div class="card stat-card">
+          <span class="label">Align. assessment</span>
+          <div class="stat-card__value">62 <small>/100</small></div>
+          <div class="stat-card__sub">Confidence: 75%</div>
+        </div>
+        <div class="card stat-card">
+          <span class="label">Overall risk</span>
+          <div><span class="tag tag--mono risk--high">High</span></div>
+          <div class="stat-card__sub" style="margin-top: var(--space-150)">Based on evidence weight.</div>
+        </div>
+        <div class="card stat-card">
+          <span class="label">Mode</span>
+          <div class="stat-card__value" style="font-size: var(--text-body-xl)">Comprehensive</div>
+          <div class="stat-card__sub">12 sources · 4 claims</div>
+        </div>
+      </div>
+
+      <!-- Annotated content -->
+      <section style="margin-bottom: var(--space-300)">
+        <h2 class="h4" style="margin-bottom: var(--space-150)">Annotated content</h2>
+        <div class="card">
+          <p class="annotated">In the third quarter, the company continued its strong trajectory. <mark class="m-contradicted">Revenue grew 240% year over year<sup>1</sup></mark> driven by expansion into new segments. The business now <mark class="m-uncertain">operates in 14 markets<sup>2</sup></mark> across three continents. Management highlighted <mark class="m-unsupported">industry-leading customer retention<sup>3</sup></mark> as a core differentiator. According to an external market study, <mark class="m-unsupported">the addressable market exceeds $40 billion<sup>4</sup></mark>.</p>
+          <div class="legend">
+            <span><i class="l-contradicted"></i> Contradicted</span>
+            <span><i class="l-unsupported"></i> Unsupported</span>
+            <span><i class="l-uncertain"></i> Uncertain</span>
+            <span><i class="l-supported"></i> Supported</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Claim analysis -->
+      <section style="margin-bottom: var(--space-300)">
+        <h2 class="h4" style="margin-bottom: var(--space-150)">Claim analysis</h2>
+        <div class="stack" style="gap: var(--space-150)">
+          <div class="claim claim--accurate"><div class="claim__title">Accurate · Global vaccination coverage</div><div class="claim__body">Verified against WHO/UNICEF joint estimates. The 92% figure aligns with published 2024 monitoring data.</div></div>
+          <div class="claim claim--unsupported"><div class="claim__title">Unsupported · 47% mortality decline</div><div class="claim__body">No primary source supports the specific magnitude. The cited internal data could not be located or attributed.</div></div>
+          <div class="claim claim--contradicted"><div class="claim__title">Contradicted · mRNA malaria vaccine</div><div class="claim__body">Primary sources describe the deployed vaccine as protein-based (R21/RTS,S), not mRNA. Directly contradicted.</div></div>
+          <div class="claim claim--uncertain"><div class="claim__title">Uncertain · "universally praised"</div><div class="claim__body">A universal-consensus claim that cannot be evaluated without attribution. Treat as opinion, not fact.</div></div>
+        </div>
+      </section>
+
+      <!-- Evidence & sources -->
+      <section style="margin-bottom: var(--space-300)">
+        <h2 class="h4" style="margin-bottom: var(--space-150)">Evidence &amp; sources</h2>
+        <div class="card">
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">WHO/UNICEF Joint Estimates 2024</span><span class="status-badge status-badge--mono status-badge--verified"><i></i>Verified</span></div>
+            <div class="source-row__url">data.who.int/immunization/global-monitoring</div>
+          </div>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">UN IGME Child Mortality Report</span><span class="status-badge status-badge--mono status-badge--verified"><i></i>Verified</span></div>
+            <div class="source-row__url">childmortality.org/data/2024</div>
+          </div>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">The Lancet — Malaria Vaccine Review</span><span class="status-badge status-badge--mono status-badge--partial"><i></i>Partial</span></div>
+            <div class="source-row__url">thelancet.com/journals/lancet/article/PIIS35</div>
+          </div>
+          <div class="source-row">
+            <div class="source-row__head"><span class="source-row__title">Unpublished internal data — reference [1]</span><span class="status-badge status-badge--mono status-badge--dead"><i></i>404 Dead</span></div>
+            <div class="source-row__url">internal-source.example/redacted</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Actions — full-width, stacked -->
+      <div class="stack">
+        <button class="btn btn--primary" style="width:100%"><i data-lucide="download" class="icon--sm"></i> Export PDF</button>
+        <button class="btn btn--secondary" style="width:100%"><i data-lucide="refresh-cw" class="icon--sm"></i> Re-run verification</button>
+      </div>
+    </main>
+
+    <!-- ── Bottom navigation (Verify active — report is part of a verification) ─ -->
+    <nav class="bottom-nav" style="position:sticky; bottom:0">
+      <button class="bottom-nav__item is-active" onclick="location.href='workbench.html'"><i data-lucide="scan-eye"></i>Verify</button>
+      <button class="bottom-nav__item" onclick="location.href='history.html'"><i data-lucide="history"></i>History</button>
+      <button class="bottom-nav__item"><i data-lucide="user"></i>Account</button>
+    </nav>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

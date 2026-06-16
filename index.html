@@ -33,6 +33,9 @@
       border-right: 1px solid var(--border-subtle);
       background: var(--canvas);
     }
+    .docs__search { margin-bottom: var(--space-200); }
+    .docs__nav a[hidden] { display: none; }
+    .docs__nav .docs__group[hidden] { display: none; }
     .docs__nav { display: flex; flex-direction: column; gap: 1px; }
     .docs__nav a {
       display: block; padding: var(--space-100) var(--space-150);
@@ -108,7 +111,13 @@
     .screen__frame { position: relative; height: 240px; overflow: hidden; background: var(--surface-paper); border-bottom: 1px solid var(--border-subtle); }
     .screen__frame iframe { width: 1400px; height: 875px; border: 0; transform: scale(0.32); transform-origin: top left; pointer-events: none; }
     .screen__meta { padding: var(--space-200) var(--space-300); display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); }
-    .screen__meta h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); }
+    .screen__meta h3 { font-size: var(--text-body-xl); font-weight: var(--weight-medium); }
+    .screen__frame iframe { scrollbar-width: none; }
+    .screen__frame iframe::-webkit-scrollbar { display: none; }
+    /* phone-frame mobile preview, floated over the desktop shot */
+    .device { position: absolute; bottom: var(--space-200); right: var(--space-200); width: 104px; height: 200px; border-radius: var(--radius-16); border: 3px solid var(--grey-950); background: var(--canvas); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .device iframe { width: 430px; height: 900px; transform: scale(0.228); }
+    .device::after { content: ""; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 26px; height: 3px; border-radius: var(--radius-full); background: var(--grey-600); }
     .screen__meta p { font-size: var(--text-sm); color: var(--text-secondary); margin-top: 2px; }
 
     @media (max-width: 860px) {
@@ -129,6 +138,10 @@
 
   <!-- ── Sidebar catalogue ──────────────────────────────────────────── -->
   <aside class="docs__sidebar">
+    <div class="search docs__search">
+      <i data-lucide="search" class="icon--sm"></i>
+      <input class="input input--sm" type="search" id="nav-search" placeholder="Search components…" autocomplete="off">
+    </div>
     <nav class="docs__nav">
       <a data-tab="home">Home</a>
 
@@ -2032,13 +2045,13 @@
     <section class="panel" data-panel="examples" hidden>
       <div class="panel__head"><span class="label">Put together</span><h1>Example screens</h1><p class="body-lg text-secondary">Real screens built entirely from the components. Click any to open full-size.</p></div>
       <div class="gallery">
-        <a class="screen" href="screens/landing.html"><div class="screen__frame"><iframe src="screens/landing.html" loading="lazy" tabindex="-1" title="Landing page"></iframe></div><div class="screen__meta"><div><h3>Landing page</h3><p>Hero, problem, workflow, audience, CTA</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
-        <a class="screen" href="screens/report.html"><div class="screen__frame"><iframe src="screens/report.html" loading="lazy" tabindex="-1" title="Report"></iframe></div><div class="screen__meta"><div><h3>Verification report</h3><p>Summary, annotated content, sources</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
-        <a class="screen" href="screens/workbench.html"><div class="screen__frame"><iframe src="screens/workbench.html" loading="lazy" tabindex="-1" title="Workbench"></iframe></div><div class="screen__meta"><div><h3>Workbench</h3><p>Modes, advanced settings</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
-        <a class="screen" href="screens/history.html"><div class="screen__frame"><iframe src="screens/history.html" loading="lazy" tabindex="-1" title="History"></iframe></div><div class="screen__meta"><div><h3>History</h3><p>Reports table</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
-        <a class="screen" href="screens/auth.html"><div class="screen__frame"><iframe src="screens/auth.html" loading="lazy" tabindex="-1" title="Auth"></iframe></div><div class="screen__meta"><div><h3>Sign in / Sign up</h3><p>Auth modal</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
-        <a class="screen" href="screens/book-demo.html"><div class="screen__frame"><iframe src="screens/book-demo.html" loading="lazy" tabindex="-1" title="Book a demo"></iframe></div><div class="screen__meta"><div><h3>Book a demo</h3><p>Scheduling modal</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
-        <a class="screen" href="screens/confirmation.html"><div class="screen__frame"><iframe src="screens/confirmation.html" loading="lazy" tabindex="-1" title="Confirmation"></iframe></div><div class="screen__meta"><div><h3>Confirmation</h3><p>Success modal</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/landing.html"><div class="screen__frame"><iframe scrolling="no" src="screens/landing.html" loading="lazy" tabindex="-1" title="Landing page"></iframe><div class="device"><iframe scrolling="no" src="screens/mobile/landing.html" loading="lazy" tabindex="-1" title="Landing page — mobile"></iframe></div></div><div class="screen__meta"><div><h3>Landing page</h3><p>Hero, problem, workflow, audience, CTA · desktop + mobile</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/report.html"><div class="screen__frame"><iframe scrolling="no" src="screens/report.html" loading="lazy" tabindex="-1" title="Report"></iframe><div class="device"><iframe scrolling="no" src="screens/mobile/report.html" loading="lazy" tabindex="-1" title="Report — mobile"></iframe></div></div><div class="screen__meta"><div><h3>Verification report</h3><p>Summary, annotated content, sources · desktop + mobile</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/workbench.html"><div class="screen__frame"><iframe scrolling="no" src="screens/workbench.html" loading="lazy" tabindex="-1" title="Workbench"></iframe><div class="device"><iframe scrolling="no" src="screens/mobile/workbench.html" loading="lazy" tabindex="-1" title="Workbench — mobile"></iframe></div></div><div class="screen__meta"><div><h3>Workbench</h3><p>Modes, advanced settings · desktop + mobile</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/history.html"><div class="screen__frame"><iframe scrolling="no" src="screens/history.html" loading="lazy" tabindex="-1" title="History"></iframe><div class="device"><iframe scrolling="no" src="screens/mobile/history.html" loading="lazy" tabindex="-1" title="History — mobile"></iframe></div></div><div class="screen__meta"><div><h3>History</h3><p>Reports list (cards on mobile) · desktop + mobile</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/auth.html"><div class="screen__frame"><iframe scrolling="no" src="screens/auth.html" loading="lazy" tabindex="-1" title="Auth"></iframe><div class="device"><iframe scrolling="no" src="screens/auth.html" loading="lazy" tabindex="-1" title="Auth — mobile"></iframe></div></div><div class="screen__meta"><div><h3>Sign in / Sign up</h3><p>Auth modal · responsive</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/book-demo.html"><div class="screen__frame"><iframe scrolling="no" src="screens/book-demo.html" loading="lazy" tabindex="-1" title="Book a demo"></iframe><div class="device"><iframe scrolling="no" src="screens/book-demo.html" loading="lazy" tabindex="-1" title="Book a demo — mobile"></iframe></div></div><div class="screen__meta"><div><h3>Book a demo</h3><p>Scheduling modal · responsive</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
+        <a class="screen" href="screens/confirmation.html"><div class="screen__frame"><iframe scrolling="no" src="screens/confirmation.html" loading="lazy" tabindex="-1" title="Confirmation"></iframe><div class="device"><iframe scrolling="no" src="screens/confirmation.html" loading="lazy" tabindex="-1" title="Confirmation — mobile"></iframe></div></div><div class="screen__meta"><div><h3>Confirmation</h3><p>Success modal · responsive</p></div><i data-lucide="arrow-up-right" class="icon--muted"></i></div></a>
       </div>
     </section>
 
@@ -2070,6 +2083,27 @@
     buildTOC(document.querySelector('[data-panel="'+tab+'"]'));
   }
   allTabTriggers.forEach(a => a.addEventListener('click', e => { e.preventDefault(); show(a.dataset.tab); }));
+
+  /* ---- Sidebar search filter ---- */
+  var navSearch = document.getElementById('nav-search');
+  if (navSearch) {
+    var navEls = [...document.querySelectorAll('.docs__nav > *')]; // links + group headers
+    navSearch.addEventListener('input', () => {
+      var q = navSearch.value.trim().toLowerCase();
+      navEls.forEach(el => {
+        if (el.matches('a[data-tab]')) el.hidden = q && !el.textContent.toLowerCase().includes(q);
+      });
+      // hide a group header if every link after it (until next header) is hidden
+      navEls.forEach((el, i) => {
+        if (!el.classList.contains('docs__group')) return;
+        var anyVisible = false;
+        for (var j = i + 1; j < navEls.length && !navEls[j].classList.contains('docs__group'); j++) {
+          if (navEls[j].matches('a[data-tab]') && !navEls[j].hidden) anyVisible = true;
+        }
+        el.hidden = q && !anyVisible;
+      });
+    });
+  }
 
   /* ---- Per-page "On this page" TOC (auto-generated + scrollspy) ---- */
   let tocObserver = null;

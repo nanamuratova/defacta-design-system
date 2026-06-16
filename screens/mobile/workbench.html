@@ -4,35 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Defacta — Verification Workbench</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../../styles.css">
   <style> body { background: var(--surface-paper); } </style>
 </head>
 <body>
-  <!-- ── App header (signed in) ─────────────────────────────────────── -->
-  <header class="site-header">
-    <a class="brand" href="#">
-      <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo">
-    </a>
-    <div class="header-actions">
-      <a class="header-link" href="history.html"><i data-lucide="history"></i> History</a>
-      <a class="header-link header-link--strong" href="#"><i data-lucide="plus"></i> New verification</a>
-      <button class="icon-btn icon-btn--sm" aria-label="Account"><i data-lucide="user"></i></button>
-      <button class="icon-btn icon-btn--sm" aria-label="Panel"><i data-lucide="panel-right"></i></button>
-    </div>
-  </header>
+  <!-- ── Centered phone-width column ─────────────────────────────────── -->
+  <div style="max-width:420px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
 
-  <!-- ── Workbench ──────────────────────────────────────────────────── -->
-  <main class="container workbench">
-    <div class="content">
-      <div class="workbench__head">
-        <span class="label">Verification workbench</span>
-        <h1>What do you want to verify?</h1>
-        <p class="body-lg text-secondary">Paste an article, an AI answer, or your own draft. Defacta reads it and shows you what holds up — and what doesn't.</p>
+    <!-- ── Mobile header ────────────────────────────────────────────── -->
+    <header class="mobile-header">
+      <a class="brand" href="landing.html"><img src="../../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+      <button class="icon-btn" aria-label="Account"><i data-lucide="user"></i></button>
+    </header>
+
+    <!-- ── Workbench ────────────────────────────────────────────────── -->
+    <main class="container" style="max-width:420px; padding-block: var(--space-300); flex:1">
+      <!-- Heading -->
+      <div style="margin-bottom: var(--space-300)">
+        <span class="label" style="display:block; margin-bottom: var(--space-150)">Verification workbench</span>
+        <h1 class="h3">What do you want to verify?</h1>
+        <p class="body text-secondary" style="margin-top: var(--space-150)">Paste an article, an AI answer, or your own draft. Defacta reads it and shows you what holds up — and what doesn't.</p>
       </div>
 
-      <!-- Analysis mode -->
+      <!-- Analysis mode — stacked option-cards -->
       <p class="text-secondary" style="margin-bottom: var(--space-150)">Choose analysis mode</p>
-      <div class="grid grid--2" style="margin-bottom: var(--space-300)">
+      <div class="stack" style="margin-bottom: var(--space-300)">
         <label class="option-card">
           <input type="radio" name="mode" checked>
           <span class="option-card__title">Check my text</span>
@@ -76,22 +72,25 @@
         <span>Max. 50,000 characters</span>
       </div>
 
-      <!-- Actions -->
-      <div class="cluster" style="justify-content: flex-end; margin-top: var(--space-300)">
-        <button class="btn btn--secondary" id="clear">Clear</button>
-        <button class="btn btn--primary">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
+      <!-- Actions — full-width, stacked -->
+      <div class="stack" style="margin-top: var(--space-300)">
+        <button class="btn btn--primary" style="width:100%">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
+        <button class="btn btn--secondary" id="clear" style="width:100%">Clear</button>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="site-footer">
-    <span>© Defacta</span>
-    <span>Evidence, transparent by default.</span>
-  </footer>
+    <!-- ── Bottom navigation (Verify active) ────────────────────────── -->
+    <nav class="bottom-nav" style="position:sticky; bottom:0">
+      <button class="bottom-nav__item is-active" onclick="location.href='workbench.html'"><i data-lucide="scan-eye"></i>Verify</button>
+      <button class="bottom-nav__item" onclick="location.href='history.html'"><i data-lucide="history"></i>History</button>
+      <button class="bottom-nav__item"><i data-lucide="user"></i>Account</button>
+    </nav>
+  </div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
+    // char counter
     const ta = document.getElementById('content');
     const cc = document.getElementById('charcount');
     const sample = `In a recent statement, the World Health Organization announced that global vaccination coverage reached 92% in 2024, marking the highest figure on record. The report cites unpublished internal data showing that childhood mortality has dropped by 47% since 2019, a decline researchers attribute almost entirely to a new mRNA-based malaria vaccine deployed across Sub-Saharan Africa. Independent experts have universally praised the rollout, calling it "the most consequential public health intervention of the decade."`;

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — A verification layer for high-risk information</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    /* page-local: landing-only treatments (mobile) */
+    h1 em, h2 em { font-style: italic; color: var(--grey-400); font-weight: inherit; }
+
+    /* hero background gradient — matches desktop */
+    .bg-blur { background: var(--paper) url("../../assets/hero-bg.svg") center top / cover no-repeat; }
+
+    /* transparent header — sits over the hero gradient */
+    .mobile-header { background: transparent; border-bottom: 0; }
+
+    /* the stacked 3-step workflow on a dark band */
+    .step { padding-block: var(--space-300); border-top: 1px solid rgba(255,255,255,0.12); }
+    .step:first-child { border-top: 0; }
+    .step .label { color: var(--color-accent-blue); display: block; margin-bottom: var(--space-100); }
+    .step h3 { font-size: var(--text-h4); margin-bottom: var(--space-050); }
+    .step p { font-size: var(--text-sm); color: var(--grey-400); }
+
+    /* audience — single column, left-rule list */
+    .use-case { padding-left: var(--space-200); border-left: 1px solid var(--border-default); }
+    .use-case .n { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: .08em; color: var(--color-accent-blue); }
+    .use-case h3 { font-size: var(--text-h4); margin: var(--space-050) 0; }
+    .use-case p { font-size: var(--text-sm); color: var(--text-secondary); }
+
+    /* compact footer (no bottom-nav on marketing) */
+    .site-footer { flex-direction: column; align-items: flex-start; gap: var(--space-100); height: auto; padding-block: var(--space-300); background: var(--surface-ink); color: var(--grey-400); border-top: 0; }
+    .site-footer .link { color: var(--grey-300); }
+  </style>
+</head>
+<body>
+  <!-- ── Centered phone-width column ─────────────────────────────────── -->
+  <div style="max-width:420px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
+
+    <!-- Header (transparent, over the hero gradient) -->
+    <div class="bg-blur">
+      <header class="mobile-header">
+        <a class="brand" href="landing.html"><img src="../../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+        <button class="icon-btn" aria-label="Menu"><i data-lucide="menu"></i></button>
+      </header>
+
+      <!-- ── Hero ─────────────────────────────────────────────────────── -->
+      <section class="container" style="max-width:420px; text-align:center; padding-block: var(--space-500) var(--space-400)">
+        <h1 style="margin-bottom: var(--space-200)">A verification layer for <em>high-risk</em> information.</h1>
+        <p class="body text-secondary" style="margin-bottom: var(--space-300)">Defacta checks any text — article, AI answer, report, or document — for factual errors, unsupported claims, hallucination risks, bias, and manipulation signals before it is shared or acted upon.</p>
+        <a class="btn btn--primary btn--lg" href="workbench.html" style="width:100%">Try free <i data-lucide="arrow-right" class="icon--sm"></i></a>
+      </section>
+    </div>
+
+    <!-- ── Problem ──────────────────────────────────────────────────── -->
+    <section class="container section--paper" style="max-width:420px; text-align:center; padding-block: var(--space-500)">
+      <span class="label">The problem</span>
+      <h2 class="h3" style="margin: var(--space-150) 0 var(--space-200)">Information risk is growing faster than our ability to <em>verify it</em></h2>
+      <p class="body text-secondary">AI systems now produce confident, fluent text at scale. Verification still happens by hand, one claim at a time. Defacta closes that gap — reading any document the way a careful reviewer would, only faster.</p>
+    </section>
+
+    <!-- ── How it works — 3 steps, stacked (dark band) ──────────────── -->
+    <section class="container section--ink" style="max-width:420px; padding-block: var(--space-500)">
+      <span class="label">How it works</span>
+      <h2 class="h3" style="margin: var(--space-150) 0 var(--space-200)">Three steps. <em>No magic</em></h2>
+      <div class="step"><span class="label">Step 1</span><h3>Ingest &amp; extract</h3><p>Paste a URL, document, or raw model output — Defacta atomises it into discrete claims.</p></div>
+      <div class="step"><span class="label">Step 2</span><h3>Verify &amp; flag</h3><p>Each claim is checked against sources; risks, hallucinations, and uncertainty are surfaced.</p></div>
+      <div class="step"><span class="label">Step 3</span><h3>Report &amp; review</h3><p>A structured, exportable report is generated and a human reviewer signs off.</p></div>
+    </section>
+
+    <!-- ── Audience ─────────────────────────────────────────────────── -->
+    <section class="container" style="max-width:420px; padding-block: var(--space-500)">
+      <span class="label">Who it is for</span>
+      <h2 class="h3" style="margin: var(--space-150) 0 var(--space-300)">Where a single <em>wrong fact</em> has consequences.</h2>
+      <div class="stack" style="gap: var(--space-300)">
+        <div class="use-case"><span class="n">01</span><h3>Financial services</h3><p>Investment research and due-diligence memos carry real liability. Defacta checks before it reaches a client.</p></div>
+        <div class="use-case"><span class="n">02</span><h3>Legal and compliance</h3><p>Studies found ~75% hallucination rates on legal questions. Defacta is the verification layer before it becomes a liability.</p></div>
+        <div class="use-case"><span class="n">03</span><h3>Media and publishing</h3><p>Defacta sits between the AI draft and the published piece, flagging hallucinations, sourcing gaps, and framing bias.</p></div>
+        <div class="use-case"><span class="n">04</span><h3>Intelligence and risk</h3><p>Defacta scores reliability, flags manipulation, and surfaces what actually warrants attention.</p></div>
+      </div>
+    </section>
+
+    <!-- ── Final CTA (dark) ─────────────────────────────────────────── -->
+    <section class="container section--ink" style="max-width:420px; text-align:center; padding-block: var(--space-500)">
+      <span class="label">Try Defacta</span>
+      <h2 class="h2" style="margin: var(--space-150) 0 var(--space-200)">Start <em>verifying</em> today</h2>
+      <p class="body text-secondary" style="margin-bottom: var(--space-300)">Start with a single document. See what Defacta finds.</p>
+      <a class="btn btn--primary" href="workbench.html" style="width:100%; background:var(--canvas); color:var(--grey-950); border-color:var(--canvas)">Try free <i data-lucide="arrow-right" class="icon--sm"></i></a>
+    </section>
+
+    <!-- ── Compact footer ───────────────────────────────────────────── -->
+    <footer class="site-footer">
+      <span>© 2026 Defacta — Evidence, transparent by default.</span>
+      <span class="cluster" style="gap: var(--space-200)"><a class="link" href="#">Privacy</a><a class="link" href="#">Terms</a><a class="link" href="#">Contact</a></span>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

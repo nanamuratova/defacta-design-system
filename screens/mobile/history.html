@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defacta — History</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+  <!-- ── Centered phone-width column ─────────────────────────────────── -->
+  <div style="max-width:420px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
+
+    <!-- ── Mobile header ────────────────────────────────────────────── -->
+    <header class="mobile-header">
+      <a class="brand" href="landing.html"><img src="../../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
+      <button class="icon-btn" aria-label="Account"><i data-lucide="user"></i></button>
+    </header>
+
+    <!-- ── History list ─────────────────────────────────────────────── -->
+    <main class="container" style="max-width:420px; padding-block: var(--space-300); flex:1">
+      <!-- Heading -->
+      <div style="margin-bottom: var(--space-300)">
+        <span class="label" style="display:block; margin-bottom: var(--space-150)">Previous reports</span>
+        <h1 class="h3">History</h1>
+        <p class="body text-secondary" style="margin-top: var(--space-150)">Every verification is preserved as an auditable artifact.</p>
+      </div>
+
+      <!-- Search (full-width) -->
+      <div class="search" style="margin-bottom: var(--space-200)">
+        <i data-lucide="search" class="icon--sm"></i>
+        <input class="input" type="search" placeholder="Search reports, claims, sources…">
+      </div>
+
+      <!-- Reports — stacked cards (mobile pattern for tables) -->
+      <div class="stack">
+        <a class="card card--interactive" href="report.html">
+          <div class="cell-title">WHO vaccination statement</div>
+          <div class="cell-sub" style="margin-bottom: var(--space-150)">VR-2026-06-03-247K · 3/4 flagged</div>
+          <div class="cluster" style="gap: var(--space-150)">
+            <span class="status-badge status-badge--mono status-badge--flagged"><i></i>Flagged</span>
+            <span class="tag tag--mono risk--high">High</span>
+          </div>
+          <div class="cell-date" style="margin-top: var(--space-150)">Article · Deep Verification · Jun 03, 2026</div>
+        </a>
+
+        <a class="card card--interactive" href="report.html">
+          <div class="cell-title">Q2 earnings draft — investor relations</div>
+          <div class="cell-sub" style="margin-bottom: var(--space-150)">VR-2026-06-02-201F · 2/11 flagged</div>
+          <div class="cluster" style="gap: var(--space-150)">
+            <span class="status-badge status-badge--mono status-badge--pending"><i></i>Pending review</span>
+            <span class="tag tag--mono risk--moderate">Moderate</span>
+          </div>
+          <div class="cell-date" style="margin-top: var(--space-150)">Document · Deep Verification · Jun 02, 2026</div>
+        </a>
+
+        <a class="card card--interactive" href="report.html">
+          <div class="cell-title">Marketing copy — LLM draft v3</div>
+          <div class="cell-sub" style="margin-bottom: var(--space-150)">VR-2026-06-01-189A · 0/7 flagged</div>
+          <div class="cluster" style="gap: var(--space-150)">
+            <span class="status-badge status-badge--mono status-badge--verified"><i></i>Verified</span>
+            <span class="tag tag--mono risk--low">Low</span>
+          </div>
+          <div class="cell-date" style="margin-top: var(--space-150)">AI output · LLM Verification · Jun 01, 2026</div>
+        </a>
+
+        <a class="card card--interactive" href="report.html">
+          <div class="cell-title">Press release — clinical trial results</div>
+          <div class="cell-sub" style="margin-bottom: var(--space-150)">VR-2026-05-31-152C · 1/5 flagged</div>
+          <div class="cluster" style="gap: var(--space-150)">
+            <span class="status-badge status-badge--mono status-badge--pending"><i></i>Pending review</span>
+            <span class="tag tag--mono risk--moderate">Moderate</span>
+          </div>
+          <div class="cell-date" style="margin-top: var(--space-150)">Article · Quick Check · May 31, 2026</div>
+        </a>
+      </div>
+    </main>
+
+    <!-- ── Bottom navigation (History active) ───────────────────────── -->
+    <nav class="bottom-nav" style="position:sticky; bottom:0">
+      <button class="bottom-nav__item" onclick="location.href='workbench.html'"><i data-lucide="scan-eye"></i>Verify</button>
+      <button class="bottom-nav__item is-active" onclick="location.href='history.html'"><i data-lucide="history"></i>History</button>
+      <button class="bottom-nav__item"><i data-lucide="user"></i>Account</button>
+    </nav>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

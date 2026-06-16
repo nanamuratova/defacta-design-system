@@ -92,10 +92,11 @@
     .scale-row { display: flex; align-items: center; gap: var(--space-200); padding: var(--space-100) 0; }
     .scale-row .meta { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-muted); width: 120px; }
     .scale-bar { height: 16px; background: var(--grey-950); border-radius: var(--radius-2); }
-    .shadow-box { width: 160px; height: 96px; border-radius: var(--radius-12); background: var(--canvas); display: flex; align-items: flex-end; padding: var(--space-150); }
+    .elev-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-300); }
+    .shadow-box { width: auto; height: 96px; border-radius: var(--radius-12); background: var(--canvas); display: flex; align-items: flex-end; padding: var(--space-150); }
     .shadow-box span { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary); }
-    .radii { display: flex; gap: var(--space-300); flex-wrap: wrap; }
-    .radii .r { width: 80px; height: 80px; background: var(--grey-100); border: 1px solid var(--border-default); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--space-100); }
+    .radii { display: grid; grid-template-columns: repeat(9, 1fr); gap: var(--space-150); }
+    .radii .r { aspect-ratio: 1; background: var(--grey-100); border: 1px solid var(--border-default); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--space-100); }
     .radii .r span { font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary); }
     .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px,1fr)); gap: var(--space-150); }
     .icons .i { display: flex; flex-direction: column; align-items: center; gap: var(--space-100); padding: var(--space-200); border: 1px solid var(--border-subtle); border-radius: var(--radius-12); }
@@ -155,6 +156,8 @@
       <a data-tab="tooltips">Tooltips</a>
       <a data-tab="upload">Upload</a>
       <a data-tab="contextmenu">Context menu</a>
+      <a data-tab="steps">Steps</a>
+      <a data-tab="progress">Progress</a>
 
       <p class="docs__group">Layout</p>
       <a data-tab="headers">Headers, nav &amp; footers</a>
@@ -353,7 +356,7 @@
       </div>
 
       <p class="sub label">Elevation · 5 steps</p>
-      <div class="demo">
+      <div class="demo elev-grid">
         <div class="shadow-box" style="box-shadow:var(--shadow-xs)"><span>shadow-xs</span></div>
         <div class="shadow-box" style="box-shadow:var(--shadow-sm)"><span>shadow-sm</span></div>
         <div class="shadow-box" style="box-shadow:var(--shadow-md)"><span>shadow-md</span></div>
@@ -1603,17 +1606,131 @@
       </div>
     </section>
 
+    <!-- STEPS -->
+    <section class="panel" data-panel="steps" hidden>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Steps</h1>
+        <p class="lead-desc">A stepper shows progress through a multi-step flow — onboarding, a wizard, or the verification pipeline. Steps are <b>done</b>, <b>active</b>, or upcoming; horizontal for short flows, vertical when each step needs a description.</p>
+      </div>
+
+      <p class="sub label">Horizontal</p>
+      <div class="demo demo--block">
+        <div class="steps-nav" style="max-width:560px">
+          <div class="steps-nav__step is-done"><span class="steps-nav__dot"><i data-lucide="check"></i></span><span class="steps-nav__label">Ingest</span></div>
+          <span class="steps-nav__bar is-done"></span>
+          <div class="steps-nav__step is-active"><span class="steps-nav__dot">2</span><span class="steps-nav__label">Extract</span></div>
+          <span class="steps-nav__bar"></span>
+          <div class="steps-nav__step"><span class="steps-nav__dot">3</span><span class="steps-nav__label">Verify</span></div>
+          <span class="steps-nav__bar"></span>
+          <div class="steps-nav__step"><span class="steps-nav__dot">4</span><span class="steps-nav__label">Review</span></div>
+        </div>
+      </div>
+
+      <p class="sub label">Vertical (with descriptions)</p>
+      <div class="demo demo--block" style="max-width:420px">
+        <div class="steps-vert">
+          <div class="steps-vert__step is-done"><div class="steps-vert__rail"><span class="steps-nav__dot"><i data-lucide="check"></i></span><span class="steps-vert__line"></span></div><div class="steps-vert__content"><div class="steps-vert__title">Ingest</div><div class="steps-vert__desc">Paste a URL, document, or model output.</div></div></div>
+          <div class="steps-vert__step is-active"><div class="steps-vert__rail"><span class="steps-nav__dot">2</span><span class="steps-vert__line"></span></div><div class="steps-vert__content"><div class="steps-vert__title">Extract &amp; verify</div><div class="steps-vert__desc">Atomise claims and check each against sources.</div></div></div>
+          <div class="steps-vert__step"><div class="steps-vert__rail"><span class="steps-nav__dot">3</span></div><div class="steps-vert__content"><div class="steps-vert__title">Review</div><div class="steps-vert__desc">A human signs off and locks the record.</div></div></div>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Mark completed steps with a check and a filled dot; the current step is outlined.</span></div>
+            <div class="rule"><span>Use vertical steps when each needs a description; horizontal for compact flows.</span></div>
+            <div class="rule"><span>Keep step labels to one or two words.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use a stepper for more than ~6 steps — group or paginate instead.</span></div>
+            <div class="rule"><span>Let users jump to a step they can't yet complete.</span></div>
+            <div class="rule"><span>Use steps for non-sequential, peer views — use tabs.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESS -->
+    <section class="panel" data-panel="progress" hidden>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Progress</h1>
+        <p class="lead-desc">A linear bar for determinate progress (uploads, verification) and indeterminate waits. Three sizes, semantic tones, an optional label row, and an animated indeterminate state.</p>
+      </div>
+
+      <p class="sub label">Sizes</p>
+      <div class="demo demo--stack" style="max-width:420px; gap:var(--space-300)">
+        <div class="progress progress--sm"><div class="progress__fill" style="width:40%"></div></div>
+        <div class="progress"><div class="progress__fill" style="width:62%"></div></div>
+        <div class="progress progress--lg"><div class="progress__fill" style="width:80%"></div></div>
+      </div>
+
+      <p class="sub label">Tones</p>
+      <div class="demo demo--stack" style="max-width:420px; gap:var(--space-200)">
+        <div class="progress"><div class="progress__fill" style="width:55%"></div></div>
+        <div class="progress progress--success"><div class="progress__fill" style="width:100%"></div></div>
+        <div class="progress progress--warning"><div class="progress__fill" style="width:45%"></div></div>
+        <div class="progress progress--error"><div class="progress__fill" style="width:25%"></div></div>
+      </div>
+
+      <p class="sub label">With label</p>
+      <div class="demo demo--block" style="max-width:420px">
+        <div class="progress-field">
+          <div class="progress-field__head"><span>Verifying claims</span><span class="pct">62%</span></div>
+          <div class="progress"><div class="progress__fill" style="width:62%"></div></div>
+        </div>
+      </div>
+
+      <p class="sub label">Indeterminate</p>
+      <div class="demo demo--block" style="max-width:420px">
+        <div class="progress progress--indeterminate"><div class="progress__fill"></div></div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use a determinate bar when you know the percentage; show the value in a label.</span></div>
+            <div class="rule"><span>Use the indeterminate bar only while the duration is unknown.</span></div>
+            <div class="rule"><span>Use tone to reflect outcome (success on complete, error on failure).</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Show a determinate bar stuck at a fake percentage.</span></div>
+            <div class="rule"><span>Use a progress bar for a stepper — use Steps for discrete stages.</span></div>
+            <div class="rule"><span>Animate the indeterminate bar forever after work has finished.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- HEADERS / NAV / FOOTERS -->
     <section class="panel" data-panel="headers" hidden>
-      <div class="panel__head"><span class="label">Layout</span><h1>Headers, nav &amp; footers</h1></div>
-      <p class="sub label">Marketing header</p>
+      <div class="panel__head">
+        <span class="label">Layout</span>
+        <h1>Headers, nav &amp; footers</h1>
+        <p class="lead-desc">Page chrome for desktop and mobile: marketing and signed-in headers, a compact mobile header with a nav drawer, simple and multi-column footers, and a mobile bottom navigation bar.</p>
+      </div>
+
+      <p class="sub label">Marketing header (desktop)</p>
       <div class="demo demo--block" style="padding:0; overflow:hidden">
         <header class="site-header">
           <a class="brand"><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
           <div class="cluster"><button class="btn btn--secondary btn--sm">Book a demo</button><button class="btn btn--primary btn--sm">Try free</button></div>
         </header>
       </div>
-      <p class="sub label">App header (signed in)</p>
+
+      <p class="sub label">App header (signed in, desktop)</p>
       <div class="demo demo--block" style="padding:0; overflow:hidden">
         <header class="site-header">
           <a class="brand"><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
@@ -1625,9 +1742,81 @@
           </div>
         </header>
       </div>
-      <p class="sub label">Footer</p>
+
+      <p class="sub label">Mobile header &amp; nav drawer</p>
+      <div class="demo" style="gap:var(--space-400); align-items:flex-start">
+        <div style="width:320px; border:1px solid var(--border-default); border-radius:var(--radius-16); overflow:hidden">
+          <header class="mobile-header">
+            <button class="icon-btn icon-btn--sm" aria-label="Menu"><i data-lucide="menu"></i></button>
+            <img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo" style="height:22px">
+            <button class="icon-btn icon-btn--sm" aria-label="Account"><i data-lucide="user"></i></button>
+          </header>
+          <div style="height:120px; background:var(--surface-paper)"></div>
+        </div>
+        <div style="width:320px; border:1px solid var(--border-default); border-radius:var(--radius-16); overflow:hidden">
+          <header class="mobile-header">
+            <button class="icon-btn icon-btn--sm" aria-label="Close"><i data-lucide="x"></i></button>
+            <img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo" style="height:22px">
+            <span style="width:32px"></span>
+          </header>
+          <nav style="padding:var(--space-200)">
+            <a class="sidebar__item is-active"><i data-lucide="scan-eye"></i> Workbench</a>
+            <a class="sidebar__item"><i data-lucide="history"></i> History</a>
+            <a class="sidebar__item"><i data-lucide="bookmark"></i> Saved</a>
+            <a class="sidebar__item"><i data-lucide="settings"></i> Settings</a>
+            <a class="sidebar__item"><i data-lucide="log-out"></i> Sign out</a>
+          </nav>
+        </div>
+      </div>
+
+      <p class="sub label">Footer (simple)</p>
       <div class="demo demo--block" style="padding:0; overflow:hidden">
         <footer class="site-footer"><span>© Defacta</span><span>Evidence, transparent by default.</span></footer>
+      </div>
+
+      <p class="sub label">Footer (multi-column)</p>
+      <div class="demo demo--block" style="padding:0; overflow:hidden">
+        <footer style="background:var(--surface-ink); color:var(--grey-400); padding:var(--space-600) var(--space-400)">
+          <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:var(--space-400)">
+            <div><img src="assets/defacta-logo.svg" alt="Defacta" class="brand__logo" style="height:24px; filter:invert(1) brightness(2)"><p class="text-sm" style="margin-top:var(--space-150); max-width:30ch">The verification layer for high-risk information.</p></div>
+            <div><div class="label" style="color:var(--grey-400); margin-bottom:var(--space-150)">Product</div><div class="stack" style="gap:var(--space-100)"><a class="text-sm" style="color:var(--grey-300)">Console</a><a class="text-sm" style="color:var(--grey-300)">Reports</a><a class="text-sm" style="color:var(--grey-300)">API</a></div></div>
+            <div><div class="label" style="color:var(--grey-400); margin-bottom:var(--space-150)">Company</div><div class="stack" style="gap:var(--space-100)"><a class="text-sm" style="color:var(--grey-300)">About</a><a class="text-sm" style="color:var(--grey-300)">Careers</a><a class="text-sm" style="color:var(--grey-300)">Contact</a></div></div>
+            <div><div class="label" style="color:var(--grey-400); margin-bottom:var(--space-150)">Legal</div><div class="stack" style="gap:var(--space-100)"><a class="text-sm" style="color:var(--grey-300)">Privacy</a><a class="text-sm" style="color:var(--grey-300)">Terms</a></div></div>
+          </div>
+        </footer>
+      </div>
+
+      <p class="sub label">Bottom navigation bar (mobile)</p>
+      <div class="demo">
+        <div style="width:320px; border:1px solid var(--border-default); border-radius:var(--radius-16); overflow:hidden; margin-inline:auto">
+          <div style="height:120px; background:var(--surface-paper)"></div>
+          <nav class="bottom-nav">
+            <button class="bottom-nav__item is-active"><i data-lucide="scan-eye"></i> Verify</button>
+            <button class="bottom-nav__item"><i data-lucide="history"></i> History</button>
+            <button class="bottom-nav__item"><i data-lucide="bookmark"></i> Saved</button>
+            <button class="bottom-nav__item"><i data-lucide="user"></i> Account</button>
+          </nav>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Desktop: full <code>.site-header</code>. Mobile: <code>.mobile-header</code> with a menu button + nav drawer.</span></div>
+            <div class="rule"><span>Use a <code>.bottom-nav</code> (3–5 items) for primary navigation on mobile.</span></div>
+            <div class="rule"><span>Keep the same logo, nav order, and active state across breakpoints.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Cram the full desktop nav into a mobile header — collapse it into a drawer.</span></div>
+            <div class="rule"><span>Put more than 5 items in a bottom nav.</span></div>
+            <div class="rule"><span>Use both a bottom nav and a nav drawer for the same primary links.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

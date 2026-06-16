@@ -1,0 +1,40 @@
+/* =========================================================================
+   STEPS — stepper for multi-step flows (horizontal + vertical)
+   <div class="steps-nav">
+     <div class="steps-nav__step is-done"><span class="steps-nav__dot"><i data-lucide="check"></i></span><span class="steps-nav__label">Ingest</span></div>
+     <span class="steps-nav__bar is-done"></span>
+     <div class="steps-nav__step is-active"><span class="steps-nav__dot">2</span><span class="steps-nav__label">Extract</span></div>
+     <span class="steps-nav__bar"></span>
+     <div class="steps-nav__step"><span class="steps-nav__dot">3</span><span class="steps-nav__label">Verify</span></div>
+   </div>
+   ========================================================================= */
+
+.steps-nav { display: flex; align-items: center; }
+.steps-nav__step { display: inline-flex; align-items: center; gap: var(--space-150); }
+.steps-nav__dot {
+  flex-shrink: 0; width: 28px; height: 28px;
+  border-radius: var(--radius-full); border: 1px solid var(--border-strong);
+  background: var(--canvas);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: var(--text-label); color: var(--text-secondary);
+}
+.steps-nav__dot svg { width: 14px; height: 14px; }
+.steps-nav__label { font-size: var(--text-sm); color: var(--text-secondary); white-space: nowrap; }
+.steps-nav__bar { flex: 1; min-width: 24px; height: 1px; background: var(--border-default); margin: 0 var(--space-200); }
+
+.steps-nav__step.is-active .steps-nav__dot { border-color: var(--grey-950); color: var(--text-primary); }
+.steps-nav__step.is-active .steps-nav__label { color: var(--text-primary); font-weight: var(--weight-medium); }
+.steps-nav__step.is-done .steps-nav__dot { background: var(--grey-950); border-color: var(--grey-950); color: var(--canvas); }
+.steps-nav__step.is-done .steps-nav__label { color: var(--text-primary); }
+.steps-nav__bar.is-done { background: var(--grey-950); }
+
+/* ---- Vertical stepper ----------------------------------------------- */
+.steps-vert { display: flex; flex-direction: column; }
+.steps-vert__step { display: flex; gap: var(--space-150); }
+.steps-vert__rail { display: flex; flex-direction: column; align-items: center; }
+.steps-vert__line { width: 1px; flex: 1; min-height: 20px; background: var(--border-default); margin: var(--space-050) 0; }
+.steps-vert__step.is-done .steps-vert__line { background: var(--grey-950); }
+.steps-vert__content { padding-bottom: var(--space-300); }
+.steps-vert__content .steps-vert__title { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-primary); }
+.steps-vert__content .steps-vert__desc { font-size: var(--text-sm); color: var(--text-secondary); margin-top: 2px; }
+.steps-vert__step:not(.is-done):not(.is-active) .steps-vert__title { color: var(--text-secondary); font-weight: var(--weight-regular); }

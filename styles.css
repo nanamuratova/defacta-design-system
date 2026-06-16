@@ -25,5 +25,7 @@
 @import "components/menu.css";
 @import "components/upload.css";
 @import "components/carousel.css";
+@import "components/steps.css";
+@import "components/progress.css";
 @import "components/sidebar.css";
 @import "components/layout.css";

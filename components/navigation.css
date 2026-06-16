@@ -24,3 +24,17 @@
 .pagination__item.is-active { background: var(--grey-950); color: var(--canvas); border-color: var(--grey-950); }
 .pagination__item:disabled { opacity: 0.4; cursor: not-allowed; }
 .pagination__ellipsis { padding: 0 var(--space-050); color: var(--text-muted); }
+
+/* ---- Mobile top header ----------------------------------------------- */
+.mobile-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-150); height: 56px; padding-inline: var(--space-200); border-bottom: 1px solid var(--border-subtle); background: var(--canvas); }
+
+/* ---- Bottom navigation bar (mobile) --------------------------------- */
+.bottom-nav { display: flex; align-items: stretch; height: 56px; border-top: 1px solid var(--border-subtle); background: var(--canvas); }
+.bottom-nav__item {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  border: 0; background: transparent; cursor: pointer;
+  color: var(--text-muted);
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.bottom-nav__item svg { width: 20px; height: 20px; }
+.bottom-nav__item.is-active { color: var(--text-primary); }

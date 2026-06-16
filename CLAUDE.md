@@ -105,6 +105,9 @@ matters more than cleverness. Follow these rules exactly.
 | Carousel | `.carousel` > `.carousel__viewport` > `.carousel__track` > `.carousel__slide` + `__btn`/`__dots` (JS) |
 | Page header / footer | `.site-header` (marketing, or `.header-actions` for the signed-in app variant) · `.site-footer` |
 | Sidebar / app shell | `.sidebar` > `.sidebar__item` (+ `.is-active`, `.sidebar__group`, `.sidebar__spacer`); wrap with `.app-shell` + `.app-shell__main` |
+| Mobile header / bottom nav | `.mobile-header` (menu + logo + action) · `.bottom-nav` > `.bottom-nav__item` (`.is-active`, 3–5 items) |
+| Steps (stepper) | `.steps-nav` > `.steps-nav__step.is-done/.is-active` + `.steps-nav__dot` + `.steps-nav__bar.is-done`; vertical `.steps-vert` |
+| Progress bar | `.progress` > `.progress__fill` (width %); sizes `--sm/--lg`; tones `--success/--warning/--error/--accent`; `--indeterminate`; label wrap `.progress-field` |
 
 ## Brand voice (visual)
 

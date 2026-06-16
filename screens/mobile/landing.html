@@ -9,6 +9,14 @@
     /* page-local: landing-only treatments (mobile) */
     h2 em, h3 em { font-style: italic; color: var(--grey-400); font-weight: inherit; }
 
+    /* full-width mobile content with 16px side margins */
+    .container { max-width: none; padding-inline: var(--space-200); }
+
+    /* pricing carousel (swipeable) */
+    .price-carousel { display: flex; gap: var(--space-200); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(var(--space-200) * -1); padding: var(--space-050) var(--space-200) var(--space-200); }
+    .price-carousel::-webkit-scrollbar { display: none; }
+    .price-carousel .price { flex: 0 0 80%; scroll-snap-align: start; }
+
     /* hero background gradient — matches desktop */
     .bg-blur { background: var(--paper) url("../../assets/hero-bg.svg") center top / cover no-repeat; }
 
@@ -52,7 +60,7 @@
 </head>
 <body>
   <!-- ── Centered phone-width column ─────────────────────────────────── -->
-  <div style="max-width:420px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
+  <div style="margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
 
     <!-- Header (transparent, over the hero gradient) -->
     <div class="bg-blur">
@@ -62,7 +70,7 @@
       </header>
 
       <!-- ── Hero ─────────────────────────────────────────────────────── -->
-      <section class="container" style="max-width:420px; text-align:center; padding-block: var(--space-500) var(--space-400)">
+      <section class="container" style="text-align:center; padding-block: var(--space-500) var(--space-400)">
         <h2 class="h2" style="margin-bottom: var(--space-200)">Set the record <em>straight.</em><br>Between the information and the decision.</h2>
         <p class="body text-secondary" style="margin-bottom: var(--space-200)">You read an article. You get an answer from an AI. You are about to send something you wrote using that answer. Defacta is a verification layer that checks AI-generated answers and any text for factual accuracy, source credibility, bias, and manipulation before they reach your decision.</p>
         <p class="hero__note" style="margin-bottom: var(--space-300)">Not an AI fact-checker. A structured verification workflow.</p>
@@ -71,7 +79,7 @@
     </div>
 
     <!-- ── Who it is for ────────────────────────────────────────────── -->
-    <section class="container" style="max-width:420px; padding-block: var(--space-500)">
+    <section class="container" style="padding-block: var(--space-500)">
       <span class="label">Who it is for</span>
       <h2 class="h3" style="margin: var(--space-150) 0 var(--space-300)">One verification layer, for <em>everyone downstream.</em></h2>
       <div class="stack" style="gap: var(--space-300)">
@@ -97,7 +105,7 @@
     </section>
 
     <!-- ── Four layers. One pass. (dark band) ───────────────────────── -->
-    <section class="container section--ink" style="max-width:420px; padding-block: var(--space-500)">
+    <section class="container section--ink" style="padding-block: var(--space-500)">
       <span class="label">How it works</span>
       <h2 class="h3" style="margin: var(--space-150) 0 var(--space-150)">Four layers. <em>One pass.</em></h2>
       <p class="text-secondary" style="margin-bottom: var(--space-200)">Defacta does not simply say true or false. It runs every input through four layers of structured analysis and returns one traceable verdict.</p>
@@ -108,7 +116,7 @@
     </section>
 
     <!-- ── Mission ──────────────────────────────────────────────────── -->
-    <section class="container" style="max-width:420px; padding-block: var(--space-500)">
+    <section class="container" style="padding-block: var(--space-500)">
       <span class="label">Mission</span>
       <h2 class="h3" style="margin: var(--space-150) 0 var(--space-200)">We do not replace human judgment. <em>We protect it.</em></h2>
       <p class="body text-secondary" style="margin-bottom: var(--space-150)">Defacta is built on one premise: analysts, journalists, fact-checkers, and researchers are irreplaceable. We build tools that make their work faster, not tools that replace it.</p>
@@ -117,10 +125,10 @@
     </section>
 
     <!-- ── Pricing — stacked cards ──────────────────────────────────── -->
-    <section class="container section--paper" style="max-width:420px; padding-block: var(--space-500)">
+    <section class="container section--paper" style="padding-block: var(--space-500)">
       <span class="label">Pricing</span>
       <h2 class="h3" style="margin: var(--space-150) 0 var(--space-300)">Start free. <em>Scale when ready.</em></h2>
-      <div class="stack" style="gap: var(--space-200)">
+      <div class="price-carousel">
         <a class="card price card--interactive" href="workbench.html">
           <div><div class="price__name">Free</div><div class="price__amt">$0</div></div>
           <div class="price__feats">
@@ -181,7 +189,7 @@
     </section>
 
     <!-- ── Final CTA ────────────────────────────────────────────────── -->
-    <section class="container" style="max-width:420px; padding-block: var(--space-500) var(--space-300)">
+    <section class="container" style="padding-block: var(--space-500) var(--space-300)">
       <a class="btn btn--primary btn--lg" href="workbench.html" style="width:100%">Try Defacta free <i data-lucide="arrow-right" class="icon--sm"></i></a>
     </section>
 

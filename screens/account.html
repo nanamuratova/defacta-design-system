@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="../styles.css">
   <style>
     .acct { max-width: 760px; }
-    .acct .tabs-v { grid-template-columns: 180px 1fr; gap: var(--space-500); }
+    .acct .tabs { margin-bottom: var(--space-400); }
     .avatar { width: 56px; height: 56px; border-radius: var(--radius-full); background: var(--grey-950); color: var(--canvas);
       display: inline-flex; align-items: center; justify-content: center; font-weight: var(--weight-medium); flex-shrink: 0; }
     .acct__divider { border: 0; border-top: 1px solid var(--border-subtle); margin: var(--space-300) 0; }
     .acct__sec-title { font-weight: var(--weight-medium); margin-bottom: var(--space-100); }
-    @media (max-width: 700px) { .acct .tabs-v { grid-template-columns: 1fr; gap: var(--space-300); } .acct .tabs--vertical { flex-direction: row; flex-wrap: wrap; border-left: 0; } }
+    .acct .tabs { flex-wrap: wrap; }
   </style>
 </head>
 <body>
@@ -36,17 +36,16 @@
         <h1 style="margin-top: var(--space-150)">Settings</h1>
       </div>
 
-      <div class="tabs-v">
-        <!-- Section nav -->
-        <div class="tabs tabs--vertical" role="tablist">
-          <button class="tabs__tab is-active" data-tabtarget="profile">Profile</button>
-          <button class="tabs__tab" data-tabtarget="plan">Plan &amp; billing</button>
-          <button class="tabs__tab" data-tabtarget="security">Security</button>
-          <button class="tabs__tab" data-tabtarget="notifications">Notifications</button>
-        </div>
+      <!-- Section nav -->
+      <div class="tabs" role="tablist">
+        <button class="tabs__tab is-active" data-tabtarget="profile">Profile</button>
+        <button class="tabs__tab" data-tabtarget="plan">Plan &amp; billing</button>
+        <button class="tabs__tab" data-tabtarget="security">Security</button>
+        <button class="tabs__tab" data-tabtarget="notifications">Notifications</button>
+      </div>
 
-        <!-- Panels -->
-        <div>
+      <!-- Panels -->
+      <div>
           <!-- Profile -->
           <section class="tabs__panel" data-tabpanel="profile">
             <div class="stack" style="gap: var(--space-300); max-width: 460px">
@@ -114,7 +113,6 @@
             </div>
           </section>
         </div>
-      </div>
     </div>
   </main>
 
@@ -122,7 +120,7 @@
   <script>
     lucide.createIcons();
     // vertical settings tabs
-    const tabs = [...document.querySelectorAll('.tabs--vertical .tabs__tab')];
+    const tabs = [...document.querySelectorAll('.tabs .tabs__tab')];
     tabs.forEach(t => t.addEventListener('click', () => {
       tabs.forEach(x => x.classList.remove('is-active'));
       t.classList.add('is-active');

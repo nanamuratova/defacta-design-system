@@ -43,9 +43,9 @@
     .layer h3 { font-size: var(--text-h4); font-weight: var(--weight-medium); margin: var(--space-100) 0; }
     .layer p { font-size: var(--text-sm); color: var(--grey-400); max-width: 46ch; }
 
-    /* mission */
-    .mission p { max-width: 680px; margin-inline: auto; }
-    .mission p + p { margin-top: var(--space-200); }
+    /* mission — two columns: title left, body right */
+    .mission__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-600); align-items: start; }
+    .mission__body p + p { margin-top: var(--space-200); }
 
     /* pricing */
     .pricing { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-200); margin-top: var(--space-500); align-items: stretch; text-align: left; }
@@ -71,7 +71,7 @@
 
     @media (max-width: 1100px) { .pricing { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 860px) {
-      .audience, .layers, .pricing, .lp-footer__grid { grid-template-columns: 1fr; gap: var(--space-300); }
+      .audience, .layers, .pricing, .mission__grid, .lp-footer__grid { grid-template-columns: 1fr; gap: var(--space-300); }
       .layer { border-left: 0; }
     }
   </style>
@@ -168,13 +168,19 @@
   </section>
 
   <!-- ── Mission ────────────────────────────────────────────────────── -->
-  <section class="section mission" style="text-align:center">
-    <div class="container content">
-      <span class="label">Mission</span>
-      <h2 class="h1" style="margin:var(--space-150) 0 var(--space-300)">We do not replace human judgment.<br><em>We protect it.</em></h2>
-      <p class="body-lg text-secondary">Defacta is built on one premise: analysts, journalists, fact-checkers, and researchers are irreplaceable. We build tools that make their work faster, not tools that replace it.</p>
-      <p class="body-lg text-secondary">Defacta handles the mechanical parts so human attention goes where it matters. Because misinformation is not only a professional problem, a limited but sufficient version of Defacta is free for anyone who wants to know what they are reading.</p>
-      <p class="body-lg text-secondary">Defacta makes no claim to ultimate truth. It reduces the risk of being misled, manipulated, or gaslighted.</p>
+  <section class="section mission">
+    <div class="container">
+      <div class="mission__grid">
+        <div>
+          <span class="label">Mission</span>
+          <h2 class="h1" style="margin-top:var(--space-150)">We do not replace human judgment. <em>We protect it.</em></h2>
+        </div>
+        <div class="mission__body">
+          <p class="body-lg text-secondary">Defacta is built on one premise: analysts, journalists, fact-checkers, and researchers are irreplaceable. We build tools that make their work faster, not tools that replace it.</p>
+          <p class="body-lg text-secondary">Defacta handles the mechanical parts so human attention goes where it matters. Because misinformation is not only a professional problem, a limited but sufficient version of Defacta is free for anyone who wants to know what they are reading.</p>
+          <p class="body-lg text-secondary">Defacta makes no claim to ultimate truth. It reduces the risk of being misled, manipulated, or gaslighted.</p>
+        </div>
+      </div>
     </div>
   </section>
 

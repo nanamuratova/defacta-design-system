@@ -3,107 +3,137 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Defacta — Verification Workbench</title>
+  <title>Defacta — Verification Console</title>
   <link rel="stylesheet" href="../../styles.css">
-  <style> body { background: var(--surface-paper); } </style>
+  <style>
+    body { background: var(--surface-paper); }
+    .wb-mode-desc { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-300); }
+
+    /* composer (Tools-style input) — full-width, stacked controls */
+    .composer { border: 1px solid var(--border-default); border-radius: var(--radius-16); background: var(--canvas); padding: var(--space-200); transition: border-color .12s ease, box-shadow .12s ease; }
+    .composer:focus-within { border-color: var(--border-strong); }
+    .composer__field { position: relative; }
+    .composer__input { width: 100%; border: 0; background: transparent; resize: vertical; min-height: 220px; padding: var(--space-100); font: inherit; color: var(--text-primary); outline: none; }
+    .composer__input::placeholder { color: var(--text-muted); }
+    .composer__bar { display: flex; flex-direction: column; gap: var(--space-150); margin-top: var(--space-150); }
+    .wb-dd__sum { color: var(--text-secondary); font-weight: var(--weight-regular); }
+  </style>
 </head>
 <body>
   <!-- ── Centered phone-width column ─────────────────────────────────── -->
   <div style="max-width:420px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
 
-    <!-- ── Mobile header ────────────────────────────────────────────── -->
+    <!-- App header -->
     <header class="mobile-header">
       <a class="brand" href="landing.html"><img src="../../assets/defacta-logo.svg" alt="Defacta" class="brand__logo"></a>
-      <button class="icon-btn" aria-label="Account"><i data-lucide="user"></i></button>
+      <a class="icon-btn" href="account.html" aria-label="Account"><i data-lucide="user"></i></a>
     </header>
 
-    <!-- ── Workbench ────────────────────────────────────────────────── -->
-    <main class="container" style="max-width:420px; padding-block: var(--space-300); flex:1">
-      <!-- Heading -->
+    <!-- ── Console ───────────────────────────────────────────────────── -->
+    <main class="container" style="max-width:420px; flex:1; padding-block: var(--space-300)">
       <div style="margin-bottom: var(--space-300)">
-        <span class="label" style="display:block; margin-bottom: var(--space-150)">Verification workbench</span>
-        <h1 class="h3">What do you want to verify?</h1>
-        <p class="body text-secondary" style="margin-top: var(--space-150)">Paste an article, an AI answer, or your own draft. Defacta reads it and shows you what holds up — and what doesn't.</p>
+        <span class="label">Verification console</span>
+        <h1 class="h3" style="margin: var(--space-150) 0">What do you want to check?</h1>
+        <p class="body text-secondary">Paste text or a link — an article, an AI answer, or your own draft. Defacta reads it and shows you what holds up — and what doesn't.</p>
       </div>
 
-      <!-- Analysis mode — stacked option-cards -->
-      <p class="text-secondary" style="margin-bottom: var(--space-150)">Choose analysis mode</p>
-      <div class="stack" style="margin-bottom: var(--space-300)">
-        <label class="option-card">
-          <input type="radio" name="mode" checked>
-          <span class="option-card__title">Check my text</span>
-          <span class="option-card__desc">Your own writing — Defacta returns inline editing suggestions and sourcing fixes.</span>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="mode">
-          <span class="option-card__title">Check someone else's</span>
-          <span class="option-card__desc">Someone else's text — Defacta returns a trust check on claims, citations and risk signals.</span>
-        </label>
+      <!-- Analysis mode -->
+      <div class="toggle-group" id="mode-toggle" style="display:flex; width:100%; margin-bottom: var(--space-150)">
+        <button class="is-active" data-mode="mine" style="flex:1">Check my text</button>
+        <button data-mode="other" style="flex:1">Check someone else's</button>
       </div>
+      <p class="wb-mode-desc" id="mode-desc">Your own writing — Defacta returns inline editing suggestions and sourcing fixes.</p>
 
-      <!-- Advanced settings (collapsible) -->
-      <details class="accordion" style="margin-bottom: var(--space-300)">
-        <summary class="accordion__trigger">
-          <i data-lucide="settings" class="icon--sm icon--muted"></i>
-          <span class="accordion__title">Advanced settings</span>
-          <span class="accordion__meta" id="adv-meta">2 of 4 enabled</span>
-          <i data-lucide="chevron-down" class="accordion__chevron"></i>
-        </summary>
-        <div class="accordion__panel">
-          <label class="checkbox"><input type="checkbox" class="adv" checked><span class="checkbox__box"></span>
-            <span class="checkbox__label"><span class="checkbox__title">Key claim verification</span><span class="checkbox__desc">Identify and verify the highest-impact factual claims.</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="adv" checked><span class="checkbox__box"></span>
-            <span class="checkbox__label"><span class="checkbox__title">Bias &amp; framing analysis</span><span class="checkbox__desc">Surface loaded language, framing choices, and emphasis patterns.</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="adv"><span class="checkbox__box"></span>
-            <span class="checkbox__label"><span class="checkbox__title">Deception detection</span><span class="checkbox__desc">Flag stylistic signals of evasion, hedging, or misdirection.</span></span></label>
-          <label class="checkbox"><input type="checkbox" class="adv"><span class="checkbox__box"></span>
-            <span class="checkbox__label"><span class="checkbox__title">Manipulation check</span><span class="checkbox__desc">Detect persuasive techniques and emotionally coercive language.</span></span></label>
+      <!-- Input (composer) -->
+      <span class="label" style="display:block; margin-bottom: var(--space-150)">Paste text or link</span>
+      <div class="composer">
+        <div class="composer__field">
+          <textarea class="composer__input" id="content" placeholder="Paste text or a link (https://…) to verify."></textarea>
         </div>
-      </details>
-
-      <!-- Input -->
-      <div class="field-head">
-        <span class="label">Paste a link or text</span>
-        <span class="link-action" id="use-sample"><i data-lucide="file-text" class="icon--sm"></i> Use sample</span>
-      </div>
-      <textarea class="textarea" id="content" style="min-height: 200px" placeholder="Paste any text, AI output, or a URL (https://…) to verify."></textarea>
-      <div class="textarea-foot">
-        <span id="charcount">0 characters</span>
-        <span>Max. 50,000 characters</span>
+        <div class="composer__bar">
+          <button class="btn btn--secondary" id="settings-btn" type="button" aria-expanded="false" style="width:100%; justify-content:center">
+            <i data-lucide="sliders-horizontal" class="icon--sm"></i> Settings <span class="wb-dd__sum" id="settings-sum">· Auto · Quick</span> <i data-lucide="chevron-down" class="icon--sm"></i>
+          </button>
+          <button class="btn btn--secondary" id="use-sample" type="button" style="width:100%; justify-content:center"><i data-lucide="file-text" class="icon--sm"></i> Use sample</button>
+        </div>
       </div>
 
-      <!-- Actions — full-width, stacked -->
-      <div class="stack" style="margin-top: var(--space-300)">
-        <button class="btn btn--primary" style="width:100%">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
-        <button class="btn btn--secondary" id="clear" style="width:100%">Clear</button>
+      <!-- Settings (simple stacked list, collapsed by default) -->
+      <div class="card" id="settings-pop" hidden style="margin-top: var(--space-200)">
+        <span class="label" style="display:block; margin-bottom: var(--space-150)">Checks</span>
+        <div class="stack" style="gap: var(--space-150)">
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Manipulation</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Lie detection</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claims / facts</span></span></label>
+          <label class="checkbox"><input type="checkbox" class="chk" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">LLM output check</span></span></label>
+        </div>
+        <span class="label" style="display:block; margin: var(--space-250) 0 var(--space-150)">Depth</span>
+        <div class="toggle-group" id="depth-toggle" style="display:flex; width:100%">
+          <button class="is-active" style="flex:1">Quick check</button>
+          <button style="flex:1">In-depth</button>
+        </div>
+        <span class="label" style="display:block; margin: var(--space-250) 0 var(--space-150)">Report</span>
+        <div class="toggle-group" id="report-toggle" style="display:flex; width:100%">
+          <button style="flex:1">Short</button>
+          <button class="is-active" style="flex:1">Detailed</button>
+        </div>
       </div>
+
+      <!-- Run -->
+      <button class="btn btn--primary" id="run" style="width:100%; margin-top: var(--space-300)">Run verification <i data-lucide="arrow-right" class="icon--sm"></i></button>
     </main>
 
-    <!-- ── Bottom navigation (Verify active) ────────────────────────── -->
+    <!-- ── Bottom navigation ─────────────────────────────────────────── -->
     <nav class="bottom-nav" style="position:sticky; bottom:0">
-      <button class="bottom-nav__item is-active" onclick="location.href='workbench.html'"><i data-lucide="scan-eye"></i>Verify</button>
-      <button class="bottom-nav__item" onclick="location.href='history.html'"><i data-lucide="history"></i>History</button>
-      <button class="bottom-nav__item"><i data-lucide="user"></i>Account</button>
+      <a class="bottom-nav__item is-active" href="workbench.html"><i data-lucide="scan-eye"></i>Verify</a>
+      <a class="bottom-nav__item" href="history.html"><i data-lucide="history"></i>History</a>
+      <a class="bottom-nav__item" href="account.html"><i data-lucide="user"></i>Account</a>
     </nav>
   </div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
-    // char counter
+
+    // generic segmented toggles
+    document.querySelectorAll('.toggle-group').forEach(g => {
+      g.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+        g.querySelectorAll('button').forEach(x => x.classList.remove('is-active'));
+        b.classList.add('is-active');
+        syncSummary();
+      }));
+    });
+
     const ta = document.getElementById('content');
-    const cc = document.getElementById('charcount');
     const sample = `In a recent statement, the World Health Organization announced that global vaccination coverage reached 92% in 2024, marking the highest figure on record. The report cites unpublished internal data showing that childhood mortality has dropped by 47% since 2019, a decline researchers attribute almost entirely to a new mRNA-based malaria vaccine deployed across Sub-Saharan Africa. Independent experts have universally praised the rollout, calling it "the most consequential public health intervention of the decade."`;
-    const fmt = n => n.toLocaleString() + (n === 1 ? ' character' : ' characters');
-    const sync = () => cc.textContent = fmt(ta.value.length);
-    ta.addEventListener('input', sync);
-    document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; sync(); });
-    document.getElementById('clear').addEventListener('click', () => { ta.value = ''; sync(); });
-    // advanced-settings counter
-    const advs = [...document.querySelectorAll('.adv')];
-    const meta = document.getElementById('adv-meta');
-    const syncAdv = () => meta.textContent = advs.filter(a => a.checked).length + ' of ' + advs.length + ' enabled';
-    advs.forEach(a => a.addEventListener('change', syncAdv));
+    document.getElementById('use-sample').addEventListener('click', () => { ta.value = sample; ta.focus(); });
+
+    // mode description
+    const modeDesc = {
+      mine: 'Your own writing — Defacta returns inline editing suggestions and sourcing fixes.',
+      other: "Someone else's text — Defacta returns a trust check on claims, citations and risk signals."
+    };
+    document.querySelectorAll('#mode-toggle button').forEach(b =>
+      b.addEventListener('click', () => { document.getElementById('mode-desc').textContent = modeDesc[b.dataset.mode]; }));
+
+    // settings summary (depth)
+    function syncSummary() {
+      const depthBtn = document.querySelector('#depth-toggle button.is-active');
+      const depth = depthBtn ? depthBtn.textContent.trim().replace(' check', '') : 'Quick';
+      document.getElementById('settings-sum').textContent = '· Auto · ' + depth;
+    }
+
+    // settings open/close
+    const pop = document.getElementById('settings-pop');
+    const sbtn = document.getElementById('settings-btn');
+    sbtn.addEventListener('click', () => {
+      pop.hidden = !pop.hidden;
+      sbtn.setAttribute('aria-expanded', !pop.hidden);
+    });
+
+    // run verification → animated verifying screen
+    document.getElementById('run').addEventListener('click', () => { location.href = 'verifying.html'; });
   </script>
 </body>
 </html>

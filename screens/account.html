@@ -14,6 +14,9 @@
     .acct__divider { border: 0; border-top: 1px solid var(--border-subtle); margin: var(--space-300) 0; }
     .acct__sec-title { font-weight: var(--weight-medium); margin-bottom: var(--space-100); }
     .acct .tabs { flex-wrap: wrap; }
+    .acct-card { max-width: 520px; }
+    .acct-stack { display: flex; flex-direction: column; gap: var(--space-300); max-width: 520px; }
+    .acct-stack .acct-card { max-width: none; }
   </style>
 </head>
 <body>
@@ -49,20 +52,23 @@
       <div>
           <!-- Profile -->
           <section class="tabs__panel" data-tabpanel="profile">
-            <div class="stack" style="gap: var(--space-300); max-width: 460px">
-              <div class="cluster" style="gap: var(--space-200)">
+            <div class="card acct-card">
+              <div class="card__title">Profile</div>
+              <div class="cluster" style="gap: var(--space-200); margin-bottom: var(--space-300)">
                 <span class="avatar">NM</span>
                 <button class="btn btn--secondary btn--sm">Change photo</button>
               </div>
-              <div class="field"><label class="label" for="name">Full name</label><input class="input" id="name" value="Nana Muratova"></div>
-              <div class="field"><label class="label" for="email">Email</label><input class="input" id="email" type="email" value="nana@defacta.pro"></div>
-              <div><button class="btn btn--primary">Save changes</button></div>
+              <div class="stack" style="gap: var(--space-200)">
+                <div class="field"><label class="label" for="name">Full name</label><input class="input" id="name" value="Nana Muratova"></div>
+                <div class="field"><label class="label" for="email">Email</label><input class="input" id="email" type="email" value="nana@defacta.pro"></div>
+                <div><button class="btn btn--primary">Save changes</button></div>
+              </div>
             </div>
           </section>
 
           <!-- Plan & billing -->
           <section class="tabs__panel" data-tabpanel="plan" hidden>
-            <div class="card" style="max-width: 460px">
+            <div class="card acct-card">
               <div class="cluster" style="justify-content: space-between; align-items: flex-start">
                 <div>
                   <span class="label">Current plan</span>
@@ -82,24 +88,27 @@
 
           <!-- Security -->
           <section class="tabs__panel" data-tabpanel="security" hidden>
-            <div class="stack" style="gap: var(--space-300); max-width: 460px">
-              <div>
-                <div class="acct__sec-title">Change password</div>
-                <div class="stack" style="gap: var(--space-200); margin-top: var(--space-150)">
+            <div class="acct-stack">
+              <!-- Change password card -->
+              <div class="card acct-card">
+                <div class="card__title">Change password</div>
+                <div class="stack" style="gap: var(--space-200)">
                   <div class="field"><label class="label" for="cur">Current password</label><input class="input" id="cur" type="password" placeholder="••••••••"></div>
                   <div class="field"><label class="label" for="new">New password</label><input class="input" id="new" type="password" placeholder="At least 8 characters"></div>
                   <div><button class="btn btn--primary">Update password</button></div>
                 </div>
               </div>
-              <hr class="acct__divider">
-              <label class="switch switch--between">
-                <span class="switch__label">Two-factor authentication<span class="switch__desc">Require a code at sign-in.</span></span>
-                <span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span>
-              </label>
-              <hr class="acct__divider">
-              <div>
-                <div class="acct__sec-title" style="color: var(--color-error)">Danger zone</div>
-                <p class="text-sm text-secondary" style="margin: var(--space-100) 0 var(--space-200)">Permanently delete your account, reports, and history. This action cannot be undone.</p>
+              <!-- Two-factor authentication card -->
+              <div class="card acct-card">
+                <label class="switch switch--between">
+                  <span class="switch__label">Two-factor authentication<span class="switch__desc">Require a code at sign-in.</span></span>
+                  <span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span>
+                </label>
+              </div>
+              <!-- Delete account card -->
+              <div class="card acct-card">
+                <div class="card__title" style="color: var(--color-error)">Delete account</div>
+                <p class="text-sm text-secondary" style="margin-bottom: var(--space-200)">Permanently delete your account, reports, and history. This action cannot be undone.</p>
                 <button class="btn btn--ghost btn--error"><i data-lucide="trash-2" class="icon--sm"></i> Delete account</button>
               </div>
             </div>
@@ -107,10 +116,13 @@
 
           <!-- Notifications -->
           <section class="tabs__panel" data-tabpanel="notifications" hidden>
-            <div class="switch-group" style="max-width: 460px">
-              <label class="switch switch--between"><span class="switch__label">Email digests<span class="switch__desc">Weekly summary of your reports.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
-              <label class="switch switch--between"><span class="switch__label">Flag alerts<span class="switch__desc">Notify when a claim is flagged.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
-              <label class="switch switch--between"><span class="switch__label">Product updates<span class="switch__desc">Occasional news about Defacta.</span></span><span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span></label>
+            <div class="card acct-card">
+              <div class="card__title">Notifications</div>
+              <div class="switch-group">
+                <label class="switch switch--between"><span class="switch__label">Email digests<span class="switch__desc">Weekly summary of your reports.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
+                <label class="switch switch--between"><span class="switch__label">Flag alerts<span class="switch__desc">Notify when a claim is flagged.</span></span><span style="display:inline-flex"><input type="checkbox" checked><span class="switch__track"></span></span></label>
+                <label class="switch switch--between"><span class="switch__label">Product updates<span class="switch__desc">Occasional news about Defacta.</span></span><span style="display:inline-flex"><input type="checkbox"><span class="switch__track"></span></span></label>
+              </div>
             </div>
           </section>
         </div>

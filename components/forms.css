@@ -299,3 +299,13 @@
 /* ---- Checkbox / radio group ----------------------------------------- */
 .checkbox-group { display: flex; flex-direction: column; gap: var(--space-100); }
 .checkbox-group--inline { flex-direction: row; flex-wrap: wrap; gap: var(--space-300); }
+
+/* ---- Rich-text editor (WYSIWYG) — toolbar + editable body ----------- */
+.editor { border: 1px solid var(--border-default); border-radius: var(--radius-12); overflow: hidden; background: var(--canvas); }
+.editor:focus-within { border-color: var(--grey-950); }
+.editor__toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-050); padding: var(--space-100); border-bottom: 1px solid var(--border-subtle); }
+.editor__toolbar .icon-btn { border-color: transparent; width: 32px; height: 32px; }
+.editor__toolbar .icon-btn:hover { background: var(--grey-100); }
+.editor__sep { width: 1px; height: 20px; background: var(--border-subtle); margin: 0 var(--space-050); }
+.editor__body { min-height: 140px; padding: var(--space-200); font-size: var(--text-body); line-height: var(--leading-relaxed); color: var(--text-primary); outline: none; }
+.editor__body:empty::before { content: attr(data-placeholder); color: var(--text-muted); }

@@ -779,32 +779,153 @@
 
     <!-- TEXTAREA -->
     <section class="panel" data-panel="textarea" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Text area</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Text area</h1>
+        <p class="lead-desc">A multi-line input for longer content. Use the plain <code>.textarea</code> for raw text and pasting, or the <code>.editor</code> (WYSIWYG) when authors need light formatting. Both share the form tokens and states.</p>
+      </div>
+
+      <p class="sub label">Plain (no editor)</p>
       <div class="demo demo--block" style="max-width:560px">
         <div class="field"><label class="label">Paste a link or text</label>
           <textarea class="textarea" placeholder="Paste any text, AI output, or a URL (https://…) to verify."></textarea>
         </div>
         <div class="textarea-foot"><span>0 characters</span><span>Max. 50,000 characters</span></div>
       </div>
+
+      <p class="sub label">States</p>
+      <div class="demo" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-200); max-width:680px">
+        <div class="field"><label class="label">Disabled</label><textarea class="textarea" disabled>Unavailable</textarea></div>
+        <div class="field"><label class="label">Error</label><textarea class="textarea is-error">Too short to verify.</textarea><span class="field-error"><i data-lucide="circle-alert"></i> Add at least 50 characters.</span></div>
+      </div>
+
+      <p class="sub label">WYSIWYG editor</p>
+      <div class="demo demo--block" style="max-width:680px">
+        <div class="editor">
+          <div class="editor__toolbar">
+            <button class="icon-btn" aria-label="Bold"><i data-lucide="bold"></i></button>
+            <button class="icon-btn" aria-label="Italic"><i data-lucide="italic"></i></button>
+            <button class="icon-btn" aria-label="Underline"><i data-lucide="underline"></i></button>
+            <span class="editor__sep"></span>
+            <button class="icon-btn" aria-label="Bulleted list"><i data-lucide="list"></i></button>
+            <button class="icon-btn" aria-label="Numbered list"><i data-lucide="list-ordered"></i></button>
+            <button class="icon-btn" aria-label="Quote"><i data-lucide="quote"></i></button>
+            <span class="editor__sep"></span>
+            <button class="icon-btn" aria-label="Link"><i data-lucide="link"></i></button>
+            <button class="icon-btn" aria-label="Code"><i data-lucide="code"></i></button>
+          </div>
+          <div class="editor__body" contenteditable="true" data-placeholder="Write or paste content…"><p><strong>WHO statement</strong> — global vaccination coverage reached <em>92% in 2024</em>. Key claims to verify:</p><ul><li>Childhood mortality dropped 47% since 2019</li><li>mRNA-based malaria vaccine deployed</li></ul></div>
+        </div>
+      </div>
+
+      <p class="sub label">In a form</p>
+      <div class="demo demo--block" style="max-width:520px">
+        <div class="stack" style="gap:var(--space-200)">
+          <div class="field"><label class="label">Title</label><input class="input" value="WHO vaccination statement"></div>
+          <div class="field"><label class="label">Notes for reviewer</label><textarea class="textarea" placeholder="Add context for the human reviewer…"></textarea><span class="field-hint"><i data-lucide="info"></i> Optional — shown in the audit trail.</span></div>
+          <div class="cluster" style="justify-content:flex-end"><button class="btn btn--secondary">Cancel</button><button class="btn btn--primary">Save</button></div>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use the plain <code>.textarea</code> for raw input and pasting; show a character count when there's a limit.</span></div>
+            <div class="rule"><span>Use the <code>.editor</code> only when formatting adds meaning (notes, descriptions).</span></div>
+            <div class="rule"><span>Pair status (<code>is-error</code>) with a message, like inputs.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use a rich editor where plain text is expected (URLs, IDs, code).</span></div>
+            <div class="rule"><span>Fix the height so content is clipped — let it grow or scroll.</span></div>
+            <div class="rule"><span>Hide the character limit until the user hits it.</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CHECKBOX -->
     <section class="panel" data-panel="checkbox" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Checkbox &amp; groups</h1></div>
-      <p class="sub label">Single</p>
-      <div class="demo"><label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span></span></label></div>
-      <p class="sub label">Group (with descriptions)</p>
-      <div class="demo demo--stack" style="gap:var(--space-200); align-items:flex-start">
-        <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span><span class="checkbox__desc">Verify the highest-impact factual claims.</span></span></label>
-        <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias &amp; framing analysis</span><span class="checkbox__desc">Surface loaded language and emphasis.</span></span></label>
-        <label class="checkbox"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Deception detection</span><span class="checkbox__desc">Flag evasion, hedging, or misdirection.</span></span></label>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Checkbox &amp; groups</h1>
+        <p class="lead-desc">A custom checkbox in three sizes with all states, grouped lists, and an optional <b>selection area</b> that emphasises the clickable space — configurable for when it shows, its skin, and its padding.</p>
+      </div>
+
+      <p class="sub label">Sizes</p>
+      <div class="demo" style="gap:var(--space-300)">
+        <label class="checkbox checkbox--sm"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Small</span></span></label>
+        <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Medium</span></span></label>
+        <label class="checkbox checkbox--lg"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Large</span></span></label>
+      </div>
+
+      <p class="sub label">States</p>
+      <div class="demo" style="gap:var(--space-300)">
+        <label class="checkbox"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Unchecked</span></span></label>
+        <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Checked</span></span></label>
+        <label class="checkbox" style="opacity:.5;cursor:not-allowed"><input type="checkbox" disabled><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Disabled</span></span></label>
+        <label class="checkbox" style="opacity:.5;cursor:not-allowed"><input type="checkbox" checked disabled><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Checked disabled</span></span></label>
+      </div>
+
+      <p class="sub label">Group with descriptions</p>
+      <div class="demo demo--block">
+        <div class="checkbox-group" style="max-width:520px">
+          <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span><span class="checkbox__desc">Verify the highest-impact factual claims.</span></span></label>
+          <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias &amp; framing analysis</span><span class="checkbox__desc">Surface loaded language and emphasis.</span></span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Deception detection</span><span class="checkbox__desc">Flag evasion, hedging, or misdirection.</span></span></label>
+        </div>
+      </div>
+
+      <p class="sub label">Selection area — hover / always · filled / outline</p>
+      <div class="demo" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-200); max-width:680px; align-items:start">
+        <div class="checkbox-group"><span class="label" style="margin-bottom:var(--space-100)">Hover · filled</span>
+          <label class="checkbox checkbox--area-hover checkbox--filled"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Quick check</span></span></label>
+          <label class="checkbox checkbox--area-hover checkbox--filled"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Deep verification</span></span></label>
+        </div>
+        <div class="checkbox-group"><span class="label" style="margin-bottom:var(--space-100)">Always · outline</span>
+          <label class="checkbox checkbox--area checkbox--outline"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Quick check</span></span></label>
+          <label class="checkbox checkbox--area checkbox--outline"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Deep verification</span></span></label>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:var(--space-200)">
+        <i data-lucide="info" class="icon icon--sm"></i>
+        <div><b>Configure the selection area.</b> <code>selectionArea</code>: <code>.checkbox--area</code> (always) / <code>.checkbox--area-hover</code> (on hover) / none. <code>selectionAreaSkin</code>: <code>.checkbox--filled</code> / <code>.checkbox--outline</code>. <code>selectionAreaPadding</code>: <code>style="--sel-pad: 12px"</code> (default 8px).</div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Wrap the input + box + label in one <code>&lt;label class="checkbox"&gt;</code> so the whole row is clickable.</span></div>
+            <div class="rule"><span>Turn on a selection area for dense lists where the hit target needs to be obvious.</span></div>
+            <div class="rule"><span>Group related options in a <code>.checkbox-group</code> with a shared label.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use a checkbox for mutually-exclusive choices — use a radio or switch.</span></div>
+            <div class="rule"><span>Mix selection-area skins within one group.</span></div>
+            <div class="rule"><span>Disable a checkbox without making its state clear.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- BADGES -->
     <section class="panel" data-panel="badges" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Badges, tags &amp; pills</h1></div>
-      <p class="sub label">Status badges — the standard pill</p>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Badges, tags &amp; pills</h1>
+        <p class="lead-desc">Three micro-label families, all set in IBM Plex Mono. <b>Status badges</b> (dot + pill) signal object state; <b>tags</b> label categories and verdicts; <b>risk tags</b> flag severity. Color always carries meaning — never decoration.</p>
+      </div>
+
+      <p class="sub label">Status badges — the standard pill (dot + uppercase mono)</p>
       <div class="demo">
         <span class="status-badge status-badge--verified"><i></i>Verified</span>
         <span class="status-badge status-badge--pending"><i></i>Pending review</span>
@@ -813,26 +934,64 @@
         <span class="status-badge status-badge--dead"><i></i>404 Dead</span>
         <span class="status-badge status-badge--unrelated"><i></i>Unrelated</span>
         <span class="status-badge status-badge--info"><i></i>Info</span>
+        <span class="status-badge status-badge--neutral"><i></i>Neutral</span>
       </div>
-      <p class="sub label">Tags — claim verdicts</p>
+
+      <p class="sub label">Tags — all types</p>
+      <div class="demo">
+        <span class="tag tag--success">Success</span>
+        <span class="tag tag--warning">Warning</span>
+        <span class="tag tag--error">Error</span>
+        <span class="tag tag--info">Info</span>
+        <span class="tag tag--neutral">Neutral</span>
+        <span class="tag tag--disabled">Disabled</span>
+      </div>
+
+      <p class="sub label">Tags — claim verdicts (semantic aliases)</p>
       <div class="demo">
         <span class="tag tag--supported">Supported</span>
         <span class="tag tag--contradicted">Contradicted</span>
         <span class="tag tag--unsupported">Unsupported</span>
-        <span class="tag tag--info">Info</span>
-        <span class="tag tag--neutral">Neutral</span>
+        <span class="tag tag--info">Uncertain</span>
       </div>
-      <p class="sub label">Risk tags</p>
+
+      <p class="sub label">Risk tags (uppercase)</p>
       <div class="demo">
         <span class="tag tag--mono risk--high">High</span>
         <span class="tag tag--mono risk--moderate">Moderate</span>
         <span class="tag tag--mono risk--low">Low</span>
       </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use a <b>status badge</b> (with dot) for object state; a <b>tag</b> for categories &amp; verdicts.</span></div>
+            <div class="rule"><span>Match the semantic color to meaning: success / warning / error / info / neutral.</span></div>
+            <div class="rule"><span>Keep labels to one or two words — badges are scannable, not sentences.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use badge color decoratively — every color must mean something.</span></div>
+            <div class="rule"><span>Mix Inter into badges — they're always IBM Plex Mono.</span></div>
+            <div class="rule"><span>Stack many badges in a row until they read as noise.</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- BREADCRUMBS -->
     <section class="panel" data-panel="breadcrumbs" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Breadcrumbs</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Breadcrumbs</h1>
+        <p class="lead-desc">Breadcrumbs show where the user is in the hierarchy and let them step back up. The last item is the current page (non-clickable); separators are <code>chevron-right</code>.</p>
+      </div>
+
+      <p class="sub label">Default</p>
       <div class="demo">
         <nav class="breadcrumbs">
           <a href="#">Home</a>
@@ -841,6 +1000,41 @@
           <span class="breadcrumbs__sep"><i data-lucide="chevron-right"></i></span>
           <span aria-current="page">WHO Vaccination Statement</span>
         </nav>
+      </div>
+
+      <p class="sub label">In a page header (example)</p>
+      <div class="demo demo--block" style="padding:0; overflow:hidden">
+        <div style="padding:var(--space-300) var(--space-400); background:var(--canvas)">
+          <nav class="breadcrumbs" style="margin-bottom:var(--space-150)">
+            <a href="#">History</a>
+            <span class="breadcrumbs__sep"><i data-lucide="chevron-right"></i></span>
+            <span aria-current="page">WHO Vaccination Statement</span>
+          </nav>
+          <div class="cluster" style="justify-content:space-between">
+            <h2 class="h3" style="margin:0">WHO Vaccination Statement</h2>
+            <div class="cluster"><button class="btn btn--secondary btn--sm"><i data-lucide="refresh-cw" class="icon--sm"></i> Re-run</button><button class="btn btn--primary btn--sm"><i data-lucide="download" class="icon--sm"></i> Export</button></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Place breadcrumbs above the page title; mark the current page with <code>aria-current="page"</code>.</span></div>
+            <div class="rule"><span>Mirror the real navigation hierarchy, parent → current.</span></div>
+            <div class="rule"><span>Collapse long trails (Home › … › Current) rather than wrapping.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Make the current (last) item a link.</span></div>
+            <div class="rule"><span>Use breadcrumbs as primary navigation — they supplement it.</span></div>
+            <div class="rule"><span>Show a single-level breadcrumb (no parent to go back to).</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -858,16 +1052,85 @@
 
     <!-- ACCORDION -->
     <section class="panel" data-panel="accordion" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Accordion</h1></div>
-      <div class="demo--block" style="max-width:640px">
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Accordion</h1>
+        <p class="lead-desc">Collapsible panels built on native <code>&lt;details&gt;</code>. Triggers can carry a leading icon, a meta count, a badge, a toggle, a button, or none — and panels can hold any content, including checkboxes. Stack them into a group or drop one into a card.</p>
+      </div>
+
+      <p class="sub label">With &amp; without icon</p>
+      <div class="demo--block" style="max-width:680px">
         <details class="accordion" open style="margin-bottom:var(--space-150)">
           <summary class="accordion__trigger"><i data-lucide="settings" class="icon--sm icon--muted"></i><span class="accordion__title">Advanced settings</span><span class="accordion__meta">2 of 4 enabled</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
           <div class="accordion__panel"><p class="text-secondary text-sm">Verification options, model selection, and source weighting live here.</p></div>
         </details>
         <details class="accordion">
-          <summary class="accordion__trigger"><i data-lucide="file-text" class="icon--sm icon--muted"></i><span class="accordion__title">Export options</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
-          <div class="accordion__panel"><p class="text-secondary text-sm">Export as PDF, share a link, or copy the report ID.</p></div>
+          <summary class="accordion__trigger"><span class="accordion__title">No icon</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
+          <div class="accordion__panel"><p class="text-secondary text-sm">A clean trigger with just a title and chevron.</p></div>
         </details>
+      </div>
+
+      <p class="sub label">With badge, toggle &amp; button</p>
+      <div class="demo--block" style="max-width:680px">
+        <details class="accordion" style="margin-bottom:var(--space-150)">
+          <summary class="accordion__trigger"><span class="accordion__title">Key claim verification</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:var(--space-150)"><span class="status-badge status-badge--success"><i></i>On</span><i data-lucide="chevron-down" class="accordion__chevron" style="margin-left:0"></i></span></summary>
+          <div class="accordion__panel"><p class="text-secondary text-sm">Header badge reflects the section's status.</p></div>
+        </details>
+        <details class="accordion" style="margin-bottom:var(--space-150)">
+          <summary class="accordion__trigger"><span class="accordion__title">Email notifications</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:var(--space-150)"><label class="switch" onclick="event.stopPropagation()"><input type="checkbox" checked><span class="switch__track"></span></label><i data-lucide="chevron-down" class="accordion__chevron" style="margin-left:0"></i></span></summary>
+          <div class="accordion__panel"><p class="text-secondary text-sm">A toggle in the header controls the whole section.</p></div>
+        </details>
+        <details class="accordion">
+          <summary class="accordion__trigger"><span class="accordion__title">Sources</span><span style="margin-left:auto; display:inline-flex; align-items:center; gap:var(--space-150)"><button class="btn btn--secondary btn--xs" onclick="event.preventDefault();event.stopPropagation()">Add</button><i data-lucide="chevron-down" class="accordion__chevron" style="margin-left:0"></i></span></summary>
+          <div class="accordion__panel"><p class="text-secondary text-sm">A button in the header offers a quick action.</p></div>
+        </details>
+      </div>
+
+      <p class="sub label">With checkboxes in the panel</p>
+      <div class="demo--block" style="max-width:680px">
+        <details class="accordion" open>
+          <summary class="accordion__trigger"><i data-lucide="sliders-horizontal" class="icon--sm icon--muted"></i><span class="accordion__title">Analysis options</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
+          <div class="accordion__panel">
+            <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Key claim verification</span></span></label>
+            <label class="checkbox"><input type="checkbox" checked><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Bias &amp; framing analysis</span></span></label>
+            <label class="checkbox"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__label"><span class="checkbox__title">Deception detection</span></span></label>
+          </div>
+        </details>
+      </div>
+
+      <p class="sub label">In a card (example)</p>
+      <div class="demo demo--block">
+        <div class="card" style="max-width:560px; padding:0; overflow:hidden">
+          <details class="accordion" open style="border:0; border-radius:0">
+            <summary class="accordion__trigger"><span class="accordion__title">Methodology</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
+            <div class="accordion__panel"><p class="text-secondary text-sm">Each claim is checked against retrieved sources; verdicts are calibrated and a human reviewer signs off.</p></div>
+          </details>
+          <div style="border-top:1px solid var(--border-subtle)"></div>
+          <details class="accordion" style="border:0; border-radius:0">
+            <summary class="accordion__trigger"><span class="accordion__title">Limitations</span><i data-lucide="chevron-down" class="accordion__chevron"></i></summary>
+            <div class="accordion__panel"><p class="text-secondary text-sm">Defacta supports judgment — it does not replace human review.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use accordions to manage density — collapse secondary detail by default.</span></div>
+            <div class="rule"><span>Put a status badge or toggle in the header to summarise the section's state.</span></div>
+            <div class="rule"><span>Stop event propagation on interactive header controls so they don't toggle the panel.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Hide primary content or required form fields inside a collapsed panel.</span></div>
+            <div class="rule"><span>Nest accordions more than one level deep.</span></div>
+            <div class="rule"><span>Open every panel by default — that defeats the purpose.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

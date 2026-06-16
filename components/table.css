@@ -79,3 +79,15 @@
   transition: background 0.12s ease, color 0.12s ease;
 }
 .table .row-arrow:hover { background: var(--grey-50); color: var(--text-primary); }
+
+/* ---- Table frame — toolbar + table + footer in one bordered surface --- */
+.table-frame { border: 1px solid var(--border-default); border-radius: var(--radius-12); overflow: hidden; background: var(--canvas); }
+.table-frame .table-wrap { border: 0; border-radius: 0; }
+.table-toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); padding: var(--space-200); border-bottom: 1px solid var(--border-default); }
+.table-toolbar__title { font-weight: var(--weight-medium); }
+.table-subtoolbar { display: flex; align-items: center; gap: var(--space-150); flex-wrap: wrap; padding: var(--space-150) var(--space-200); border-bottom: 1px solid var(--border-default); background: var(--surface-paper); font-size: var(--text-sm); color: var(--text-secondary); }
+.table__sort { cursor: pointer; user-select: none; white-space: nowrap; }
+.table__sort svg { width: 14px; height: 14px; vertical-align: middle; margin-left: 2px; color: var(--text-muted); }
+.table__sort.is-active svg { color: var(--text-primary); }
+.table-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-200); padding: var(--space-150) var(--space-200); border-top: 1px solid var(--border-default); }
+.table-infinite { display: flex; align-items: center; justify-content: center; gap: var(--space-100); padding: var(--space-200); color: var(--text-muted); font-size: var(--text-sm); border-top: 1px solid var(--border-subtle); }

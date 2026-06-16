@@ -158,3 +158,9 @@
 /* When using <details>, hide the default marker */
 details.accordion > summary { list-style: none; }
 details.accordion > summary::-webkit-details-marker { display: none; }
+
+/* ---- Card states — interactive (hover / active) + disabled ----------- */
+.card--interactive { cursor: pointer; transition: border-color 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease; }
+.card--interactive:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
+.card--interactive:active { transform: translateY(1px); border-color: var(--grey-300); }
+.card.is-disabled, .card--disabled { opacity: 0.55; pointer-events: none; }

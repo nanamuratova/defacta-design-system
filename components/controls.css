@@ -34,3 +34,21 @@
   color: var(--text-secondary); cursor: pointer;
 }
 .toggle-group button.is-active { background: var(--canvas); color: var(--text-primary); box-shadow: var(--shadow-sm); }
+
+/* ---- Switch sizes — sm · md (default) · lg --------------------------- */
+.switch--sm .switch__track { width: 32px; height: 18px; }
+.switch--sm .switch__track::after { width: 14px; height: 14px; }
+.switch--sm input:checked + .switch__track::after { transform: translateX(14px); }
+.switch--lg .switch__track { width: 48px; height: 26px; }
+.switch--lg .switch__track::after { width: 22px; height: 22px; }
+.switch--lg input:checked + .switch__track::after { transform: translateX(22px); }
+
+/* Label sits opposite the track (label-left layout) */
+.switch--between { justify-content: space-between; width: 100%; }
+.switch__label { font-size: var(--text-sm); color: var(--text-primary); }
+.switch__label .switch__desc { display: block; font-size: var(--text-sm); color: var(--text-secondary); }
+
+/* ---- Switch group — stacked rows (settings lists) ------------------- */
+.switch-group { display: flex; flex-direction: column; }
+.switch-group .switch { padding: var(--space-150) 0; border-bottom: 1px solid var(--border-subtle); }
+.switch-group .switch:last-child { border-bottom: 0; }

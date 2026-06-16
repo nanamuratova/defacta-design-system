@@ -7,7 +7,12 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     /* ── docs layout (page-local) ─────────────────────────────────────── */
-    .docs { display: grid; grid-template-columns: 264px 1fr; grid-template-rows: auto 1fr; min-height: 100vh; }
+    .docs { display: grid; grid-template-columns: 264px minmax(0,1fr) 212px; grid-template-rows: auto 1fr; min-height: 100vh; }
+
+    /* per-page "On this page" rail */
+    .docs__toc { grid-column: 3; grid-row: 2; padding: var(--space-600) var(--space-300) var(--space-600) 0; }
+    .docs__toc .toc { position: sticky; top: 88px; }
+    @media (max-width: 1120px) { .docs { grid-template-columns: 264px minmax(0,1fr); } .docs__toc { display: none; } }
 
     /* top header — spans full width, holds the logo */
     .docs__header {
@@ -22,7 +27,7 @@
     }
 
     .docs__sidebar {
-      grid-row: 2; position: sticky; top: 64px; align-self: start;
+      grid-column: 1; grid-row: 2; position: sticky; top: 64px; align-self: start;
       height: calc(100vh - 64px); overflow-y: auto;
       padding: var(--space-300);
       border-right: 1px solid var(--border-subtle);
@@ -42,7 +47,7 @@
       letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted);
     }
 
-    .docs__content { padding: var(--space-600) var(--space-800); max-width: 1080px; }
+    .docs__content { grid-column: 2; grid-row: 2; padding: var(--space-600) var(--space-800); max-width: 1080px; min-width: 0; }
     .panel[hidden] { display: none; }
     .panel__head { margin-bottom: var(--space-400); }
     .panel__head .label { display: block; margin-bottom: var(--space-150); }
@@ -247,7 +252,7 @@
       </div>
 
       <!-- Usage rules -->
-      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
+      <p class="sub label">Usage rules</p>
       <div class="grid grid--2">
         <div class="card">
           <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
@@ -316,7 +321,7 @@
         </table>
       </div>
 
-      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
+      <p class="sub label">Usage rules</p>
       <div class="grid grid--2">
         <div class="card">
           <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
@@ -393,7 +398,7 @@
         </table>
       </div>
 
-      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
+      <p class="sub label">Usage rules</p>
       <div class="grid grid--2">
         <div class="card">
           <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
@@ -570,7 +575,7 @@
         <div class="i"><i data-lucide="maximize-2"></i><span>maximize-2</span></div>
       </div>
 
-      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
+      <p class="sub label">Usage rules</p>
       <div class="grid grid--2">
         <div class="card">
           <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
@@ -670,7 +675,7 @@
         </div>
       </div>
 
-      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
+      <p class="sub label">Usage rules</p>
       <div class="grid grid--2">
         <div class="card">
           <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
@@ -749,7 +754,7 @@
       <div class="field" style="max-width:360px"><label class="label">Long value</label><input class="input" readonly value="VR-2026-06-03-247K · data.who.int/immunization/global-monitoring/2024"></div>
       <p class="field-hint" style="margin-top:var(--space-100)">Long values stay on one line and scroll within the field.</p>
 
-      <h2 class="h2" style="margin: var(--space-600) 0 var(--space-200)">Usage rules</h2>
+      <p class="sub label">Usage rules</p>
       <div class="grid grid--2">
         <div class="card">
           <div class="cluster" style="gap: var(--space-100); margin-bottom: var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
@@ -1097,6 +1102,14 @@
     </section>
 
   </main>
+
+  <!-- ── Per-page "On this page" rail (auto-generated) ───────────────── -->
+  <aside class="docs__toc">
+    <div class="toc">
+      <span class="label toc__title">On this page</span>
+      <nav id="toc-nav"></nav>
+    </div>
+  </aside>
 </div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
@@ -1113,8 +1126,40 @@
     navLinks.forEach(a => a.classList.toggle('is-active', a.dataset.tab === tab));
     if (location.hash.slice(1) !== tab) history.replaceState(null, '', '#' + tab);
     window.scrollTo(0, 0);
+    buildTOC(document.querySelector('[data-panel="'+tab+'"]'));
   }
   allTabTriggers.forEach(a => a.addEventListener('click', e => { e.preventDefault(); show(a.dataset.tab); }));
+
+  /* ---- Per-page "On this page" TOC (auto-generated + scrollspy) ---- */
+  let tocObserver = null;
+  function buildTOC(panel) {
+    const rail = document.querySelector('.docs__toc');
+    const nav = document.getElementById('toc-nav');
+    if (!rail || !nav || !panel) return;
+    const secs = [...panel.querySelectorAll('.sub.label')];
+    nav.innerHTML = '';
+    if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+    if (secs.length < 2) { rail.style.visibility = 'hidden'; return; }
+    rail.style.visibility = 'visible';
+    const map = new Map();
+    secs.forEach((s, i) => {
+      if (!s.id) s.id = panel.dataset.panel + '-s' + i;
+      const a = document.createElement('a');
+      a.href = '#' + s.id;
+      a.textContent = s.textContent.split('·')[0].trim();
+      a.addEventListener('click', e => { e.preventDefault(); s.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      nav.appendChild(a);
+      map.set(s.id, a);
+    });
+    tocObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) {
+        nav.querySelectorAll('a').forEach(x => x.classList.remove('is-active'));
+        map.get(e.target.id)?.classList.add('is-active');
+      }});
+    }, { rootMargin: '-15% 0px -75% 0px' });
+    secs.forEach(s => tocObserver.observe(s));
+  }
+
   show(location.hash.slice(1) || 'home');
   window.addEventListener('hashchange', () => show(location.hash.slice(1) || 'home'));
 

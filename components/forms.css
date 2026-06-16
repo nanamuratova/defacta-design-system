@@ -275,3 +275,27 @@
   font-family: var(--font-sans); font-size: var(--text-sm); color: var(--text-primary);
   background: var(--canvas); border: 1px solid var(--border-default); cursor: pointer;
 }
+
+/* ---- Checkbox sizes — sm · md (default) · lg ------------------------- */
+.checkbox--sm .checkbox__box { width: 16px; height: 16px; }
+.checkbox--sm input:checked + .checkbox__box::after { left: 4.5px; top: 1.5px; width: 4px; height: 8px; }
+.checkbox--sm .checkbox__title { font-size: var(--text-sm); }
+.checkbox--lg .checkbox__box { width: 22px; height: 22px; }
+.checkbox--lg input:checked + .checkbox__box::after { left: 7px; top: 3px; width: 6px; height: 11px; }
+.checkbox--lg .checkbox__title { font-size: var(--text-body); }
+
+/* ---- Selection area — emphasize the clickable space ------------------
+   selectionArea : .checkbox--area (always) · .checkbox--area-hover (on hover)
+   skin          : .checkbox--filled · .checkbox--outline
+   padding       : inline style="--sel-pad: 12px"  (default 8px when area on)
+   --------------------------------------------------------------------- */
+.checkbox { padding: var(--sel-pad, 0); border-radius: var(--radius-8); border: 1px solid transparent; transition: background 0.12s ease, border-color 0.12s ease; }
+.checkbox--area, .checkbox--area-hover { --sel-pad: var(--space-100); }
+.checkbox--area.checkbox--filled,
+.checkbox--area-hover.checkbox--filled:hover  { background: var(--grey-50); }
+.checkbox--area.checkbox--outline,
+.checkbox--area-hover.checkbox--outline:hover { border-color: var(--border-default); }
+
+/* ---- Checkbox / radio group ----------------------------------------- */
+.checkbox-group { display: flex; flex-direction: column; gap: var(--space-100); }
+.checkbox-group--inline { flex-direction: row; flex-wrap: wrap; gap: var(--space-300); }

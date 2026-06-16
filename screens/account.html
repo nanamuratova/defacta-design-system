@@ -55,10 +55,6 @@
           <section class="tabs__panel" data-tabpanel="profile">
             <div class="card acct-card">
               <div class="card__title">Profile</div>
-              <div class="cluster" style="gap: var(--space-200); margin-bottom: var(--space-300)">
-                <span class="avatar">NM</span>
-                <button class="btn btn--secondary btn--sm">Change photo</button>
-              </div>
               <div class="stack" style="gap: var(--space-200)">
                 <div class="field"><label class="label" for="name">Full name</label><input class="input" id="name" value="Nana Muratova"></div>
                 <div class="field"><label class="label" for="email">Email</label><input class="input" id="email" type="email" value="nana@defacta.pro"></div>
@@ -109,9 +105,9 @@
               </div>
               <!-- Delete account card -->
               <div class="card acct-card">
-                <div class="card__title" style="color: var(--color-error)">Delete account</div>
+                <div class="card__title">Delete account</div>
                 <p class="text-sm text-secondary" style="margin-bottom: var(--space-200)">Permanently delete your account, reports, and history. This action cannot be undone.</p>
-                <button class="btn btn--ghost btn--error"><i data-lucide="trash-2" class="icon--sm"></i> Delete account</button>
+                <div style="display:flex; justify-content:flex-end"><button class="btn btn--secondary btn--error"><i data-lucide="trash-2" class="icon--sm"></i> Delete account</button></div>
               </div>
             </div>
           </section>

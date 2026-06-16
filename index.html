@@ -1136,10 +1136,13 @@
 
     <!-- DROPDOWN -->
     <section class="panel" data-panel="dropdown" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Dropdown</h1><p class="body-lg text-secondary">A native <code>.select</code> for forms, and a <code>.menu</code> for actions.</p></div>
-      <p class="sub label">Select</p>
-      <div class="demo"><div class="select"><select><option>All statuses</option><option>Verified</option><option>Flagged</option></select></div></div>
-      <p class="sub label">Action menu</p>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Dropdown</h1>
+        <p class="lead-desc">The <code>.menu</code> (action menu) is the canonical dropdown — a trigger that opens a floating list of items, labels, separators, and danger actions. Reuse it for every dropdown need: row actions, filters, account menus, and bulk actions. A native <code>.select</code> covers simple form choices.</p>
+      </div>
+
+      <p class="sub label">Action menu (the reference)</p>
       <div class="demo" style="overflow:visible">
         <div class="menu">
           <button class="btn btn--secondary menu__trigger">Options <i data-lucide="chevron-down" class="icon--sm"></i></button>
@@ -1153,11 +1156,71 @@
           </div>
         </div>
       </div>
+
+      <p class="sub label">Other use cases — same pattern</p>
+      <div class="demo" style="overflow:visible; gap:var(--space-300)">
+        <div class="menu">
+          <button class="btn btn--secondary menu__trigger"><i data-lucide="filter" class="icon--sm"></i> All statuses <i data-lucide="chevron-down" class="icon--sm"></i></button>
+          <div class="menu__list">
+            <button class="menu__item"><i data-lucide="check" class="icon--sm"></i> All statuses</button>
+            <button class="menu__item">Verified</button>
+            <button class="menu__item">Pending review</button>
+            <button class="menu__item">Flagged</button>
+          </div>
+        </div>
+        <div class="menu">
+          <button class="icon-btn menu__trigger" aria-label="Row actions"><i data-lucide="more-horizontal"></i></button>
+          <div class="menu__list">
+            <button class="menu__item"><i data-lucide="eye" class="icon--sm"></i> Open</button>
+            <button class="menu__item"><i data-lucide="copy" class="icon--sm"></i> Duplicate</button>
+            <button class="menu__item menu__item--danger"><i data-lucide="trash-2" class="icon--sm"></i> Delete</button>
+          </div>
+        </div>
+        <div class="menu">
+          <button class="btn btn--ghost menu__trigger"><i data-lucide="circle-user"></i> user@analyst <i data-lucide="chevron-down" class="icon--sm"></i></button>
+          <div class="menu__list">
+            <div class="menu__label">Account</div>
+            <button class="menu__item"><i data-lucide="user" class="icon--sm"></i> Profile</button>
+            <button class="menu__item"><i data-lucide="settings" class="icon--sm"></i> Settings</button>
+            <div class="menu__sep"></div>
+            <button class="menu__item"><i data-lucide="log-out" class="icon--sm"></i> Sign out</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="sub label">Native select (simple form choice)</p>
+      <div class="demo"><div class="select"><select><option>All statuses</option><option>Verified</option><option>Flagged</option></select></div></div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Use <code>.menu</code> for actions, filters, row menus, and account menus — one consistent pattern.</span></div>
+            <div class="rule"><span>Group with <code>.menu__label</code> + <code>.menu__sep</code>; mark destructive items <code>.menu__item--danger</code>.</span></div>
+            <div class="rule"><span>Use a native <code>.select</code> for simple single-value form fields.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Build a bespoke dropdown when <code>.menu</code> already fits.</span></div>
+            <div class="rule"><span>Put more than ~7 items in a menu without grouping or search.</span></div>
+            <div class="rule"><span>Use a menu for a value that belongs in a form <code>.select</code>.</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- PAGINATION -->
     <section class="panel" data-panel="pagination" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Pagination</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Pagination</h1>
+        <p class="lead-desc">Page through long lists. Use numbered pages with prev/next for tables and history, collapsing the middle with an ellipsis. Pair with a result count.</p>
+      </div>
+
+      <p class="sub label">Default</p>
       <div class="demo">
         <nav class="pagination">
           <button class="pagination__item" aria-label="Previous"><i data-lucide="chevron-left" class="icon--sm"></i></button>
@@ -1169,11 +1232,74 @@
           <button class="pagination__item" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
         </nav>
       </div>
+
+      <p class="sub label">First page (prev disabled)</p>
+      <div class="demo">
+        <nav class="pagination">
+          <button class="pagination__item" aria-label="Previous" disabled><i data-lucide="chevron-left" class="icon--sm"></i></button>
+          <button class="pagination__item is-active">1</button>
+          <button class="pagination__item">2</button>
+          <button class="pagination__item">3</button>
+          <button class="pagination__item" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+        </nav>
+      </div>
+
+      <p class="sub label">In a table footer (example)</p>
+      <div class="demo demo--block">
+        <div class="table-frame">
+          <table class="table">
+            <thead><tr><th>Report</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody>
+              <tr><td class="cell-title">WHO vaccination statement</td><td><span class="status-badge status-badge--flagged"><i></i>Flagged</span></td><td class="cell-date">Jun 03, 2026</td></tr>
+              <tr><td class="cell-title">Q2 earnings draft</td><td><span class="status-badge status-badge--pending"><i></i>Pending</span></td><td class="cell-date">Jun 02, 2026</td></tr>
+              <tr><td class="cell-title">Marketing copy — LLM v3</td><td><span class="status-badge status-badge--verified"><i></i>Verified</span></td><td class="cell-date">Jun 01, 2026</td></tr>
+            </tbody>
+          </table>
+          <div class="table-footer">
+            <span class="text-sm text-secondary">1–3 of 148 reports</span>
+            <nav class="pagination">
+              <button class="pagination__item" aria-label="Previous" disabled><i data-lucide="chevron-left" class="icon--sm"></i></button>
+              <button class="pagination__item is-active">1</button>
+              <button class="pagination__item">2</button>
+              <button class="pagination__item">3</button>
+              <span class="pagination__ellipsis">…</span>
+              <button class="pagination__item">50</button>
+              <button class="pagination__item" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Show the current page as <code>.is-active</code> and a result-count nearby.</span></div>
+            <div class="rule"><span>Disable prev/next at the boundaries; collapse the middle with an ellipsis.</span></div>
+            <div class="rule"><span>Prefer pagination for large, auditable lists; infinite scroll for exploratory feeds.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Render dozens of page buttons — collapse them.</span></div>
+            <div class="rule"><span>Hide the total count, so users can't gauge how much is left.</span></div>
+            <div class="rule"><span>Mix infinite scroll and pagination in the same list.</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- TABLE -->
     <section class="panel" data-panel="table" hidden>
-      <div class="panel__head"><span class="label">Components</span><h1>Table</h1></div>
+      <div class="panel__head">
+        <span class="label">Components</span>
+        <h1>Table</h1>
+        <p class="lead-desc">The full data table: a <b>toolbar</b> (title, search, actions), a <b>subtoolbar</b> (filters), <b>sortable</b> column headers, rows of mono-keyed items, and a <b>footer</b> with pagination — or an <b>infinite-scroll</b> sentinel for exploratory lists.</p>
+      </div>
+
+      <p class="sub label">Plain table</p>
       <div class="table-wrap">
         <table class="table">
           <thead><tr><th>Report</th><th>Risk</th><th>Status</th><th>Date</th></tr></thead>
@@ -1182,6 +1308,89 @@
             <tr><td><div class="cell-title">Marketing copy — LLM draft v3</div><div class="cell-sub">VR-2026-06-01-189A</div></td><td><span class="tag tag--mono risk--low">Low</span></td><td><span class="status-badge status-badge--verified"><i></i>Verified</span></td><td class="cell-date">Jun 01, 2026</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <p class="sub label">Full table — toolbar, filters, sorting, pagination</p>
+      <div class="demo demo--block">
+        <div class="table-frame">
+          <div class="table-toolbar">
+            <span class="table-toolbar__title">Reports <span class="text-secondary text-sm">(148)</span></span>
+            <div class="cluster">
+              <div class="search" style="width:240px"><i data-lucide="search" class="icon--sm"></i><input class="input input--sm" type="search" placeholder="Search reports…"></div>
+              <button class="btn btn--secondary btn--sm"><i data-lucide="download" class="icon--sm"></i> Export</button>
+              <button class="btn btn--primary btn--sm"><i data-lucide="plus" class="icon--sm"></i> New</button>
+            </div>
+          </div>
+          <div class="table-subtoolbar">
+            <i data-lucide="filter" class="icon--sm"></i> Filters:
+            <span class="tag tag--neutral">Type · Article</span>
+            <span class="tag tag--error">Risk · High</span>
+            <span class="tag tag--neutral">Status · Flagged</span>
+            <button class="btn btn--ghost btn--xs">Clear all</button>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr>
+                <th class="table__sort is-active">Report <i data-lucide="chevron-down"></i></th>
+                <th class="table__sort">Risk <i data-lucide="chevrons-up-down"></i></th>
+                <th class="table__sort">Status <i data-lucide="chevrons-up-down"></i></th>
+                <th class="table__sort">Date <i data-lucide="chevrons-up-down"></i></th>
+                <th></th>
+              </tr></thead>
+              <tbody>
+                <tr><td><div class="cell-title">WHO vaccination statement</div><div class="cell-sub">VR-2026-06-03-247K</div></td><td><span class="tag tag--mono risk--high">High</span></td><td><span class="status-badge status-badge--flagged"><i></i>Flagged</span></td><td class="cell-date">Jun 03, 2026</td><td class="cell-action"><a class="row-arrow" href="#"><i data-lucide="arrow-right" class="icon--sm"></i></a></td></tr>
+                <tr><td><div class="cell-title">Q2 earnings draft</div><div class="cell-sub">VR-2026-06-02-201F</div></td><td><span class="tag tag--mono risk--moderate">Moderate</span></td><td><span class="status-badge status-badge--pending"><i></i>Pending</span></td><td class="cell-date">Jun 02, 2026</td><td class="cell-action"><a class="row-arrow" href="#"><i data-lucide="arrow-right" class="icon--sm"></i></a></td></tr>
+                <tr><td><div class="cell-title">Marketing copy — LLM draft v3</div><div class="cell-sub">VR-2026-06-01-189A</div></td><td><span class="tag tag--mono risk--low">Low</span></td><td><span class="status-badge status-badge--verified"><i></i>Verified</span></td><td class="cell-date">Jun 01, 2026</td><td class="cell-action"><a class="row-arrow" href="#"><i data-lucide="arrow-right" class="icon--sm"></i></a></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <span class="text-sm text-secondary">1–3 of 148</span>
+            <nav class="pagination">
+              <button class="pagination__item" aria-label="Previous" disabled><i data-lucide="chevron-left" class="icon--sm"></i></button>
+              <button class="pagination__item is-active">1</button>
+              <button class="pagination__item">2</button>
+              <button class="pagination__item">3</button>
+              <button class="pagination__item" aria-label="Next"><i data-lucide="chevron-right" class="icon--sm"></i></button>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <p class="sub label">Infinite scroll (instead of a footer)</p>
+      <div class="demo demo--block">
+        <div class="table-frame">
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Report</th><th>Status</th><th>Date</th></tr></thead>
+              <tbody>
+                <tr><td class="cell-title">Press release — clinical trial</td><td><span class="status-badge status-badge--pending"><i></i>Pending</span></td><td class="cell-date">May 31, 2026</td></tr>
+                <tr><td class="cell-title">Policy brief — energy</td><td><span class="status-badge status-badge--verified"><i></i>Verified</span></td><td class="cell-date">May 30, 2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-infinite"><span class="btn-spinner" style="width:14px;height:14px;border:2px solid var(--grey-300);border-right-color:transparent;border-radius:var(--radius-full);display:inline-block"></span> Loading more…</div>
+        </div>
+      </div>
+
+      <p class="sub label">Usage rules</p>
+      <div class="grid grid--2">
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="check" style="color:var(--color-success)"></i><span class="card__title" style="margin:0">Use</span></div>
+          <div class="rules">
+            <div class="rule"><span>Wrap toolbar + table + footer in a <code>.table-frame</code>; put search &amp; primary actions in the toolbar.</span></div>
+            <div class="rule"><span>Show active filters as removable tags in the subtoolbar; mark the sorted column with <code>.is-active</code>.</span></div>
+            <div class="rule"><span>Use mono for IDs, dates, and counts (<code>.cell-sub</code> / <code>.cell-date</code>).</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cluster" style="gap:var(--space-100); margin-bottom:var(--space-200)"><i data-lucide="x" style="color:var(--color-error)"></i><span class="card__title" style="margin:0">Don't</span></div>
+          <div class="rules">
+            <div class="rule"><span>Combine pagination and infinite scroll in one table.</span></div>
+            <div class="rule"><span>Make every column sortable when only a few are meaningful.</span></div>
+            <div class="rule"><span>Hide row actions entirely — surface them on the row or in a menu.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 

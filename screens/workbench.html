@@ -8,22 +8,25 @@
   <style> body { background: var(--surface-paper); } </style>
 </head>
 <body>
-  <!-- ── App header (signed in) ─────────────────────────────────────── -->
+  <!-- ── Header (demo · not signed in) ──────────────────────────────── -->
   <header class="site-header">
-    <a class="brand" href="#">
+    <a class="brand" href="landing.html">
       <img src="../assets/defacta-logo.svg" alt="Defacta" class="brand__logo">
     </a>
-    <div class="header-actions">
-      <a class="header-link" href="history.html"><i data-lucide="history"></i> History</a>
-      <a class="header-link header-link--strong" href="#"><i data-lucide="plus"></i> New verification</a>
-      <button class="icon-btn icon-btn--sm" aria-label="Account"><i data-lucide="user"></i></button>
-      <button class="icon-btn icon-btn--sm" aria-label="Panel"><i data-lucide="panel-right"></i></button>
+    <div class="cluster">
+      <a class="btn btn--ghost" href="auth.html?mode=signin">Sign in</a>
+      <a class="btn btn--secondary" href="auth.html?mode=signup">Sign up</a>
     </div>
   </header>
 
   <!-- ── Workbench ──────────────────────────────────────────────────── -->
   <main class="container workbench">
     <div class="content">
+      <nav class="breadcrumbs" style="margin-bottom: var(--space-300)">
+        <a href="landing.html">Home</a>
+        <span class="breadcrumbs__sep"><i data-lucide="chevron-right"></i></span>
+        <span aria-current="page">Demo console</span>
+      </nav>
       <div class="workbench__head">
         <span class="label">Verification workbench</span>
         <h1>What do you want to verify?</h1>

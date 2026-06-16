@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../styles.css">
   <style>
     body { background: var(--surface-paper); }
+    .container { max-width: none; padding-inline: var(--space-200); }
     /* report card — stacked, tappable */
     .hist-card { display: flex; flex-direction: column; gap: var(--space-150); text-decoration: none; color: inherit; }
     .hist-card__title { font-size: var(--text-body); font-weight: var(--weight-medium); color: var(--text-primary); }
@@ -16,7 +17,7 @@
 </head>
 <body>
   <!-- ── Centered phone-width column ─────────────────────────────────── -->
-  <div style="max-width:420px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
+  <div style="max-width:430px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
 
     <!-- App header -->
     <header class="mobile-header">
@@ -25,7 +26,7 @@
     </header>
 
     <!-- ── History ───────────────────────────────────────────────────── -->
-    <main class="container" style="max-width:420px; flex:1; padding-block: var(--space-300)">
+    <main class="container" style="flex:1; padding-block: var(--space-300)">
       <div style="margin-bottom: var(--space-300)">
         <span class="label" style="display:block; margin-bottom: var(--space-150)">Previous reports</span>
         <h1 class="h3">History</h1>

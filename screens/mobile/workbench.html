@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="../../styles.css">
   <style>
     body { background: var(--surface-paper); }
+    /* full-width mobile content with 16px side margins */
+    .container { max-width: none; padding-inline: var(--space-200); }
     .wb-mode-desc { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-300); }
 
     /* composer (Tools-style input) — full-width, stacked controls */
@@ -21,7 +23,7 @@
 </head>
 <body>
   <!-- ── Centered phone-width column ─────────────────────────────────── -->
-  <div style="max-width:420px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
+  <div style="max-width:430px; margin-inline:auto; min-height:100vh; display:flex; flex-direction:column">
 
     <!-- App header -->
     <header class="mobile-header">
@@ -30,7 +32,7 @@
     </header>
 
     <!-- ── Console ───────────────────────────────────────────────────── -->
-    <main class="container" style="max-width:420px; flex:1; padding-block: var(--space-300)">
+    <main class="container" style="flex:1; padding-block: var(--space-300)">
       <div style="margin-bottom: var(--space-300)">
         <span class="label">Verification console</span>
         <h1 class="h3" style="margin: var(--space-150) 0">What do you want to check?</h1>

@@ -4,6 +4,8 @@ A small, token-driven design system so anyone can build new Defacta screens that
 on-brand — without redesigning anything. Open this folder in **Claude Code** and just
 describe the screen you want.
 
+**🔗 Live design system:** https://nanamuratova.github.io/defacta-design-system/
+
 ---
 
 ## For clients: how to make a screen
